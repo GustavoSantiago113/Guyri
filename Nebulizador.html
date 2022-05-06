@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>
+            Guyri - Nebulização
+        </title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        </head>
+        <header class="fundo">
+            <div style:"display: inline-block">
+            <center> <h1 class="tituloprincipal">ARA - BIOSSISTEMAS</h1> </center>
+            </div>
+            <div style:"display: inline-block">
+            <center> <h2 class="titulosecundario">Protegidos - Nebulização </h2> </center>
+            </div>
+            <div style="text-align: right;">
+                <a href="index.html" class="tituloterciario">Retornar ao menu principal</a>
+            </div>
+          </header>
+          <body>
+              <br>
+            <center><div class="bloco">
+                <p class="tituloterciario">Lembrando que o dimensionamento aqui feito é apenas uma estimativa.
+                    Por isso, para que um dimensionamento profissional possa ser realizado, busque um profissional.
+                </p>
+                <p class="tituloterciario">Os valores decimais devem ser inseridos separados por ponto.</p>
+            </div></center>
+            <br>
+            <center><div class="box">
+                <div class="box1">
+                    <div class="principal">Parâmetros do sistema:</div>
+                    <br><br>
+                    <div class="filha">Capacidade do ventilador (m3/min): <input type="text" id="Cv"></div>
+                    <br>
+                    <div class="filha">Número de ventiladores: <input type="text" id="Nv"></div>
+                    <br>
+                    <div class="filha">Eficiência evaporativa (%): <input type="text" id="Ee"></div>
+                    <br>
+                    <div class="filha">Capacidade do nebulizador (l/h): <input type="text" id="Cn"></div>
+                    <br>
+                    <div class="filha">Temperatura de bulbo seco (°C): <input type="text" id="Tbs"></div>
+                    <br>
+                    <div class="filha">Umidade relativa (%): <input type="text" id="Ur"></div>
+                    <br>
+                    <div class="filha">Temperatura desejada (°C): <input type="text" id="Tpo"></div>
+                    <br>
+                    <div class="filha">Altitude em relação ao nível do mar (m): <input type="text" id="H"></div>
+                    <br>
+                </div>
+            </div></center>
+            <br>
+            <center><button class="button" onclick="DimensionarNebulizador('minhaDiv');"> Dimensionar!</button></center>
+            <br>
+            <center><div class="boxresults" id="minhaDiv" style="display: none;">
+                <div class="titresp">Resultados</div>
+                <br>
+                <div class="respostas">Número total de nebulizadores: <span id="N"></span></div>
+                <br>
+            </div></center>
+          </body>
+          <script src="index.js">
+        </script>
+</html>

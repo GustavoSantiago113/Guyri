@@ -1,0 +1,150 @@
+<html>
+    <head>
+        <title>
+            Guyri - Gotejamento
+        </title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        </head>
+        <header class="fundo">
+            <div style:"display: inline-block">
+            <center> <h1 class="tituloprincipal">ARA - BIOSSISTEMAS</h1> </center>
+            </div>
+            <div style:"display: inline-block">
+            <center> <h2 class="titulosecundario">Irrigação - Gotejamento</h2> </center>
+            </div>
+            <div style="text-align: right;">
+                <a href="index.html" class="tituloterciario">Retornar ao menu principal</a>
+            </div>
+          </header>
+          <body>
+              <br>
+            <center><div class="bloco">
+                <p class="tituloterciario">Lembrando que o dimensionamento aqui feito é apenas uma estimativa.
+                    Algumas coisas que podem fazer a diferença no seu dimensionamento: diferenças de inclinação, sobreposição de aspersores, solos diferentes em um mesmo talhão, dentre outros.
+                    Por isso, para que um dimensionamento profissional possa ser realizado, busque um profissional.
+                </p>
+                <p class="tituloterciario">Os valores decimais devem ser inseridos separados por ponto.</p>
+                <p class="tituloterciario">O croqui de área no qual esse dimensionador foi projetado é o seguinte:</p>
+                <img class="imagemexemplo" src="C:\Users\gusta\Desktop\Conhecimento\Projetos\ARA\Guyri\ModeloCroquiGotejamento.png">
+            </div></center>
+            <br>
+            <center><div class="box">
+                <div class="box1">
+                    <div class="principal">Cultura:</div>
+                    <div class="filha">ETo (mm/dia):<input type="text" id="ETO"></div>
+                    <br>
+                    <div class="filha">Kc:<input type="text" id="KC"></div>
+                    <br>
+                    <div class="filha">ETc (mm/dia):<input type="text" id="ETC"></div>
+                    <br>
+                    <div class="filha">Profundidade do sistema radicular (cm):<input type="text" id="Z"></div>
+                    <br>
+                    <div class="filha">f (%):<input type="text" id="f"></div>
+                    <br>
+                    <div class="filha">Espaçamento entre linhas (m):<input type="text" id="Eel"></div>
+                    <br>
+                    <div class="filha">Espaçamento entre plantas (m):<input type="text" id="Eep"></div>
+                    <br>
+                </div>
+                <div class="box1">
+                    <div class="principal">Dados do Solo:</div>
+                    <div class="filha">Capacidade de campo (cm3/cm3): <input type="text" id="CC"></div>
+                    <br>
+                    <div class="filha">Ponto de murcha permanente (cm3/cm3):<input type="text" id="PMP"></div>
+                    <br>
+                </div>
+                <div class="box1">
+                    <div class="principal">Topografia: </div>
+                    <div class="filha">Largura da área (m): <input type="text" id="LA"></div>
+                    <br>
+                    <div class="filha">Comprimento da área (m):<input type="text" id="CA"></div>
+                    <br>
+                    <div class="filha">Comprimento da linha de sucção (m):<input type="text" id="CLS"></div>
+                    <br>
+                    <div class="filha">Altura de sucção (m):<input type="text" id="AS"></div>
+                    <br>
+                    <div class="filha">Altura de recalque (m):<input type="text" id="AR"></div>
+                    <br>
+                </div>
+                <div class="box1">
+                    <div class="principal">Critérios do projeto:</div>  
+                    <div class="filha">Quantos setores? <input type="text" id="Ns"></div>
+                    <br>
+                    <div class="filha">Eficiência de Irrigação: <input type="text" id="IR"></div>
+                    <br>
+                    <div class="filha">Coeficiente de Hazen-Williams da linha principal: <input type="text" id="Cp"></div>
+                    <br>
+                    <div class="filha">Coeficiente de Hazen-Williams da linha de derivação: <input type="text" id="Cd"></div>
+                    <br>
+                    <div class="filha">Os emissores são embutidos nas mangeiras?</div>
+                    <br>
+                    <div style="text-align: left; width: 95%"><span class="filha">Sim</span><input type="radio" name="Mangueiras" id="Simm">
+                    <span class="filha">Diâmetro das mangueiras (m) </span><input type="text" id="Dm">
+                    </div>
+                    <br>
+                    <div style="text-align: left; width: 95%"><span class="filha">Não</span><input type="radio" name="Mangueiras" id="Naom"></div>
+                    <br>
+                    <div class="filha">Espaçamento entre emissores (m):<input type="text" id="EE"></div>
+                    <br>
+                    <div class="filha">Coeficiente de Hazen-Williams das mangueiras de gotejamento: <input type="text" id="Cl"></div>
+                    <br>
+                    <div class="filha">Mangueiras de gotejamento em:</div>
+                    <br>
+                    <div style="text-align: left; width: 95%"><input type="radio" name="linhal" id="Aclivel"><span class="filha">Aclive</span>
+                    <input type="radio" name="linhal" id="Declivel"><span class="filha">Declive</span>
+                    <input type="radio" name="linhal" id="Nivell"><span class="filha">Nivel</span></div><div class="filha">Diferença de altura (m):<input type="text" id="Decl"></div>
+                    <br>
+                    <div class="filha">Velocidade de escoamento (m/s):<input type="text" id="VE"></div>
+                    <br>
+                    <div class="filha">Rendimento da Motobomba (%): <input type="text" id="RM"></div>
+                    <br>
+                </div>
+                <div class="box1">
+                    <div class="principal">Emissor:</div>
+                    <div class="filha">Vazão de emissores (m3/h): <input type="text" id="VZ"></div>
+                    <br>
+                    <div class="filha">Pressão de serviço (mca): <input type="text" id="PS"></div>
+                    <br>
+                </div>
+            </div></center>
+            <br>
+            <center><button class="button" onclick="DimensionarGotejamento('minhaDiv');"> Dimensionar!</button></center>
+            <br>
+            <center><div class="boxresults" id="minhaDiv" style="display: none;">
+                <div class="titresp">Resultados</div>
+                <br>
+                <div class="principal">Manejo</div>
+                <div class="respostas">Período de irrigação (h/dia): <span id="TRD"></span></div>
+                <div class="respostas">Lâmina de Irrigação diária (mm): <span id="ITN"></span></div>
+                <br>
+                <div class="principal">Linhas laterais</div>
+                <div class="respostas">Comprimento total das mangueiras gotejadoras: <span id="Tmg"></span></div>
+                <div id="gotnaoembutido" style="display:none;">
+                    <div class="respostas">Número total de emissores: <span id="Nte"></span></div>
+                    <div class="respostas">Diâmetro interno da linha lateral (m): <span id="Dl"></span></div>
+                </div>
+                <br>
+                <div class="principal">Linha de Derivação: </div>
+                <div class="respostas">Comprimento de cada linha de derivação (m): <span id="Cmpd"></span></div>
+                <div class="respostas">Comprimento total das linhas de derivação (m): <span id="Ctd"></span></div>
+                <div class="respostas">Vazão de uma linha de derivação (m3/h): <span id="Qd"></span></div>
+                <div class="respostas">Diâmetro da linha de derivação (m): <span id="Dd"></span></div>
+                <br>
+                <div class="principal">Linha Principal: </div>
+                <div class="respostas">Comprimento da linha principal (m): <span id="Lp"></span></div>
+                <div class="respostas">Diâmetro da linha principal (m): <span id="Dp"></span></div>
+                <br>
+                <div class="principal">Motobomba</div>
+                <div class="respostas">Vazão (m3/h): <span id="Qp"></span></div>
+                <div class="respostas">Altura manométrica total (mca): <span id="HMT"></span></div>
+                <div class="respostas">Potência (cv): <span id="Pot"></span></div>
+                <br>
+                <div class="principal">Filtro</div>
+                <div class="respostas">Área de superfície filtrante mínima (m2): <span id="SAF"></span></div>
+                <div class="respostas">Diâmetro mínimo do filtro (m): <span id="DF"></span></div>
+                <br>
+            </div></center>
+          </body>
+          <script src="index.js">
+          </script>
+</html>

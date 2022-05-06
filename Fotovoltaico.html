@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>
+            Guyri - Fotovoltaico
+        </title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        </head>
+        <header class="fundo">
+            <div style:"display: inline-block">
+            <center> <h1 class="tituloprincipal">ARA - BIOSSISTEMAS</h1> </center>
+            </div>
+            <div style:"display: inline-block">
+            <center> <h2 class="titulosecundario">Energia - Fotovoltaico</h2> </center>
+            </div>
+            <div style="text-align: right;">
+                <a href="index.html" class="tituloterciario">Retornar ao menu principal</a>
+            </div>
+          </header>
+          <body>
+              <br>
+            <center><div class="bloco">
+                <p class="tituloterciario">Lembrando que o dimensionamento aqui feito é apenas uma estimativa.
+                    Por isso, para que um dimensionamento profissional possa ser realizado, busque um profissional.
+                </p>
+                <p class="tituloterciario">Os valores decimais devem ser inseridos separados por ponto.</p>
+            </div></center>
+            <br>
+            <center><div class="box">
+                <div class="box1">
+                    <div class="principal">Parâmetros do sistema:</div>
+                    <div class="filha">Consumo médio mensal (Wh/mês): <input type="text" id="Ctm"></div>
+                    <br>
+                    <div class="filha">Horas de sol pleno no mês mais crítico (h/dia):<input type="text" id="Hspd"></div>
+                    <br>
+                    <div class="filha">Potência do Painel (W):<input type="text" id="Pp"></div>
+                    <br>
+                </div>
+                <div class="box1">
+                    <div class="principal">Tipo do sistema:</div>
+                    <br>
+                    <div style="text-align: left; width: 95%"><input type="radio" name="tipo" id="ongrid"><span class="filha">On-Grid</span></div>
+                    <div style="text-align: left; width: 95%"><input type="radio" name="tipo" id="offgrid" onclick="AparecerSolar();"><span class="filha">Off-Grid</span>
+                    <div id="inputoffgrid" style="display:none;">
+                    <br><span class="filha">Autonomia (dias):</span><input type="text" id="Autonomia">
+                    <br><span class="filha">Tensão do Módulo:</span><input type="text" id="TM">
+                    <br><span class="filha">Tensão do banco de baterias:</span><input type="text" id="Tbb">
+                    </div>
+                    <br>
+                </div>
+            </div></center>
+            <br>
+            <center><button class="button" onclick="DimensionarSolar('minhaDiv');"> Dimensionar!</button></center>
+            <br>
+            <center><div class="boxresults" id="minhaDiv" style="display: none;">
+                <div class="titresp">Resultados</div>
+                <br>
+                <div class="respostas">Número de painéis necessários: <span id="TRD"></span></div>
+                <div class="respostas">Potência do Inversor: <span id="PI"></span></div>
+                <div id="resultoffgrid" style="display:none;">
+                    <div class="principal">Banco de Baterias</div>
+                    <div class="respostas">Capacidade das baterias (Ah): <span id="Cb"></span></div>
+                    <div class="respostas">Controlador de carga (A): <span id="Cc"></span></div>
+                </div>
+                <br>
+            </div></center>
+          </body>
+          <script src="index.js"></script>
+</html>

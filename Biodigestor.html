@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>
+            Guyri - Biodigestor
+        </title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        </head>
+        <header class="fundo">
+            <div style:"display: inline-block">
+            <center> <h1 class="tituloprincipal">ARA - BIOSSISTEMAS</h1> </center>
+            </div>
+            <div style:"display: inline-block">
+            <center> <h2 class="titulosecundario">Biodigestor - Biodigestor Canadense </h2> </center>
+            </div>
+            <div style="text-align: right;">
+                <a href="index.html" class="tituloterciario">Retornar ao menu principal</a>
+            </div>
+          </header>
+          <body>
+              <br>
+            <center><div class="bloco">
+                <p class="tituloterciario">Lembrando que o dimensionamento aqui feito é apenas uma estimativa.
+                    Por isso, para que um dimensionamento profissional possa ser realizado, busque um profissional.
+                </p>
+                <p class="tituloterciario">Os valores decimais devem ser inseridos separados por ponto.</p>
+                <p class="tituloterciario">O modelo de biodigestor a ser projetado é o seguinte:</p>
+                <img class="imagemexemplo" src="C:\Users\gusta\Desktop\Conhecimento\Projetos\ARA\Guyri\ModeloBiodigestor.png">
+            </div></center>
+            <br>
+            <center><div class="box">
+                <div class="box1">
+                    <div class="principal">Selecione a classe e o número de animais:</div>
+                    <br>
+                    <div style="text-align: left; width: 95%">
+                    <input type="radio" name="animal" id="Bovino"><span class="filha">Bovinos</span>
+                    <br>
+                    <input type="radio" name="animal" id="Suino"><span class="filha">Suínos</span></div>
+                    <div class="filha">Número de animais : <input type="text" id="Na"></div>
+                </div>
+            </div></center>
+            <br>
+            <center><button class="button" onclick="DimensionarBiodigestor('minhaDiv');"> Dimensionar!</button></center>
+            <br>
+            <center><div class="boxresults" id="minhaDiv" style="display: none;">
+                <div class="titresp">Resultados</div>
+                <br>
+                <div class="respostas">Litros de água a adicionar por dia: <span id="La"></span></div>
+                <div class="respostas">Base Inferior (m): <span id="Bi"></span></div>
+                <div class="respostas">Base superior (m): <span id="Bs"></span></div>
+                <div class="respostas">Altura (m): <span id="H"></span></div>
+                <div class="respostas">Comprimento (m): <span id="L"></span></div>
+                <div class="respostas">Estimativa de produção (m3/dia): <span id="Ep"></span></div>
+                <div class="respostas">Area da Lona (m2): <span id="Alona"></span></div>
+                <div class="respostas">Largura e comprimento da caixa de entrada (m): <span id="Ce"></span></div>
+                <div class="respostas">Altura da caixa de entrada e saída: 1 m</div>
+                <div class="respostas">Largura e comprimento da caixa de saída (m): <span id="Cs"></span></div>
+                <br>
+            </div></center>
+          </body>
+          <script src="index.js">
+        </script>
+</html>
