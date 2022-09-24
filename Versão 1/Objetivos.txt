@@ -1,0 +1,9 @@
+Criar um algoritmo que seja executável para auxiliar dimensionamentos das áreas que a Engenharia de Biossistemas abrange.
+
+Etapas:
+1- Criar o básico de cada coisa:
+	-> Irrigação;
+	-> Energia elétrica;
+	-> Climatação;
+	-> Biodigestor;
+2- Tornar executável.

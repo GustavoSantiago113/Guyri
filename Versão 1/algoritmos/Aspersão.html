@@ -1,0 +1,149 @@
+<html>
+    <head>
+        <title>
+            Guyri - Aspersão
+        </title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        </head>
+        <header class="fundo">
+            <div style:"display: inline-block">
+            <center> <h1 class="tituloprincipal">ARA - BIOSSISTEMAS</h1> </center>
+            </div>
+            <div style:"display: inline-block">
+            <center> <h2 class="titulosecundario">Irrigação - Aspersão</h2> </center>
+            </div>
+            <div style="text-align: right;">
+                <a href="index.html" class="tituloterciario">Retornar ao menu principal</a>
+            </div>
+          </header>
+          <body class="Asp">
+              <br>
+            <center><div class="bloco">
+                <p class="tituloterciario">Lembrando que o dimensionamento aqui feito é apenas uma estimativa.
+                Algumas coisas que podem fazer a diferença no seu dimensionamento: diferenças de inclinação, sobreposição de aspersores, solos diferentes em um mesmo talhão, dentre outros.
+                Por isso, para que um dimensionamento profissional possa ser realizado, busque um profissional.
+                </p>
+                <p class="tituloterciario">Os valores decimais devem ser inseridos separados por ponto.</p>
+                <p class="tituloterciario">O croqui de área no qual esse dimensionador foi projetado é o seguinte:</p>
+                <img class="imagemexemplo" src="C:\Users\gusta\Desktop\Conhecimento\Projetos\ARA\Guyri\ModeloCroquiAspersão.png">
+            </div></center>
+            <br>
+            <center><div class="box">
+                <div class="box1">
+                    <div class="principal">Cultura:</div>
+                    <div class="filha">ETo (mm/dia):<input type="text" id="ETO"></div>
+                    <br>
+                    <div class="filha">Kc:<input type="text" id="KC"></div>
+                    <br>
+                    <div class="filha">ETc (mm/dia):<input type="text" id="ETC"></div>
+                    <br>
+                    <div class="filha">Profundidade do sistema radicular (cm):<input type="text" id="Z"></div>
+                    <br>
+                    <div class="filha">f (%):<input type="text" id="f"></div>
+                    <br>
+                </div>
+                <div class="box1">
+                    <div class="principal">Dados do Solo:</div>
+                    <div class="filha">Capacidade de campo (cm3/cm3): <input type="text" id="CC"></div>
+                    <br>
+                    <div class="filha">Ponto de murcha permanente (cm3/cm3):<input type="text" id="PMP"></div>
+                    <br>
+                </div>
+                <div class="box1">
+                    <div class="principal">Dados da área:</div>
+                    <div class="filha">Largura da área (m): <input type="text" id="LA"></div>
+                    <br>
+                    <div class="filha">Comprimento da área (m):<input type="text" id="CA"></div>
+                    <br>
+                    <div class="filha">Comprimento da linha de sucção à primeira linha lateral(m):<input type="text" id="CLS"></div>
+                    <br>
+                    <div class="filha">Altura de sucção (m):<input type="text" id="AS"></div>
+                    <br>
+                    <div class="filha">Altura de recalque positivo para aclive e negativo para declive (m):<input type="text" id="AR"></div>
+                    <br>
+                </div>
+                <div class="box1">
+                    <div class="principal">Critérios do projeto:</div>
+                    <div class="filha">Eficiência de Irrigação (%): <input type="text" id="IR"></div>
+                    <br>
+                    <div class="filha">Velocidade de escoamento na tubulação principal e recalque (m/s): <input type="text" id="VE"></div>
+                    <br>
+                    <div class="filha">Coeficiente de Hazen-Williams da linha principal: <input type="text" id="C1"></div>
+                    <br>
+                    <div class="filha">Coeficiente de Hazen-Williams da linha secundária: <input type="text" id="C2"></div>
+                    <br>
+                    <div class="filha">Linha Secundária em:</div>
+                    <br>
+                    <div style="text-align: left; width: 95%"><input type="radio" name="linhas" id="AcliveS"/><span class="filha">Aclive</span>
+                    <input type="radio" name="linhas" id="DecliveS"/><span class="filha">Declive</span>
+                    <input type="radio" name="linhas" id="NivelS"/><span class="filha">Nivel</span></div><div class="filha">Diferença de altura (m):<input type="text" id="Dec1"></div>
+                    <br>
+                </div>
+                <div class="box1">
+                    <div class="principal">Aspectos do Aspersor:</div>
+                    <div class="filha">Vazão (m3/h): <input type="text" id="VZ"></div>
+                    <br>
+                    <div class="filha">Pressão de Serviço (mca): <input type="text" id="PS"></div>
+                    <br>
+                    <div class="filha">Espaçamento entre-plantas x entre-linhas (m x m): <input type="text" id="E1"><input type="text" id="E2"></div>
+                    <br>
+                    <div class="filha">Intensidade de aplicação (mm/h): <input type="text" id="IA"></div>
+                    <br>
+                    <div class="filha">Altura do aspersor (m): <input type="text" id="AA"></div>
+                    <br>
+                </div>
+                <div class="box1">
+                    <div class="principal">Mão-de-obra:</div>
+                    <div class="filha">Rendimento da Motobomba (%): <input type="text" id="RM"></div>
+                    <br>
+                    <div class="filha">Horas de serviço diário (h): <input type="text" id="Nh"></div>
+                    <br>
+                    <div class="filha">Haverá troca de aspersores na mesma área?</div>
+                    <br>
+                    <div style="text-align: left; width: 95%"><span class="filha">Sim</span><input type="radio" name="ta" id="Sim"/><span class="filha">Quanto tempo para a troca (h)?</span><input type="text" id="Tm"></div> 
+                    <br>
+                    <div style="text-align: left; width: 95%"><span class="filha">Não</span><input type="radio" name="ta" id="Nao"/></div>
+                    <br>
+                </div>
+            </div></center>
+            <br>
+            <center><button class="button" onclick="DimensionarAspersao('minhaDiv');"> Dimensionar!</button></center>
+            <center><div class="boxresults" id="minhaDiv" style="display: none;">
+                <div class="titresp">Resultados</div>
+                <br>
+                <div class="principal">Manejo</div>
+                <div class="respostas">Turno de Rega (dias): <span id="TR"></span></div>
+                <div class="respostas">Período de irrigação (h): <span id="PI"></span></div>
+                <div class="respostas">Lâmina Bruta de Irrigação (mm): <span id="ITN"></span></div>
+                <div id="maodeobra" style="display:none;">
+                <div class="respostas">Número de posições por dia: <span id="n"></span></div>
+                <div class="respostas">Número de laterais em funcionamento simultâneo: <span id="NL"></span></div>
+                </div>
+                <br>
+                <div class="principal">Linha Secundária</div>
+                <div class="respostas">Comprimento da linha secundária (m): <span id="Cls"></span></div>
+                <div class="respostas">Número de posições laterais: <span id="Npll"></span></div>
+                <div class="respostas">Número de aspersores por lateral: <span id="Nal"></span></div>
+                <div class="respostas">Vazão da Linha lateral (m3/h): <span id="Qll"></span></div>
+                <div class="respostas">Diâmetro da Linha Lateral (m): <span id="Ds"></span></div>
+                <div class="respostas">Pressão no Início (mca): <span id="Pins"></span></div>
+                <br>
+                <div class="principal">Linha Principal</div>
+                <div class="respostas">Comprimento motbomba a ultima linha lateral (m): <span id="Cmba"></span></div>
+                <div class="respostas">Diâmetro motobomba a ultima linha lateral (m): <span id="Dmba"></span></div>
+                <br>
+                <div class="principal">Motobomba</div>
+                <div class="respostas">Altura manométrica (mca): <span id="HMT"></span></div>
+                <div id="maodeobra1" style="display:none;">
+                    <div class="respostas">Vazão (m3/h): <span id="QTS"></span></div>
+                </div>
+                <div id="vazaototal" style="display:none;">
+                <div class="respostas">Vazão (l/s): <span id="Qt"></span></div>
+                </div>
+                <div class="respostas">Potência (cv): <span id="Pot"></span></div>
+                <br>
+            </div></center>
+          </body>
+          <script src="index.js">
+          </script>
+</html>
