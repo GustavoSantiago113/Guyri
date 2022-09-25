@@ -11,6 +11,7 @@ app.on('ready', () => {
     mainWindow.loadURL(`file://${__dirname}/initial_page.html`)
     
 });
+
 var controleCampo = 0;
 
 function openTab(evt, tabName){
@@ -49,7 +50,7 @@ function DimensionarAquecimento(el){
     var div = document.getElementById(el);
     var disp = div.style.display;
     div.style.display = disp == 'none' ? 'block' : 'none';
-
+    console.log(controleCampo);
     var limite = controleCampo + 1;
     var Vcon = 0;
     //Cálculo do volume de consumo
@@ -63,15 +64,19 @@ function DimensionarAquecimento(el){
         var f = parseFloat(document.getElementById(freq).value);
         var Vcon = ( (q / 1000) * ( t * 60 ) * f) + Vcon;
     }
+    console.log(Vcon);
     //Cálculo do volume do sistema de armazenamento
     var Tcon = parseFloat(document.getElementById('Tcon').value);
     var Tamb = parseFloat(document.getElementById('Tamb').value);
     var Varm = ( Vcon * (Tcon - Tamb) ) / ((1.1*Tcon) - Tamb);
-    parseFloat(document.getElementById('Varm').innerHTML = Varm);
+    console.log(Tcon);
+    console.log(Tamb);
+    console.log(Varm);
+    document.getElementById('Varm').innerHTML = Varm;
 
     //Calculo da demanda de energia útil
     var Eutil = ( Varm * 1000 * 4.18 * ((1.1*Tcon) - Tamb)) / 3600;
-    parseFloat(document.getElementById('Eutil').innerHTML = Eutil);
+    document.getElementById('Eutil').innerHTML = Eutil;
 
     //Cálculo da área coletora
     var Ig = parseFloat(document.getElementById('Ig').value);
@@ -84,7 +89,7 @@ function DimensionarAquecimento(el){
     var B = parseFloat(document.getElementById('B').value);
     var Fc = 1 / ( 1 - ( ( (1.2 * Math.pow(10,-4)) * Math.pow((It - Ll),2) ) + ( (3.5 * Math.pow(10,-5)) * Math.pow(B,2) ) ) );
     var Area = ( (Eutil + Eperdas) * Fc * 4.901 ) / ( PMDEE * Ig);
-    parseFloat(document.getElementById('Area').innerHTML) = Area;
+    document.getElementById('Area').innerHTML = Area;
 }
 
 function DimensionarArCondicionado(el){
