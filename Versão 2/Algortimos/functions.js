@@ -12,7 +12,7 @@ app.on('ready', () => {
     
 });
 
-var controleCampo = 0;
+var controleCampo;
 
 function openTab(evt, tabName){
 
@@ -37,12 +37,14 @@ function Adicionar(){
 
     controleCampo++;
     document.getElementById('formulario').insertAdjacentHTML('beforeend', '<div class="form-group" id="campo'+ controleCampo +'"><input class="input" type="text" id="vazao'+ controleCampo +'" placeholder = "Vazão do equipamento (l/s)"><br><input class="input" type="text" id="tempo'+ controleCampo +'" placeholder = "Tempo de uso (min)" ><br><input class="input" type="text" id="frequencia'+ controleCampo +'" placeholder ="Frequência diária de uso"><br><button type="button" class="numb_control" onclick="Adicionar()">+</button><button type="button" class="numb_control" onclick="Remover('+ controleCampo +')">-</button></div>');
+    return(controleCampo);
 }
 
 function Remover(idCampo){
 
     controleCampo = controleCampo - 1;
     document.getElementById('campo' + idCampo).remove();
+    return(controleCampo);
 }
 
 function DimensionarAquecimento(el){
@@ -50,9 +52,11 @@ function DimensionarAquecimento(el){
     var div = document.getElementById(el);
     var disp = div.style.display;
     div.style.display = disp == 'none' ? 'block' : 'none';
-    console.log(controleCampo);
-    var limite = controleCampo + 1;
+
+    var contador = controleCampo;
+    var limite = contador + 1;
     var Vcon = 0;
+    console.log(limite);
     //Cálculo do volume de consumo
     for(let i=0; i<limite; i++)
     {
@@ -64,14 +68,10 @@ function DimensionarAquecimento(el){
         var f = parseFloat(document.getElementById(freq).value);
         var Vcon = ( (q / 1000) * ( t * 60 ) * f) + Vcon;
     }
-    console.log(Vcon);
     //Cálculo do volume do sistema de armazenamento
     var Tcon = parseFloat(document.getElementById('Tcon').value);
     var Tamb = parseFloat(document.getElementById('Tamb').value);
     var Varm = ( Vcon * (Tcon - Tamb) ) / ((1.1*Tcon) - Tamb);
-    console.log(Tcon);
-    console.log(Tamb);
-    console.log(Varm);
     document.getElementById('Varm').innerHTML = Varm;
 
     //Calculo da demanda de energia útil
