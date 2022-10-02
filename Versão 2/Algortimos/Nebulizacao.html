@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>
-            Guyri - Fotovoltaico
+            Guyri - Nebulização
         </title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="functions.js"></script>
@@ -15,7 +15,7 @@
         <a class="return_initial" href="initial_page.html">Home</a>
     </header>
     <body>
-    <div class="body_sizing">
+        <div class="body_sizing">
             <div class="main_lateral_dropdown">
 
                 <div class="lateral_dropdown">
@@ -72,106 +72,80 @@
             </div>
 
             <div class="main_section">
+
                 <div class="calculator">
 
                     <ul class="nav">
-                        <button class="nav_link active" id="par_bt" onclick="openTab(event, 'par')">Parâmetros do sistema</button>
-                        <button class="nav_link" id="tipo_bt" onclick="openTab(event, 'tipo')">Tipo do sistema</button>
+                        <button class="nav_link active" id="pds_bt" onclick="openTab(event, 'pds')">Parâmetros do Sistema</button>
                     </ul>
 
                     <div class="tab_content">
 
-                        <div class="tab_pane" id="par">
-                            <input class="input" placeholder="Consumo médio mensal (Wh/mês)" type="number" step="0.0001" id="Ctm">
-                            <br><input class="input" placeholder="Horas de sol pleno no mês mais crítico (h/dia)" type="number" step="0.0001" id="Hspd">
-                            <br><input class="input" placeholder="Potência do Painel (W)" type="number" step="0.0001" id="Pp">
-                        </div>
-
-                        <div class="tab_pane" id="tipo" style="display: none;">
-                            <h5 style="background-color: #65b8a6;">Tipo do sistema:</h5>
-                            <input type="radio" name="tipo" id="ongrid" onclick="AparecerSolar();"><span>On-Grid</span>
-                            <input type="radio" name="tipo" id="offgrid" onclick="AparecerSolar();"><span>Off-Grid</span>
-                            <div id="inputoffgrid" style="display:none; background-color: #65b8a6;">
-                                <br><input class="input" placeholder="Autonomia (dias)" type="number" step="0.0001" id="Autonomia">
-                                <br><input class="input" placeholder="Tensão do Módulo" type="number" step="0.0001" id="TM">
-                                <br><input class="input" placeholder="Tensão do banco de baterias" type="number" step="0.0001" id="Tbb">       
-                            </div>
+                        <div class="tab_pane" id="pds">
+                            <input class="input" type="number" step="0.0001" id="Cv" placeholder="Capacidade do ventilador (m3/min)">
+                            <br><input class="input" placeholder="Número de ventiladores" type="number" step="0.0001" id="Nv">
+                            <br><input class="input" placeholder="Eficiência evaporativa (%)" type="number" step="0.0001" id="Ee">
+                            <br><input class="input" placeholder="Capacidade do nebulizador (l/h)" type="number" step="0.0001" id="Cn">
+                            <br><input class="input" placeholder="Temperatura de bulbo seco (°C)" type="number" step="0.0001" id="Tbs">
+                            <br><input class="input" placeholder="Umidade relativa (%)" type="number" step="0.0001" id="Ur">
+                            <br><input class="input" placeholder="Temperatura desejada (°C)" type="number" step="0.0001" id="Tpo">
+                            <br><input class="input" placeholder="Altitude em relação ao nível do mar (m)" type="number" step="0.0001" id="H">
                         </div>
 
                     </div>
 
                 </div>
 
-                <button class="result" onclick="DimensionarSolar('minhaDiv');">
+                <button class="result" onclick="DimensionarNebulizador('minhaDiv');">
                     Dimensionar!
                 </button>
 
                 <div class="boxresults" id="minhaDiv" style="display: none;">
                     <center><div class="titresp">Resultados</div></center>
-                    <div class="respostas">Número de painéis necessários: <span id="TRD"></span></div>
-                    <div class="respostas">Potência do Inversor (W): <span id="PI"></span></div>
-                    <div id="resultoffgrid" style="display:none;background-color: #65b8a6;">
-                        <h5 style="background-color: #65b8a6;">Banco de Baterias</h5>
-                        <div class="respostas">Capacidade das baterias (Ah): <span id="Cb"></span></div>
-                        <div class="respostas">Controlador de carga (A): <span id="Cc"></span></div>
-                    </div>
+                    <div class="respostas">Número total de nebulizadores: <span id="N"></span></div>
                     <button class="generate_pdf"> Gerar PDF </button>
                 </div>
 
             </div>
 
             <div>
-                
+
             </div>
 
-    </div>
+        </div>          
     </body>
     <script>
-        function AparecerSolar(){
-
-            if (document.getElementById("offgrid").checked){
-                document.getElementById("inputoffgrid").style.display = "block";
-            }
-
-            else {
-                document.getElementById("inputoffgrid").style.display = "none";
-            }
-        }
-
-        function DimensionarSolar(el){
-
+        function DimensionarNebulizador(el){
             var div = document.getElementById(el);
             var disp = div.style.display;
             div.style.display = disp == 'none' ? 'block' : 'none';
 
-            var Pp = parseFloat(document.getElementById('Pp').value);
-            var Ctd = parseFloat(document.getElementById('Ctm').value) / 30;
-            var Hspd = parseFloat(document.getElementById('Hspd').value);
-            if (document.getElementById("ongrid").checked)
-            {
-                var Pg = Ctd / (Hspd * 0.7);
-                document.getElementById('PI').innerHTML = Pg.toFixed(3);
-                var TRD = Pg / Pp;
-                document.getElementById('TRD').innerHTML = TRD.toFixed(3);
-            }
+            var Cv = parseFloat(document.getElementById("Cv").value);
+            var Nv = parseFloat(document.getElementById("Nv").value);
+            var Ee = parseFloat(document.getElementById("Ee").value);
+            var Cn = parseFloat(document.getElementById("Cn").value);
+            var Tbs = parseFloat(document.getElementById("Tbs").value);
+            var Ur = parseFloat(document.getElementById("Ur").value);
+            var Tpo = parseFloat(document.getElementById("Tpo").value);
+            var H = parseFloat(document.getElementById("H").value);
 
-            else if (document.getElementById("offgrid").checked)
-            {
-                document.getElementById("resultoffgrid").style.display = "block";
-                var TM = parseFloat(document.getElementById('TM').value);
-                var Tbb = parseFloat(document.getElementById('Tbb').value);
-                var Autonomia = parseFloat(document.getElementById('Autonomia').value);
-                var Cb = ( Ctd * Autonomia) / ( Tbb * 0.6);
-                document.getElementById('Cb').innerHTML = Cb;
-                var Fpp = Tbb / TM;
-                var Pg = Ctd / (Hspd * 0.8 * Fpp);
-                var TRD = Pg / Pp;
-                document.getElementById('TRD').innerHTML = TRD.toFixed(3);
-                document.getElementById('PI').innerHTML = Pg.toFixed(3);
-                var Cc = (Pg * 1.1) / Tbb ;
-                document.getElementById('Cc').innerHTML = Cc.toFixed(3);
-            }
+            var dbs = 1.2791 * Math.pow(Math.E, (-0.003*Tbs));
+            var Pbs = (-1.0979 * H + 10091) / 10;
+            var dbm = 1.2791 * Math.pow(Math.E, (-0.003*Tpo));
+            var Pbm = (-1.0979 * H + 10091)/10;
 
+            var Pvsbs = 0.6108*Math.pow(10, ((7.5*Tbs)/(237.3+Tbs)));
+            var Pvbs = (Ur*Pvsbs) / 100;
+            var wbs = (0.622 * Pvbs) / (Pbs-Pvbs);
+
+            var Pvsbm = 0.6108*Math.pow(10, ((7.5*Tpo)/(237.3+Tpo)));
+            var Pvbm = (100*Pvsbm) / 100;
+            var wbm = (0.622 * Pvbm) / (Pbm - Pvbm);
+
+            var dw = (wbm - wbs)*10;
+
+            var N = (Ee * (Nv*Cv) *  dbs * dw * 0.01) / (Cn/60);
+            document.getElementById('N').innerHTML = N.toFixed(3);
         }
     </script>
 </html>

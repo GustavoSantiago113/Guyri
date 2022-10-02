@@ -83,9 +83,9 @@
                 <div class="tab_content">
 
                     <div class="tab_pane" id="par">
-                        <input class="input" placeholder="Consumo médio mensal (Wh/mês)" type="text" id="Cmm">
-                        <br><input class="input" placeholder="Velocidade média do vento (m/s)" type="text" id="Vv">
-                        <br><input class="input" placeholder="Diâmetro das pás (m)" type="text" id="Dp">
+                        <input class="input" placeholder="Consumo médio mensal (Wh/mês)" type="number" step="0.0001" id="Cmm">
+                        <br><input class="input" placeholder="Velocidade média do vento (m/s)" type="number" step="0.0001" id="Vv">
+                        <br><input class="input" placeholder="Diâmetro das pás (m)" type="number" step="0.0001" id="Dp">
                     </div>
 
                     <div class="tab_pane" id="tipo" style="display: none;">
@@ -94,9 +94,9 @@
                         <input type="radio" name="tipo" id="ongrid" onclick="Aparecer();"><span>On-Grid</span>
                         <input type="radio" name="tipo" id="offgrid" onclick="Aparecer();"><span>Off-Grid</span>
                         <div id="inputoffgrid" style="display:none; background-color: #65b8a6;">
-                            <br><input class="input" placeholder="Autonomia (dias)" type="text" id="Autonomia">
-                            <br><input class="input" placeholder="Tensão do Módulo" type="text" id="TM">
-                            <br><input class="input" placeholder="Tensão do banco de baterias" type="text" id="Tbb">
+                            <br><input class="input" placeholder="Autonomia (dias)" type="number" step="0.0001" id="Autonomia">
+                            <br><input class="input" placeholder="Tensão do Módulo" type="number" step="0.0001" id="TM">
+                            <br><input class="input" placeholder="Tensão do banco de baterias" type="number" step="0.0001" id="Tbb">
                         </div>
                         <br>
                     </div>

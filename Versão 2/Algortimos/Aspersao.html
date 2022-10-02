@@ -5,7 +5,7 @@
         </title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="functions.js"></script>
-        </head>
+    </head>
         <header class="header">
             <img class="logo_header" src="C:\Users\gusta\OneDrive\Documentos\Conhecimento\Projetos\ARA\Logotipo 2.png">
             <div class="title_header">
@@ -87,53 +87,53 @@
                     <div class="tab_content">
 
                         <div class="tab_pane" id="cult">
-                            <input class="input" type="text" id="ETO" placeholder="ETo (mm/dia)">
-                            <br><input class="input" placeholder="Kc" type="text" id="KC">
-                            <br><input class="input" placeholder="ETc (mm/dia)" type="text" id="ETC">
-                            <br><input class="input" placeholder="Profundidade do sistema radicular (cm)" type="text" id="Z">
-                            <br><input class="input" placeholder="f (%)" type="text" id="f">
+                            <input class="input"type="number" step="0.0001" id="ETO" placeholder="ETo (mm/dia)">
+                            <br><input class="input" placeholder="Kc"type="number" step="0.0001" id="KC">
+                            <br><input class="input" placeholder="ETc (mm/dia)"type="number" step="0.0001" id="ETC">
+                            <br><input class="input" placeholder="Profundidade do sistema radicular (cm)"type="number" step="0.0001" id="Z">
+                            <br><input class="input" placeholder="f (%)"type="number" step="0.0001" id="f">
                         </div>
 
                         <div class="tab_pane" id="sol" style="display: none;">
-                            <input class="input" placeholder="Capacidade de campo (cm3/cm3)" type="text" id="CC">
-                            <br><input class="input" placeholder="Ponto de murcha permanente (cm3/cm3)" type="text" id="PMP">
+                            <input class="input" placeholder="Capacidade de campo (cm3/cm3)"type="number" step="0.0001" id="CC">
+                            <br><input class="input" placeholder="Ponto de murcha permanente (cm3/cm3)"type="number" step="0.0001" id="PMP">
                         </div>
 
                         <div class="tab_pane" id="area" style="display: none;">
-                            <input class="input" placeholder="Largura da área (m)" type="text" id="LA">
-                            <br><input class="input" placeholder="Comprimento da área (m)" type="text" id="CA">
-                            <br><input class="input" placeholder="Comprimento da linha de sucção à primeira linha lateral(m)" type="text" id="CLS">
-                            <br><input class="input" placeholder="Altura de sucção (m)" type="text" id="AS">
-                            <br><input class="input" placeholder="Altura de recalque positivo para aclive e negativo para declive (m)" type="text" id="AR">
+                            <input class="input" placeholder="Largura da área (m)"type="number" step="0.0001" id="LA">
+                            <br><input class="input" placeholder="Comprimento da área (m)"type="number" step="0.0001" id="CA">
+                            <br><input class="input" placeholder="Comprimento da linha de sucção à primeira linha lateral(m)"type="number" step="0.0001" id="CLS">
+                            <br><input class="input" placeholder="Altura de sucção (m)"type="number" step="0.0001" id="AS">
+                            <br><input class="input" placeholder="Altura de recalque positivo para aclive e negativo para declive (m)"type="number" step="0.0001" id="AR">
                         </div>
 
                         <div class="tab_pane" id="proj" style="display: none;">
-                            <input class="input" placeholder="Eficiência de Irrigação (%)" type="text" id="IR">
-                            <br><input class="input" placeholder="Velocidade de escoamento na tubulação principal e recalque (m/s)" type="text" id="VE">
-                            <br><input class="input" placeholder="Coeficiente de Hazen-Williams da linha principal" type="text" id="C1">
-                            <br><input class="input" placeholder="Coeficiente de Hazen-Williams da linha secundária" type="text" id="C2">
+                            <input class="input" placeholder="Eficiência de Irrigação (%)"type="number" step="0.0001" id="IR">
+                            <br><input class="input" placeholder="Velocidade de escoamento na tubulação principal e recalque (m/s)"type="number" step="0.0001" id="VE">
+                            <br><input class="input" placeholder="Coeficiente de Hazen-Williams da linha principal"type="number" step="0.0001" id="C1">
+                            <br><input class="input" placeholder="Coeficiente de Hazen-Williams da linha secundária"type="number" step="0.0001" id="C2">
                             <h5 style="background-color: #65b8a6;">Linha Secundária em:</h5>
                             <br>
                             <input type="radio" name="linhas" id="AcliveS"/><span>Aclive</span>
                             <input type="radio" name="linhas" id="DecliveS"/><span>Declive</span>
                             <input type="radio" name="linhas" id="NivelS"/><span>Nivel</span>
-                            <input class="input" style="width:fit-content;" placeholder="Diferença de altura (m)" type="text" id="Dec1">
+                            <input class="input" style="width:fit-content;" placeholder="Diferença de altura (m)"type="number" step="0.0001" id="Dec1">
                         </div>
 
                         <div class="tab_pane" id="asp" style="display: none;">
-                            <input class="input" placeholder="Vazão (m3/h)" type="text" id="VZ">
-                            <br><input class="input" placeholder="Pressão de Serviço (mca)" type="text" id="PS">
-                            <br><input class="input" placeholder="Espaçamento entre-plantas (m)" type="text" id="E1">
-                            <br><input class="input" placeholder="Espaçamento entre-linhas (m)" type="text" id="E2">
-                            <br><input class="input" placeholder="Intensidade de aplicação (mm/h)" type="text" id="IA">
-                            <br><input class="input" placeholder="Altura do aspersor (m)" type="text" id="AA">
+                            <input class="input" placeholder="Vazão (m3/h)"type="number" step="0.0001" id="VZ">
+                            <br><input class="input" placeholder="Pressão de Serviço (mca)"type="number" step="0.0001" id="PS">
+                            <br><input class="input" placeholder="Espaçamento entre-plantas (m)"type="number" step="0.0001" id="E1">
+                            <br><input class="input" placeholder="Espaçamento entre-linhas (m)"type="number" step="0.0001" id="E2">
+                            <br><input class="input" placeholder="Intensidade de aplicação (mm/h)"type="number" step="0.0001" id="IA">
+                            <br><input class="input" placeholder="Altura do aspersor (m)"type="number" step="0.0001" id="AA">
                         </div>
 
                         <div class="tab_pane" id="mdo" style="display: none;">
-                            <input class="input" placeholder="Rendimento da Motobomba (%)" type="text" id="RM">
-                            <br><input class="input" placeholder="Horas de serviço diário (h)" type="text" id="Nh">
+                            <input class="input" placeholder="Rendimento da Motobomba (%)"type="number" step="0.0001" id="RM">
+                            <br><input class="input" placeholder="Horas de serviço diário (h)"type="number" step="0.0001" id="Nh">
                             <br><h5 style="background-color: #65b8a6;">Haverá troca de aspersores na mesma área?</h5>
-                            <br><span>Sim</span><input type="radio" name="ta" id="Sim"/><input placeholder="Tempo para a troca (h)" class="input" style="width:fit-content;" type="text" id="Tm">
+                            <br><span>Sim</span><input type="radio" name="ta" id="Sim"/><input placeholder="Tempo para a troca (h)" class="input" style="width:fit-content;"type="number" step="0.0001" id="Tm">
                             <br><span>Não</span><input type="radio" name="ta" id="Nao"/>
                         </div>
 
@@ -202,12 +202,12 @@
                 var Eto = parseFloat(document.getElementById('ETO').value);
                 var ETpc = Kc*Eto;
                 var TR = ADR / ETpc;
-                document.getElementById('TR').innerHTML = Math.round(TR);
+                document.getElementById('TR').innerHTML = TR.toFixed(3);
                 var PI = Math.round(TR) - 1;
-                document.getElementById('PI').innerHTML = PI;
+                document.getElementById('PI').innerHTML = PI.toFixed(3);
                 var Ea = parseFloat(document.getElementById('IR').value)/100;
                 var ITN = ADR / Ea;
-                document.getElementById('ITN').innerHTML = ITN;
+                document.getElementById('ITN').innerHTML = ITN.toFixed(3);
                 var CP = parseFloat(document.getElementById('CA').value);
                 var E2 = parseFloat(document.getElementById('E2').value);
                 var Npll = CP / E2;
@@ -216,25 +216,25 @@
                 var Clp = (E2/2) + ((Nplln-1)*E2);
                 var L = parseFloat(document.getElementById('LA').value);
                 var Nal = (L/2) / E1;
-                document.getElementById('Nal').innerHTML = Math.round(Nal);
-                document.getElementById('Npll').innerHTML = Math.round(Npll);
+                document.getElementById('Nal').innerHTML = Nal.toFixed(3);
+                document.getElementById('Npll').innerHTML = Npll.toFixed(3);
                 var IA = parseFloat(document.getElementById('IA').value);
                 var Ti = ITN / IA;
                 var Nh = parseFloat(document.getElementById('Nh').value);
                 var Tm = parseFloat(document.getElementById('Tm').value);
                 var n = (Nh)/(Ti + Tm);
                 var Np = Nplln / (PI);
-                document.getElementById('Np').innerHTML = Math.round(Np);
-                document.getElementById('n').innerHTML = Math.round(n);
+                document.getElementById('Np').innerHTML = Np.toFixed(3);
+                document.getElementById('n').innerHTML = n.toFixed(3);
                 var NL = Np / n;
-                document.getElementById('NL').innerHTML = Math.round(NL);
+                document.getElementById('NL').innerHTML = NL.toFixed(3);
                 var qa = parseFloat(document.getElementById('VZ').value);
                 var Ql = qa*parseInt(Nal);
-                document.getElementById('Qll').innerHTML = Ql;
+                document.getElementById('Qll').innerHTML = Ql.toFixed(3);
                 var QTS = Ql * NL;
-                document.getElementById('QTS').innerHTML = QTS; 
+                document.getElementById('QTS').innerHTML = QTS.toFixed(3); 
                 var Qt = ( ( L*CP ) * ITN) / (PI*Nh*3600);
-                document.getElementById('Qt').innerHTML = Qt;
+                document.getElementById('Qt').innerHTML = Qt.toFixed(3);
                 var PS = parseFloat(document.getElementById('PS').value);     
                 var Aa = parseFloat(document.getElementById('AA').value);
                 var DZ = parseFloat(document.getElementById('Dec1').value);
@@ -260,15 +260,15 @@
                     var Pins = PS + ((3*hfs)/4) + Aa - 0.5*DZ;
                     var Pfs = PS - 0.25*hfs + Aa - 0.5*DZ;
                 }
-                document.getElementById('Pins').innerHTML = Pins;
+                document.getElementById('Pins').innerHTML = Pins.toFixed(3);
                 var Cls = (parseInt(Nal)-1)*E1 + E1/2;
-                document.getElementById('Cls').innerHTML = Cls;
+                document.getElementById('Cls').innerHTML = Cls.toFixed(3);
                 var F = (1/(1.852+1))+(1/(2*parseInt(Nal)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(Nal),2)));
                 var Cs = parseFloat(document.getElementById('C2').value);
                 var r = (Ql/3600) / Cs;
                 var r1 = 10.643 * Math.pow(r,1.852)*((Cls*F)/hfs);
                 var Ds =  Math.pow(r1, 0.205);
-                document.getElementById('Ds').innerHTML = Ds;
+                document.getElementById('Ds').innerHTML = Ds.toFixed(3);
                 var CLS = parseFloat(document.getElementById('CLS').value);
                 var LLP = (parseInt(Npll)-1)*E2;
                 var VE = parseFloat(document.getElementById('VE').value);
@@ -281,12 +281,8 @@
                 var Cmba = LLP + CLS;
                 if (document.getElementById("Sim").checked) 
                 {
-                    var div = document.getElementById('maodeobra');
-                    var disp = div.style.display;
-                    div.style.display = disp == 'none' ? 'block' : 'none';
-                    var div1 = document.getElementById('maodeobra1');
-                    var disp1 = div1.style.display;
-                    div1.style.display = disp1 == 'none' ? 'block' : 'none';
+                    document.getElementById('maodeobra').style.display = "block";
+                    document.getElementById('maodeobra1').style.display = "block";
                     var Dmba = Math.sqrt(((4*(QTS/3600))/(Math.PI*VE)));
                     var hfmba = 10.643 * Math.pow(((3*(QTS/3600))/Cp),1.852)*(Cmba/Math.pow(Dmba,4.87))*Fp2;
                     var HMT = (hfmba + Pins + hr + hs)*1.1;
@@ -294,19 +290,17 @@
                 }
                 else if (document.getElementById("Nao").checked)
                 {
-                    var div = document.getElementById('vazaototal');
-                    var disp = div.style.display;
-                    div.style.display = disp == 'none' ? 'block' : 'none';
+                    document.getElementById('vazaototal').style.display = "block";
                     var a = (4* (Qt/1000) ) / (Math.PI*VE);
                     var Dmba = Math.sqrt(a);
                     var hfmba = 10.643 * Math.pow(( (3* (Qt/1000) ) / Cp ), 1.852) * ( Cmba / (Math.pow(Dmba,4.87)) * Fp1);
                     var HMT = (hfmba + Pins + hr + hs)*1.1;
                     var Pot = (Qt*HMT)/(75*(RM/100));
                 }
-                document.getElementById('Dmba').innerHTML = Dmba;
-                document.getElementById('Cmba').innerHTML = Cmba;
-                document.getElementById('HMT').innerHTML = HMT;
-                document.getElementById('Pot').innerHTML = Pot;'
+                document.getElementById('Dmba').innerHTML = Dmba.toFixed(3);
+                document.getElementById('Cmba').innerHTML = Cmba.toFixed(3);
+                document.getElementById('HMT').innerHTML = HMT.toFixed(3);
+                document.getElementById('Pot').innerHTML = Pot.toFixed(3);
             }
         </script>
 </html>

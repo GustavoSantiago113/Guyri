@@ -85,9 +85,9 @@
 
                         <div id="formulario">
                             <div class="form-group" id="campo0">
-                                <input class="input" type="text" id="vazao0" placeholder="Vazão do equipamento (l/s)">
-                                <br><input class="input" type="text" id="tempo0" placeholder="Tempo de uso (min)">
-                                <br><input class="input" type="text" id="frequencia0" placeholder="Frequência diária de uso">
+                                <input class="input" type="number" step="0.0001" id="vazao0" placeholder="Vazão do equipamento (l/s)">
+                                <br><input class="input" type="number" step="0.0001" id="tempo0" placeholder="Tempo de uso (min)">
+                                <br><input class="input" type="number" step="0.0001" id="frequencia0" placeholder="Frequência diária de uso">
                                 <br><button type="button" class="numb_control" onclick="Adicionar()">+</button>
                             </div>
                         </div>
@@ -96,19 +96,19 @@
 
                     <div class="tab_pane" id="temp" style="display: none;">
 
-                        <input class="input" type="text" id="Tcon" placeholder="Temperatura de uso (°C)">
-                        <br><input class="input" type="text" id="Tamb" placeholder="Temperatura Média do Local (°C)">
+                        <input class="input" type="number" step="0.0001" id="Tcon" placeholder="Temperatura de uso (°C)">
+                        <br><input class="input" type="number" step="0.0001" id="Tamb" placeholder="Temperatura Média do Local (°C)">
 
                     </div>
 
                     <div class="tab_pane" id="arcol" style="display: none;">
 
-                        <input class="input" type="text" id="Ig" placeholder="Valor da irradiação global média anual do local (kWh/m2 dia)">
-                        <br><input class="input" type="text" id="Frtan" placeholder="Fr(ta)n do coletor">
-                        <br><input class="input" type="text" id="Frul" placeholder="FrUL do coletor">
-                        <br><input class="input" type="text" id="Ll" placeholder="Latitude do local (em graus)">
-                        <br><input class="input" type="text" id="It" placeholder="Inclinação do telhado (em graus)">
-                        <br><input class="input" type="text" id="B" placeholder="Angulação do telhado em relação ao Norte (em graus)">
+                        <input class="input" type="number" step="0.0001" id="Ig" placeholder="Valor da irradiação global média anual do local (kWh/m2 dia)">
+                        <br><input class="input" type="number" step="0.0001" id="Frtan" placeholder="Fr(ta)n do coletor">
+                        <br><input class="input" type="number" step="0.0001" id="Frul" placeholder="FrUL do coletor">
+                        <br><input class="input" type="number" step="0.0001" id="Ll" placeholder="Latitude do local (em graus)">
+                        <br><input class="input" type="number" step="0.0001" id="It" placeholder="Inclinação do telhado (em graus)">
+                        <br><input class="input" type="number" step="0.0001" id="B" placeholder="Angulação do telhado em relação ao Norte (em graus)">
 
                     </div>
 
@@ -139,7 +139,7 @@
 
         function Adicionar(){
             controleCampo++;
-            document.getElementById('formulario').insertAdjacentHTML('beforeend', '<div class="form-group" id="campo'+ controleCampo +'"><input class="input" type="text" id="vazao'+ controleCampo +'" placeholder = "Vazão do equipamento (l/s)"><br><input class="input" type="text" id="tempo'+ controleCampo +'" placeholder = "Tempo de uso (min)" ><br><input class="input" type="text" id="frequencia'+ controleCampo +'" placeholder ="Frequência diária de uso"><br><button type="button" class="numb_control" onclick="Adicionar()">+</button><button type="button" class="numb_control" onclick="Remover('+ controleCampo +')">-</button></div>');
+            document.getElementById('formulario').insertAdjacentHTML('beforeend', '<div class="form-group" id="campo'+ controleCampo +'"><input class="input" type="number" step="0.0001" id="vazao'+ controleCampo +'" placeholder = "Vazão do equipamento (l/s)"><br><input class="input" type="number" step="0.0001" id="tempo'+ controleCampo +'" placeholder = "Tempo de uso (min)" ><br><input class="input" type="number" step="0.0001" id="frequencia'+ controleCampo +'" placeholder ="Frequência diária de uso"><br><button type="button" class="numb_control" onclick="Adicionar()">+</button><button type="button" class="numb_control" onclick="Remover('+ controleCampo +')">-</button></div>');
             return(controleCampo);
         }
 
@@ -173,11 +173,11 @@
             var Tcon = parseFloat(document.getElementById('Tcon').value);
             var Tamb = parseFloat(document.getElementById('Tamb').value);
             var Varm = ( Vcon * (Tcon - Tamb) ) / ((1.1*Tcon) - Tamb);
-            document.getElementById('Varm').innerHTML = Varm;
+            document.getElementById('Varm').innerHTML = Varm.toFixed(3);
 
             //Calculo da demanda de energia útil
             var Eutil = ( Varm * 1000 * 4.18 * ((1.1*Tcon) - Tamb)) / 3600;
-            document.getElementById('Eutil').innerHTML = Eutil;
+            document.getElementById('Eutil').innerHTML = Eutil.toFixed(3);
 
             //Cálculo da área coletora
             var Ig = parseFloat(document.getElementById('Ig').value);
@@ -190,7 +190,7 @@
             var B = parseFloat(document.getElementById('B').value);
             var Fc = 1 / ( 1 - ( ( (1.2 * Math.pow(10,-4)) * Math.pow((It - Ll),2) ) + ( (3.5 * Math.pow(10,-5)) * Math.pow(B,2) ) ) );
             var Area = ( (Eutil + Eperdas) * Fc * 4.901 ) / ( PMDEE * Ig);
-            document.getElementById('Area').innerHTML = Area;
+            document.getElementById('Area').innerHTML = Area.toFixed(3);
         }
     </script>
 </html>

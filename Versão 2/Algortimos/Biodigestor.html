@@ -84,7 +84,7 @@
                         <h5 style="background-color: #65b8a6;">Selecione a espécie e o número de animais:</h5>
                         <br><input type="radio" name="animal" id="Bovino"><span>Bovinos</span>
                         <br><input type="radio" name="animal" id="Suino"><span>Suínos</span>
-                        <br><input class="input" placeholder="Número de animais" type="text" id="Na">
+                        <br><input class="input" placeholder="Número de animais" type="number" step="0.0001" id="Na">
                     </div>
                 </div>
 
@@ -144,7 +144,7 @@
 
             var massaesterco = Na * estercodia //total de kg de esterco por dia
             var litrosagua = agua * massaesterco; //litros de água por dia
-            document.getElementById('La').innerHTML = litrosagua;
+            document.getElementById('La').innerHTML = litrosagua.toFixed(3);
             var volumediario = (litrosagua / 1000) + ( massaesterco / densidade ); //volume diário de esterco em m3
             var volumecaixa = volumediario * tempo; //volume total da caixa em m3
             if(volumecaixa < 500)
@@ -156,7 +156,7 @@
                 var H = 3.5;
             }
 
-            document.getElementById('H').innerHTML = H;
+            document.getElementById('H').innerHTML = H.toFixed(3);
             var a = 5*H;
             var b = 5.46 * Math.pow(H,2);
             var c = 1.325*Math.pow(H,3) - volumecaixa;
@@ -167,14 +167,14 @@
             {
                 Bi = x1;
             }
-            document.getElementById('Bi').innerHTML = Bi;
+            document.getElementById('Bi').innerHTML = Bi.toFixed(3);
             var Bs = 0.7279 * H + Bi;
-            document.getElementById('Bs').innerHTML = Bs;
+            document.getElementById('Bs').innerHTML = Bs.toFixed(3);
             var L = 3.6395 * H + 5*Bi;
-            document.getElementById('L').innerHTML = L;
+            document.getElementById('L').innerHTML = L.toFixed(3);
 
             var Ep = massaesterco * conversao;
-            document.getElementById('Ep').innerHTML = Ep;
+            document.getElementById('Ep').innerHTML = Ep.toFixed(3);
 
             var At = Ep / L;
             var a1 = 120;
@@ -192,13 +192,13 @@
                 R = x21;
             }
             var Alona = 2 * Math.PI * R * 0.333 * L;
-            document.getElementById('Alona').innerHTML = Alona;
+            document.getElementById('Alona').innerHTML = Alona.toFixed(3);
 
             var Ce = Math.sqrt((volumediario*1.2),2);
-            document.getElementById('Ce').innerHTML = Ce;
+            document.getElementById('Ce').innerHTML = Ce.toFixed(3);
 
             var Cs = Math.sqrt((volumediario*1.2*3),2);
-            document.getElementById('Cs').innerHTML = Cs;
+            document.getElementById('Cs').innerHTML = Cs.toFixed(3);
 
         }
     </script>
