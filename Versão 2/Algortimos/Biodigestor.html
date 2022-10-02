@@ -1,0 +1,205 @@
+<html>
+    <head>
+        <title>
+            Guyri - Biodigestor
+        </title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="functions.js"></script>
+    </head>
+    <header class="header">
+        <img class="logo_header" src="C:\Users\gusta\OneDrive\Documentos\Conhecimento\Projetos\ARA\Logotipo 2.png">
+        <div class="title_header">
+            <h1 style="background-color: #b5e8c3; font-size: 30px;">ARA</h1>
+            <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSSISTEMAS</h3>
+        </div>
+        <a class="return_initial" href="initial_page.html">Home</a>
+    </header>
+    <body>
+    <div class="body_sizing">
+        <div class="main_lateral_dropdown">
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="C:\Users\gusta\OneDrive\Documentos\Conhecimento\Projetos\ARA\Guyri\Versão 2\Icones\irrigation.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Gotejamento.html">Gotejamento</a>
+                    <a class="link" href="Aspersao.html">Aspersão</a>
+                    <a class="link" href="Micro_Aspersao.html">Micro-Aspersão</a>
+                    <a class="link" href="Pivo_Central.html">Pivô Central</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="C:\Users\gusta\OneDrive\Documentos\Conhecimento\Projetos\ARA\Guyri\Versão 2\Icones\solar-energy.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Aquecimento_Solar.html">Aquecimento Solar</a>
+                    <a class="link" href="Fotovoltaica.html">Fotovoltaica</a>
+                    <a class="link" href="Eolica.html">Eólica</a>
+                    <a class="link" href="Hidroeletrica.html">Hidroelétrica</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="C:\Users\gusta\OneDrive\Documentos\Conhecimento\Projetos\ARA\Guyri\Versão 2\Icones\bacteria.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Biodigestor.html">Biodigestor</a>
+                    <a class="link" href="Compostagem.html">Compostagem</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="C:\Users\gusta\OneDrive\Documentos\Conhecimento\Projetos\ARA\Guyri\Versão 2\Icones\greenhouse.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Ventilacao_Forcada.html">Ventilação Forçada</a>
+                    <a class="link" href="Ar_Condicionado.html">Ar Condicionado</a>
+                    <a class="link" href="Nebulizacao.html">Nebulização</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn" href="Analise_Economica.html">
+                    <img class="icon" src="C:\Users\gusta\OneDrive\Documentos\Conhecimento\Projetos\ARA\Guyri\Versão 2\Icones\dollar-currency-symbol.png">
+                </button>
+            </div>
+
+        </div>
+
+        <div class="main_section">
+
+            <div class="calculator">
+
+                <ul class="nav">
+                    <button class="nav_link active" id="an_bt" onclick="openTab(event, 'an')">Animais</button>
+                </ul>
+
+                <div class="tab_content">
+                    <div class="tab_pane" id="an">
+                        <h5 style="background-color: #65b8a6;">Selecione a espécie e o número de animais:</h5>
+                        <br><input type="radio" name="animal" id="Bovino"><span>Bovinos</span>
+                        <br><input type="radio" name="animal" id="Suino"><span>Suínos</span>
+                        <br><input class="input" placeholder="Número de animais" type="text" id="Na">
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="result" onclick="DimensionarBiodigestor('minhaDiv');">
+                Dimensionar!
+            </button>
+
+            <div class="boxresults" id="minhaDiv" style="display: none;">
+                <center><div class="titresp">Resultados</div></center>
+                <div class="respostas">Litros de água a adicionar por dia: <span id="La"></span></div>
+                <div class="respostas">Base Inferior (m): <span id="Bi"></span></div>
+                <div class="respostas">Base superior (m): <span id="Bs"></span></div>
+                <div class="respostas">Altura (m): <span id="H"></span></div>
+                <div class="respostas">Comprimento (m): <span id="L"></span></div>
+                <div class="respostas">Estimativa de produção (m3/dia): <span id="Ep"></span></div>
+                <div class="respostas">Area da Lona (m2): <span id="Alona"></span></div>
+                <div class="respostas">Largura e comprimento da caixa de entrada (m): <span id="Ce"></span></div>
+                <div class="respostas">Altura da caixa de entrada e saída: 1 m</div>
+                <div class="respostas">Largura e comprimento da caixa de saída (m): <span id="Cs"></span></div>
+                <button class="generate_pdf"> Gerar PDF </button>
+            </div>
+
+        </div>
+
+        <div>
+
+        </div>
+    </div>
+    
+    </body>
+    <script>
+        function DimensionarBiodigestor(el){
+            var div = document.getElementById(el);
+            var disp = div.style.display;
+            div.style.display = disp == 'none' ? 'block' : 'none';
+
+            var Na = parseFloat(document.getElementById('Na').value);
+
+            if (document.getElementById("Bovino").checked)
+            {
+                var estercodia = 25; //Em kg
+                var agua = 1; //Em litros
+                var densidade = 960; //kg/m3
+                var tempo = 30; //dias
+                var conversao = 0.04; //kg/m3
+            }
+            else if(document.getElementById("Suino").checked)
+            {
+                var estercodia = 5.8; //Em kg
+                var agua = 2; //Em litros
+                var tempo = 35; //dias
+                var densidade = 1010; //kg/m3
+                var conversao = 0.35; //kg/m3
+            }
+
+            var massaesterco = Na * estercodia //total de kg de esterco por dia
+            var litrosagua = agua * massaesterco; //litros de água por dia
+            document.getElementById('La').innerHTML = litrosagua;
+            var volumediario = (litrosagua / 1000) + ( massaesterco / densidade ); //volume diário de esterco em m3
+            var volumecaixa = volumediario * tempo; //volume total da caixa em m3
+            if(volumecaixa < 500)
+            {
+                var H = 2.5;
+            }
+            else if(volumecaixa >= 500)
+            {
+                var H = 3.5;
+            }
+
+            document.getElementById('H').innerHTML = H;
+            var a = 5*H;
+            var b = 5.46 * Math.pow(H,2);
+            var c = 1.325*Math.pow(H,3) - volumecaixa;
+            var delta = b * b - 4 * a * c;
+            const x1 = (-b + Math.sqrt(delta)) / (2 * a);
+            const x2 = (-b - Math.sqrt(delta)) / (2 * a);
+            if(x1 > 0)
+            {
+                Bi = x1;
+            }
+            document.getElementById('Bi').innerHTML = Bi;
+            var Bs = 0.7279 * H + Bi;
+            document.getElementById('Bs').innerHTML = Bs;
+            var L = 3.6395 * H + 5*Bi;
+            document.getElementById('L').innerHTML = L;
+
+            var Ep = massaesterco * conversao;
+            document.getElementById('Ep').innerHTML = Ep;
+
+            var At = Ep / L;
+            var a1 = 120;
+            var b1 = -Bi;
+            var c1 = (Bi*2)-(2*At);
+            var delta1 = b1 * b1 - 4 * a1 * c1;
+            const x11 = (-b1 + Math.sqrt(delta1)) / (2 * a1);
+            const x21 = (-b1 - Math.sqrt(delta1)) / (2 * a1);
+            if(x11 > 0)
+            {
+                R = x11;
+            }
+            else if(x21 > 0)
+            {
+                R = x21;
+            }
+            var Alona = 2 * Math.PI * R * 0.333 * L;
+            document.getElementById('Alona').innerHTML = Alona;
+
+            var Ce = Math.sqrt((volumediario*1.2),2);
+            document.getElementById('Ce').innerHTML = Ce;
+
+            var Cs = Math.sqrt((volumediario*1.2*3),2);
+            document.getElementById('Cs').innerHTML = Cs;
+
+        }
+    </script>
+</html>

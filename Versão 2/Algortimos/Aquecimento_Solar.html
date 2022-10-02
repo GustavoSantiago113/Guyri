@@ -133,4 +133,64 @@
         </div>
     </div>
     </body>
+    <script>
+        
+        var controleCampo = 0;
+
+        function Adicionar(){
+            controleCampo++;
+            document.getElementById('formulario').insertAdjacentHTML('beforeend', '<div class="form-group" id="campo'+ controleCampo +'"><input class="input" type="text" id="vazao'+ controleCampo +'" placeholder = "Vazão do equipamento (l/s)"><br><input class="input" type="text" id="tempo'+ controleCampo +'" placeholder = "Tempo de uso (min)" ><br><input class="input" type="text" id="frequencia'+ controleCampo +'" placeholder ="Frequência diária de uso"><br><button type="button" class="numb_control" onclick="Adicionar()">+</button><button type="button" class="numb_control" onclick="Remover('+ controleCampo +')">-</button></div>');
+            return(controleCampo);
+        }
+
+        function Remover(idCampo){
+            controleCampo = controleCampo - 1;
+            document.getElementById('campo' + idCampo).remove();
+            return(controleCampo);
+        }
+
+        function DimensionarAquecimento(el){
+            var div = document.getElementById(el);
+            var disp = div.style.display;
+            div.style.display = disp == 'none' ? 'block' : 'none';
+
+            var contador = controleCampo;
+            var limite = contador + 1;
+            var Vcon = 0;
+            console.log(limite);
+            //Cálculo do volume de consumo
+            for(let i=0; i<limite; i++)
+            {
+                var vaz = 'vazao'+i;
+                var temp = 'tempo'+i;
+                var freq = 'frequencia'+i;
+                var q = parseFloat(document.getElementById(vaz).value);
+                var t = parseFloat(document.getElementById(temp).value);
+                var f = parseFloat(document.getElementById(freq).value);
+                var Vcon = ( (q / 1000) * ( t * 60 ) * f) + Vcon;
+            }
+            //Cálculo do volume do sistema de armazenamento
+            var Tcon = parseFloat(document.getElementById('Tcon').value);
+            var Tamb = parseFloat(document.getElementById('Tamb').value);
+            var Varm = ( Vcon * (Tcon - Tamb) ) / ((1.1*Tcon) - Tamb);
+            document.getElementById('Varm').innerHTML = Varm;
+
+            //Calculo da demanda de energia útil
+            var Eutil = ( Varm * 1000 * 4.18 * ((1.1*Tcon) - Tamb)) / 3600;
+            document.getElementById('Eutil').innerHTML = Eutil;
+
+            //Cálculo da área coletora
+            var Ig = parseFloat(document.getElementById('Ig').value);
+            var Eperdas = Eutil * 0.15;
+            var Frtan = parseFloat(document.getElementById('Frtan').value);
+            var Frul = parseFloat(document.getElementById('Frul').value);
+            var PMDEE = 4.901*(Frtan - (0.0249*Frul));
+            var Ll = parseFloat(document.getElementById('Ll').value);
+            var It = parseFloat(document.getElementById('It').value);
+            var B = parseFloat(document.getElementById('B').value);
+            var Fc = 1 / ( 1 - ( ( (1.2 * Math.pow(10,-4)) * Math.pow((It - Ll),2) ) + ( (3.5 * Math.pow(10,-5)) * Math.pow(B,2) ) ) );
+            var Area = ( (Eutil + Eperdas) * Fc * 4.901 ) / ( PMDEE * Ig);
+            document.getElementById('Area').innerHTML = Area;
+        }
+    </script>
 </html>

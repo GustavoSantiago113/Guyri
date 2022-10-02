@@ -1,0 +1,312 @@
+<html>
+    <head>
+        <title>
+            Guyri - Aspersão
+        </title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="functions.js"></script>
+        </head>
+        <header class="header">
+            <img class="logo_header" src="C:\Users\gusta\OneDrive\Documentos\Conhecimento\Projetos\ARA\Logotipo 2.png">
+            <div class="title_header">
+                <h1 style="background-color: #b5e8c3; font-size: 30px;">ARA</h1>
+                <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSSISTEMAS</h3>
+            </div>
+            <a class="return_initial" href="initial_page.html">Home</a>
+        </header>
+        <body>
+        <div class="body_sizing">
+            <div class="main_lateral_dropdown">
+
+                <div class="lateral_dropdown">
+                    <button class="lateral_dropbtn">
+                        <img class="icon" src="C:\Users\gusta\OneDrive\Documentos\Conhecimento\Projetos\ARA\Guyri\Versão 2\Icones\irrigation.png">
+                    </button>
+                    <div class="lateral_dropdown-content">
+                        <a class="link" href="Gotejamento.html">Gotejamento</a>
+                        <a class="link" href="Aspersao.html">Aspersão</a>
+                        <a class="link" href="Micro_Aspersao.html">Micro-Aspersão</a>
+                        <a class="link" href="Pivo_Central.html">Pivô Central</a>
+                    </div>
+                </div>
+    
+                <div class="lateral_dropdown">
+                    <button class="lateral_dropbtn">
+                        <img class="icon" src="C:\Users\gusta\OneDrive\Documentos\Conhecimento\Projetos\ARA\Guyri\Versão 2\Icones\solar-energy.png">
+                    </button>
+                    <div class="lateral_dropdown-content">
+                        <a class="link" href="Aquecimento_Solar.html">Aquecimento Solar</a>
+                        <a class="link" href="Fotovoltaica.html">Fotovoltaica</a>
+                        <a class="link" href="Eolica.html">Eólica</a>
+                        <a class="link" href="Hidroeletrica.html">Hidroelétrica</a>
+                    </div>
+                </div>
+    
+                <div class="lateral_dropdown">
+                    <button class="lateral_dropbtn">
+                        <img class="icon" src="C:\Users\gusta\OneDrive\Documentos\Conhecimento\Projetos\ARA\Guyri\Versão 2\Icones\bacteria.png">
+                    </button>
+                    <div class="lateral_dropdown-content">
+                        <a class="link" href="Biodigestor.html">Biodigestor</a>
+                        <a class="link" href="Compostagem.html">Compostagem</a>
+                    </div>
+                </div>
+    
+                <div class="lateral_dropdown">
+                    <button class="lateral_dropbtn">
+                        <img class="icon" src="C:\Users\gusta\OneDrive\Documentos\Conhecimento\Projetos\ARA\Guyri\Versão 2\Icones\greenhouse.png">
+                    </button>
+                    <div class="lateral_dropdown-content">
+                        <a class="link" href="Ventilacao_Forcada.html">Ventilação Forçada</a>
+                        <a class="link" href="Ar_Condicionado.html">Ar Condicionado</a>
+                        <a class="link" href="Nebulizacao.html">Nebulização</a>
+                    </div>
+                </div>
+    
+                <div class="lateral_dropdown">
+                    <button class="lateral_dropbtn" href="Analise_Economica.html">
+                        <img class="icon" src="C:\Users\gusta\OneDrive\Documentos\Conhecimento\Projetos\ARA\Guyri\Versão 2\Icones\dollar-currency-symbol.png">
+                    </button>
+                </div>
+    
+            </div>
+            
+            <div class="main_section">
+
+                <div class="calculator">
+
+                    <ul class="nav">
+                        <button class="nav_link active" id="cult_bt" onclick="openTab(event, 'cult')">Cultura</button>
+                        <button class="nav_link" id="sol_bt" onclick="openTab(event, 'sol')">Solo</button>
+                        <button class="nav_link" id="area_bt" onclick="openTab(event, 'area')">Área</button>
+                        <button class="nav_link" id="proj_bt" onclick="openTab(event, 'proj')">Critérios do Projeto</button>
+                        <button class="nav_link" id="asp_bt" onclick="openTab(event, 'asp')">Aspersor</button>
+                        <button class="nav_link" id="mdo_bt" onclick="openTab(event, 'mdo')">Mão de Obra</button>
+                    </ul>
+
+                    <div class="tab_content">
+
+                        <div class="tab_pane" id="cult">
+                            <input class="input" type="text" id="ETO" placeholder="ETo (mm/dia)">
+                            <br><input class="input" placeholder="Kc" type="text" id="KC">
+                            <br><input class="input" placeholder="ETc (mm/dia)" type="text" id="ETC">
+                            <br><input class="input" placeholder="Profundidade do sistema radicular (cm)" type="text" id="Z">
+                            <br><input class="input" placeholder="f (%)" type="text" id="f">
+                        </div>
+
+                        <div class="tab_pane" id="sol" style="display: none;">
+                            <input class="input" placeholder="Capacidade de campo (cm3/cm3)" type="text" id="CC">
+                            <br><input class="input" placeholder="Ponto de murcha permanente (cm3/cm3)" type="text" id="PMP">
+                        </div>
+
+                        <div class="tab_pane" id="area" style="display: none;">
+                            <input class="input" placeholder="Largura da área (m)" type="text" id="LA">
+                            <br><input class="input" placeholder="Comprimento da área (m)" type="text" id="CA">
+                            <br><input class="input" placeholder="Comprimento da linha de sucção à primeira linha lateral(m)" type="text" id="CLS">
+                            <br><input class="input" placeholder="Altura de sucção (m)" type="text" id="AS">
+                            <br><input class="input" placeholder="Altura de recalque positivo para aclive e negativo para declive (m)" type="text" id="AR">
+                        </div>
+
+                        <div class="tab_pane" id="proj" style="display: none;">
+                            <input class="input" placeholder="Eficiência de Irrigação (%)" type="text" id="IR">
+                            <br><input class="input" placeholder="Velocidade de escoamento na tubulação principal e recalque (m/s)" type="text" id="VE">
+                            <br><input class="input" placeholder="Coeficiente de Hazen-Williams da linha principal" type="text" id="C1">
+                            <br><input class="input" placeholder="Coeficiente de Hazen-Williams da linha secundária" type="text" id="C2">
+                            <h5 style="background-color: #65b8a6;">Linha Secundária em:</h5>
+                            <br>
+                            <input type="radio" name="linhas" id="AcliveS"/><span>Aclive</span>
+                            <input type="radio" name="linhas" id="DecliveS"/><span>Declive</span>
+                            <input type="radio" name="linhas" id="NivelS"/><span>Nivel</span>
+                            <input class="input" style="width:fit-content;" placeholder="Diferença de altura (m)" type="text" id="Dec1">
+                        </div>
+
+                        <div class="tab_pane" id="asp" style="display: none;">
+                            <input class="input" placeholder="Vazão (m3/h)" type="text" id="VZ">
+                            <br><input class="input" placeholder="Pressão de Serviço (mca)" type="text" id="PS">
+                            <br><input class="input" placeholder="Espaçamento entre-plantas (m)" type="text" id="E1">
+                            <br><input class="input" placeholder="Espaçamento entre-linhas (m)" type="text" id="E2">
+                            <br><input class="input" placeholder="Intensidade de aplicação (mm/h)" type="text" id="IA">
+                            <br><input class="input" placeholder="Altura do aspersor (m)" type="text" id="AA">
+                        </div>
+
+                        <div class="tab_pane" id="mdo" style="display: none;">
+                            <input class="input" placeholder="Rendimento da Motobomba (%)" type="text" id="RM">
+                            <br><input class="input" placeholder="Horas de serviço diário (h)" type="text" id="Nh">
+                            <br><h5 style="background-color: #65b8a6;">Haverá troca de aspersores na mesma área?</h5>
+                            <br><span>Sim</span><input type="radio" name="ta" id="Sim"/><input placeholder="Tempo para a troca (h)" class="input" style="width:fit-content;" type="text" id="Tm">
+                            <br><span>Não</span><input type="radio" name="ta" id="Nao"/>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button class="result" onclick="DimensionarAspersao('minhaDiv');">
+                    Dimensionar!
+                </button>
+
+                <div class="boxresults" id="minhaDiv" style="display: none;">
+                    <center><div class="titresp">Resultados</div></center>
+                    <h5 style="background-color: #65b8a6;">Manejo</h5>
+                    <div class="respostas">Turno de Rega (dias): <span id="TR"></span></div>
+                    <div class="respostas">Período de irrigação (h): <span id="PI"></span></div>
+                    <div class="respostas">Lâmina Bruta de Irrigação (mm): <span id="ITN"></span></div>
+                    <div id="maodeobra" style="display:none;">
+                    <div class="respostas">Número de posições por dia: <span id="n"></span></div>
+                    <div class="respostas">Número de laterais em funcionamento simultâneo: <span id="NL"></span></div>
+                    </div>
+                    <br>
+                    <h5 style="background-color: #65b8a6;">Linha Secundária</h5>
+                    <div class="respostas">Comprimento da linha secundária (m): <span id="Cls"></span></div>
+                    <div class="respostas">Número de posições laterais: <span id="Npll"></span></div>
+                    <div class="respostas">Número de aspersores por lateral: <span id="Nal"></span></div>
+                    <div class="respostas">Vazão da Linha lateral (m3/h): <span id="Qll"></span></div>
+                    <div class="respostas">Diâmetro da Linha Lateral (m): <span id="Ds"></span></div>
+                    <div class="respostas">Pressão no Início (mca): <span id="Pins"></span></div>
+                    <br>
+                    <h5 style="background-color: #65b8a6;">Linha Principal</h5>
+                    <div class="respostas">Comprimento motbomba a ultima linha lateral (m): <span id="Cmba"></span></div>
+                    <div class="respostas">Diâmetro motobomba a ultima linha lateral (m): <span id="Dmba"></span></div>
+                    <br>
+                    <h5 style="background-color: #65b8a6;">Motobomba</h5>
+                    <div class="respostas">Altura manométrica (mca): <span id="HMT"></span></div>
+                    <div id="maodeobra1" style="display:none;">
+                        <div class="respostas">Vazão (m3/h): <span id="QTS"></span></div>
+                    </div>
+                    <div id="vazaototal" style="display:none;">
+                    <div class="respostas">Vazão (l/s): <span id="Qt"></span></div>
+                    </div>
+                    <div class="respostas">Potência (cv): <span id="Pot"></span></div>
+                    <br>
+                    <button class="generate_pdf"> Gerar PDF </button>
+                </div>
+
+            </div>
+
+            <div>
+
+            </div>
+        </div>
+        </body>
+        <script>
+            function DimensionarAspersao(el){
+                var div = document.getElementById(el);
+                var disp = div.style.display;
+                div.style.display = disp == 'none' ? 'block' : 'none';
+                var occ = parseFloat(document.getElementById('CC').value);
+                var opmp = parseFloat(document.getElementById('PMP').value);
+                var Z = parseFloat(document.getElementById('Z').value);
+                var f = parseFloat(document.getElementById('f').value);
+                var ADR = (occ-opmp)*Z*(f/100)*10;
+                var Kc = parseFloat(document.getElementById('KC').value);
+                var Eto = parseFloat(document.getElementById('ETO').value);
+                var ETpc = Kc*Eto;
+                var TR = ADR / ETpc;
+                document.getElementById('TR').innerHTML = Math.round(TR);
+                var PI = Math.round(TR) - 1;
+                document.getElementById('PI').innerHTML = PI;
+                var Ea = parseFloat(document.getElementById('IR').value)/100;
+                var ITN = ADR / Ea;
+                document.getElementById('ITN').innerHTML = ITN;
+                var CP = parseFloat(document.getElementById('CA').value);
+                var E2 = parseFloat(document.getElementById('E2').value);
+                var Npll = CP / E2;
+                var Nplln = 2*parseInt(Npll);
+                var E1 = parseFloat(document.getElementById('E1').value);
+                var Clp = (E2/2) + ((Nplln-1)*E2);
+                var L = parseFloat(document.getElementById('LA').value);
+                var Nal = (L/2) / E1;
+                document.getElementById('Nal').innerHTML = Math.round(Nal);
+                document.getElementById('Npll').innerHTML = Math.round(Npll);
+                var IA = parseFloat(document.getElementById('IA').value);
+                var Ti = ITN / IA;
+                var Nh = parseFloat(document.getElementById('Nh').value);
+                var Tm = parseFloat(document.getElementById('Tm').value);
+                var n = (Nh)/(Ti + Tm);
+                var Np = Nplln / (PI);
+                document.getElementById('Np').innerHTML = Math.round(Np);
+                document.getElementById('n').innerHTML = Math.round(n);
+                var NL = Np / n;
+                document.getElementById('NL').innerHTML = Math.round(NL);
+                var qa = parseFloat(document.getElementById('VZ').value);
+                var Ql = qa*parseInt(Nal);
+                document.getElementById('Qll').innerHTML = Ql;
+                var QTS = Ql * NL;
+                document.getElementById('QTS').innerHTML = QTS; 
+                var Qt = ( ( L*CP ) * ITN) / (PI*Nh*3600);
+                document.getElementById('Qt').innerHTML = Qt;
+                var PS = parseFloat(document.getElementById('PS').value);     
+                var Aa = parseFloat(document.getElementById('AA').value);
+                var DZ = parseFloat(document.getElementById('Dec1').value);
+                if (document.getElementById("NivelS").checked)
+                {
+                    var hfs = 0.2*PS;
+                    var Pins = PS + ((3*hfs)/4) + Aa;
+                    var Pfs = PS - 0.25*hfs + Aa;
+                }
+                else if (document.getElementById("AcliveS").checked)
+                {
+                    var hfs = 0.2*PS - DZ;
+                    if (Math.sign(hfl) == -1 || Math.sign(hfl) == 0)
+                    {
+                        hfs = DZ;
+                    }
+                    var Pins = PS + ((3*hfs)/4) + Aa + 0.5*DZ;
+                    var Pfs = PS - 0.25*hfs + Aa + 0.5*DZ;
+                }
+                else if (document.getElementById("DecliveS").checked)
+                {
+                    var hfs = 0.2*PS + DZ;
+                    var Pins = PS + ((3*hfs)/4) + Aa - 0.5*DZ;
+                    var Pfs = PS - 0.25*hfs + Aa - 0.5*DZ;
+                }
+                document.getElementById('Pins').innerHTML = Pins;
+                var Cls = (parseInt(Nal)-1)*E1 + E1/2;
+                document.getElementById('Cls').innerHTML = Cls;
+                var F = (1/(1.852+1))+(1/(2*parseInt(Nal)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(Nal),2)));
+                var Cs = parseFloat(document.getElementById('C2').value);
+                var r = (Ql/3600) / Cs;
+                var r1 = 10.643 * Math.pow(r,1.852)*((Cls*F)/hfs);
+                var Ds =  Math.pow(r1, 0.205);
+                document.getElementById('Ds').innerHTML = Ds;
+                var CLS = parseFloat(document.getElementById('CLS').value);
+                var LLP = (parseInt(Npll)-1)*E2;
+                var VE = parseFloat(document.getElementById('VE').value);
+                var Cp = parseFloat(document.getElementById('C1').value);
+                var hs = parseFloat(document.getElementById('AS').value);
+                var hr = parseFloat(document.getElementById('AR').value);
+                var RM = parseFloat(document.getElementById('RM').value);
+                var Fp1 = (1/(1.852+1))+(1/(2*parseInt(Nplln)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(Nplln),2)));
+                var Fp2 = (1/(1.852+1))+(1/(2*parseInt(NL)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(NL),2)));
+                var Cmba = LLP + CLS;
+                if (document.getElementById("Sim").checked) 
+                {
+                    var div = document.getElementById('maodeobra');
+                    var disp = div.style.display;
+                    div.style.display = disp == 'none' ? 'block' : 'none';
+                    var div1 = document.getElementById('maodeobra1');
+                    var disp1 = div1.style.display;
+                    div1.style.display = disp1 == 'none' ? 'block' : 'none';
+                    var Dmba = Math.sqrt(((4*(QTS/3600))/(Math.PI*VE)));
+                    var hfmba = 10.643 * Math.pow(((3*(QTS/3600))/Cp),1.852)*(Cmba/Math.pow(Dmba,4.87))*Fp2;
+                    var HMT = (hfmba + Pins + hr + hs)*1.1;
+                    var Pot = ((QTS/3.6)*HMT)/(75*(RM/100));
+                }
+                else if (document.getElementById("Nao").checked)
+                {
+                    var div = document.getElementById('vazaototal');
+                    var disp = div.style.display;
+                    div.style.display = disp == 'none' ? 'block' : 'none';
+                    var a = (4* (Qt/1000) ) / (Math.PI*VE);
+                    var Dmba = Math.sqrt(a);
+                    var hfmba = 10.643 * Math.pow(( (3* (Qt/1000) ) / Cp ), 1.852) * ( Cmba / (Math.pow(Dmba,4.87)) * Fp1);
+                    var HMT = (hfmba + Pins + hr + hs)*1.1;
+                    var Pot = (Qt*HMT)/(75*(RM/100));
+                }
+                document.getElementById('Dmba').innerHTML = Dmba;
+                document.getElementById('Cmba').innerHTML = Cmba;
+                document.getElementById('HMT').innerHTML = HMT;
+                document.getElementById('Pot').innerHTML = Pot;'
+            }
+        </script>
+</html>

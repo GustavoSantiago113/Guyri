@@ -1,0 +1,151 @@
+<html>
+    <head>
+        <title>
+            Guyri - Biodigestor
+        </title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="functions.js"></script>
+        </head>
+        <header class="header">
+            <img class="logo_header" src="C:\Users\gusta\OneDrive\Documentos\Conhecimento\Projetos\ARA\Logotipo 2.png">
+            <div class="title_header">
+                <h1 style="background-color: #b5e8c3; font-size: 30px;">ARA</h1>
+                <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSSISTEMAS</h3>
+            </div>
+            <a class="return_initial" href="initial_page.html">Home</a>
+        </header>
+        <body>
+            <div class="body_sizing">
+                <div class="main_lateral_dropdown">
+
+                    <div class="lateral_dropdown">
+                        <button class="lateral_dropbtn">
+                            <img class="icon" src="C:\Users\gusta\OneDrive\Documentos\Conhecimento\Projetos\ARA\Guyri\Versão 2\Icones\irrigation.png">
+                        </button>
+                        <div class="lateral_dropdown-content">
+                            <a class="link" href="Gotejamento.html">Gotejamento</a>
+                            <a class="link" href="Aspersao.html">Aspersão</a>
+                            <a class="link" href="Micro_Aspersao.html">Micro-Aspersão</a>
+                            <a class="link" href="Pivo_Central.html">Pivô Central</a>
+                        </div>
+                    </div>
+        
+                    <div class="lateral_dropdown">
+                        <button class="lateral_dropbtn">
+                            <img class="icon" src="C:\Users\gusta\OneDrive\Documentos\Conhecimento\Projetos\ARA\Guyri\Versão 2\Icones\solar-energy.png">
+                        </button>
+                        <div class="lateral_dropdown-content">
+                            <a class="link" href="Aquecimento_Solar.html">Aquecimento Solar</a>
+                            <a class="link" href="Fotovoltaica.html">Fotovoltaica</a>
+                            <a class="link" href="Eolica.html">Eólica</a>
+                            <a class="link" href="Hidroeletrica.html">Hidroelétrica</a>
+                        </div>
+                    </div>
+        
+                    <div class="lateral_dropdown">
+                        <button class="lateral_dropbtn">
+                            <img class="icon" src="C:\Users\gusta\OneDrive\Documentos\Conhecimento\Projetos\ARA\Guyri\Versão 2\Icones\bacteria.png">
+                        </button>
+                        <div class="lateral_dropdown-content">
+                            <a class="link" href="Biodigestor.html">Biodigestor</a>
+                            <a class="link" href="Compostagem.html">Compostagem</a>
+                        </div>
+                    </div>
+        
+                    <div class="lateral_dropdown">
+                        <button class="lateral_dropbtn">
+                            <img class="icon" src="C:\Users\gusta\OneDrive\Documentos\Conhecimento\Projetos\ARA\Guyri\Versão 2\Icones\greenhouse.png">
+                        </button>
+                        <div class="lateral_dropdown-content">
+                            <a class="link" href="Ventilacao_Forcada.html">Ventilação Forçada</a>
+                            <a class="link" href="Ar_Condicionado.html">Ar Condicionado</a>
+                            <a class="link" href="Nebulizacao.html">Nebulização</a>
+                        </div>
+                    </div>
+        
+                    <div class="lateral_dropdown">
+                        <button class="lateral_dropbtn" href="Analise_Economica.html">
+                            <img class="icon" src="C:\Users\gusta\OneDrive\Documentos\Conhecimento\Projetos\ARA\Guyri\Versão 2\Icones\dollar-currency-symbol.png">
+                        </button>
+                    </div>
+        
+                </div>
+                
+                <div class="main_section">
+                    <div class="calculator">
+
+                        <ul class="nav">
+                            <button class="nav_link active" id="dim_bt" onclick="openTab(event, 'dim')">Dimensão do local</button>
+                            <button class="nav_link" id="car_bt" onclick="openTab(event, 'car')">Geração de Calor</button>
+                        </ul>
+
+                        <div class="tab_content">
+
+                            <div class="tab_pane" id="dim">
+                                <input class="input" placeholder ="Largura do ambiente (m)" type="text" id="La">
+                                <br><input class="input" placeholder="Comprimento do ambiente (m)" type="text" id="Ca">
+                            </div>
+
+                            <div class="tab_pane" id="car" style="display: none;">
+                                <h5 style="background-color: #65b8a6;">Incidência Solar:</h5>
+                                <br>
+                                <input type="radio" name="local" id="M/T"><span>Manhã/Tarde</span>
+                                <br><input type="radio" name="local" id="Diatodo"><span>Dia todo</span>
+                                <br><input type="radio" name="local" id="Nenhuma"><span>Nenhuma</span>
+                                <br><input type="text" class="input" id="Qp" placeholder="Quantidade de pessoas">
+                                <br><input class="input" type="text" id="Nj" placeholder="Número de janelas">
+                                <br><input class="input" type="text" id="Ne" placeholder="Número de eletrônicos">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <button class="result" onclick="DimensionarArCondicionado('minhaDiv');">
+                        Dimensionar!
+                    </button>
+
+                    <div class="boxresults" id="minhaDiv" style="display: none;">
+                        <center><div class="titresp">Resultados</div></center>
+                        <div class="respostas">BTUs requeridos: <span id="BTU"></span></div>
+                        <button class="generate_pdf"> Gerar PDF </button>
+                    </div>
+                    
+                </div>
+
+                <div>
+
+                </div>
+            </div>
+        </body>
+        <script>
+            function DimensionarArCondicionado(el){
+                var div = document.getElementById(el);
+                var disp = div.style.display;
+                div.style.display = disp == 'none' ? 'block' : 'none';
+
+                var La = parseFloat(document.getElementById('La').value);
+                var Ca = parseFloat(document.getElementById('Ca').value);
+                var Area = La*Ca;
+
+                var Qp = parseFloat(document.getElementById('Qp').value);
+                var Ne = parseFloat(document.getElementById('Ne').value);
+                var Nj = parseFloat(document.getElementById('Nj').value);
+
+                if (document.getElementById("M/T").checked)
+                {
+                    var Inc = 400;
+                }
+                else if(document.getElementById("Diatodo").checked)
+                {
+                    var Inc = 800;
+                }
+                else if(document.getElementById("Nenhuma").checked)
+                {
+                    var Inc = 0;
+                }
+
+                var BTU = Inc + Area*600 + Qp*600 + Ne*600 + Nj*300;
+                document.getElementById('BTU').innerHTML = BTU;
+            }
+        </script>
+</html>

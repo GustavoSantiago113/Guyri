@@ -1,0 +1,177 @@
+<html>
+    <head>
+    <title>
+        Guyri - Eolico
+    </title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="functions.js"></script>
+    </head>
+    <header class="header">
+        <img class="logo_header" src="C:\Users\gusta\OneDrive\Documentos\Conhecimento\Projetos\ARA\Logotipo 2.png">
+        <div class="title_header">
+            <h1 style="background-color: #b5e8c3; font-size: 30px;">ARA</h1>
+            <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSSISTEMAS</h3>
+        </div>
+        <a class="return_initial" href="initial_page.html">Home</a>
+    </header>
+    <body>
+    <div class="body_sizing">
+        <div class="main_lateral_dropdown">
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="C:\Users\gusta\OneDrive\Documentos\Conhecimento\Projetos\ARA\Guyri\Versão 2\Icones\irrigation.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Gotejamento.html">Gotejamento</a>
+                    <a class="link" href="Aspersao.html">Aspersão</a>
+                    <a class="link" href="Micro_Aspersao.html">Micro-Aspersão</a>
+                    <a class="link" href="Pivo_Central.html">Pivô Central</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="C:\Users\gusta\OneDrive\Documentos\Conhecimento\Projetos\ARA\Guyri\Versão 2\Icones\solar-energy.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Aquecimento_Solar.html">Aquecimento Solar</a>
+                    <a class="link" href="Fotovoltaica.html">Fotovoltaica</a>
+                    <a class="link" href="Eolica.html">Eólica</a>
+                    <a class="link" href="Hidroeletrica.html">Hidroelétrica</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="C:\Users\gusta\OneDrive\Documentos\Conhecimento\Projetos\ARA\Guyri\Versão 2\Icones\bacteria.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Biodigestor.html">Biodigestor</a>
+                    <a class="link" href="Compostagem.html">Compostagem</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="C:\Users\gusta\OneDrive\Documentos\Conhecimento\Projetos\ARA\Guyri\Versão 2\Icones\greenhouse.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Ventilacao_Forcada.html">Ventilação Forçada</a>
+                    <a class="link" href="Ar_Condicionado.html">Ar Condicionado</a>
+                    <a class="link" href="Nebulizacao.html">Nebulização</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn" href="Analise_Economica.html">
+                    <img class="icon" src="C:\Users\gusta\OneDrive\Documentos\Conhecimento\Projetos\ARA\Guyri\Versão 2\Icones\dollar-currency-symbol.png">
+                </button>
+            </div>
+
+        </div>
+
+        <div class="main_section">
+
+            <div class="calculator">
+
+                <ul class="nav">
+                    <button class="nav_link active" id="par_bt" onclick="openTab(event, 'par')">Parâmetros do Sistema</button>
+                    <button class="nav_link" id="tipo_bt" onclick="openTab(event, 'tipo')">Tipo do Sistema</button>
+                </ul>
+
+                <div class="tab_content">
+
+                    <div class="tab_pane" id="par">
+                        <input class="input" placeholder="Consumo médio mensal (Wh/mês)" type="text" id="Cmm">
+                        <br><input class="input" placeholder="Velocidade média do vento (m/s)" type="text" id="Vv">
+                        <br><input class="input" placeholder="Diâmetro das pás (m)" type="text" id="Dp">
+                    </div>
+
+                    <div class="tab_pane" id="tipo" style="display: none;">
+                        <h5 style="background-color: #65b8a6;">Tipo do sistema:</h5>
+                        <br>
+                        <input type="radio" name="tipo" id="ongrid" onclick="Aparecer();"><span>On-Grid</span>
+                        <input type="radio" name="tipo" id="offgrid" onclick="Aparecer();"><span>Off-Grid</span>
+                        <div id="inputoffgrid" style="display:none; background-color: #65b8a6;">
+                            <br><input class="input" placeholder="Autonomia (dias)" type="text" id="Autonomia">
+                            <br><input class="input" placeholder="Tensão do Módulo" type="text" id="TM">
+                            <br><input class="input" placeholder="Tensão do banco de baterias" type="text" id="Tbb">
+                        </div>
+                        <br>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button class="result" onclick="DimensionarEolica('minhaDiv');">
+                Dimensionar!
+            </button>
+
+            <div class="boxresults" id="minhaDiv" style="display: none;">
+                <center><div class="titresp">Resultados</div></center>
+                <div class="respostas">Número de aerogeradores: <span id="Nae"></span></div>
+                <div class="respostas">Potência do Inversor (W): <span id="PI"></span></div>
+                <div id="resultoffgrid" style="display:none; background-color: #65b8a6;">
+                    <h5 style="background-color: #65b8a6;">Banco de Baterias</h5>
+                    <div class="respostas" style="background-color: #65b8a6;">Capacidade das baterias (Ah): <span id="Cb"></span></div>
+                    <div class="respostas" style="background-color: #65b8a6;">Controlador de carga (A): <span id="Cc"></span></div>
+                </div>
+                <button class="generate_pdf"> Gerar PDF </button>
+            </div>
+
+        </div>
+
+        <div>
+
+        </div>
+    </div>
+    </body>
+    <script>
+        function Aparecer(){
+            
+            if (document.getElementById("offgrid").checked){
+                document.getElementById("inputoffgrid").style.display = "block";
+            }
+
+            else {
+                document.getElementById("inputoffgrid").style.display = "none";
+            }
+
+        }
+
+        function DimensionarEolica(el){
+            var div = document.getElementById(el);
+            var disp = div.style.display;
+            div.style.display = disp == 'none' ? 'block' : 'none';
+
+            var Cmm = parseFloat(document.getElementById('Cmm').value);
+            var Vv = parseFloat(document.getElementById('Vv').value);
+            var Dp = parseFloat(document.getElementById('Dp').value);
+
+            var Pd = (Cmm*1000)/30;
+            var Area = Math.PI * Math.pow( (Dp/2), 2); 
+            var Pae = ( 1.2754 * Area * Math.pow(Vv,3) ) / 2;
+            var Paedia = Pae * 24;
+            var Nae = Pd / Paedia;
+            document.getElementById('Nae').innerHTML = Nae.toFixed(3);
+            document.getElementById('PI').innerHTML = Pae * 1.3 * Nae.toFixed(3);
+            console.log(Nae)
+
+            if (document.getElementById("offgrid").checked)
+            {
+                document.getElementById("resultoffgrid").style.display = "block";
+
+                var TM = parseFloat(document.getElementById('TM').value);
+                var Tbb = parseFloat(document.getElementById('Tbb').value);
+                var Autonomia = parseFloat(document.getElementById('Autonomia').value);
+                var Cb = ( Pd * Autonomia) / ( Tbb * 0.6);
+                document.getElementById('Cb').innerHTML = Cb.toFixed(3);
+                var Cc = (Pd * 1.1) / Tbb ;
+                document.getElementById('Cc').innerHTML = Cc.toFixed(3);
+            }
+
+        }
+    </script>
+</html>
