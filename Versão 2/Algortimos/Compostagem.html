@@ -1,0 +1,182 @@
+<html>
+    <head>
+        <title>
+            Guyri - Compostagem
+        </title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="functions.js"></script>
+    </head>
+    <header class="header">
+        <img class="logo_header" src="Icones/Logotipo 2.png">
+        <div class="title_header">
+            <h1 style="background-color: #b5e8c3; font-size: 30px;">ARA</h1>
+            <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSSISTEMAS</h3>
+        </div>
+        <a class="return_initial" href="initial_page.html">Home</a>
+    </header>
+    <body>
+    <div class="body_sizing">   
+        <div class="main_lateral_dropdown">
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/irrigation.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Gotejamento.html">Gotejamento</a>
+                    <a class="link" href="Aspersao.html">Aspersão</a>
+                    <a class="link" href="Micro_Aspersao.html">Micro-Aspersão</a>
+                    <a class="link" href="Pivo_Central.html">Pivô Central</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/solar-energy.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Aquecimento_Solar.html">Aquecimento Solar</a>
+                    <a class="link" href="Fotovoltaica.html">Fotovoltaica</a>
+                    <a class="link" href="Eolica.html">Eólica</a>
+                    <a class="link" href="Hidroeletrica.html">Hidroelétrica</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/bacteria.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Biodigestor.html">Biodigestor</a>
+                    <a class="link" href="Compostagem.html">Compostagem</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/greenhouse.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Ventilacao_Forcada.html">Ventilação Forçada</a>
+                    <a class="link" href="Ar_Condicionado.html">Ar Condicionado</a>
+                    <a class="link" href="Nebulizacao.html">Nebulização</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn" href="Analise_Economica.html">
+                    <img class="icon" src="Icones/dollar-currency-symbol.png">
+                </button>
+            </div>
+
+        </div>
+        <div class="main_section">
+            <div class="calculator">
+
+                <ul class="nav">
+                    <button class="nav_link active" id="veg_bt" onclick="openTab(event, 'veg')">Vegetais</button>
+                    <button class="nav_link" id="ani_bt" onclick="openTab(event, 'ani')">Animais</button>
+                    <button class="nav_link" id="pal_bt" onclick="openTab(event, 'pal')">Palhada</button>
+                </ul>
+
+                <div class="tab_content">
+
+                    <div class="tab_pane" id="veg">
+
+                        <div id="formularioveg">
+                            <div class="form-group" id="campoveg0">
+                                <input class="input" type="number" step="0.0001" id="cnveg0" placeholder="Relação C/N do material adicionado">
+                                <br>
+                                <h5 style="background-color: #65b8a6;">Frequência de Adição:</h5>
+                                <div style="text-align: left; background-color: #65b8a6;">
+                                    <input type="radio" name="freq" id="dia0"><span>Diária</span>
+                                    <br><input type="radio" name="freq" id="sem0"><span>Semanal</span>
+                                    <br><input type="radio" name="freq" id="mes0"><span>Mensal</span>
+                                </div>
+                                <br><input class="input" type="number" step="0.0001" id="quantveg0" placeholder="Quantidade (kg)">
+                                <br><button type="button" class="numb_control" onclick="AdicionarVeg()">+</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="tab_pane" id="ani" style="display: none;">
+
+                        <div id="formularioani">
+                            <div class="form-group" id="campoani0">
+                                <h5 style="background-color: #65b8a6;">Qual animal você produz?</h5>
+                                <br>
+                                <select id="animal0">
+                                    <options></options>
+                                </select>
+                                <br><input class="input" type="number" step="0.0001" id="quantani0" placeholder="Quantidade (kg)">
+                                <h5 style="background-color: #65b8a6;">Sistema Produtivo?</h5>
+                                <br>
+                                <input type="radio" name="freq" id="sim0"><span>Sim</span>
+                                <br><input type="radio" name="freq" id="nao0"><span>Não</span>
+                                <br><button type="button" class="numb_control" onclick="AdicionarAni()">+</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="tab_pane" id="pal" style="display: none;">
+
+                        <input class="input" type="number" step="0.0001" id="cnpal" placeholder="Relação C/N da palhada adicionada">
+                        
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button class="result" onclick="DimensionarCompostagem('minhaDiv');">
+                Dimensionar!
+            </button>
+
+            <div class="boxresults" id="minhaDiv" style="display: none;">
+                    <center><div class="titresp">Resultados</div></center>
+                    <div class="respostas">Quantidade de palhada a adicionar (kg): <span id=""></span></div>
+                    <div class="respostas">Estimativa de N-P-K do composto: <span id=""></span></div>
+                    <div class="respostas">Quantidade de composto final (kg): <span id=""></span></div>
+                    <button class="generate_pdf"> Gerar PDF </button>
+            </div>
+        </div>
+        <div>
+
+        </div>
+    </div>
+    </body>
+    <script>
+        
+        var controleCampoVeg = 0;
+
+        function AdicionarVeg(){
+            controleCampoVeg++;
+            document.getElementById('formularioveg').insertAdjacentHTML('beforeend', '<div class="form-group" id="campoveg'+ controleCampoVeg +'"><input class="input" type="number" step="0.0001" id="cnveg'+ controleCampoVeg +'" placeholder="Relação C/N do material adicionado"><br><h5 style="background-color: #65b8a6;">Frequência de Adição:</h5><div style="text-align: left; background-color: #65b8a6;"><input type="radio" name="freq" id="dia'+ controleCampoVeg +'"><span>Diária</span><br><input type="radio" name="freq" id="sem'+ controleCampoVeg +'"><span>Semanal</span><br><input type="radio" name="freq" id="mes'+ controleCampoVeg +'"><span>Mensal</span> </div><br><input class="input" type="number" step="0.0001" id="quantveg'+ controleCampoVeg +'" placeholder="Quantidade (kg)"><br><button type="button" class="numb_control" onclick="AdicionarVeg()">+</button><button type="button" class="numb_control" onclick="RemoverVeg('+ controleCampoVeg +')">-</button></div>');
+            return(controleCampoVeg);
+        }
+
+        function RemoverVeg(idCampo){
+            controleCampoVeg = controleCampoVeg - 1;
+            document.getElementById('campoveg' + idCampo).remove();
+            return(controleCampoVeg);
+        }
+
+        var controleCampoAni = 0;
+
+        function AdicionarAni(){
+            controleCampoAni++;
+            document.getElementById('formularioani').insertAdjacentHTML('beforeend', );
+            return(controleCampoAni);
+        }
+
+        function RemoverAni(idCampo){
+            controleCampoAni = controleCampoAni - 1;
+            document.getElementById('campoani' + idCampo).remove();
+            return(controleCampoAni);
+        }
+
+
+    </script>
+</html>
