@@ -82,9 +82,10 @@
                     <div class="tab_content">
 
                         <div class="tab_pane" id="par">
-                            <input class="input" placeholder="Consumo médio mensal (Wh/mês)" type="number" step="0.0001" id="Ctm">
+                            <input class="input" placeholder="Consumo médio mensal (kWh/mês)" type="number" step="0.0001" id="Ctm">
                             <br><input class="input" placeholder="Horas de sol pleno no mês mais crítico (h/dia)" type="number" step="0.0001" id="Hspd">
                             <br><input class="input" placeholder="Potência do Painel (W)" type="number" step="0.0001" id="Pp">
+                            <br><input class="input" placeholder="Eficiencia do Módulo (%)" type="number" step="0.0001" id="Em">
                         </div>
 
                         <div class="tab_pane" id="tipo" style="display: none;">
@@ -145,13 +146,15 @@
             div.style.display = disp == 'none' ? 'block' : 'none';
 
             var Pp = parseFloat(document.getElementById('Pp').value);
-            var Ctd = parseFloat(document.getElementById('Ctm').value) / 30;
+            var Ctd = parseFloat(document.getElementById('Ctm').value) / 30*1000;
             var Hspd = parseFloat(document.getElementById('Hspd').value);
+            var Em = parseFloat(document.getElementById('Em').value);
             if (document.getElementById("ongrid").checked)
             {
-                var Pg = Ctd / (Hspd * 0.7);
-                document.getElementById('PI').innerHTML = Pg.toFixed(3);
-                var TRD = Pg / Pp;
+                var Pg = Ctd / Hspd;
+                var PI = Pg + (Pg * (Em/100));
+                document.getElementById('PI').innerHTML = PI.toFixed(3);
+                var TRD = PI / Pp;
                 document.getElementById('TRD').innerHTML = TRD.toFixed(3);
             }
 
@@ -165,9 +168,10 @@
                 document.getElementById('Cb').innerHTML = Cb;
                 var Fpp = Tbb / TM;
                 var Pg = Ctd / (Hspd * 0.8 * Fpp);
+                var PI = Pg + (Pg * (Em/100));
                 var TRD = Pg / Pp;
                 document.getElementById('TRD').innerHTML = TRD.toFixed(3);
-                document.getElementById('PI').innerHTML = Pg.toFixed(3);
+                document.getElementById('PI').innerHTML = PI.toFixed(3);
                 var Cc = (Pg * 1.1) / Tbb ;
                 document.getElementById('Cc').innerHTML = Cc.toFixed(3);
             }

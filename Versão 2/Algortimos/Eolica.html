@@ -83,7 +83,7 @@
                 <div class="tab_content">
 
                     <div class="tab_pane" id="par">
-                        <input class="input" placeholder="Consumo médio mensal (Wh/mês)" type="number" step="0.0001" id="Cmm">
+                        <input class="input" placeholder="Consumo médio mensal (kWh/mês)" type="number" step="0.0001" id="Cmm">
                         <br><input class="input" placeholder="Velocidade média do vento (m/s)" type="number" step="0.0001" id="Vv">
                         <br><input class="input" placeholder="Diâmetro das pás (m)" type="number" step="0.0001" id="Dp">
                     </div>
@@ -150,14 +150,13 @@
             var Vv = parseFloat(document.getElementById('Vv').value);
             var Dp = parseFloat(document.getElementById('Dp').value);
 
-            var Pd = (Cmm*1000)/30;
+            var Pd = (Cmm/30)*1000;
             var Area = Math.PI * Math.pow( (Dp/2), 2); 
             var Pae = ( 1.2754 * Area * Math.pow(Vv,3) ) / 2;
             var Paedia = Pae * 24;
             var Nae = Pd / Paedia;
             document.getElementById('Nae').innerHTML = Nae.toFixed(3);
             document.getElementById('PI').innerHTML = Pae * 1.3 * Nae.toFixed(3);
-            console.log(Nae)
 
             if (document.getElementById("offgrid").checked)
             {
