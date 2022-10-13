@@ -74,8 +74,7 @@
             <div class="calculator">
 
                 <ul class="nav">
-                    <button class="nav_link active" id="veg_bt" onclick="openTab(event, 'veg')">Vegetais</button>
-                    <button class="nav_link" id="ani_bt" onclick="openTab(event, 'ani')">Animais</button>
+                    <button class="nav_link active" id="veg_bt" onclick="openTab(event, 'veg')">Materia a Compostar</button>
                     <button class="nav_link" id="pal_bt" onclick="openTab(event, 'pal')">Palhada</button>
                 </ul>
 
@@ -85,36 +84,16 @@
 
                         <div id="formularioveg">
                             <div class="form-group" id="campoveg0">
-                                <input class="input" type="number" step="0.0001" id="cnveg0" placeholder="Relação C/N do material adicionado">
+                                <input class="input" type="number" step="0.0001" id="cnveg0" placeholder="Proporção de C para 1 de N">
                                 <br>
-                                <h5 style="background-color: #65b8a6;">Frequência de Adição:</h5>
+                                <span style="background-color: #65b8a6; text-align: left">Frequência de Adição:</span>
                                 <div style="text-align: left; background-color: #65b8a6;">
-                                    <input type="radio" name="freq" id="dia0"><span>Diária</span>
-                                    <br><input type="radio" name="freq" id="sem0"><span>Semanal</span>
-                                    <br><input type="radio" name="freq" id="mes0"><span>Mensal</span>
+                                    <input type="radio" name="freq0" id="dia0"><span>Diária</span>
+                                    <br><input type="radio" name="freq0" id="sem0"><span>Semanal</span>
+                                    <br><input type="radio" name="freq0" id="mes0"><span>Mensal</span>
                                 </div>
                                 <br><input class="input" type="number" step="0.0001" id="quantveg0" placeholder="Quantidade (kg)">
-                                <br><button type="button" class="numb_control" onclick="AdicionarVeg()">+</button>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="tab_pane" id="ani" style="display: none;">
-
-                        <div id="formularioani">
-                            <div class="form-group" id="campoani0">
-                                <h5 style="background-color: #65b8a6;">Qual animal você produz?</h5>
-                                <br>
-                                <select id="animal0">
-                                    <options></options>
-                                </select>
-                                <br><input class="input" type="number" step="0.0001" id="quantani0" placeholder="Quantidade (kg)">
-                                <h5 style="background-color: #65b8a6;">Sistema Produtivo?</h5>
-                                <br>
-                                <input type="radio" name="freq" id="sim0"><span>Sim</span>
-                                <br><input type="radio" name="freq" id="nao0"><span>Não</span>
-                                <br><button type="button" class="numb_control" onclick="AdicionarAni()">+</button>
+                                <br><button type="button" class="numb_control" onclick="AdicionarVeg()">Adicionar Material</button>
                             </div>
                         </div>
 
@@ -122,8 +101,14 @@
 
                     <div class="tab_pane" id="pal" style="display: none;">
 
-                        <input class="input" type="number" step="0.0001" id="cnpal" placeholder="Relação C/N da palhada adicionada">
-                        
+                        <div id="formulariopal">
+                            <div class="form-group" id="campopal0">
+                                <input class="input" type="number" step="0.0001" id="cnpal0" placeholder="Proporção de C para 1 de N">
+                                <br><input class="input" type="number" step="0.0001" id="porpal0" placeholder="Porcentagem disponível">
+                                <br><button type="button" class="numb_control" onclick="AdicionarPal()">Adicionar Material</button>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
@@ -136,9 +121,7 @@
 
             <div class="boxresults" id="minhaDiv" style="display: none;">
                     <center><div class="titresp">Resultados</div></center>
-                    <div class="respostas">Quantidade de palhada a adicionar (kg): <span id=""></span></div>
-                    <div class="respostas">Estimativa de N-P-K do composto: <span id=""></span></div>
-                    <div class="respostas">Quantidade de composto final (kg): <span id=""></span></div>
+
                     <button class="generate_pdf"> Gerar PDF </button>
             </div>
         </div>
@@ -153,7 +136,7 @@
 
         function AdicionarVeg(){
             controleCampoVeg++;
-            document.getElementById('formularioveg').insertAdjacentHTML('beforeend', '<div class="form-group" id="campoveg'+ controleCampoVeg +'"><input class="input" type="number" step="0.0001" id="cnveg'+ controleCampoVeg +'" placeholder="Relação C/N do material adicionado"><br><h5 style="background-color: #65b8a6;">Frequência de Adição:</h5><div style="text-align: left; background-color: #65b8a6;"><input type="radio" name="freq" id="dia'+ controleCampoVeg +'"><span>Diária</span><br><input type="radio" name="freq" id="sem'+ controleCampoVeg +'"><span>Semanal</span><br><input type="radio" name="freq" id="mes'+ controleCampoVeg +'"><span>Mensal</span> </div><br><input class="input" type="number" step="0.0001" id="quantveg'+ controleCampoVeg +'" placeholder="Quantidade (kg)"><br><button type="button" class="numb_control" onclick="AdicionarVeg()">+</button><button type="button" class="numb_control" onclick="RemoverVeg('+ controleCampoVeg +')">-</button></div>');
+            document.getElementById('formularioveg').insertAdjacentHTML('beforeend', '<div class="form-group" id="campoveg'+ controleCampoVeg +'"><input class="input" type="number" step="0.0001" id="cnveg'+ controleCampoVeg +'" placeholder="Proporção de C para 1 de N"><br><span style="background-color: #65b8a6;">Frequência de Adição:</span><div style="text-align: left; background-color: #65b8a6;"><input type="radio" name="freq'+ controleCampoVeg +'" id="dia'+ controleCampoVeg +'"><span>Diária</span><br><input type="radio" name="freq'+ controleCampoVeg +'" id="sem'+ controleCampoVeg +'"><span>Semanal</span><br><input type="radio" name="freq'+ controleCampoVeg +'" id="mes'+ controleCampoVeg +'"><span>Mensal</span> </div><br><input class="input" type="number" step="0.0001" id="quantveg'+ controleCampoVeg +'" placeholder="Quantidade (kg)"><br><button type="button" class="numb_control" onclick="AdicionarVeg()">Adicionar Material</button><button type="button" class="numb_control" onclick="RemoverVeg('+ controleCampoVeg +')">Remover Material</button></div>');
             return(controleCampoVeg);
         }
 
@@ -165,18 +148,55 @@
 
         var controleCampoAni = 0;
 
-        function AdicionarAni(){
+        function AdicionarPal(){
             controleCampoAni++;
-            document.getElementById('formularioani').insertAdjacentHTML('beforeend', );
+            document.getElementById('formulariopal').insertAdjacentHTML('beforeend', '<div class="form-group" id="campopal'+ controleCampoAni +'"><input class="input" type="number" step="0.0001" id="cnpal'+ controleCampoAni +'" placeholder="Proporção de C para 1 de N"><br><input class="input" type="number" step="0.0001" id="porpal'+ controleCampoAni +'" placeholder="Porcentagem disponível"><br><button type="button" class="numb_control" onclick="AdicionarPal()">Adicionar Material</button><button type="button" class="numb_control" onclick="RemoverPal('+ controleCampoAni +')">Remover Material</button></div>');
             return(controleCampoAni);
         }
 
-        function RemoverAni(idCampo){
+        function RemoverPal(idCampo){
             controleCampoAni = controleCampoAni - 1;
-            document.getElementById('campoani' + idCampo).remove();
+            document.getElementById('campopal' + idCampo).remove();
             return(controleCampoAni);
         }
 
+        function DimensionarCompostagem(el){
+            var div = document.getElementById(el);
+            var disp = div.style.display;
+            div.style.display = disp == 'none' ? 'block' : 'none';
+
+            //Cálculo das proporções C:N das adições
+            var contador = controleCampoVeg;
+            var limite = contador + 1;
+            var sommass = 0;
+            var relacn = 0;
+            for(let i=0; i<limite; i++)
+            {
+                var cnveg = 'cnveg'+i;
+                var quantveg = 'quantveg'+i;
+                var massveg = parseFloat(document.getElementById(quantveg).value);
+                var cn = parseFloat(document.getElementById(cnveg).value);
+                var dia = 'dia'+i;
+                var sem = 'sem'+i;
+                var mes = 'mes'+i;
+                if(document.getElementById(dia).checked){
+                    massveg = massveg;
+                }
+                else if(document.getElementById(sem).checked){
+                    massveg = massveg/7;
+                }
+                else if(document.getElementById(mes).checked){
+                    massveg = massveg/30;
+                }
+                var rela = massveg * cn;
+                relacn = relacn + rela;
+                sommass = sommass + massveg;
+            }
+            var propveg = relacn / sommass;
+            console.log(propveg);
+            
+
+        }
 
     </script>
 </html>
