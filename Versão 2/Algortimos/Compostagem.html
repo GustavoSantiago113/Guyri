@@ -102,14 +102,7 @@
 
                     <div class="tab_pane" id="pal" style="display: none;">
 
-                        <div id="formulariopal" style="background-color: #65b8a6;">
-                            <div class="form-group" id="campopal0">
-                                <span>Palhada </span><span id="labelpal0"></span>
-                                <br><input class="input" type="number" step="0.0001" id="cnpal0" placeholder="Proporção de C para 1 de N">
-                                <br><input class="input" type="number" step="0.0001" id="porpal0" placeholder="Porcentagem disponível">
-                                <br><button type="button" class="numb_control" onclick="AdicionarPal()">Adicionar Material</button>
-                            </div>
-                        </div>
+                        <br><input class="input" type="number" step="0.0001" id="cnpal" placeholder="Proporção de C para 1 de N">
 
                     </div>
 
@@ -120,11 +113,11 @@
             <button class="result" onclick="DimensionarCompostagem('minhaDiv');">
                 Dimensionar!
             </button>
-            <span id="aviso"></span>
+            <span id="warn"></span>
 
             <div class="boxresults" id="minhaDiv" style="display: none;">
                     <center><div class="titresp">Resultados</div></center>
-
+                    <div class="respostas">A massa de palhada a adicionar é de (kg): <span id="mpal"></span></div>
                     <button class="generate_pdf"> Gerar PDF </button>
             </div>
         </div>
@@ -151,48 +144,7 @@
             return(controleCampoVeg);
         }
 
-        var controleCampoAni = 0;
-
-        function AdicionarPal(){
-            controleCampoAni++;
-            document.getElementById('formulariopal').insertAdjacentHTML('beforeend', '<div class="form-group" id="campopal'+ controleCampoAni +'"><span>Palhada </span><span id="labelpal'+ controleCampoAni +'"></span><br><input class="input" type="number" step="0.0001" id="cnpal'+ controleCampoAni +'" placeholder="Proporção de C para 1 de N"><br><input class="input" type="number" step="0.0001" id="porpal'+ controleCampoAni +'" placeholder="Porcentagem disponível"><br><button type="button" class="numb_control" onclick="AdicionarPal()">Adicionar Material</button><button type="button" class="numb_control" onclick="RemoverPal('+ controleCampoAni +')">Remover Material</button></div>');
-            let label = 'labelpal' + controleCampoAni;
-            document.getElementById(label).innerHTML = controleCampoAni + 1;
-            return(controleCampoAni);
-        }
-
-        function RemoverPal(idCampo){
-            controleCampoAni = controleCampoAni - 1;
-            document.getElementById('campopal' + idCampo).remove();
-            return(controleCampoAni);
-        }
-
         function DimensionarCompostagem(el){
-            
-            //Verificando se a soma de porcentagens é igual a 100%
-            let somaPorc = 0;
-            let contadorPal = controleCampoAni;
-            let limitePal = contadorPal + 1;
-            for(let i=0; i<limitePal; i++){
-                let porcString = 'porpal'+ i;
-                let porPal = parseFloat(document.getElementById(porcString).value);
-                somaPorc = somaPorc + porPal;
-            }
-            console.log(somaPorc)
-            let text;
-            if (somaPorc > 100) {
-                text = "Valor maior que 100%";
-                document.getElementById("aviso").innerHTML = text;
-            }
-            else if (somaPorc < 100) {
-                text = "Valor menor que 100%";
-                document.getElementById("aviso").innerHTML = text;
-            }
-            else if(somaPorc = 100) {
-                let div = document.getElementById(el);
-                let disp = div.style.display;
-                div.style.display = disp == 'none' ? 'block' : 'none';
-            }
             
             //Cálculo das proporções C:N das adições
             let contador = controleCampoVeg;
@@ -222,9 +174,24 @@
                 sommass = sommass + massveg;
             }
             let propveg = relacn / sommass;
+            console.log(propveg);
+            // Aviso caso a mistura ja seja ideal
+            let texto;
+            if (27 < propveg && propveg < 34) {
+                texto = "Não há necessidade de palhada";
+                document.getElementById("warn").innerHTML = texto;
+            }
+            else{
+                var div = document.getElementById(el);
+                var disp = div.style.display;
+                div.style.display = disp == 'none' ? 'block' : 'none';
+            }
+
+            // Calculo da quantidade de palhada
+            let cnpal = parseFloat(document.getElementById('cnpal').value);
+
+            let mpal = ( (30*sommass - relacn) / (cnpal - 30 + 0.000000001))
+            document.getElementById('mpal').innerHTML = mpal.toFixed(3);
         }
-
-
-
     </script>
 </html>
