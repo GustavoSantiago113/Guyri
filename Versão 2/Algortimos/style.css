@@ -258,6 +258,9 @@ h5{
 .form-group{
     background-color: #65b8a6;
     text-align: center;
+    border-radius: 5px;
+    border: 2px solid #1f192f;
+    margin-bottom: 10px;
 }
 .input{
     margin: 5px;

@@ -82,11 +82,12 @@
 
                     <div class="tab_pane" id="vol">
 
-                        <div id="formulario">
-                            <div class="form-group" id="campo0">
-                                <input class="input" type="number" step="0.0001" id="vazao0" placeholder="Vazão do equipamento (l/s)">
-                                <br><input class="input" type="number" step="0.0001" id="tempo0" placeholder="Tempo de uso (min)">
-                                <br><input class="input" type="number" step="0.0001" id="frequencia0" placeholder="Frequência diária de uso">
+                        <div id="formulario" style="background-color: #65b8a6;">
+                            <div class="form-group" id="campo1">
+                                <span>Aparelho </span><span id="label1">1</span>
+                                <br><input class="input" type="number" step="0.0001" id="vazao1" placeholder="Vazão do equipamento (l/s)">
+                                <br><input class="input" type="number" step="0.0001" id="tempo1" placeholder="Tempo de uso (min)">
+                                <br><input class="input" type="number" step="0.0001" id="frequencia1" placeholder="Frequência diária de uso">
                                 <br><button type="button" class="numb_control" onclick="Adicionar()">Adicionar Consumo</button>
                             </div>
                         </div>
@@ -124,11 +125,13 @@
     </body>
     <script>
         
-        var controleCampo = 0;
+        var controleCampo = 1;
 
         function Adicionar(){
             controleCampo++;
-            document.getElementById('formulario').insertAdjacentHTML('beforeend', '<div class="form-group" id="campo'+ controleCampo +'"><input class="input" type="number" step="0.0001" id="vazao'+ controleCampo +'" placeholder = "Vazão do equipamento (l/s)"><br><input class="input" type="number" step="0.0001" id="tempo'+ controleCampo +'" placeholder = "Tempo de uso (min)" ><br><input class="input" type="number" step="0.0001" id="frequencia'+ controleCampo +'" placeholder ="Frequência diária de uso"><br><button type="button" class="numb_control" onclick="Adicionar()">Adicionar Consumo</button><button type="button" class="numb_control" onclick="Remover('+ controleCampo +')">Remover Consumo</button></div>');
+            document.getElementById('formulario').insertAdjacentHTML('beforeend', '<div class="form-group" id="campo'+ controleCampo +'"><span>Aparelho </span><span id="label'+ controleCampo +'"></span><br><input class="input" type="number" step="0.0001" id="vazao'+ controleCampo +'" placeholder = "Vazão do equipamento (l/s)"><br><input class="input" type="number" step="0.0001" id="tempo'+ controleCampo +'" placeholder = "Tempo de uso (min)" ><br><input class="input" type="number" step="0.0001" id="frequencia'+ controleCampo +'" placeholder ="Frequência diária de uso"><br><button type="button" class="numb_control" onclick="Adicionar()">Adicionar Consumo</button><button type="button" class="numb_control" onclick="Remover('+ controleCampo +')">Remover Consumo</button></div>');
+            let label = 'label' + controleCampo;
+            document.getElementById(label).innerHTML = controleCampo;
             return(controleCampo);
         }
 
