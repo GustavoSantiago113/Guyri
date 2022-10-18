@@ -119,9 +119,7 @@
         </body>
         <script>
             function DimensionarArCondicionado(el){
-                var div = document.getElementById(el);
-                var disp = div.style.display;
-                div.style.display = disp == 'none' ? 'block' : 'none';
+                document.getElementById(el).style.display = "block";
 
                 var La = parseFloat(document.getElementById('La').value);
                 var Ca = parseFloat(document.getElementById('Ca').value);

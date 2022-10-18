@@ -182,9 +182,7 @@
                 document.getElementById("warn").innerHTML = texto;
             }
             else{
-                var div = document.getElementById(el);
-                var disp = div.style.display;
-                div.style.display = disp == 'none' ? 'block' : 'none';
+                document.getElementById(el).style.display = "block";
             }
 
             // Calculo da quantidade de palhada

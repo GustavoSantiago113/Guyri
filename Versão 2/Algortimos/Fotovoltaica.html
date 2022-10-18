@@ -141,9 +141,7 @@
 
         function DimensionarSolar(el){
 
-            var div = document.getElementById(el);
-            var disp = div.style.display;
-            div.style.display = disp == 'none' ? 'block' : 'none';
+            document.getElementById(el).style.display = "block";
 
             var Pp = parseFloat(document.getElementById('Pp').value);
             var Ctd = parseFloat(document.getElementById('Ctm').value) / 30*1000;

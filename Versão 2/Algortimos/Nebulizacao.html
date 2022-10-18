@@ -116,9 +116,7 @@
     </body>
     <script>
         function DimensionarNebulizador(el){
-            var div = document.getElementById(el);
-            var disp = div.style.display;
-            div.style.display = disp == 'none' ? 'block' : 'none';
+            document.getElementById(el).style.display = "block";
 
             var Cv = parseFloat(document.getElementById("Cv").value);
             var Nv = parseFloat(document.getElementById("Nv").value);

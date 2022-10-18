@@ -1,0 +1,161 @@
+<html>
+    <head>
+        <title>
+            Guyri - Aquecimento Solar
+        </title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="functions.js"></script>
+    </head>
+    <header class="header">
+        <img class="logo_header" src="Icones/Logotipo 2.png">
+        <div class="title_header">
+            <h1 style="background-color: #b5e8c3; font-size: 30px;">ARA</h1>
+            <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSSISTEMAS</h3>
+        </div>
+        <a class="return_initial" href="initial_page.html">Home</a>
+    </header>
+    <body>
+    <div class="body_sizing">   
+        <div class="main_lateral_dropdown">
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/irrigation.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Gotejamento.html">Gotejamento</a>
+                    <a class="link" href="Aspersao.html">Aspersão</a>
+                    <a class="link" href="Micro_Aspersao.html">Micro-Aspersão</a>
+                    <a class="link" href="Pivo_Central.html">Pivô Central</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/solar-energy.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Aquecimento_Solar.html">Aquecimento Solar</a>
+                    <a class="link" href="Fotovoltaica.html">Fotovoltaica</a>
+                    <a class="link" href="Eolica.html">Eólica</a>
+                    <a class="link" href="Hidroeletrica.html">Hidroelétrica</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/bacteria.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Biodigestor.html">Biodigestor</a>
+                    <a class="link" href="Compostagem.html">Compostagem</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/greenhouse.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Ventilacao_Forcada.html">Ventilação Forçada</a>
+                    <a class="link" href="Ar_Condicionado.html">Ar Condicionado</a>
+                    <a class="link" href="Nebulizacao.html">Nebulização</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn" href="Analise_Economica.html">
+                    <img class="icon" src="Icones/dollar-currency-symbol.png">
+                </button>
+            </div>
+
+        </div>
+        <div class="main_section">
+            <div class="calculator">
+
+                <ul class="nav">
+                    <button class="nav_link active" id="cult_bt" onclick="openTab(event, 'cult')">Cultura e Área</button>
+                    <button class="nav_link" id="asp_bt" onclick="openTab(event, 'asp')">Aspersores</button>
+                    <button class="nav_link" id="mat_bt" onclick="openTab(event, 'mat')">Materiais e Mão-de-Obra</button>
+                </ul>
+
+                <div class="tab_content">
+
+                    <div class="tab_pane" id="cult">
+
+                        <input class="input" type="number" step="0.0001" id="Eto" placeholder="Eto">
+                        <br><input class="input" type="number" step="0.0001" id="Kc" placeholder="Kc">
+                        <br><input class="input" type="number" step="0.0001" id="R" placeholder="Raio do pivô (m)">
+                        <br><h5 style="background-color: #65b8a6;">Pivô em:</h5>
+                        <br><input type="radio" name="linhap" id="Aclivep"><span>Aclive</span>
+                        <input type="radio" name="linhap" id="Declivep"><span>Declive</span>
+                        <input type="radio" name="linhap" id="Nivelp"><span>Nivel</span>
+                        <input class="input" style="width:fit-content;" placeholder="Diferença de altura (m)" type="number" step="0.0001" id="Dhp">
+                        <br><h5 style="background-color: #65b8a6;">Tubo da sucção ao Pivô em:</h5>
+                        <br><input type="radio" name="linhas" id="Aclives"><span>Aclive</span>
+                        <input type="radio" name="linhas" id="Declives"><span>Declive</span>
+                        <input type="radio" name="linhas" id="Nivels"><span>Nivel</span>
+                        <input class="input" style="width:fit-content;" placeholder="Diferença de altura (m)" type="number" step="0.0001" id="Dhs">
+                        <br><input class="input" type="number" step="0.0001" id="Ls" placeholder="Comprimento do tubo de sucção ao pivô central (m)">
+
+                    </div>
+
+                    <div class="tab_pane" id="asp" style="display: none;">
+
+                        <input class="input" type="number" step="0.0001" id="Pasp" placeholder="Pressão de serviço dos aspersores (mca)">
+                        <br><input class="input" type="number" step="0.0001" id="Rasp" placeholder="Raio do aspersor (m)">
+                        <br><input class="input" type="number" step="0.0001" id="Dasp" placeholder="Distância entre aspersores (m)">
+                        <br><input type="radio" name="tipo" id="canhao" onclick="AparecerCanhao();"><span>Canhão ao final?</span>
+                        <div id="inputcanhao" style="display:none; background-color: #65b8a6;">
+                            <br><input class="input" placeholder="Pressão de serviço (mca)" type="number" step="0.0001" id="Pcn">
+                            <br><input class="input" placeholder="Vazão (m3)" type="number" step="0.0001" id="Qcn">       
+                        </div>
+
+                    </div>
+
+                    <div class="tab_pane" id="mat" style="display: none;">
+
+                        <input class="input" type="number" step="0.0001" id="to" placeholder="Tempo de funcionamento diário (h)">
+                        <br><input class="input" type="number" step="0.0001" id="tv" placeholder="Tempo para dar uma volta (h)">
+                        <br><input class="input" type="number" step="0.0001" id="vd" placeholder="Velocidade de deslocamento da ultima torre (m/h)">
+                        <br><input class="input" type="number" step="0.0001" id="vd" placeholder="Coeficiente de Hazen-Williams do tubo do pivô">
+                        <br><input class="input" type="number" step="0.0001" id="vd" placeholder="Coeficiente de Hazen-Williams do tubo de sucção">
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button class="result" onclick="DimensionarPivo('minhaDiv');">
+                Dimensionar!
+            </button>
+
+            <div class="boxresults" id="minhaDiv" style="display: none;">
+                    <center><div class="titresp">Resultados</div></center>
+                    
+                    <button class="generate_pdf"> Gerar PDF </button>
+            </div>
+        </div>
+        <div>
+
+        </div>
+    </div>
+    </body>
+    <script>
+        function AparecerCanhao(){
+
+            if (document.getElementById("canhao").checked){
+                document.getElementById("inputcanhao").style.display = "block";
+            }
+
+            else {
+                document.getElementById("inputcanhao").style.display = "none";
+            }
+        }
+
+        function DimensionarPivo(el){
+            document.getElementById(el).style.display = "block";
+
+        }
+    </script>
+</html>

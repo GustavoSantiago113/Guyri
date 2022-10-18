@@ -142,9 +142,7 @@
         }
 
         function DimensionarAquecimento(el){
-            var div = document.getElementById(el);
-            var disp = div.style.display;
-            div.style.display = disp == 'none' ? 'block' : 'none';
+            document.getElementById(el).style.display = "block";
 
             var contador = controleCampo;
             var limite = contador + 1;

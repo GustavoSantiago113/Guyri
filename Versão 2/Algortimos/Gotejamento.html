@@ -185,9 +185,7 @@
     </body>
     <script>
         function DimensionarGotejamento(el){
-            var div = document.getElementById(el);
-            var disp = div.style.display;
-            div.style.display = disp == 'none' ? 'block' : 'none';
+            document.getElementById(el).style.display = "block";
 
             //Manejo
             var occ = parseFloat(document.getElementById('CC').value);

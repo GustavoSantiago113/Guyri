@@ -114,9 +114,7 @@
     </body>
     <script>
         function DimensionarVentilacao(el){
-            var div = document.getElementById(el);
-            var disp = div.style.display;
-            div.style.display = disp == 'none' ? 'block' : 'none';
+            document.getElementById(el).style.display = "block";
 
             var C = document.getElementById("C").value;
             var L = document.getElementById("L").value;

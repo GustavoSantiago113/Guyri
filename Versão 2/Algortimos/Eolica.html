@@ -142,9 +142,7 @@
         }
 
         function DimensionarEolica(el){
-            var div = document.getElementById(el);
-            var disp = div.style.display;
-            div.style.display = disp == 'none' ? 'block' : 'none';
+            document.getElementById(el).style.display = "block";
 
             var Cmm = parseFloat(document.getElementById('Cmm').value);
             var Vv = parseFloat(document.getElementById('Vv').value);
