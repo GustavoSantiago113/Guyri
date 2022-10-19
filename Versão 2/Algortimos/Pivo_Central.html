@@ -104,11 +104,11 @@
 
                         <input class="input" type="number" step="0.0001" id="Pasp" placeholder="Pressão de serviço dos aspersores (mca)">
                         <br><input class="input" type="number" step="0.0001" id="Rasp" placeholder="Raio do aspersor (m)">
-                        <br><input class="input" type="number" step="0.0001" id="Dasp" placeholder="Distância entre aspersores (m)">
+                        <br><input class="input" type="number" step="0.0001" id="Easp" placeholder="Distância entre aspersores (m)">
                         <br><input type="radio" name="tipo" id="canhao" onclick="AparecerCanhao();"><span>Canhão ao final?</span>
                         <div id="inputcanhao" style="display:none; background-color: #65b8a6;">
                             <br><input class="input" placeholder="Pressão de serviço (mca)" type="number" step="0.0001" id="Pcn">
-                            <br><input class="input" placeholder="Vazão (m3)" type="number" step="0.0001" id="Qcn">       
+                            <br><input class="input" placeholder="Vazão (m3/h)" type="number" step="0.0001" id="Qcn">       
                         </div>
 
                     </div>
@@ -132,7 +132,11 @@
 
             <div class="boxresults" id="minhaDiv" style="display: none;">
                     <center><div class="titresp">Resultados</div></center>
-                    
+                    <div class="respostas">Vazão Necessária (m3/h): <span id="Qf"></span></div>
+                    <div class="respostas"><span id="Ia1R"></span></div>
+                    <div class="respostas"><span id="Ia2R"></span></div>
+                    <div class="respostas"><span id="Ia3R"></span></div>
+                    <div class="respostas"><span id="Ia4R"></span></div>
                     <button class="generate_pdf"> Gerar PDF </button>
             </div>
         </div>
@@ -154,8 +158,63 @@
         }
 
         function DimensionarPivo(el){
+            
             document.getElementById(el).style.display = "block";
 
+            let Eto = parseFloat(document.getElementById('Eto').value);
+            let Kc = parseFloat(document.getElementById('Kc').value);
+
+            let Lam = Eto * Kc;
+
+            let to = parseFloat(document.getElementById('to').value);
+            let R = parseFloat(document.getElementById('R').value);
+            let Rasp = parseFloat(document.getElementById('Rasp').value);
+
+            let Area = Math.PI * (R + (Rasp/2)) ** 2;
+            let Q = Lam / (Area * to);
+            let Qcn = parseFloat(document.getElementById('Qcn').value);
+
+            let Qf = Q + Qcn;
+            document.getElementById('Qf').innerHTML = Qf.toFixed(3);
+
+            let L1 = (Math.sqrt(Area*Math.PI)) / 2;
+            let L2 = L1 * Math.sqrt(2) - L1;
+            let L3 = (L1 + L2) * Math.sqrt(2) - (L1 + L2);
+            let L4 = (L1 + L2 + L3) * Math.sqrt(2) - (L1 + L2 + L3);
+
+            let Dasp = 2 * Rasp;
+            let tv = parseFloat(document.getElementById('tv').value);
+            
+            let tr1 = (tv * Dasp) / 2 * Math.PI * L1;
+            let tr2 = (tv * Dasp) / 2 * Math.PI * L2;
+            let tr3 = (tv * Dasp) / 2 * Math.PI * L3;
+            let tr4 = (tv * Dasp) / 2 * Math.PI * L4;
+
+            Ia1 = Lam / tr1;
+            Ia2 = Lam / tr2;
+            Ia3 = Lam / tr3;
+            Ia4 = Lam / tr4;
+
+            const Resp = "A intensidade de aplicação (mm/h) dos ";
+            const Resp2 = " aos ";
+            const Resp3 = " metros é de ";
+
+            let Ia1R = Resp + toString(L1.toFixed(3)) + Resp2 + toString(L2.toFixed(3)) + Resp3 + toString(Ia1.toFixed(3));
+            let Ia2R = Resp + toString(L2.toFixed(3)) + Resp2 + toString(L3.toFixed(3)) + Resp3 + toString(Ia2.toFixed(3));
+            let Ia3R = Resp + toString(L3.toFixed(3)) + Resp2 + toString(L4.toFixed(3)) + Resp3 + toString(Ia3.toFixed(3));
+            let Ia4R = Resp + toString(L4.toFixed(3)) + Resp2 + toString(R.toFixed(3)) + Resp3 + toString(Ia4.toFixed(3));
+            
+            document.getElementById('Ia1R').innerHTML = Ia1R;
+            document.getElementById('Ia2R').innerHTML = Ia2R;
+            document.getElementById('Ia3R').innerHTML = Ia3R;
+            document.getElementById('Ia4R').innerHTML = Ia4R;
+
+            let Easp = parseFloat(document.getElementById('Easp').value);
+
+            let NaspL1 = L1 / Easp;
+            let NaspL2 = L2 / Easp;
+            let NaspL3 = L3 / Easp;
+            let NaspL4 = L4 / Easp;
         }
     </script>
 </html>
