@@ -118,8 +118,10 @@
                         <input class="input" type="number" step="0.0001" id="to" placeholder="Tempo de funcionamento diário (h)">
                         <br><input class="input" type="number" step="0.0001" id="tv" placeholder="Tempo para dar uma volta (h)">
                         <br><input class="input" type="number" step="0.0001" id="vd" placeholder="Velocidade de deslocamento da ultima torre (m/h)">
-                        <br><input class="input" type="number" step="0.0001" id="vd" placeholder="Coeficiente de Hazen-Williams do tubo do pivô">
-                        <br><input class="input" type="number" step="0.0001" id="vd" placeholder="Coeficiente de Hazen-Williams do tubo de sucção">
+                        <br><input class="input" type="number" step="0.0001" id="Cp" placeholder="Coeficiente de Hazen-Williams do tubo do pivô">
+                        <br><input class="input" type="number" step="0.0001" id="Cs" placeholder="Coeficiente de Hazen-Williams do tubo de sucção">
+                        <br><input class="input" type="number" step="0.0001" id="VE" placeholder="Velocidade de escoamento na linha de sucção">
+                        <br><input class="input" type="number" step="0.0001" id="n" placeholder="Rendimento da motobomba (decimal)">
                     </div>
 
                 </div>
@@ -130,6 +132,8 @@
                 Dimensionar!
             </button>
 
+            <span style="background-color: #f0f7da;" id="warn"></span>
+
             <div class="boxresults" id="minhaDiv" style="display: none;">
                     <center><div class="titresp">Resultados</div></center>
                     <div class="respostas">Vazão Necessária (m3/h): <span id="Qf"></span></div>
@@ -137,6 +141,17 @@
                     <div class="respostas"><span id="Ia2R"></span></div>
                     <div class="respostas"><span id="Ia3R"></span></div>
                     <div class="respostas"><span id="Ia4R"></span></div>
+                    <div class="respostas"><span id="Qa1R"></span></div>
+                    <div class="respostas"><span id="Qa2R"></span></div>
+                    <div class="respostas"><span id="Qa3R"></span></div>
+                    <div class="respostas"><span id="Qa4R"></span></div>
+                    <div class="respostas"><span id="D1"></span></div>
+                    <div class="respostas"><span id="D2"></span></div>
+                    <div class="respostas"><span id="D3"></span></div>
+                    <div class="respostas"><span id="D4"></span></div>
+                    <div class="respostas">Diâmetro da linha de sucção (m) <span id="Ds"></span></div>
+                    <div class="respostas">Altura manométrica (mca) <span id="HMT"></span></div>
+                    <div class="respostas">Potência da motobomba (cv) <span id="Pot"></span></div>
                     <button class="generate_pdf"> Gerar PDF </button>
             </div>
         </div>
@@ -215,6 +230,85 @@
             let NaspL2 = L2 / Easp;
             let NaspL3 = L3 / Easp;
             let NaspL4 = L4 / Easp;
+
+            let Qasp1 = (Q / 4) / NaspL1;
+            let Qasp2 = (Q / 4) / NaspL2;
+            let Qasp3 = (Q / 4) / NaspL3;
+            let Qasp4 = (Q / 4) / NaspL4;
+
+            const Resp4 = "A vazão dos aspersores (m3/h) dos ";
+            let Qa1R = Resp4 + toString(L1.toFixed(3)) + Resp2 + toString(L2.toFixed(3)) + Resp3 + toString(Qasp1.toFixed(3));
+            let Qa2R = Resp4 + toString(L2.toFixed(3)) + Resp2 + toString(L3.toFixed(3)) + Resp3 + toString(Qasp2.toFixed(3));
+            let Qa3R = Resp4 + toString(L3.toFixed(3)) + Resp2 + toString(L4.toFixed(3)) + Resp3 + toString(Qasp3.toFixed(3));
+            let Qa4R = Resp4 + toString(L4.toFixed(3)) + Resp2 + toString(R.toFixed(3)) + Resp3 + toString(Qasp4.toFixed(3));
+
+            let PS = parseFloat(document.getElementById('Pasp').value);
+            let DZl = parseFloat(document.getElementById('Dhp').value);
+
+            if (document.getElementById("Nivelp").checked)
+            {
+                let hfl = 0.3*PS;
+                let Pinl = PS + ((3*hfl)/4);
+                let Pfl = PS - (hfl / 4);
+            }
+            else if (document.getElementById("Aclivep").checked)
+            {
+                let hfl = 0.3*PS - DZl;
+                if (Math.sign(hfl) == -1 || Math.sign(hfl) == 0)
+                {
+                    hfl = DZl;
+                }   
+                let Pinl = PS + ((3*hfl)/4)+ 0.5*DZl;
+                let Pfl = PS - (hfl / 4) - Dzl / 2;
+            }
+            else if (document.getElementById("Declivep").checked)
+            {
+                let hfl = 0.3*PS + DZl;
+                let Pinl = PS + ((3*hfl)/4) - 0.5*DZl;
+                let Pfl = PS - (hfl / 4) + Dzl / 2;
+            }
+
+            let Pcn = parseFloat(document.getElementById('Pcn').value);
+            let messageCanhao = "Não foi possível atingir a pressão de serviço do canhão, redimensionar";
+            if(Pfl < Pcn){
+                document.getElementById('warn').innerHTML = messageCanhao;
+            }
+
+            let F1 = (1/(2.852))+(1/(2*parseInt(NaspL1)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(NaspL1),2)));
+            let F2 = (1/(2.852))+(1/(2*parseInt(NaspL2)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(NaspL2),2)));
+            let F3 = (1/(2.852))+(1/(2*parseInt(NaspL3)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(NaspL3),2)));
+            let F4 = (1/(2.852))+(1/(2*parseInt(NaspL4)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(NaspL4),2)));
+
+            let Cp = parseFloat(document.getElementById('Cp').value);
+            
+            let Dt1 = Math.pow((10.643 * Math.pow((((Qf/4)/3600) / Cp),1.852) * (L1 / hfl) * F1), 0.205);
+            let Dt2 = Math.pow((10.643 * Math.pow((((Qf/4)/3600) / Cp),1.852) * (L2 / hfl) * F2), 0.205);
+            let Dt3 = Math.pow((10.643 * Math.pow((((Qf/4)/3600) / Cp),1.852) * (L3 / hfl) * F3), 0.205);
+            let Dt4 = Math.pow((10.643 * Math.pow((((Qf/4)/3600) / Cp),1.852) * (L4 / hfl) * F4), 0.205);
+
+            const Resp5 = "O diametro dos tubos (m) dos ";
+            let D1 = Resp5 + toString(L1.toFixed(3)) + Resp2 + toString(L2.toFixed(3)) + Resp3 + toString(Dt1.toFixed(4));
+            let D2 = Resp5 + toString(L2.toFixed(3)) + Resp2 + toString(L3.toFixed(3)) + Resp3 + toString(Dt2.toFixed(4));
+            let D3 = Resp5 + toString(L3.toFixed(3)) + Resp2 + toString(L4.toFixed(3)) + Resp3 + toString(Dt3.toFixed(4));
+            let D4 = Resp5 + toString(L4.toFixed(3)) + Resp2 + toString(R.toFixed(3)) + Resp3 + toString(Dt4.toFixed(4));
+
+            let Ls = parseFloat(document.getElementById('Ls').value);
+            var VE = parseFloat(document.getElementById('VE').value);
+            let Ds = Math.sqrt(((4*(Qf/3600))/(Math.PI*VE)));
+            document.getElementById('Ds').innerHTML = Ds.toFixed(4);
+            let Cs = parseFloat(document.getElementById('Cs').value);
+            var hs = 10.643 * Math.pow(((3*(Qf/3600))/Cs),1.852)*Math.pow(Ds,-4.87)*Ls;
+
+            let Dhs = parseFloat(document.getElementById('Dhs').value);
+            if (document.getElementById("Declives").checked)
+            {
+                Dhs = -Dhs;
+            }
+            let HMT = (Dhs + hs + hfl + Pinl + DZl + Pcn) * 1.05;
+            let n = parseFloat(document.getElementById('n').value);
+            let Pot = ( ( Qf / HMT) / ( 75 * n) ) * 1.1;
+            document.getElementById('HMT').innerHTML = HMT.toFixed(3);
+            document.getElementById('Pot').innerHTML = Pot.toFixed(3);
         }
     </script>
 </html>
