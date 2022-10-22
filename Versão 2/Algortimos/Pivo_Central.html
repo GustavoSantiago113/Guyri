@@ -176,34 +176,37 @@
             
             document.getElementById(el).style.display = "block";
 
-            let Eto = parseFloat(document.getElementById('Eto').value);
-            let Kc = parseFloat(document.getElementById('Kc').value);
+            var Eto = parseFloat(document.getElementById('Eto').value);
+            var Kc = parseFloat(document.getElementById('Kc').value);
 
-            let Lam = Eto * Kc;
+            var Lam = Eto * Kc;
 
-            let to = parseFloat(document.getElementById('to').value);
-            let R = parseFloat(document.getElementById('R').value);
-            let Rasp = parseFloat(document.getElementById('Rasp').value);
+            var to = parseFloat(document.getElementById('to').value);
+            var R = parseFloat(document.getElementById('R').value);
+            var Rasp = parseFloat(document.getElementById('Rasp').value);
 
-            let Area = Math.PI * (R + (Rasp/2)) ** 2;
-            let Q = Lam / (Area * to);
-            let Qcn = parseFloat(document.getElementById('Qcn').value);
+            var Area = Math.PI * Math.pow((R + (Rasp/2)), 2);
+            var Q = (Lam * 1000 *  Area ) / to;
+            var Qcn = parseFloat(document.getElementById('Qcn').value);
 
-            let Qf = Q + Qcn;
+            var Qf = Q;
+            if(document.getElementById("canhao").checked){
+                Qf = Q + Qcn;
+            }
             document.getElementById('Qf').innerHTML = Qf.toFixed(3);
 
-            let L1 = (Math.sqrt(Area*Math.PI)) / 2;
-            let L2 = L1 * Math.sqrt(2) - L1;
-            let L3 = (L1 + L2) * Math.sqrt(2) - (L1 + L2);
-            let L4 = (L1 + L2 + L3) * Math.sqrt(2) - (L1 + L2 + L3);
+            var L1 = (Math.sqrt(Area*Math.PI)) / 2;
+            var L2 = L1 * Math.sqrt(2) - L1;
+            var L3 = (L1 + L2) * Math.sqrt(2) - (L1 + L2);
+            var L4 = (L1 + L2 + L3) * Math.sqrt(2) - (L1 + L2 + L3);
 
-            let Dasp = 2 * Rasp;
-            let tv = parseFloat(document.getElementById('tv').value);
+            var Dasp = 2 * Rasp;
+            var tv = parseFloat(document.getElementById('tv').value);
             
-            let tr1 = (tv * Dasp) / 2 * Math.PI * L1;
-            let tr2 = (tv * Dasp) / 2 * Math.PI * L2;
-            let tr3 = (tv * Dasp) / 2 * Math.PI * L3;
-            let tr4 = (tv * Dasp) / 2 * Math.PI * L4;
+            var tr1 = (tv * Dasp) / 2 * Math.PI * L1;
+            var tr2 = (tv * Dasp) / 2 * Math.PI * L2;
+            var tr3 = (tv * Dasp) / 2 * Math.PI * L3;
+            var tr4 = (tv * Dasp) / 2 * Math.PI * L4;
 
             Ia1 = Lam / tr1;
             Ia2 = Lam / tr2;
@@ -214,99 +217,113 @@
             const Resp2 = " aos ";
             const Resp3 = " metros é de ";
 
-            let Ia1R = Resp + toString(L1.toFixed(3)) + Resp2 + toString(L2.toFixed(3)) + Resp3 + toString(Ia1.toFixed(3));
-            let Ia2R = Resp + toString(L2.toFixed(3)) + Resp2 + toString(L3.toFixed(3)) + Resp3 + toString(Ia2.toFixed(3));
-            let Ia3R = Resp + toString(L3.toFixed(3)) + Resp2 + toString(L4.toFixed(3)) + Resp3 + toString(Ia3.toFixed(3));
-            let Ia4R = Resp + toString(L4.toFixed(3)) + Resp2 + toString(R.toFixed(3)) + Resp3 + toString(Ia4.toFixed(3));
-            
+            var Ia1R = Resp + L1.toFixed(3).toString() + Resp2 + L2.toFixed(3).toString() + Resp3 + Ia1.toFixed(3).toString();
+            var Ia2R = Resp + L2.toFixed(3).toString() + Resp2 + L3.toFixed(3).toString() + Resp3 + Ia2.toFixed(3).toString();
+            var Ia3R = Resp + L3.toFixed(3).toString() + Resp2 + L4.toFixed(3).toString() + Resp3 + Ia3.toFixed(3).toString();
+            var Ia4R = Resp + L4.toFixed(3).toString() + Resp2 + R.toFixed(3).toString() + Resp3 + Ia4.toFixed(3).toString();
+
             document.getElementById('Ia1R').innerHTML = Ia1R;
             document.getElementById('Ia2R').innerHTML = Ia2R;
             document.getElementById('Ia3R').innerHTML = Ia3R;
             document.getElementById('Ia4R').innerHTML = Ia4R;
 
-            let Easp = parseFloat(document.getElementById('Easp').value);
+            var Easp = parseFloat(document.getElementById('Easp').value);
 
-            let NaspL1 = L1 / Easp;
-            let NaspL2 = L2 / Easp;
-            let NaspL3 = L3 / Easp;
-            let NaspL4 = L4 / Easp;
+            var NaspL1 = L1 / Easp;
+            var NaspL2 = L2 / Easp;
+            var NaspL3 = L3 / Easp;
+            var NaspL4 = L4 / Easp;
 
-            let Qasp1 = (Q / 4) / NaspL1;
-            let Qasp2 = (Q / 4) / NaspL2;
-            let Qasp3 = (Q / 4) / NaspL3;
-            let Qasp4 = (Q / 4) / NaspL4;
+            var Qasp1 = (Q / 4) / NaspL1;
+            var Qasp2 = (Q / 4) / NaspL2;
+            var Qasp3 = (Q / 4) / NaspL3;
+            var Qasp4 = (Q / 4) / NaspL4;
 
             const Resp4 = "A vazão dos aspersores (m3/h) dos ";
-            let Qa1R = Resp4 + toString(L1.toFixed(3)) + Resp2 + toString(L2.toFixed(3)) + Resp3 + toString(Qasp1.toFixed(3));
-            let Qa2R = Resp4 + toString(L2.toFixed(3)) + Resp2 + toString(L3.toFixed(3)) + Resp3 + toString(Qasp2.toFixed(3));
-            let Qa3R = Resp4 + toString(L3.toFixed(3)) + Resp2 + toString(L4.toFixed(3)) + Resp3 + toString(Qasp3.toFixed(3));
-            let Qa4R = Resp4 + toString(L4.toFixed(3)) + Resp2 + toString(R.toFixed(3)) + Resp3 + toString(Qasp4.toFixed(3));
+            var Qa1R = Resp4 + L1.toFixed(3).toString() + Resp2 + L2.toFixed(3).toString() + Resp3 + Qasp1.toFixed(3).toString();
+            var Qa2R = Resp4 + L2.toFixed(3).toString() + Resp2 + L3.toFixed(3).toString() + Resp3 + Qasp2.toFixed(3).toString();
+            var Qa3R = Resp4 + L3.toFixed(3).toString() + Resp2 + L4.toFixed(3).toString() + Resp3 + Qasp3.toFixed(3).toString();
+            var Qa4R = Resp4 + L4.toFixed(3).toString() + Resp2 + R.toFixed(3).toString() + Resp3 + Qasp4.toFixed(3).toString();
 
-            let PS = parseFloat(document.getElementById('Pasp').value);
-            let DZl = parseFloat(document.getElementById('Dhp').value);
+            document.getElementById('Qa1R').innerHTML = Qa1R;
+            document.getElementById('Qa2R').innerHTML = Qa2R;
+            document.getElementById('Qa3R').innerHTML = Qa3R;
+            document.getElementById('Qa4R').innerHTML = Qa4R;
+
+            var PS = parseFloat(document.getElementById('Pasp').value);
+            var DZl = parseFloat(document.getElementById('Dhp').value);
+
+            var hfl;
+            var Pinl;
+            var Pfl;
 
             if (document.getElementById("Nivelp").checked)
             {
-                let hfl = 0.3*PS;
-                let Pinl = PS + ((3*hfl)/4);
-                let Pfl = PS - (hfl / 4);
+                hfl = 0.3*PS;
+                Pinl = PS + ((3*hfl)/4);
+                Pfl = PS - (hfl / 4);
             }
             else if (document.getElementById("Aclivep").checked)
             {
-                let hfl = 0.3*PS - DZl;
+                hfl = 0.3*PS - DZl;
                 if (Math.sign(hfl) == -1 || Math.sign(hfl) == 0)
                 {
                     hfl = DZl;
                 }   
-                let Pinl = PS + ((3*hfl)/4)+ 0.5*DZl;
-                let Pfl = PS - (hfl / 4) - Dzl / 2;
+                Pinl = PS + ((3*hfl)/4)+ 0.5*DZl;
+                Pfl = PS - (hfl / 4) - Dzl / 2;
             }
             else if (document.getElementById("Declivep").checked)
             {
-                let hfl = 0.3*PS + DZl;
-                let Pinl = PS + ((3*hfl)/4) - 0.5*DZl;
-                let Pfl = PS - (hfl / 4) + Dzl / 2;
+                hfl = 0.3*PS + DZl;
+                Pinl = PS + ((3*hfl)/4) - 0.5*DZl;
+                Pfl = PS - (hfl / 4) + Dzl / 2;
             }
 
-            let Pcn = parseFloat(document.getElementById('Pcn').value);
-            let messageCanhao = "Não foi possível atingir a pressão de serviço do canhão, redimensionar";
+            var Pcn = parseFloat(document.getElementById('Pcn').value);
+            var messageCanhao = "Não foi possível atingir a pressão de serviço do canhão, redimensionar";
             if(Pfl < Pcn){
                 document.getElementById('warn').innerHTML = messageCanhao;
             }
 
-            let F1 = (1/(2.852))+(1/(2*parseInt(NaspL1)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(NaspL1),2)));
-            let F2 = (1/(2.852))+(1/(2*parseInt(NaspL2)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(NaspL2),2)));
-            let F3 = (1/(2.852))+(1/(2*parseInt(NaspL3)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(NaspL3),2)));
-            let F4 = (1/(2.852))+(1/(2*parseInt(NaspL4)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(NaspL4),2)));
+            var F1 = (1/(2.852))+(1/(2*parseInt(NaspL1)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(NaspL1),2)));
+            var F2 = (1/(2.852))+(1/(2*parseInt(NaspL2)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(NaspL2),2)));
+            var F3 = (1/(2.852))+(1/(2*parseInt(NaspL3)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(NaspL3),2)));
+            var F4 = (1/(2.852))+(1/(2*parseInt(NaspL4)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(NaspL4),2)));
 
-            let Cp = parseFloat(document.getElementById('Cp').value);
+            var Cp = parseFloat(document.getElementById('Cp').value);
             
-            let Dt1 = Math.pow((10.643 * Math.pow((((Qf/4)/3600) / Cp),1.852) * (L1 / hfl) * F1), 0.205);
-            let Dt2 = Math.pow((10.643 * Math.pow((((Qf/4)/3600) / Cp),1.852) * (L2 / hfl) * F2), 0.205);
-            let Dt3 = Math.pow((10.643 * Math.pow((((Qf/4)/3600) / Cp),1.852) * (L3 / hfl) * F3), 0.205);
-            let Dt4 = Math.pow((10.643 * Math.pow((((Qf/4)/3600) / Cp),1.852) * (L4 / hfl) * F4), 0.205);
+            var Dt1 = Math.pow((10.643 * Math.pow((((Qf/4)/3600) / Cp),1.852) * (L1 / hfl) * F1), 0.205);
+            var Dt2 = Math.pow((10.643 * Math.pow((((Qf/4)/3600) / Cp),1.852) * (L2 / hfl) * F2), 0.205);
+            var Dt3 = Math.pow((10.643 * Math.pow((((Qf/4)/3600) / Cp),1.852) * (L3 / hfl) * F3), 0.205);
+            var Dt4 = Math.pow((10.643 * Math.pow((((Qf/4)/3600) / Cp),1.852) * (L4 / hfl) * F4), 0.205);
 
             const Resp5 = "O diametro dos tubos (m) dos ";
-            let D1 = Resp5 + toString(L1.toFixed(3)) + Resp2 + toString(L2.toFixed(3)) + Resp3 + toString(Dt1.toFixed(4));
-            let D2 = Resp5 + toString(L2.toFixed(3)) + Resp2 + toString(L3.toFixed(3)) + Resp3 + toString(Dt2.toFixed(4));
-            let D3 = Resp5 + toString(L3.toFixed(3)) + Resp2 + toString(L4.toFixed(3)) + Resp3 + toString(Dt3.toFixed(4));
-            let D4 = Resp5 + toString(L4.toFixed(3)) + Resp2 + toString(R.toFixed(3)) + Resp3 + toString(Dt4.toFixed(4));
+            var D1 = Resp5 + L1.toFixed(3).toString() + Resp2 + L2.toFixed(3).toString() + Resp3 + Dt1.toFixed(4).toString();
+            var D2 = Resp5 + L2.toFixed(3).toString() + Resp2 + L3.toFixed(3).toString() + Resp3 + Dt2.toFixed(4).toString();
+            var D3 = Resp5 + L3.toFixed(3).toString() + Resp2 + L4.toFixed(3).toString() + Resp3 + Dt3.toFixed(4).toString();
+            var D4 = Resp5 + L4.toFixed(3).toString() + Resp2 + R.toFixed(3).toString() + Resp3 + Dt4.toFixed(4).toString();
 
-            let Ls = parseFloat(document.getElementById('Ls').value);
+            document.getElementById('D1').innerHTML = D1;
+            document.getElementById('D2').innerHTML = D2;
+            document.getElementById('D3').innerHTML = D3;
+            document.getElementById('D4').innerHTML = D4;
+
+            var Ls = parseFloat(document.getElementById('Ls').value);
             var VE = parseFloat(document.getElementById('VE').value);
-            let Ds = Math.sqrt(((4*(Qf/3600))/(Math.PI*VE)));
+            var Ds = Math.sqrt(((4*(Qf/3600))/(Math.PI*VE)));
             document.getElementById('Ds').innerHTML = Ds.toFixed(4);
-            let Cs = parseFloat(document.getElementById('Cs').value);
+            var Cs = parseFloat(document.getElementById('Cs').value);
             var hs = 10.643 * Math.pow(((3*(Qf/3600))/Cs),1.852)*Math.pow(Ds,-4.87)*Ls;
 
-            let Dhs = parseFloat(document.getElementById('Dhs').value);
+            var Dhs = parseFloat(document.getElementById('Dhs').value);
             if (document.getElementById("Declives").checked)
             {
                 Dhs = -Dhs;
             }
-            let HMT = (Dhs + hs + hfl + Pinl + DZl + Pcn) * 1.05;
-            let n = parseFloat(document.getElementById('n').value);
-            let Pot = ( ( Qf / HMT) / ( 75 * n) ) * 1.1;
+            var HMT = (Dhs + hs + hfl + Pinl + DZl + Pcn) * 1.05;
+            var n = parseFloat(document.getElementById('n').value);
+            var Pot = ( ( Qf / HMT) / ( 75 * n) ) * 1.1;
             document.getElementById('HMT').innerHTML = HMT.toFixed(3);
             document.getElementById('Pot').innerHTML = Pot.toFixed(3);
         }
