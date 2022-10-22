@@ -115,9 +115,7 @@
 
                     <div class="tab_pane" id="mat" style="display: none;">
 
-                        <input class="input" type="number" step="0.0001" id="to" placeholder="Tempo de funcionamento diário (h)">
                         <br><input class="input" type="number" step="0.0001" id="tv" placeholder="Tempo para dar uma volta (h)">
-                        <br><input class="input" type="number" step="0.0001" id="vd" placeholder="Velocidade de deslocamento da ultima torre (m/h)">
                         <br><input class="input" type="number" step="0.0001" id="Cp" placeholder="Coeficiente de Hazen-Williams do tubo do pivô">
                         <br><input class="input" type="number" step="0.0001" id="Cs" placeholder="Coeficiente de Hazen-Williams do tubo de sucção">
                         <br><input class="input" type="number" step="0.0001" id="VE" placeholder="Velocidade de escoamento na linha de sucção">
@@ -132,7 +130,9 @@
                 Dimensionar!
             </button>
 
-            <span style="background-color: #f0f7da;" id="warn"></span>
+            <span style="background-color: #f0f7da; display: none;" id="warn">
+                Não foi possível atingir a pressão de serviço do canhão, redimensionar
+            </span>
 
             <div class="boxresults" id="minhaDiv" style="display: none;">
                     <center><div class="titresp">Resultados</div></center>
@@ -175,19 +175,21 @@
         function DimensionarPivo(el){
             
             document.getElementById(el).style.display = "block";
-
+            
+            // Lâmina de aplicação
             var Eto = parseFloat(document.getElementById('Eto').value);
-            var Kc = parseFloat(document.getElementById('Kc').value);
-
+            var Kc = parseFloat(document.getElementById('Kc').value); 
+            
             var Lam = Eto * Kc;
 
-            var to = parseFloat(document.getElementById('to').value);
+            // Vazão total
+            var tv = parseFloat(document.getElementById('tv').value);
             var R = parseFloat(document.getElementById('R').value);
             var Rasp = parseFloat(document.getElementById('Rasp').value);
+            var Qcn = parseFloat(document.getElementById('Qcn').value);
 
             var Area = Math.PI * Math.pow((R + (Rasp/2)), 2);
-            var Q = (Lam * 1000 *  Area ) / to;
-            var Qcn = parseFloat(document.getElementById('Qcn').value);
+            var Q = (Lam * Area ) / ( tv * 1000);
 
             var Qf = Q;
             if(document.getElementById("canhao").checked){
@@ -195,38 +197,45 @@
             }
             document.getElementById('Qf').innerHTML = Qf.toFixed(3);
 
-            var L1 = (Math.sqrt(Area*Math.PI)) / 2;
-            var L2 = L1 * Math.sqrt(2) - L1;
-            var L3 = (L1 + L2) * Math.sqrt(2) - (L1 + L2);
-            var L4 = (L1 + L2 + L3) * Math.sqrt(2) - (L1 + L2 + L3);
+            // Divisão do pivô em 4 partes
+            var R1 = Math.sqrt(Area / ( 4 * Math.PI ));
+            var R2 = Math.sqrt(Area / ( 2 * Math.PI ));
+            var R3 = Math.sqrt((3*Area) / ( 4 * Math.PI ));
+            var R4 = R;
 
+            var L1 = R1;
+            var L2 = R2 - R1;
+            var L3 = R3 - R2;
+            var L4 = R4 - R3;
+
+            // Intensidade de Aplicação
             var Dasp = 2 * Rasp;
-            var tv = parseFloat(document.getElementById('tv').value);
             
-            var tr1 = (tv * Dasp) / 2 * Math.PI * L1;
-            var tr2 = (tv * Dasp) / 2 * Math.PI * L2;
-            var tr3 = (tv * Dasp) / 2 * Math.PI * L3;
-            var tr4 = (tv * Dasp) / 2 * Math.PI * L4;
+            var tr1 = (tv * Dasp) / ( 2 * Math.PI * (R1 / 2) );
+            var tr2 = (tv * Dasp) / ( 2 * Math.PI * (R1 + (L2/2)) );
+            var tr3 = (tv * Dasp) / ( 2 * Math.PI * (R2 + (L3/2)) );
+            var tr4 = (tv * Dasp) / ( 2 * Math.PI * (R3 + (L4/2)) );
 
             Ia1 = Lam / tr1;
             Ia2 = Lam / tr2;
             Ia3 = Lam / tr3;
             Ia4 = Lam / tr4;
 
-            const Resp = "A intensidade de aplicação (mm/h) dos ";
+            const Resp = "A intensidade de aplicação de cada aspersor (mm/h) dos ";
             const Resp2 = " aos ";
             const Resp3 = " metros é de ";
 
-            var Ia1R = Resp + L1.toFixed(3).toString() + Resp2 + L2.toFixed(3).toString() + Resp3 + Ia1.toFixed(3).toString();
-            var Ia2R = Resp + L2.toFixed(3).toString() + Resp2 + L3.toFixed(3).toString() + Resp3 + Ia2.toFixed(3).toString();
-            var Ia3R = Resp + L3.toFixed(3).toString() + Resp2 + L4.toFixed(3).toString() + Resp3 + Ia3.toFixed(3).toString();
-            var Ia4R = Resp + L4.toFixed(3).toString() + Resp2 + R.toFixed(3).toString() + Resp3 + Ia4.toFixed(3).toString();
+            var Ia1R = Resp + "0" + Resp2 + R1.toFixed(3).toString() + Resp3 + Ia1.toFixed(3).toString();
+            var Ia2R = Resp + R1.toFixed(3).toString() + Resp2 + R2.toFixed(3).toString() + Resp3 + Ia2.toFixed(3).toString();
+            var Ia3R = Resp + R2.toFixed(3).toString() + Resp2 + R3.toFixed(3).toString() + Resp3 + Ia3.toFixed(3).toString();
+            var Ia4R = Resp + R3.toFixed(3).toString() + Resp2 + R4.toFixed(3).toString() + Resp3 + Ia4.toFixed(3).toString();
 
             document.getElementById('Ia1R').innerHTML = Ia1R;
             document.getElementById('Ia2R').innerHTML = Ia2R;
             document.getElementById('Ia3R').innerHTML = Ia3R;
             document.getElementById('Ia4R').innerHTML = Ia4R;
 
+            // Vazão dos aspersores
             var Easp = parseFloat(document.getElementById('Easp').value);
 
             var NaspL1 = L1 / Easp;
@@ -240,18 +249,19 @@
             var Qasp4 = (Q / 4) / NaspL4;
 
             const Resp4 = "A vazão dos aspersores (m3/h) dos ";
-            var Qa1R = Resp4 + L1.toFixed(3).toString() + Resp2 + L2.toFixed(3).toString() + Resp3 + Qasp1.toFixed(3).toString();
-            var Qa2R = Resp4 + L2.toFixed(3).toString() + Resp2 + L3.toFixed(3).toString() + Resp3 + Qasp2.toFixed(3).toString();
-            var Qa3R = Resp4 + L3.toFixed(3).toString() + Resp2 + L4.toFixed(3).toString() + Resp3 + Qasp3.toFixed(3).toString();
-            var Qa4R = Resp4 + L4.toFixed(3).toString() + Resp2 + R.toFixed(3).toString() + Resp3 + Qasp4.toFixed(3).toString();
+            var Qa1R = Resp4 + "0" + Resp2 + R1.toFixed(3).toString() + Resp3 +  Qasp1.toFixed(3).toString();
+            var Qa2R = Resp4 + R1.toFixed(3).toString() + Resp2 + R2.toFixed(3).toString() + Resp3 + Qasp2.toFixed(3).toString();
+            var Qa3R = Resp4 + R2.toFixed(3).toString() + Resp2 + R3.toFixed(3).toString() + Resp3 + Qasp3.toFixed(3).toString();
+            var Qa4R = Resp4 + R3.toFixed(3).toString() + Resp2 + R4.toFixed(3).toString() + Resp3 + Qasp4.toFixed(3).toString();
 
             document.getElementById('Qa1R').innerHTML = Qa1R;
             document.getElementById('Qa2R').innerHTML = Qa2R;
             document.getElementById('Qa3R').innerHTML = Qa3R;
             document.getElementById('Qa4R').innerHTML = Qa4R;
 
+            // Pressões e perdas de carga
             var PS = parseFloat(document.getElementById('Pasp').value);
-            var DZl = parseFloat(document.getElementById('Dhp').value);
+            let DZl = 0;
 
             var hfl;
             var Pinl;
@@ -265,6 +275,7 @@
             }
             else if (document.getElementById("Aclivep").checked)
             {
+                Dzl = parseFloat(document.getElementById('Dhp').value);
                 hfl = 0.3*PS - DZl;
                 if (Math.sign(hfl) == -1 || Math.sign(hfl) == 0)
                 {
@@ -275,55 +286,73 @@
             }
             else if (document.getElementById("Declivep").checked)
             {
+                Dzl = parseFloat(document.getElementById('Dhp').value);
                 hfl = 0.3*PS + DZl;
                 Pinl = PS + ((3*hfl)/4) - 0.5*DZl;
                 Pfl = PS - (hfl / 4) + Dzl / 2;
             }
-
-            var Pcn = parseFloat(document.getElementById('Pcn').value);
-            var messageCanhao = "Não foi possível atingir a pressão de serviço do canhão, redimensionar";
-            if(Pfl < Pcn){
-                document.getElementById('warn').innerHTML = messageCanhao;
-            }
-
+            
+            //F de cada parte
             var F1 = (1/(2.852))+(1/(2*parseInt(NaspL1)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(NaspL1),2)));
             var F2 = (1/(2.852))+(1/(2*parseInt(NaspL2)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(NaspL2),2)));
             var F3 = (1/(2.852))+(1/(2*parseInt(NaspL3)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(NaspL3),2)));
             var F4 = (1/(2.852))+(1/(2*parseInt(NaspL4)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(NaspL4),2)));
-
-            var Cp = parseFloat(document.getElementById('Cp').value);
             
+            // Diâmetro dos tubos de cada setor
+            var Cp = parseFloat(document.getElementById('Cp').value);
+
             var Dt1 = Math.pow((10.643 * Math.pow((((Qf/4)/3600) / Cp),1.852) * (L1 / hfl) * F1), 0.205);
             var Dt2 = Math.pow((10.643 * Math.pow((((Qf/4)/3600) / Cp),1.852) * (L2 / hfl) * F2), 0.205);
             var Dt3 = Math.pow((10.643 * Math.pow((((Qf/4)/3600) / Cp),1.852) * (L3 / hfl) * F3), 0.205);
             var Dt4 = Math.pow((10.643 * Math.pow((((Qf/4)/3600) / Cp),1.852) * (L4 / hfl) * F4), 0.205);
 
             const Resp5 = "O diametro dos tubos (m) dos ";
-            var D1 = Resp5 + L1.toFixed(3).toString() + Resp2 + L2.toFixed(3).toString() + Resp3 + Dt1.toFixed(4).toString();
-            var D2 = Resp5 + L2.toFixed(3).toString() + Resp2 + L3.toFixed(3).toString() + Resp3 + Dt2.toFixed(4).toString();
-            var D3 = Resp5 + L3.toFixed(3).toString() + Resp2 + L4.toFixed(3).toString() + Resp3 + Dt3.toFixed(4).toString();
-            var D4 = Resp5 + L4.toFixed(3).toString() + Resp2 + R.toFixed(3).toString() + Resp3 + Dt4.toFixed(4).toString();
+            var D1 = Resp5 + "0" + Resp2 + R1.toFixed(3).toString() + Resp3 + Dt1.toFixed(4).toString();
+            var D2 = Resp5 + R1.toFixed(3).toString() + Resp2 + R2.toFixed(3).toString() + Resp3 + Dt2.toFixed(4).toString();
+            var D3 = Resp5 + R2.toFixed(3).toString() + Resp2 + R3.toFixed(3).toString() + Resp3 + Dt3.toFixed(4).toString();
+            var D4 = Resp5 + R3.toFixed(3).toString() + Resp2 + R.toFixed(3).toString() + Resp3 + Dt4.toFixed(4).toString();
 
             document.getElementById('D1').innerHTML = D1;
             document.getElementById('D2').innerHTML = D2;
             document.getElementById('D3').innerHTML = D3;
             document.getElementById('D4').innerHTML = D4;
 
+            // Diâmetro da linha de sucção
             var Ls = parseFloat(document.getElementById('Ls').value);
             var VE = parseFloat(document.getElementById('VE').value);
             var Ds = Math.sqrt(((4*(Qf/3600))/(Math.PI*VE)));
             document.getElementById('Ds').innerHTML = Ds.toFixed(4);
             var Cs = parseFloat(document.getElementById('Cs').value);
-            var hs = 10.643 * Math.pow(((3*(Qf/3600))/Cs),1.852)*Math.pow(Ds,-4.87)*Ls;
+            var hs = 10.643 * Math.pow((((Qf/3600))/Cs),1.852)*Math.pow(Ds,-4.87)*Ls;
 
-            var Dhs = parseFloat(document.getElementById('Dhs').value);
+            let Dhs = 0;
             if (document.getElementById("Declives").checked)
             {
-                Dhs = -Dhs;
+                Dhs = parseFloat(document.getElementById('Dhs').value) * -1;
             }
-            var HMT = (Dhs + hs + hfl + Pinl + DZl + Pcn) * 1.05;
+            else if (document.getElementById("Aclives").checked)
+            {
+                Dhs = parseFloat(document.getElementById('Dhs').value);
+            }
+            // Bomba manométrica
+            if(document.getElementById("canhao").checked){
+                var Pcn = parseFloat(document.getElementById('Pcn').value);
+                if(Pfl < Pcn){
+                    document.getElementById("warn").style.display = "block";
+                }
+                else if(Pfl => Pcn){
+                    document.getElementById("warn").style.display = "none";
+                }
+                var HMT = (Dhs + hs + hfl + Pinl + DZl + Pcn) * 1.05;
+            }
+            console.log(Dhs);
+            console.log(hs);
+            console.log(hfl);
+            console.log(Pinl);
+            console.log(DZl);
+            var HMT = (Dhs + hs + hfl + Pinl + DZl) * 1.05;
             var n = parseFloat(document.getElementById('n').value);
-            var Pot = ( ( Qf / HMT) / ( 75 * n) ) * 1.1;
+            var Pot = ( ( (Qf*0.277778) * HMT) / ( 75 * n) ) * 1.1;
             document.getElementById('HMT').innerHTML = HMT.toFixed(3);
             document.getElementById('Pot').innerHTML = Pot.toFixed(3);
         }
