@@ -215,6 +215,7 @@ h5{
     margin-top: 20px;
     border-radius: 5px;
     border: 2px solid #1f192f;
+    min-width: 500px;
 }
 .nav{
     display: flex;

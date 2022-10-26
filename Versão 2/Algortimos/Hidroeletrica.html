@@ -1,0 +1,213 @@
+<html>
+    <head>
+        <title>
+            Guyri - Hidroelétrica
+        </title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="functions.js"></script>
+    </head>
+    <header class="header">
+        <img class="logo_header" src="Icones/Logotipo 2.png">
+        <div class="title_header">
+            <h1 style="background-color: #b5e8c3; font-size: 30px;">ARA</h1>
+            <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSSISTEMAS</h3>
+        </div>
+        <a class="return_initial" href="initial_page.html">Home</a>
+    </header>
+    <body>
+    <div class="body_sizing">   
+        <div class="main_lateral_dropdown">
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/irrigation.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Gotejamento.html">Gotejamento</a>
+                    <a class="link" href="Aspersao.html">Aspersão</a>
+                    <a class="link" href="Micro_Aspersao.html">Micro-Aspersão</a>
+                    <a class="link" href="Pivo_Central.html">Pivô Central</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/solar-energy.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Aquecimento_Solar.html">Aquecimento Solar</a>
+                    <a class="link" href="Fotovoltaica.html">Fotovoltaica</a>
+                    <a class="link" href="Eolica.html">Eólica</a>
+                    <a class="link" href="Hidroeletrica.html">Hidroelétrica</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/bacteria.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Biodigestor.html">Biodigestor</a>
+                    <a class="link" href="Compostagem.html">Compostagem</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/greenhouse.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Ventilacao_Forcada.html">Ventilação Forçada</a>
+                    <a class="link" href="Ar_Condicionado.html">Ar Condicionado</a>
+                    <a class="link" href="Nebulizacao.html">Nebulização</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn" href="Analise_Economica.html">
+                    <img class="icon" src="Icones/dollar-currency-symbol.png">
+                </button>
+            </div>
+
+        </div>
+        <div class="main_section">
+            <div class="calculator">
+
+                <ul class="nav">
+                    <button class="nav_link active" id="esc_bt" onclick="openTab(event, 'esc')">Escolha da Turbina</button>
+                    <button class="nav_link" id="par_bt" style="display: none;">Parâmetros da Turbina</button>
+                </ul>
+
+                <div class="tab_content">
+
+                    <div class="tab_pane" id="esc">
+
+                        <input class="input" type="number" step="0.0001" id="H" placeholder="Altura de queda (m)">
+                        <br><input class="input" type="number" step="0.0001" id="Q" placeholder="Vazão da queda (m3/s)">
+                        <br><input class="input" type="number" step="0.0001" id="N" placeholder="Velocidade angular de rotação (rpm)"> 
+                        <br><input class="input" type="number" step="0.0001" id="n" placeholder="Rendimento da turbina (%)"> 
+                        <br>
+                        <button class="result" onclick="mudarParaParametro(event, 'par');">
+                            Escolher turbina!
+                        </button>
+
+                    </div>
+
+                    <div class="tab_pane" id="par" style="display: none;">
+
+                        <div class="turbina" id="francis" style="background-color: #65b8a6;display: none;">
+                            <span>Francis</span>
+                        </div>
+
+                        <div class="turbina" id="pelton" style="background-color: #65b8a6;display: none;">
+                            <span>Pelton</span>
+                        </div>
+
+                        <div class="turbina" id="kaplan" style="background-color: #65b8a6;display: none;">
+                            <span>Kaplan</span>
+                        </div>
+
+                        <div class="turbina" id="michell-blank" style="background-color: #65b8a6;display: none;">
+                            <span>Michell-Blank</span>
+                        </div>
+
+                        <div class="turbina" id="nenhum" style="background-color: #65b8a6;display: none;">
+                            <span>Nenhum</span>
+                        </div>
+
+                        <br>
+                        <button class="result" onclick="DimensionarHidroeletrica('minhaDiv');">
+                            Dimensionar!
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <br>
+            <br>
+
+            <div class="boxresults" id="minhaDiv" style="display: none;">
+                    <center><div class="titresp">Resultados</div></center>
+                    <div class="respostas">Potência da turbina (kW/h): <span id="Pot"></span></div>
+                    <div class="respostas">Velocidade específica (rpm): <span id="Ns"></span></div>
+                    <button class="generate_pdf"> Gerar PDF </button>
+            </div>
+        </div>
+        <div>
+
+        </div>
+    </div>
+    </body>
+    <script>
+
+        var Q = 0;
+        var H = 0;
+        var N = 0;
+        var n = 0;
+        var Pot = 0;
+        var Ns = 0;
+
+        function mudarParaParametro(evt, tabName){
+
+            var turbName = 0;
+            Pot = 0;
+            Ns = 0;
+            Q = parseFloat(document.getElementById('Q').value);
+            H = parseFloat(document.getElementById('H').value);
+            N = parseFloat(document.getElementById('N').value);
+            n = parseFloat(document.getElementById('n').value);
+
+            Pot = Q * ( n / 100) * 1000 * H * 9.81 ;
+
+            Ns = N * Math.pow(Pot, 0.5) * Math.pow(H, -1.25);
+
+            document.getElementById('Pot').innerHTML = Pot.toFixed(3);
+            document.getElementById('Ns').innerHTML = Ns.toFixed(3);
+
+            var i, tab_pane, tab_link;
+
+            tab_pane = document.getElementsByClassName("tab_pane");
+            for (i = 0; i < tab_pane.length; i++) {
+                tab_pane[i].style.display = "none";
+            }
+
+            tab_link = document.getElementsByClassName("nav_link");
+            for (i = 0; i < tab_link.length; i++) {
+                tab_link[i].className = tab_link[i].className.replace(" active", "");
+            }
+
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById('par_bt').style.display = "block";
+            document.getElementById('par_bt').className += " active";
+
+            if(H >= 100 && 18 <= Ns && Ns <= 90 ){
+                turbName = 'pelton';
+            }
+            else if(H >= 10 && H <= 450 && 70 <= Ns && Ns <= 450 ){
+                turbName = 'francis';
+            }
+            else if(H >= 10 && H <= 70 && 250 <= Ns ){
+                turbName = 'kaplan';
+            }
+            else if(H >= 10 && H <= 100 && 30 <= Ns && Ns <= 180 ){
+                turbName = 'michell-blank';
+            }
+            else{
+                turbName = 'nenhum';
+            }
+
+            document.getElementById(turbName).style.display = "block";
+
+        }
+
+        function DimensionarHidroeletrica(el){
+
+            document.getElementById(el).style.display = "block";
+
+            
+        }
+    </script>
+</html>
