@@ -96,27 +96,31 @@
                     <div class="tab_pane" id="par" style="display: none;">
 
                         <div class="turbina" id="francis" style="background-color: #65b8a6;display: none;">
-                            <span>Francis</span>
+                            <span style="color:#f0f7da">Francis</span>
+                            <br><span style="color:#f0f7da">Mais nenhuma informação requerida, clique em Dimensionar</span>
                         </div>
 
                         <div class="turbina" id="pelton" style="background-color: #65b8a6;display: none;">
-                            <span>Pelton</span>
+                            <span style="color:#f0f7da">Pelton</span>
+                            <br><input class="input" type="number" step="0.0001" id="hDaPa" placeholder="Altura da pá (m)">
                         </div>
 
                         <div class="turbina" id="kaplan" style="background-color: #65b8a6;display: none;">
-                            <span>Kaplan</span>
+                            <span style="color:#f0f7da">Kaplan</span>
+                            <br><span style="color:#f0f7da">Mais nenhuma informação requerida, clique em Dimensionar</span>
                         </div>
 
                         <div class="turbina" id="michell-blank" style="background-color: #65b8a6;display: none;">
-                            <span>Michell-Blank</span>
-                        </div>
-
-                        <div class="turbina" id="nenhum" style="background-color: #65b8a6;display: none;">
-                            <span>Nenhum</span>
+                            <span style="color:#f0f7da">Michell-Blank</span>
+                            <br><span>Ângulo de admissão, considerando um ângulo de injeção de 16°</span>
+                            <br><input type="radio" name="ang" id="30"/><span>30°</span>
+                            <input type="radio" name="ang" id="60"/><span>60°</span>
+                            <input type="radio" name="ang" id="90"/><span>90°</span>
+                            <input type="radio" name="ang" id="120"/><span>120°</span>
                         </div>
 
                         <br>
-                        <button class="result" onclick="DimensionarHidroeletrica('minhaDiv');">
+                        <button class="result" onclick="DimensionarHidroeletrica('divHidroeletrica');">
                             Dimensionar!
                         </button>
 
@@ -129,10 +133,22 @@
             <br>
             <br>
 
-            <div class="boxresults" id="minhaDiv" style="display: none;">
+            <div class="boxresults" id="divHidroeletrica" style="display: none;">
                     <center><div class="titresp">Resultados</div></center>
                     <div class="respostas">Potência da turbina (kW/h): <span id="Pot"></span></div>
                     <div class="respostas">Velocidade específica (rpm): <span id="Ns"></span></div>
+                    <div class="resultado" id="Francis" style="display: none;">
+                        francis
+                    </div>
+                    <div class="resultado" id="Pelton" style="display: none;">
+                        pelton
+                    </div>
+                    <div class="resultado" id="Kaplan" style="display: none;">
+                        kaplan
+                    </div>
+                    <div class="resultado" id="Michell-Blank" style="display: none;">
+                        michell-blank
+                    </div>
                     <button class="generate_pdf"> Gerar PDF </button>
             </div>
         </div>
@@ -149,10 +165,10 @@
         var n = 0;
         var Pot = 0;
         var Ns = 0;
+        var turbName;
 
         function mudarParaParametro(evt, tabName){
 
-            var turbName = 0;
             Pot = 0;
             Ns = 0;
             Q = parseFloat(document.getElementById('Q').value);
@@ -167,7 +183,7 @@
             document.getElementById('Pot').innerHTML = Pot.toFixed(3);
             document.getElementById('Ns').innerHTML = Ns.toFixed(3);
 
-            var i, tab_pane, tab_link;
+            var i, tab_pane, tab_link, tab_Name;
 
             tab_pane = document.getElementsByClassName("tab_pane");
             for (i = 0; i < tab_pane.length; i++) {
@@ -195,19 +211,43 @@
             else if(H >= 10 && H <= 100 && 30 <= Ns && Ns <= 180 ){
                 turbName = 'michell-blank';
             }
-            else{
-                turbName = 'nenhum';
-            }
 
+            tab_Name = document.getElementsByClassName("turbina");
+            for (i = 0; i < tab_Name.length; i++) {
+                tab_Name[i].style.display = "none";
+            }
             document.getElementById(turbName).style.display = "block";
 
+            return(turbName);
         }
 
         function DimensionarHidroeletrica(el){
 
             document.getElementById(el).style.display = "block";
 
-            
+            let turbinaNome;
+            let tabNome;
+
+            if(turbName == 'pelton'){
+                turbinaNome = "Pelton";
+
+            }
+            else if(turbName == 'francis'){
+                turbinaNome = "Francis";
+            }
+            else if(turbName == 'kaplan'){
+                turbinaNome = "Kaplan";
+            }
+            else if(turbName == 'michell-blank'){
+                turbinaNome = "Michell-Blank";
+            }
+
+            tab_Nome = document.getElementsByClassName("resultado");
+            for (i = 0; i < tab_Nome.length; i++) {
+                tab_Nome[i].style.display = "none";
+            }
+            document.getElementById(turbinaNome).style.display = "block";
+
         }
     </script>
 </html>

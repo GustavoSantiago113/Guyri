@@ -16,5 +16,6 @@ function openTab(evt, tabName){
     evt.currentTarget.className += " active";
 
     document.getElementById('par_bt').style.display = "none";
+    document.getElementById('divHidroeletrica').style.display = "none";
 
 }
