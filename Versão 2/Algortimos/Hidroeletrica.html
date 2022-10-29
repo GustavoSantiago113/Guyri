@@ -102,7 +102,6 @@
 
                         <div class="turbina" id="pelton" style="background-color: #65b8a6;display: none;">
                             <span style="color:#f0f7da">Pelton</span>
-                            <br><input class="input" type="number" step="0.0001" id="hDaPa" placeholder="Altura da pá (m)">
                         </div>
 
                         <div class="turbina" id="kaplan" style="background-color: #65b8a6;display: none;">
@@ -138,10 +137,24 @@
                     <div class="respostas">Potência da turbina (kW/h): <span id="Pot"></span></div>
                     <div class="respostas">Velocidade específica (rpm): <span id="Ns"></span></div>
                     <div class="resultado" id="Francis" style="display: none;">
-                        francis
+                        <div class="respostas">Tipo de turbina: <span id="Tdtf"></span></div>
+                        <div class="respostas">Diâmetro do tubo de sucção (mm): <span id="Dtsf"></span></div>
+                        <div class="respostas">Velocidade de saída (m/s): <span id="Vsf"></span></div>
+                        <div class="respostas">Diâmetro externo do rotor (mm): <span id="Derf"></span></div>
+                        <div class="respostas">Diâmetro interno do rotor (mm): <span id="Dirf"></span></div>
+                        <div class="respostas">Largura da coroa diretriz (mm): <span id="Lcdf"></span></div>
+                        <div class="respostas">Número de pás: <span id="Npf"></span></div>
                     </div>
                     <div class="resultado" id="Pelton" style="display: none;">
-                        pelton
+                        <div class="respostas">Número de jatos injetores: <span id="Nji"></span></div>
+                        <div class="respostas">Diâmetro do jato injetor (mm): <span id="Djip"></span></div>
+                        <div class="respostas">Diâmetro médio do rotor (mm): <span id="Dmrp"></span></div>
+                        <div class="respostas">Diâmetro externo do rotor(mm): <span id="Derp"></span></div>
+                        <div class="respostas">Largura da pá (mm): <span id="Lpp"></span></div>
+                        <div class="respostas">Altura da pá (mm): <span id="App"></span></div>
+                        <div class="respostas">Espessura da pá (mm): <span id="Epp"></span></div>
+                        <div class="respostas">Número de pás: <span id="Npp"></span></div>
+                        <div class="respostas">Passo entre as pás (mm): <span id="Pepp"></span></div>
                     </div>
                     <div class="resultado" id="Kaplan" style="display: none;">
                         kaplan
@@ -231,9 +244,97 @@
             if(turbName == 'pelton'){
                 turbinaNome = "Pelton";
 
+                let Nji, Djip, Dmrp, Derp, Lpp, App, Epp, Npp, Pepp;
+
+                if(Ns >= 18 && Ns <= 35){
+                    Nji = 1;
+                }
+                else if(Ns > 35 && Ns <= 50){
+                    Nji = 2;
+                }
+                else if(Ns > 50 && Ns <= 71){
+                    Nji = 4;
+                }
+                else if(Ns > 71 && Ns <= 90){
+                    Nji = 6;
+                }
+                document.getElementById("Nji").innerHTML = Nji;
+                
+                Djip = 500*( Math.sqrt( (Q) / (Nji * Math.sqrt(H) ) ) );
+                document.getElementById("Djip").innerHTML = Djip;
+
+                Dmrp = 38 * ( ( 1000 * Math.sqrt( H ) ) / N );
+                document.getElementById("Dmrp").innerHTML = Dmrp;
+
+                App = 3.5 * Djip;
+                document.getElementById("App").innerHTML = App;
+
+                Derp = Dmrp + 2 *( ( 3/5 ) * App);
+                document.getElementById("Derp").innerHTML = Derp;
+
+                Lpp = 3.75 * Djip;
+                document.getElementById("Lpp").innerHTML = Lpp;
+
+                Epp = 1.5 * Djip;
+                document.getElementById("Epp").innerHTML = Epp;
+
+                Npp = ( 1/2 * ( Dmrp / Djip ) ) + 15;
+                document.getElementById("Npp").innerHTML = Npp;
+
+                Pepp = ( Math.PI * Dmrp ) / Npp;
+                document.getElementById("Pepp").innerHTML = Pepp;
+
             }
             else if(turbName == 'francis'){
                 turbinaNome = "Francis";
+
+                let Tdtf, Dtsf, Vsf, Derf, Dirf, Lcdf, Npf;
+
+                if(71 >= 18 && Ns <= 120){
+                    Tdtf = "Lenta";
+                    Vsf = Math.sqrt( (2 * 9.8 * 0.04 * H ) / 100 );
+                    Dtsf = 1000 * Math.sqrt( (4 * Q) / ( Math.PI * Vsf) );
+                    Derf = Dtsf * ( 0.4 + ( 94.5 / Ns ) );
+                    Dirf = Dtsf * ( 0.96 + 0.00038 * Ns );
+                    Lcdf = Derf * ( ( ( ( Ns - 60 ) * 0.07 ) / 65 ) + 0.0995);
+                    Npf = 18 - ( ( Ns - 60 ) / 65 );
+                }
+                else if(Ns > 120 && Ns <= 200){
+                    Tdtf = "Normal";
+                    Vsf = Math.sqrt( (2 * 9.8 * 0.06 * H ) / 100 );
+                    Dtsf = 1000 * Math.sqrt( (4 * Q) / ( Math.PI * Vsf) );
+                    Derf = Dtsf * ( 0.4 + ( 94.5 / Ns ) );
+                    Dirf = Dtsf * ( 0.96 + 0.00038 * Ns );
+                    Lcdf = Derf * ( ( ( ( Ns - 125 ) * 0.15 ) / 100 ) + 0.225);
+                    Npf = 17 - ( ( ( Ns - 125 ) * 2 ) / 100 );
+                }
+                else if(Ns > 200 && Ns <= 300){
+                    Tdtf = "Rápida";
+                    Vsf = Math.sqrt( (2 * 9.8 * 0.12 * H ) / 100 );
+                    Dtsf = 1000 * Math.sqrt( (4 * Q) / ( Math.PI * Vsf) );
+                    Derf = Dtsf * ( 0.4 + ( 94.5 / Ns ) );
+                    Dirf = Dtsf * ( 0.96 + 0.00038 * Ns );
+                    Lcdf = Derf * ( ( ( ( Ns - 225 ) * 0.22 ) / 125 ) + 0.2291);
+                    Npf = 15 - ( ( ( Ns - 225 ) * 2 ) / 125 );
+                }
+                else if(Ns > 300 && Ns <= 450){
+                    Tdtf = "Super-Rápida";
+                    Vsf = Math.sqrt( (2 * 9.8 * 0.25 * H ) / 100 );
+                    Dtsf = 1000 * Math.sqrt( (4 * Q) / ( Math.PI * Vsf) );
+                    Derf = Dtsf * ( 0.4 + ( 94.5 / Ns ) );
+                    Dirf = Dtsf * ( 0.96 + 0.00038 * Ns );
+                    Lcdf = Derf * ( ( ( ( Ns - 125 ) * 0.19 ) / 100 ) + 0.35);
+                    Npf = 3 - ( ( Ns - 350 ) / 100 );
+                }
+
+                document.getElementById("Tdtf").innerHTML = Tdtf;
+                document.getElementById("Vsf").innerHTML = Vsf;
+                document.getElementById("Dtsf").innerHTML = Dtsf;
+                document.getElementById("Derf").innerHTML = Derf;
+                document.getElementById("Dirf").innerHTML = Dirf;
+                document.getElementById("Lcdf").innerHTML = Lcdf;
+                document.getElementById("Npf").innerHTML = Npf;
+
             }
             else if(turbName == 'kaplan'){
                 turbinaNome = "Kaplan";
