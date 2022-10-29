@@ -17,5 +17,10 @@ function openTab(evt, tabName){
 
     document.getElementById('par_bt').style.display = "none";
     document.getElementById('divHidroeletrica').style.display = "none";
+    
+    let turb_rad = document.getElementsByClassName("labelturb");
+    for (i = 0; i < turb_rad.length; i++) {
+        turb_rad[i].style.display = "none";
+    }
 
 }

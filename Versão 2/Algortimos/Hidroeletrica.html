@@ -95,7 +95,31 @@
 
                     <div class="tab_pane" id="par" style="display: none;">
 
-                        <div class="turbina" id="francis" style="background-color: #65b8a6;display: none;">
+                        <div style="background-color: #65b8a6;display: none;" id="fran" class="labelturb">
+                            <br><input type="radio" name="turbina" value="turbF" id="turbFrancis">
+                            <label for="turbF" style="background-color: #65b8a6; color:black"> Francis</label>
+                        </div>
+                        <div style="background-color: #65b8a6;display: none;" id="pelt" class="labelturb">
+                            <br><input type="radio" name="turbina" value="turbP" id="turbPelton">
+                            <label for="turbP" style="background-color: #65b8a6; color:black"> Pelton</label>
+                        </div>
+                        <div style="background-color: #65b8a6;display: none;" id="kap" class="labelturb">
+                            <br><input type="radio" name="turbina" value="turbK" id="turbKaplan">
+                            <label for="turbK" style="background-color: #65b8a6; color:black"> Kaplan</label>
+                        </div>
+                        <div style="background-color: #65b8a6;display: none;" id="micbla" class="labelturb">
+                            <br><input type="radio" name="turbina" value="turbMB" id="turbMichellBlank" onclick="MichellBlank();">
+                            <label for="turbMB" style="background-color: #65b8a6; color:black"> Michell-Blank</label>
+                                <div id='MB_select' style="background-color: #65b8a6;display: none;">
+                                    <br><span>Ângulo de admissão, considerando um ângulo de injeção de 16°</span>
+                                    <br><input type="radio" name="ang" id="60"/><span>60°</span>
+                                    <input type="radio" name="ang" id="90"/><span>90°</span>
+                                    <input type="radio" name="ang" id="120"/><span>120°</span>
+                                </div>
+                        </div>
+                        
+
+                        <!-- <div class="turbina" id="francis" style="background-color: #65b8a6;display: none;">
                             <span style="color:#f0f7da">Francis</span>
                             <br><span style="color:#f0f7da">Mais nenhuma informação requerida, clique em Dimensionar</span>
                         </div>
@@ -107,16 +131,12 @@
                         <div class="turbina" id="kaplan" style="background-color: #65b8a6;display: none;">
                             <span style="color:#f0f7da">Kaplan</span>
                             <br><span style="color:#f0f7da">Mais nenhuma informação requerida, clique em Dimensionar</span>
-                        </div>
+                        </div> -->
 
-                        <div class="turbina" id="michell-blank" style="background-color: #65b8a6;display: none;">
+                        <!-- <div class="turbina" id="michell-blank" style="background-color: #65b8a6;display: none;">
                             <span style="color:#f0f7da">Michell-Blank</span>
-                            <br><span>Ângulo de admissão, considerando um ângulo de injeção de 16°</span>
-                            <br><input type="radio" name="ang" id="30"/><span>30°</span>
-                            <input type="radio" name="ang" id="60"/><span>60°</span>
-                            <input type="radio" name="ang" id="90"/><span>90°</span>
-                            <input type="radio" name="ang" id="120"/><span>120°</span>
-                        </div>
+                            
+                        </div> -->
 
                         <br>
                         <button class="result" onclick="DimensionarHidroeletrica('divHidroeletrica');">
@@ -136,7 +156,7 @@
                     <center><div class="titresp">Resultados</div></center>
                     <div class="respostas">Potência da turbina (kW/h): <span id="Pot"></span></div>
                     <div class="respostas">Velocidade específica (rpm): <span id="Ns"></span></div>
-                    <div class="resultado" id="Francis" style="display: none;">
+                    <div class="resultado" id="Francis" style="display: none;background-color: #65b8a6;">
                         <div class="respostas">Tipo de turbina: <span id="Tdtf"></span></div>
                         <div class="respostas">Diâmetro do tubo de sucção (mm): <span id="Dtsf"></span></div>
                         <div class="respostas">Velocidade de saída (m/s): <span id="Vsf"></span></div>
@@ -145,7 +165,7 @@
                         <div class="respostas">Largura da coroa diretriz (mm): <span id="Lcdf"></span></div>
                         <div class="respostas">Número de pás: <span id="Npf"></span></div>
                     </div>
-                    <div class="resultado" id="Pelton" style="display: none;">
+                    <div class="resultado" id="Pelton" style="display: none;background-color: #65b8a6;">
                         <div class="respostas">Número de jatos injetores: <span id="Nji"></span></div>
                         <div class="respostas">Diâmetro do jato injetor (mm): <span id="Djip"></span></div>
                         <div class="respostas">Diâmetro médio do rotor (mm): <span id="Dmrp"></span></div>
@@ -156,11 +176,30 @@
                         <div class="respostas">Número de pás: <span id="Npp"></span></div>
                         <div class="respostas">Passo entre as pás (mm): <span id="Pepp"></span></div>
                     </div>
-                    <div class="resultado" id="Kaplan" style="display: none;">
-                        kaplan
+                    <div class="resultado" id="Kaplan" style="display: none;background-color: #65b8a6;">
+                        <div class="respostas">Diâmetro do tubo de sucção (mm): <span id="Dtsk"></span></div>
+                        <div class="respostas">Velocidade de saída (m/s): <span id="Vsk"></span></div>
+                        <div class="respostas">Diâmetro externo do rotor (mm): <span id="Derk"></span></div>
+                        <div class="respostas">Diâmetro interno do rotor (mm): <span id="Dirk"></span></div>
+                        <div class="respostas">Diâmetro médio do rotor (mm): <span id="Dmrk"></span></div>
+                        <div class="respostas">Largura da caixa espiral (mm) <span id="Lcek"></span></div>
+                        <div class="respostas">Número de pás: <span id="Npk"></span></div>
                     </div>
-                    <div class="resultado" id="Michell-Blank" style="display: none;">
-                        michell-blank
+                    <div class="resultado" id="Michell-Blank" style="display: none;background-color: #65b8a6;">
+                        <div class="respostas">Velocidade do injetor (m/s): <span id="Vim"></span></div>
+                        <div class="respostas">Espessura do jato injetor (mm): <span id="Ejim"></span></div>
+                        <div class="respostas">Diâmetro externo do rotor (mm): <span id="Derm"></span></div>
+                        <div class="respostas">Diâmetro interno do rotor (mm): <span id="Dirm"></span></div>
+                        <div class="respostas">Diâmetro do injetor (mm): <span id="Dim"></span></div>
+                        <div class="respostas">Diâmetro médio do rotor (mm): <span id="Dmrm"></span></div>
+                        <div class="respostas">Velocidade angular do rotor (rpm): <span id="Varm"></span></div>
+                        <div class="respostas">Velocidade tangencial (m/s): <span id="Vtm"></span></div>
+                        <div class="respostas">Largura do rotor (mm): <span id="Lrm"></span></div>
+                        <div class="respostas">Número de pás: <span id="Npm"></span></div>
+                        <div class="respostas">Largura da pá (mm): <span id="Lpm"></span></div>
+                        <div class="respostas">Altura da pá (mm): <span id="Apm"></span></div>
+                        <div class="respostas">Espessura da pá (mm): <span id="Epm"></span></div>
+                        <div class="respostas">Passo da pá (mm): <span id="Ppm"></span></div>
                     </div>
                     <button class="generate_pdf"> Gerar PDF </button>
             </div>
@@ -179,6 +218,15 @@
         var Pot = 0;
         var Ns = 0;
         var turbName;
+
+        function MichellBlank(){
+            if (document.getElementById("turbMichellBlank").checked){
+                document.getElementById("MB_select").style.display = "block";
+            }
+            else{
+                document.getElementById("MB_select").style.display = "none";
+            }
+        }
 
         function mudarParaParametro(evt, tabName){
 
@@ -213,25 +261,27 @@
             document.getElementById('par_bt').className += " active";
 
             if(H >= 100 && 18 <= Ns && Ns <= 90 ){
-                turbName = 'pelton';
+                turbName = 'pelt';
+                document.getElementById(turbName).style.display = "block";
             }
             else if(H >= 10 && H <= 450 && 70 <= Ns && Ns <= 450 ){
-                turbName = 'francis';
+                turbName = 'fran';
+                document.getElementById(turbName).style.display = "block";
             }
             else if(H >= 10 && H <= 70 && 250 <= Ns ){
-                turbName = 'kaplan';
+                turbName = 'kap';
+                document.getElementById(turbName).style.display = "block";
             }
             else if(H >= 10 && H <= 100 && 30 <= Ns && Ns <= 180 ){
-                turbName = 'michell-blank';
+                turbName = 'micbla';
+                document.getElementById(turbName).style.display = "block";
             }
 
             tab_Name = document.getElementsByClassName("turbina");
             for (i = 0; i < tab_Name.length; i++) {
                 tab_Name[i].style.display = "none";
             }
-            document.getElementById(turbName).style.display = "block";
 
-            return(turbName);
         }
 
         function DimensionarHidroeletrica(el){
@@ -241,7 +291,7 @@
             let turbinaNome;
             let tabNome;
 
-            if(turbName == 'pelton'){
+            if(document.getElementById("turbPelton").checked){
                 turbinaNome = "Pelton";
 
                 let Nji, Djip, Dmrp, Derp, Lpp, App, Epp, Npp, Pepp;
@@ -258,34 +308,34 @@
                 else if(Ns > 71 && Ns <= 90){
                     Nji = 6;
                 }
-                document.getElementById("Nji").innerHTML = Nji;
+                document.getElementById("Nji").innerHTML = Nji.toFixed(3);
                 
                 Djip = 500*( Math.sqrt( (Q) / (Nji * Math.sqrt(H) ) ) );
-                document.getElementById("Djip").innerHTML = Djip;
+                document.getElementById("Djip").innerHTML = Djip.toFixed(3);
 
                 Dmrp = 38 * ( ( 1000 * Math.sqrt( H ) ) / N );
-                document.getElementById("Dmrp").innerHTML = Dmrp;
+                document.getElementById("Dmrp").innerHTML = Dmrp.toFixed(3);
 
                 App = 3.5 * Djip;
-                document.getElementById("App").innerHTML = App;
+                document.getElementById("App").innerHTML = App.toFixed(3);
 
                 Derp = Dmrp + 2 *( ( 3/5 ) * App);
-                document.getElementById("Derp").innerHTML = Derp;
+                document.getElementById("Derp").innerHTML = Derp.toFixed(3);
 
                 Lpp = 3.75 * Djip;
-                document.getElementById("Lpp").innerHTML = Lpp;
+                document.getElementById("Lpp").innerHTML = Lpp.toFixed(3);
 
                 Epp = 1.5 * Djip;
-                document.getElementById("Epp").innerHTML = Epp;
+                document.getElementById("Epp").innerHTML = Epp.toFixed(3);
 
                 Npp = ( 1/2 * ( Dmrp / Djip ) ) + 15;
-                document.getElementById("Npp").innerHTML = Npp;
+                document.getElementById("Npp").innerHTML = Npp.toFixed(3);
 
                 Pepp = ( Math.PI * Dmrp ) / Npp;
-                document.getElementById("Pepp").innerHTML = Pepp;
+                document.getElementById("Pepp").innerHTML = Pepp.toFixed(3);
 
             }
-            else if(turbName == 'francis'){
+            else if(document.getElementById("turbFrancis").checked){
                 turbinaNome = "Francis";
 
                 let Tdtf, Dtsf, Vsf, Derf, Dirf, Lcdf, Npf;
@@ -328,19 +378,100 @@
                 }
 
                 document.getElementById("Tdtf").innerHTML = Tdtf;
-                document.getElementById("Vsf").innerHTML = Vsf;
-                document.getElementById("Dtsf").innerHTML = Dtsf;
-                document.getElementById("Derf").innerHTML = Derf;
-                document.getElementById("Dirf").innerHTML = Dirf;
-                document.getElementById("Lcdf").innerHTML = Lcdf;
-                document.getElementById("Npf").innerHTML = Npf;
+                document.getElementById("Vsf").innerHTML = Vsf.toFixed(3);
+                document.getElementById("Dtsf").innerHTML = Dtsf.toFixed(3);
+                document.getElementById("Derf").innerHTML = Derf.toFixed(3);
+                document.getElementById("Dirf").innerHTML = Dirf.toFixed(3);
+                document.getElementById("Lcdf").innerHTML = Lcdf.toFixed(3);
+                document.getElementById("Npf").innerHTML = Npf.toFixed(3);
 
             }
-            else if(turbName == 'kaplan'){
+            else if(document.getElementById("turbKaplan").checked){
                 turbinaNome = "Kaplan";
+
+                let Dtsk, Vsk, Derk, Dirk, Dmrk, Lcek, Npk;
+
+                Vsk = Math.sqrt( (2 * 9.8 * 0.3 * H ) / 100 );
+                Dtsk = 1000 * Math.sqrt( (4 * Q) / ( Math.PI * Vsk) );
+                document.getElementById("Vsk").innerHTML = Vsk.toFixed(3);
+                document.getElementById("Dtsk").innerHTML = Dtsk.toFixed(3);
+
+                Derk = 0.98*Dtsk;
+                document.getElementById("Derk").innerHTML = Derk.toFixed(3);
+
+                Dirk = Dtsk * ( 0.25 + ( 94.64 / Ns ) );
+                document.getElementById("Dirk").innerHTML = Dirk.toFixed(3);
+
+                Dmrk = Dirk + ( ( Derk - Dirk ) / 2 );
+                document.getElementById("Dmrk").innerHTML = Dmrk.toFixed(3);
+
+                let Cm1 = ( 4 * 0.8 * Q * Math.pow(10, 6) ) / ( ( Math.pow(Derk, 2) - Math.pow(Dirk, 2) ) * Math.PI );
+                let Cmo = 0.65 * Cm1;
+                Lcek = ( 0.8 * Q ) / ( 0.9 * Derk * Math.PI * Cmo );
+                document.getElementById("Lcek").innerHTML = Lcek.toFixed(3);
+
+                Npk = ( 2170 - ( 1.2 * Ns) ) / 250;
+                document.getElementById("Npk").innerHTML = Npk.toFixed(3);
             }
-            else if(turbName == 'michell-blank'){
+            else if(document.getElementById("turbMichellBlank").checked){
                 turbinaNome = "Michell-Blank";
+
+                let Derm, Dirm, Dim, Vim, Dmrm, Ejim, Varm, Vtm, Lrm, Npm, Lpm, Apm, Epm, Ppm;
+
+                Derm = 38 * ( ( 1000 * Math.sqrt(H) ) / Ns );
+                document.getElementById("Derm").innerHTML = Derm.toFixed(3);
+
+                Dirm = 0.66 * Derm;
+                document.getElementById("Dirm").innerHTML = Dirm.toFixed(3);
+
+                Vim = 0.965 * Math.sqrt( 2 * 9.8 * H);
+                document.getElementById("Vim").innerHTML = Vim.toFixed(3);
+
+                Dim = 1000 * Math.sqrt( ( 4 * Q) / ( Vim * Math.PI ));
+                document.getElementById("Dim").innerHTML = Dim.toFixed(3);
+
+                Dmrm = ( Dirm + Derm ) / 2;
+                document.getElementById("Dmrm").innerHTML = Dmrm.toFixed(3);
+
+                let Ka, O;
+                if(document.getElementById("60").checked){
+                    Ka = 0.1443;
+                    O = 60;
+                }
+                else if(document.getElementById("90").checked){
+                    Ka = 0.2164;
+                    O = 90;
+                }
+                else if(document.getElementById("120").checked){
+                    Ka = 0.2886;
+                    O = 120
+                }
+                Ejim = Ka * Derm;
+                document.getElementById("Ejim").innerHTML = Ejim.toFixed(3);
+
+                Vtm = 2.1 * Math.sqrt(H);
+                document.getElementById("Vtm").innerHTML = Vtm.toFixed(3);
+
+                Varm = 1000 * ( ( 60 * Vtm) / ( Derm * Math.PI ) );
+                document.getElementById("Varm").innerHTML = Varm.toFixed(3);
+
+                Lrm = 98.8 * ( Q / ( Derm * Math.sqrt(H) ) ) * ( 1000 / O);
+                document.getElementById("Lrm").innerHTML = Lrm;
+
+                Lpm = 2.8 * Dim;
+                document.getElementById("Lpm").innerHTML = Lpm.toFixed(3);
+
+                Apm = 3 * Dim;
+                document.getElementById("Apm").innerHTML = Apm.toFixed(3);
+
+                Epm = 0.8 * Dim;
+                document.getElementById("Epm").innerHTML = Epm.toFixed(3);
+
+                Ppm = Apm / 4.5;
+                document.getElementById("Ppm").innerHTML = Ppm.toFixed(3);
+
+                Npm = ( Math.PI * Derm ) / Ppm;
+                document.getElementById("Npm").innerHTML = Npm.toFixed(3);
             }
 
             tab_Nome = document.getElementsByClassName("resultado");
