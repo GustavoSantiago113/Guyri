@@ -1,0 +1,120 @@
+<html>
+    <head>
+        <title>
+            Guyri - Análise Econômica
+        </title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="functions.js"></script>
+    </head>
+    <header class="header">
+        <img class="logo_header" src="Icones/Logotipo 2.png">
+        <div class="title_header">
+            <h1 style="background-color: #b5e8c3; font-size: 30px;">ARA</h1>
+            <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSSISTEMAS</h3>
+        </div>
+        <a class="return_initial" href="initial_page.html">Home</a>
+    </header>
+    <body>
+    <div class="body_sizing">   
+        <div class="main_lateral_dropdown">
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/irrigation.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Gotejamento.html">Gotejamento</a>
+                    <a class="link" href="Aspersao.html">Aspersão</a>
+                    <a class="link" href="Micro_Aspersao.html">Micro-Aspersão</a>
+                    <a class="link" href="Pivo_Central.html">Pivô Central</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/solar-energy.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Aquecimento_Solar.html">Aquecimento Solar</a>
+                    <a class="link" href="Fotovoltaica.html">Fotovoltaica</a>
+                    <a class="link" href="Eolica.html">Eólica</a>
+                    <a class="link" href="Hidroeletrica.html">Hidroelétrica</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/bacteria.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Biodigestor.html">Biodigestor</a>
+                    <a class="link" href="Compostagem.html">Compostagem</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/greenhouse.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Ventilacao_Forcada.html">Ventilação Forçada</a>
+                    <a class="link" href="Ar_Condicionado.html">Ar Condicionado</a>
+                    <a class="link" href="Nebulizacao.html">Nebulização</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/dollar-currency-symbol.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Analise_Economica.html">Análise Econômica</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="main_section">
+            <div class="calculator">
+
+                <ul class="nav">
+                    <button class="nav_link active" id="inp_bt" onclick="openTab(event, 'inp')">Inputs</button>
+                </ul>
+
+                <div class="tab_content">
+
+                    <div class="tab_pane" id="inp">
+                        <h5 style="background-color: #65b8a6;">Periodicidade</h5>
+                        <input type="radio" name="per" id="Ano"><span>Ano</span>
+                        <br><input type="radio" name="per" id="Mes"><span>Mês</span>
+                        <br><input type="radio" name="per" id="Semana"><span>Semana</span>
+                        <br><input class="input" type="number" step="0.0001" id="Tcon" placeholder="Valor Investido">
+                        <br><input class="input" type="number" step="0.0001" id="Tamb" placeholder="Valor Economizado">
+                        <br><input class="input" type="number" step="0.0001" id="Ecol" placeholder="Taxa de desconto (%) - Padrão = 12%">
+                        <br><input class="input" type="number" step="0.0001" id="Ecol" placeholder="Ganho Obtido">
+                        
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button class="result" onclick="Analisar('minhaDiv');">
+                Analisar!
+            </button>
+
+            <div class="boxresults" id="minhaDiv" style="display: none;">
+                    <center><div class="titresp">Resultados</div></center>
+
+                    <button class="generate_pdf"> Gerar PDF </button>
+            </div>
+        </div>
+        <div>
+
+        </div>
+    </div>
+    </body>
+    <script>
+        
+        
+    </script>
+</html>
