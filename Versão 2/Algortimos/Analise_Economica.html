@@ -5,6 +5,7 @@
         </title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="functions.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
     <header class="header">
         <img class="logo_header" src="Icones/Logotipo 2.png">
@@ -83,15 +84,11 @@
                 <div class="tab_content">
 
                     <div class="tab_pane" id="inp">
-                        <h5 style="background-color: #65b8a6;">Periodicidade</h5>
-                        <input type="radio" name="per" id="Ano"><span>Ano</span>
-                        <br><input type="radio" name="per" id="Mes"><span>Mês</span>
-                        <br><input type="radio" name="per" id="Semana"><span>Semana</span>
-                        <br><input class="input" type="number" step="0.0001" id="Tcon" placeholder="Valor Investido">
-                        <br><input class="input" type="number" step="0.0001" id="Tamb" placeholder="Valor Economizado">
-                        <br><input class="input" type="number" step="0.0001" id="Ecol" placeholder="Taxa de desconto (%) - Padrão = 12%">
-                        <br><input class="input" type="number" step="0.0001" id="Ecol" placeholder="Ganho Obtido">
-                        
+                        <input class="input" type="number" step="0.0001" id="Vi" placeholder="Valor Investido total">
+                        <br><input class="input" type="number" step="0.0001" id="Ve" placeholder="Valor Economizado por mês">
+                        <br><input class="input" type="number" step="0.0001" id="Td" placeholder="Taxa mínima de atratividade (%)">
+                        <br><input class="input" type="number" step="0.0001" id="Go" placeholder="Ganho Obtido">
+                        <br><input class="input" type="number" step="0.0001" id="Rla" placeholder="Resultado Líquido anual">
                     </div>
 
                 </div>
@@ -104,8 +101,12 @@
 
             <div class="boxresults" id="minhaDiv" style="display: none;">
                     <center><div class="titresp">Resultados</div></center>
-
-                    <button class="generate_pdf"> Gerar PDF </button>
+                    <div class="respostas">Meses para o payback simples: <span id="paySimples"></span></div>
+                    <div class="respostas">Meses para o payback descontado: <span id="payDesco"></span></div>
+                    <div class="respostas">Retorno sobre investimento: <span id="Roi"></span>%</div>
+                    <div class="respostas">Rentabilidade anual: <span id="Ren"></span>%</div>
+                    <canvas id="myChart" style="height: 350px; width: 500px; background-color: #65b8a6;"></canvas>
+                    <br><button class="generate_pdf"> Gerar PDF </button>
             </div>
         </div>
         <div>
@@ -114,7 +115,86 @@
     </div>
     </body>
     <script>
+        function Analisar(el){
+        document.getElementById(el).style.display = "block";
+
+        var Vi = parseFloat(document.getElementById('Vi').value);
+        var Vo = parseFloat(document.getElementById('Ve').value);
+        var Td = parseFloat(document.getElementById('Td').value);
+        var Go = parseFloat(document.getElementById('Go').value);
+        var Rla = parseFloat(document.getElementById('Rla').value);
+
+        var paySimples = Vi / Vo;
+        document.getElementById('paySimples').innerHTML = paySimples.toFixed(1);
         
+        let vectorPaySimples = [];
+        let controlPaySimples = Vi;
+        vectorPaySimples.push(Vi);
+        for(i = 0; i<Math.ceil(paySimples); i++){
+            controlPaySimples = controlPaySimples - Vo;
+            vectorPaySimples.push(controlPaySimples);
+        }
+
+        var Von = Vo / (1 + (Td/100));
+        var payDesco = Vi / Von;
+        document.getElementById('payDesco').innerHTML = payDesco.toFixed(1);
         
+        let vectorPayDesco = [];
+        let vector = []
+        let controlPayDesco = Vi;
+        vectorPayDesco.push(Vi);
+        for(i = 0; i<Math.ceil(payDesco); i++){
+            controlPayDesco = controlPayDesco - Von;
+            vectorPayDesco.push(controlPayDesco);
+            vector.push(i)
+        }
+        vector.push(i)
+
+        var Roi = (( Go - Vi ) / Vi) * 100;
+        document.getElementById('Roi').innerHTML = Roi.toFixed(2);
+
+        var Ren = (Rla / Vi) * 100;
+        document.getElementById('Ren').innerHTML = Ren.toFixed(2);
+
+        const labels = vector;
+        const data = {
+        labels: labels,
+        datasets: [
+            {
+            label: 'Simples',
+            data: vectorPaySimples,
+            borderColor: 'rgb(255, 99, 132)'
+            },
+            {
+            label: 'Descontado',
+            data: vectorPayDesco,
+            borderColor: 'rgb(58, 52, 235)'
+            }
+        ]
+        };
+
+        const config = {
+        type: 'line',
+        data: data,
+        options: {
+            responsive: true,
+            plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Payback Simples vs Descontado'
+            }
+            }
+        },
+        };
+
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+
+        }
     </script>
 </html>
