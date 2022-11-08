@@ -186,6 +186,7 @@
     <script>
         function DimensionarMicroAsp(el){
             document.getElementById(el).style.display = "block";
+            const dComerciais = [0.025, 0.032, 0.035, 0.04, 0.05, 0.063, 0.075, 0.09, 0.1, 0.11, 0.125, 0.14, 0.15, 0.16, 0.2, 0.25, 0.3, 0.35, 0.4, 0.5];
 
             //Cálculo da evapotranspiração
             var ECA = parseFloat(document.getElementById('ECA').value);
@@ -268,7 +269,11 @@
             var r = (Qll/3600) / Cll;
             var r1 = 10.643 * Math.pow(r,1.852) * ( Cll / hfl) *Fl;
             var Dl =  Math.pow(r1, 0.205);
-            document.getElementById('Dl').innerHTML = Dl.toFixed(3);
+            const Dlc = dComerciais.reduce((a, b) => {
+                        return Math.abs(b - Dl) < Math.abs(a - Dl) ? b : a;
+            });
+            document.getElementById('Dl').innerHTML = Dlc;
+            // Correção da perda de carga da linha lateral
 
             //Dimensionamento da linha de derivação
             var Cd = C - (El/2); //Comprimento de uma linha de derivação
@@ -280,21 +285,27 @@
             document.getElementById('Qd').innerHTML = Qd.toFixed(3);
             var VE = parseFloat(document.getElementById('VE').value);
             var Dd = Math.sqrt(((4*(Qd/3600))/(Math.PI*VE)));
-            document.getElementById('Dd').innerHTML = Dd.toFixed(3);
+            const Ddc = dComerciais.reduce((a, b) => {
+                        return Math.abs(b - Dd) < Math.abs(a - Dd) ? b : a;
+            });
+            document.getElementById('Dd').innerHTML = Ddc;
             var Cld = parseFloat(document.getElementById('Cd').value);
             var Fd = (1/(2.852))+(1/(2*parseInt(Nsd)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(Nsd),2))); //Calculo do F da linha de derivação
-            var hd = 10.643 * Math.pow(((3*(Qd/3600))/Cld),1.852)*(Cd/Math.pow(Dd,4.87))*Fd; //Perda de carga da linha de derivação
+            var hd = 10.643 * Math.pow(((3*(Qd/3600))/Cld),1.852)*(Cd/Math.pow(Ddc,4.87))*Fd; //Perda de carga da linha de derivação
 
             //Dimensionamento da linha principal
             var Lp = L - ( 2 * Ll); //Largura da linha principal
             document.getElementById('Lp').innerHTML = Lp.toFixed(3);
             var Qp = Ntma * q;
             var Dp = Math.sqrt(((4*(Qp/3600))/(Math.PI*VE)));
+            const Dpc = dComerciais.reduce((a, b) => {
+                        return Math.abs(b - Dp) < Math.abs(a - Dp) ? b : a;
+            });
             document.getElementById('Dp').innerHTML = Dp.toFixed(3);
             var Cp = parseFloat(document.getElementById('Cp').value);
             var CLS = parseFloat(document.getElementById('CLS').value);
             var Fp = (1/(2.852))+(1/(2*4))+(Math.sqrt(0.852)/(6*Math.pow(4,2)));
-            var hp = 10.643 * Math.pow(((3*(Qp/3600))/Cp),1.852)*((Lp+CLS)/Math.pow(Dp,4.87))*Fp;
+            var hp = 10.643 * Math.pow(((3*(Qp/3600))/Cp),1.852)*((Lp+CLS)/Math.pow(Dpc,4.87))*Fp;
 
             //Dimensionamento da motobomba
             var hs = parseFloat(document.getElementById('AS').value);

@@ -194,7 +194,10 @@
         <script>
             function DimensionarAspersao(el){
                 document.getElementById(el).style.display = "block";
+
+                const dComerciais = [0.025, 0.032, 0.035, 0.04, 0.05, 0.063, 0.075, 0.09, 0.1, 0.11, 0.125, 0.14, 0.15, 0.16, 0.2, 0.25, 0.3, 0.35, 0.4, 0.5];
                 
+                // Turno de Rega
                 var occ = parseFloat(document.getElementById('CC').value);
                 var opmp = parseFloat(document.getElementById('PMP').value);
                 var Z = parseFloat(document.getElementById('Z').value);
@@ -205,38 +208,60 @@
                 var ETpc = Kc*Eto;
                 var TR = ADR / ETpc;
                 document.getElementById('TR').innerHTML = TR.toFixed(3);
+
+                //Período de Irrigação
                 var PI = Math.round(TR) - 1;
                 document.getElementById('PI').innerHTML = PI.toFixed(3);
+
+                // Lâmina Bruta de irrigação
                 var Ea = parseFloat(document.getElementById('IR').value)/100;
                 var ITN = ADR / Ea;
                 document.getElementById('ITN').innerHTML = ITN.toFixed(3);
+
+                // Número de posições da linha lateral
                 var CP = parseFloat(document.getElementById('CA').value);
                 var E2 = parseFloat(document.getElementById('E2').value);
                 var Npll = CP / E2;
+                document.getElementById('Npll').innerHTML = Npll.toFixed(3);
+
+                // Número de aspersores por lateral
                 var Nplln = 2*parseInt(Npll);
                 var E1 = parseFloat(document.getElementById('E1').value);
                 var Clp = (E2/2) + ((Nplln-1)*E2);
                 var L = parseFloat(document.getElementById('LA').value);
                 var Nal = (L/2) / E1;
                 document.getElementById('Nal').innerHTML = Nal.toFixed(3);
-                document.getElementById('Npll').innerHTML = Npll.toFixed(3);
+                
+                // Número de posições por dia
                 var IA = parseFloat(document.getElementById('IA').value);
                 var Ti = ITN / IA;
                 var Nh = parseFloat(document.getElementById('Nh').value);
                 var Tm = parseFloat(document.getElementById('Tm').value);
                 var n = (Nh)/(Ti + Tm);
+                document.getElementById('n').innerHTML = n.toFixed(3);
+
+                // Não sei
                 var Np = Nplln / (PI);
                 document.getElementById('Np').innerHTML = Np.toFixed(3);
-                document.getElementById('n').innerHTML = n.toFixed(3);
+                
+                // Número de laterais em funcionamento simultâneo
                 var NL = Np / n;
                 document.getElementById('NL').innerHTML = NL.toFixed(3);
+
+                // Vazão da linha lateral
                 var qa = parseFloat(document.getElementById('VZ').value);
                 var Ql = qa*parseInt(Nal);
                 document.getElementById('Qll').innerHTML = Ql.toFixed(3);
+
+                // Vazão com troca de posições
                 var QTS = Ql * NL;
-                document.getElementById('QTS').innerHTML = QTS.toFixed(3); 
+                document.getElementById('QTS').innerHTML = QTS.toFixed(3);
+
+                // Vazão total sem troca de posições
                 var Qt = ( ( L*CP ) * ITN) / (PI*Nh*3600);
                 document.getElementById('Qt').innerHTML = Qt.toFixed(3);
+
+                // Vazão e perda de carga linha secundária
                 var PS = parseFloat(document.getElementById('PS').value);     
                 var Aa = parseFloat(document.getElementById('AA').value);
                 var DZ = parseFloat(document.getElementById('Dec1').value);
@@ -263,14 +288,24 @@
                     var Pfs = PS - 0.25*hfs + Aa - 0.5*DZ;
                 }
                 document.getElementById('Pins').innerHTML = Pins.toFixed(3);
+
+                // Comprimento da linha secundária
                 var Cls = (parseInt(Nal)-1)*E1 + E1/2;
                 document.getElementById('Cls').innerHTML = Cls.toFixed(3);
+
+                // Diâmetro da linha secundária
                 var F = (1/(1.852+1))+(1/(2*parseInt(Nal)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(Nal),2)));
                 var Cs = parseFloat(document.getElementById('C2').value);
                 var r = (Ql/3600) / Cs;
                 var r1 = 10.643 * Math.pow(r,1.852)*((Cls*F)/hfs);
                 var Ds =  Math.pow(r1, 0.205);
-                document.getElementById('Ds').innerHTML = Ds.toFixed(3);
+                const Dsc = dComerciais.reduce((a, b) => {
+                    return Math.abs(b - Ds) < Math.abs(a - Ds) ? b : a;
+                });
+                document.getElementById('Ds').innerHTML = Dsc;
+                //var hfsc= 10.643 * Math.pow(( (3* (Ql/1000) ) / Cs ), 1.852) * ( Cls / (Math.pow(Dmbac,4.87)) * F);
+
+                // Linha principal, perda de carga e motobomba
                 var CLS = parseFloat(document.getElementById('CLS').value);
                 var LLP = (parseInt(Npll)-1)*E2;
                 var VE = parseFloat(document.getElementById('VE').value);
@@ -286,8 +321,11 @@
                     document.getElementById('maodeobra').style.display = "block";
                     document.getElementById('maodeobra1').style.display = "block";
                     var Dmba = Math.sqrt(((4*(QTS/3600))/(Math.PI*VE)));
-                    var hfmba = 10.643 * Math.pow(((3*(QTS/3600))/Cp),1.852)*(Cmba/Math.pow(Dmba,4.87))*Fp2;
-                    var HMT = (hfmba + Pins + hr + hs)*1.1;
+                    const Dmbac = dComerciais.reduce((a, b) => {
+                        return Math.abs(b - Dmba) < Math.abs(a - Dmba) ? b : a;
+                    });
+                    var hfmba = 10.643 * Math.pow(((3*(QTS/3600))/Cp),1.852)*(Cmba/Math.pow(Dmbac,4.87))*Fp2;
+                    var HMT = (hfmba + Pins + hr + hs + hfsc)*1.1;
                     var Pot = ((QTS/3.6)*HMT)/(75*(RM/100));
                 }
                 else if (document.getElementById("Nao").checked)
@@ -295,11 +333,14 @@
                     document.getElementById('vazaototal').style.display = "block";
                     var a = (4* (Qt/1000) ) / (Math.PI*VE);
                     var Dmba = Math.sqrt(a);
-                    var hfmba = 10.643 * Math.pow(( (3* (Qt/1000) ) / Cp ), 1.852) * ( Cmba / (Math.pow(Dmba,4.87)) * Fp1);
-                    var HMT = (hfmba + Pins + hr + hs)*1.1;
+                    const Dmbac = dComerciais.reduce((a, b) => {
+                        return Math.abs(b - Dmba) < Math.abs(a - Dmba) ? b : a;
+                    });
+                    var hfmba = 10.643 * Math.pow(( (3* (Qt/1000) ) / Cp ), 1.852) * ( Cmba / (Math.pow(Dmbac,4.87)) * Fp1);
+                    var HMT = (hfmba + Pins + hr + hs + hfsc)*1.1;
                     var Pot = (Qt*HMT)/(75*(RM/100));
                 }
-                document.getElementById('Dmba').innerHTML = Dmba.toFixed(3);
+                document.getElementById('Dmba').innerHTML = Dmbac;
                 document.getElementById('Cmba').innerHTML = Cmba.toFixed(3);
                 document.getElementById('HMT').innerHTML = HMT.toFixed(3);
                 document.getElementById('Pot').innerHTML = Pot.toFixed(3);

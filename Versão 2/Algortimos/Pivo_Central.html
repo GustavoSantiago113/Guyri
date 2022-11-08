@@ -179,6 +179,8 @@
             
             document.getElementById(el).style.display = "block";
             
+            const dComerciais = [0.025, 0.032, 0.035, 0.04, 0.05, 0.063, 0.075, 0.09, 0.1, 0.11, 0.125, 0.14, 0.15, 0.16, 0.2, 0.25, 0.3, 0.35, 0.4, 0.5];
+
             // Lâmina de aplicação
             var Eto = parseFloat(document.getElementById('Eto').value);
             var Kc = parseFloat(document.getElementById('Kc').value); 
@@ -305,15 +307,27 @@
             var Cp = parseFloat(document.getElementById('Cp').value);
 
             var Dt1 = Math.pow((10.643 * Math.pow((((Qf/4)/3600) / Cp),1.852) * (L1 / hfl) * F1), 0.205);
+            const Dt1c = dComerciais.reduce((a, b) => {
+                        return Math.abs(b - Dt1) < Math.abs(a - Dt1) ? b : a;
+                    });
             var Dt2 = Math.pow((10.643 * Math.pow((((Qf/4)/3600) / Cp),1.852) * (L2 / hfl) * F2), 0.205);
+            const Dt2c = dComerciais.reduce((a, b) => {
+                        return Math.abs(b - Dt2) < Math.abs(a - Dt2) ? b : a;
+                    });
             var Dt3 = Math.pow((10.643 * Math.pow((((Qf/4)/3600) / Cp),1.852) * (L3 / hfl) * F3), 0.205);
+            const Dt3c = dComerciais.reduce((a, b) => {
+                        return Math.abs(b - Dt3) < Math.abs(a - Dt3) ? b : a;
+                    });
             var Dt4 = Math.pow((10.643 * Math.pow((((Qf/4)/3600) / Cp),1.852) * (L4 / hfl) * F4), 0.205);
+            const Dt4c = dComerciais.reduce((a, b) => {
+                        return Math.abs(b - Dt4) < Math.abs(a - Dt4) ? b : a;
+                    });
 
             const Resp5 = "O diametro dos tubos (m) dos ";
-            var D1 = Resp5 + "0" + Resp2 + R1.toFixed(3).toString() + Resp3 + Dt1.toFixed(4).toString();
-            var D2 = Resp5 + R1.toFixed(3).toString() + Resp2 + R2.toFixed(3).toString() + Resp3 + Dt2.toFixed(4).toString();
-            var D3 = Resp5 + R2.toFixed(3).toString() + Resp2 + R3.toFixed(3).toString() + Resp3 + Dt3.toFixed(4).toString();
-            var D4 = Resp5 + R3.toFixed(3).toString() + Resp2 + R.toFixed(3).toString() + Resp3 + Dt4.toFixed(4).toString();
+            var D1 = Resp5 + "0" + Resp2 + R1.toFixed(3).toString() + Resp3 + Dt1c.toString();
+            var D2 = Resp5 + R1.toFixed(3).toString() + Resp2 + R2.toFixed(3).toString() + Resp3 + Dt2c.toString();
+            var D3 = Resp5 + R2.toFixed(3).toString() + Resp2 + R3.toFixed(3).toString() + Resp3 + Dt3c.toString();
+            var D4 = Resp5 + R3.toFixed(3).toString() + Resp2 + R.toFixed(3).toString() + Resp3 + Dt4c.toString();
 
             document.getElementById('D1').innerHTML = D1;
             document.getElementById('D2').innerHTML = D2;
@@ -324,9 +338,12 @@
             var Ls = parseFloat(document.getElementById('Ls').value);
             var VE = parseFloat(document.getElementById('VE').value);
             var Ds = Math.sqrt(((4*(Qf/3600))/(Math.PI*VE)));
-            document.getElementById('Ds').innerHTML = Ds.toFixed(4);
+            const Dsc = dComerciais.reduce((a, b) => {
+                        return Math.abs(b - Ds) < Math.abs(a - Ds) ? b : a;
+            });
+            document.getElementById('Ds').innerHTML = Dsc;
             var Cs = parseFloat(document.getElementById('Cs').value);
-            var hs = 10.643 * Math.pow((((Qf/3600))/Cs),1.852)*Math.pow(Ds,-4.87)*Ls;
+            var hs = 10.643 * Math.pow((((Qf/3600))/Cs),1.852)*Math.pow(Dsc,-4.87)*Ls;
 
             let Dhs = 0;
             if (document.getElementById("Declives").checked)
