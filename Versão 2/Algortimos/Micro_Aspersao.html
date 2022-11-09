@@ -267,13 +267,13 @@
             document.getElementById('Qll').innerHTML = Qll.toFixed(3);
             var Cll = parseFloat(document.getElementById('Cl').value);
             var r = (Qll/3600) / Cll;
-            var r1 = 10.643 * Math.pow(r,1.852) * ( Cll / hfl) *Fl;
+            var r1 = 10.643 * Math.pow(r,1.852) * ( Ll / hfl) *Fl;
             var Dl =  Math.pow(r1, 0.205);
             const Dlc = dComerciais.reduce((a, b) => {
                         return Math.abs(b - Dl) < Math.abs(a - Dl) ? b : a;
             });
             document.getElementById('Dl').innerHTML = Dlc;
-            // Correção da perda de carga da linha lateral
+            var hflc = 10.643 * Math.pow(r, 1.852) * ( 1 / Math.pow(Dlc, 1.852) ) * Ll * Fl;
 
             //Dimensionamento da linha de derivação
             var Cd = C - (El/2); //Comprimento de uma linha de derivação
@@ -301,7 +301,7 @@
             const Dpc = dComerciais.reduce((a, b) => {
                         return Math.abs(b - Dp) < Math.abs(a - Dp) ? b : a;
             });
-            document.getElementById('Dp').innerHTML = Dp.toFixed(3);
+            document.getElementById('Dp').innerHTML = Dpc;
             var Cp = parseFloat(document.getElementById('Cp').value);
             var CLS = parseFloat(document.getElementById('CLS').value);
             var Fp = (1/(2.852))+(1/(2*4))+(Math.sqrt(0.852)/(6*Math.pow(4,2)));
@@ -310,7 +310,7 @@
             //Dimensionamento da motobomba
             var hs = parseFloat(document.getElementById('AS').value);
             var hr = parseFloat(document.getElementById('AR').value);
-            var HMT = (hd + hp + hfl + Pins + hr + hs)*1.1; //Altura manométrica total
+            var HMT = (hd + hp + hflc + Pins + hr + hs)*1.1; //Altura manométrica total
             document.getElementById('Qp').innerHTML = Qp.toFixed(3);
             document.getElementById('HMT').innerHTML = HMT.toFixed(3);
             var RM = parseFloat(document.getElementById('RM').value);

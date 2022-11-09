@@ -275,9 +275,8 @@
                 document.getElementById('Dl').innerHTML = Dlc;
                 var Numlinhalateral = Largurasetor / Eel;
                 var Qp = Numlinhalateral * q * Nspm;
+                var hflme = 10.643 * Math.pow(r, 1.852) * ( 1 / Math.pow(Dlc, 1.852) ) * Comprimentosetor * Fl;
             }
-
-            //Correção da perda de carga lateral
 
             //Dimensionamento da linha de derivação
             var Cd = Largurasetor; //Comprimento de uma linha de derivação
@@ -302,9 +301,9 @@
             document.getElementById('Lp').innerHTML = Lp.toFixed(3);
             var Dp = Math.sqrt(((4*(Qp/3600))/(Math.PI*VE)));
             const Dpc = dComerciais.reduce((a, b) => {
-                        return Math.abs(b - Dpa) < Math.abs(a - Dpa) ? b : a;
+                        return Math.abs(b - Dp) < Math.abs(a - Dp) ? b : a;
             });
-            document.getElementById('Dp').innerHTML = Dp.toFixed(4);
+            document.getElementById('Dp').innerHTML = Dpc;
             var Cp = parseFloat(document.getElementById('Cp').value);
             var CLS = parseFloat(document.getElementById('CLS').value);
             var Fp = (1/(2.852))+(1/(2*Ns))+(Math.sqrt(0.852)/(6*Math.pow(Ns,2)));
@@ -314,14 +313,8 @@
             //Dimensionamento da motobomba
             var hs = parseFloat(document.getElementById('AS').value);
             var hr = parseFloat(document.getElementById('AR').value);
-            if (hflme == true)
-            {
-                var HMT = (hd + hp + hflme + Pinl + hr + hs)*1.1; //Altura manométrica total
-            }
-            else
-            {
-                var HMT = (hd + hp + hfl + Pinl + hr + hs)*1.1; //Altura manométrica total
-            }
+            var HMT = (hd + hp + hflme + Pinl + hr + hs)*1.1; //Altura manométrica total
+            
             document.getElementById('Qp').innerHTML = Qp.toFixed(3);
             document.getElementById('HMT').innerHTML = HMT.toFixed(3);
             var RM = parseFloat(document.getElementById('RM').value);
@@ -335,7 +328,7 @@
             const DFc = dComerciais.reduce((a, b) => {
                         return Math.abs(b - DF) < Math.abs(a - DF) ? b : a;
             });
-            document.getElementById('DF').innerHTML = DFc.toFixed(4);
+            document.getElementById('DF').innerHTML = DFc;
         }
     </script>
 </html>

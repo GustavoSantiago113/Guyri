@@ -303,7 +303,7 @@
                     return Math.abs(b - Ds) < Math.abs(a - Ds) ? b : a;
                 });
                 document.getElementById('Ds').innerHTML = Dsc;
-                //var hfsc= 10.643 * Math.pow(( (3* (Ql/1000) ) / Cs ), 1.852) * ( Cls / (Math.pow(Dmbac,4.87)) * F);
+                var hfsc= 10.643 * Math.pow(r, 1.852) * ( 1 / Math.pow(Dsc, 1.852) ) * Cls * F;
 
                 // Linha principal, perda de carga e motobomba
                 var CLS = parseFloat(document.getElementById('CLS').value);
