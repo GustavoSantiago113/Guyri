@@ -5,6 +5,12 @@
         </title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="functions.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+            integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+            crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+        integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+        crossorigin=""></script>
     </head>
         <header class="header">
             <img class="logo_header" src="Icones/Logotipo 2.png">
@@ -85,6 +91,7 @@
                         <button class="nav_link" id="proj_bt" onclick="openTab(event, 'proj')">Critérios do Projeto</button>
                         <button class="nav_link" id="asp_bt" onclick="openTab(event, 'asp')">Aspersor</button>
                         <button class="nav_link" id="mdo_bt" onclick="openTab(event, 'mdo')">Mão de Obra</button>
+                        <button class="nav_link" id="mapa_bt" onclick="openTab(event, 'mapa')">Desenhe suas Linhas</button>
                     </ul>
 
                     <div class="tab_content">
@@ -140,6 +147,20 @@
                             <br><span>Não</span><input type="radio" name="ta" id="Nao"/>
                         </div>
 
+                        <div class="tab_pane" id="mapa" style="display: none;">
+                            <label for="myfile" style="background-color: #65b8a6;color: #1f192f;font-size: 15px;font-weight: bold;">Insira a localização de seu talhão</label>
+                            <input type="file" id="mapFile" name="myfile">
+                            <br><h5 style="background-color: #65b8a6;">Selecione a linha a ser desenhada e clique em adicionar</h5>
+                            <br><input type="radio" name="linhaMapa" id="recalque"/><span>Recalque</span>
+                            <br><input type="radio" name="linhaMapa" id="principal"/><span>Principal</span>
+                            <br><input type="radio" name="linhaMapa" id="derivação"/><span>Derivação</span>
+                            <br><input type="radio" name="linhaMapa" id="secundaria"/><span>Secundária</span>
+                            <div id="map"></div>
+                            <div class="addButton"><button class="adicionar" onclick="adicionarLinha();">
+                                Adicionar Linha
+                            </button></div>
+                        </div>
+
                     </div>
 
                 </div>
@@ -192,6 +213,13 @@
         </div>
         </body>
         <script>
+            var map = L.map('map').setView([-14.2, -51.9], 5);
+
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map)
+
             function DimensionarAspersao(el){
                 document.getElementById(el).style.display = "block";
 
