@@ -34,3 +34,32 @@ img {
     background: #2a383c;
     border-left-color: #65b8a6;
 }
+
+/* Body */
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+    
+}
+
+.flex-center {
+  display:flex;
+  align-items: center;
+  flex-direction:column;
+  margin:auto;
+}
+
+.col-sm-6 {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+}
+
+.col-sm-8 {
+  float:none;
+}
+
+.content-wrapper, .right-side {
+  overflow: auto;
+}
