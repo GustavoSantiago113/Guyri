@@ -1,0 +1,36 @@
+
+/* Header */
+.skin-blue .main-header .logo {
+    background-color: #2a383c;
+    color: #ecf0f5;
+    border-bottom: 0 solid transparent;
+    font-family: Open sans-serif;
+    font-size: xx-large;
+}
+
+.skin-blue .main-header .navbar {
+    background-color: #2f4952;
+}
+
+
+img {
+    vertical-align: middle;
+    height: 50px;
+}
+
+.skin-blue .main-header .navbar .sidebar-toggle:hover {
+    color: #000000;
+    background-color: #ecf0f5;
+}
+
+/* Side Bar */
+
+.skin-blue .left-side, .skin-blue .main-sidebar, .skin-blue .wrapper {
+    background-color: #365864;
+}
+
+.skin-blue .sidebar-menu>li.active>a, .skin-blue .sidebar-menu>li:hover>a {
+    color: #fff;
+    background: #2a383c;
+    border-left-color: #65b8a6;
+}
