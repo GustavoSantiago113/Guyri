@@ -86,7 +86,6 @@
                     <button class="nav_link active" id="cult_bt" onclick="openTab(event, 'cult')">Cultura e Área</button>
                     <button class="nav_link" id="asp_bt" onclick="openTab(event, 'asp')">Aspersores</button>
                     <button class="nav_link" id="mat_bt" onclick="openTab(event, 'mat')">Materiais e Mão-de-Obra</button>
-                    <button class="nav_link" id="mapa_bt" onclick="openTab(event, 'mapa')">Desenhe suas Linhas</button>
                 </ul>
 
                 <div class="tab_content">
@@ -132,18 +131,6 @@
                         <br><input class="input" type="number" step="0.0001" id="n" placeholder="Rendimento da motobomba (decimal)">
                     </div>
 
-                    <div class="tab_pane" id="mapa" style="display: none;">
-                        <label for="myfile" style="background-color: #65b8a6;color: #1f192f;font-size: 15px;font-weight: bold;">Insira a localização de seu talhão</label>
-                        <input type="file" id="mapFile" name="myfile">
-                        <br><h5 style="background-color: #65b8a6;">Selecione a linha a ser desenhada e clique em adicionar</h5>
-                        <br><input type="radio" name="linhaMapa" id="recalque"/><span>Recalque</span>
-                        <br><input type="radio" name="linhaMapa" id="raio"/><span>Raio do pivô</span>
-                        <div id="map"></div>
-                        <div class="addButton"><button class="adicionar" onclick="adicionarLinha();">
-                            Adicionar Linha
-                        </button></div>
-                    </div>
-
                 </div>
 
             </div>
@@ -183,12 +170,6 @@
     </div>
     </body>
     <script>
-        var map = L.map('map').setView([-14.2, -51.9], 5);
-
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map)
 
         function AparecerCanhao(){
 
