@@ -1,21 +1,23 @@
 <html>
     <head>
         <title>
-            Guyri - Biodigestor
+            Guyri - Biodigester
         </title>
+        <link rel="icon" href="Logotipo 2.png">
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="functions.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
     <header class="header">
         <img class="logo_header" src="Icones/Logotipo 2.png">
         <div class="title_header">
             <h1 style="background-color: #b5e8c3; font-size: 30px;">ARA</h1>
-            <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSSISTEMAS</h3>
+            <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSYSTEMS</h3>
         </div>
         <a class="return_initial" href="initial_page.html">Home</a>
     </header>
     <body>
-    <div class="body_sizing">
+    <div class="body_sizing">   
         <div class="main_lateral_dropdown">
 
             <div class="lateral_dropdown">
@@ -23,10 +25,10 @@
                     <img class="icon" src="Icones/irrigation.png">
                 </button>
                 <div class="lateral_dropdown-content">
-                    <a class="link" href="Gotejamento.html">Gotejamento</a>
-                    <a class="link" href="Aspersao.html">Aspersão</a>
-                    <a class="link" href="Micro_Aspersao.html">Micro-Aspersão</a>
-                    <a class="link" href="Pivo_Central.html">Pivô Central</a>
+                    <a class="link" href="Gotejamento.html">Dripping</a>
+                    <a class="link" href="Aspersao.html">Sprinkling</a>
+                    <a class="link" href="Micro_Aspersao.html">Micro-Sprinkling</a>
+                    <a class="link" href="Pivo_Central.html">Center Pivot</a>
                 </div>
             </div>
 
@@ -35,10 +37,10 @@
                     <img class="icon" src="Icones/solar-energy.png">
                 </button>
                 <div class="lateral_dropdown-content">
-                    <a class="link" href="Aquecimento_Solar.html">Aquecimento Solar</a>
-                    <a class="link" href="Fotovoltaica.html">Fotovoltaica</a>
-                    <a class="link" href="Eolica.html">Eólica</a>
-                    <a class="link" href="Hidroeletrica.html">Hidroelétrica</a>
+                    <a class="link" href="Aquecimento_Solar.html">Solar Heating</a>
+                    <a class="link" href="Fotovoltaica.html">Photovoltaic</a>
+                    <a class="link" href="Eolica.html">Wind</a>
+                    <a class="link" href="Hidroeletrica.html">Hydroelectric</a>
                 </div>
             </div>
 
@@ -47,8 +49,8 @@
                     <img class="icon" src="Icones/bacteria.png">
                 </button>
                 <div class="lateral_dropdown-content">
-                    <a class="link" href="Biodigestor.html">Biodigestor</a>
-                    <a class="link" href="Compostagem.html">Compostagem</a>
+                    <a class="link" href="Biodigestor.html">Biodigester</a>
+                    <a class="link" href="Compostagem.html">Composting</a>
                 </div>
             </div>
 
@@ -57,9 +59,9 @@
                     <img class="icon" src="Icones/greenhouse.png">
                 </button>
                 <div class="lateral_dropdown-content">
-                    <a class="link" href="Ventilacao_Forcada.html">Ventilação Forçada</a>
-                    <a class="link" href="Ar_Condicionado.html">Ar Condicionado</a>
-                    <a class="link" href="Nebulizacao.html">Nebulização</a>
+                    <a class="link" href="Ventilacao_Forcada.html">Forced Ventilation</a>
+                    <a class="link" href="Ar_Condicionado.html">Air Conditioning</a>
+                    <a class="link" href="Nebulizacao.html">Fogging</a>
                 </div>
             </div>
 
@@ -68,7 +70,7 @@
                     <img class="icon" src="Icones/dollar-currency-symbol.png">
                 </button>
                 <div class="lateral_dropdown-content">
-                    <a class="link" href="Analise_Economica.html">Análise Econômica</a>
+                    <a class="link" href="Analise_Economica.html">Economic analysis</a>
                 </div>
             </div>
 
@@ -79,37 +81,36 @@
             <div class="calculator">
 
                 <ul class="nav">
-                    <button class="nav_link active" id="an_bt" onclick="openTab(event, 'an')">Animais</button>
+                    <button class="nav_link active" id="an_bt" onclick="openTab(event, 'an')">Animals</button>
                 </ul>
 
                 <div class="tab_content">
                     <div class="tab_pane" id="an">
-                        <h5 style="background-color: #65b8a6;">Selecione a espécie e o número de animais:</h5>
-                        <br><input type="radio" name="animal" id="Bovino"><span>Bovinos</span>
-                        <br><input type="radio" name="animal" id="Suino"><span>Suínos</span>
-                        <br><input class="input" placeholder="Número de animais" type="number" step="0.0001" id="Na">
+                        <h5 style="background-color: #65b8a6;">Select the number of animals:</h5>
+                        <br><input type="radio" name="animal" id="Bovino"><span>Cattle</span>
+                        <br><input type="radio" name="animal" id="Suino"><span>Swine</span>
+                        <br><input class="input" placeholder="Number of animals" type="number" step="0.0001" id="Na">
                     </div>
                 </div>
 
             </div>
 
             <button class="result" onclick="DimensionarBiodigestor('minhaDiv');">
-                Dimensionar!
+                Size!
             </button>
 
             <div class="boxresults" id="minhaDiv" style="display: none;">
-                <center><div class="titresp">Resultados</div></center>
-                <div class="respostas">Litros de água a adicionar por dia: <span id="La"></span></div>
-                <div class="respostas">Base Inferior (m): <span id="Bi"></span></div>
-                <div class="respostas">Base superior (m): <span id="Bs"></span></div>
-                <div class="respostas">Altura (m): <span id="H"></span></div>
-                <div class="respostas">Comprimento (m): <span id="L"></span></div>
-                <div class="respostas">Estimativa de produção (m3/dia): <span id="Ep"></span></div>
-                <div class="respostas">Area da Lona (m2): <span id="Alona"></span></div>
-                <div class="respostas">Largura e comprimento da caixa de entrada (m): <span id="Ce"></span></div>
-                <div class="respostas">Altura da caixa de entrada e saída: 1 m</div>
-                <div class="respostas">Largura e comprimento da caixa de saída (m): <span id="Cs"></span></div>
-                <button class="generate_pdf"> Gerar PDF </button>
+                <center><div class="titresp">Results</div></center>
+                <div class="respostas">Add liters of water per day: <span id="La"></span></div>
+                <div class="respostas">Bottom Base (m): <span id="Bi"></span></div>
+                <div class="respostas">Upper base (m): <span id="Bs"></span></div>
+                <div class="respostas">Height (m): <span id="H"></span></div>
+                <div class="respostas">Length (m): <span id="L"></span></div>
+                <div class="respostas">Production estimate (m3/day): <span id="Ep"></span></div>
+                <div class="respostas">Canvas Area (m2): <span id="Alona"></span></div>
+                <div class="respostas">Input box width and length (m): <span id="Ce"></span></div>
+                <div class="respostas">Input and output box height: 1 m</div>
+                <div class="respostas">Outlet box width and length (m): <span id="Cs"></span></div>
             </div>
 
         </div>

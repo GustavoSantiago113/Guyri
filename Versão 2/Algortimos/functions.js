@@ -15,7 +15,7 @@ function openTab(evt, tabName){
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
 
-    document.getElementById('par_bt').style.display = "none";
+    document.getElementById('par_turb').style.display = "none";
     document.getElementById('divHidroeletrica').style.display = "none";
     
     let turb_rad = document.getElementsByClassName("labelturb");

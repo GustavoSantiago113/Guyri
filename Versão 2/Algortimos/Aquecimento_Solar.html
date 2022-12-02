@@ -1,16 +1,18 @@
 <html>
     <head>
         <title>
-            Guyri - Aquecimento Solar
+            Guyri - Solar Heating
         </title>
+        <link rel="icon" href="Logotipo 2.png">
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="functions.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
     <header class="header">
         <img class="logo_header" src="Icones/Logotipo 2.png">
         <div class="title_header">
             <h1 style="background-color: #b5e8c3; font-size: 30px;">ARA</h1>
-            <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSSISTEMAS</h3>
+            <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSYSTEMS</h3>
         </div>
         <a class="return_initial" href="initial_page.html">Home</a>
     </header>
@@ -23,10 +25,10 @@
                     <img class="icon" src="Icones/irrigation.png">
                 </button>
                 <div class="lateral_dropdown-content">
-                    <a class="link" href="Gotejamento.html">Gotejamento</a>
-                    <a class="link" href="Aspersao.html">Aspersão</a>
-                    <a class="link" href="Micro_Aspersao.html">Micro-Aspersão</a>
-                    <a class="link" href="Pivo_Central.html">Pivô Central</a>
+                    <a class="link" href="Gotejamento.html">Dripping</a>
+                    <a class="link" href="Aspersao.html">Sprinkling</a>
+                    <a class="link" href="Micro_Aspersao.html">Micro-Sprinkling</a>
+                    <a class="link" href="Pivo_Central.html">Center Pivot</a>
                 </div>
             </div>
 
@@ -35,10 +37,10 @@
                     <img class="icon" src="Icones/solar-energy.png">
                 </button>
                 <div class="lateral_dropdown-content">
-                    <a class="link" href="Aquecimento_Solar.html">Aquecimento Solar</a>
-                    <a class="link" href="Fotovoltaica.html">Fotovoltaica</a>
-                    <a class="link" href="Eolica.html">Eólica</a>
-                    <a class="link" href="Hidroeletrica.html">Hidroelétrica</a>
+                    <a class="link" href="Aquecimento_Solar.html">Solar Heating</a>
+                    <a class="link" href="Fotovoltaica.html">Photovoltaic</a>
+                    <a class="link" href="Eolica.html">Wind</a>
+                    <a class="link" href="Hidroeletrica.html">Hydroelectric</a>
                 </div>
             </div>
 
@@ -47,8 +49,8 @@
                     <img class="icon" src="Icones/bacteria.png">
                 </button>
                 <div class="lateral_dropdown-content">
-                    <a class="link" href="Biodigestor.html">Biodigestor</a>
-                    <a class="link" href="Compostagem.html">Compostagem</a>
+                    <a class="link" href="Biodigestor.html">Biodigester</a>
+                    <a class="link" href="Compostagem.html">Composting</a>
                 </div>
             </div>
 
@@ -57,9 +59,9 @@
                     <img class="icon" src="Icones/greenhouse.png">
                 </button>
                 <div class="lateral_dropdown-content">
-                    <a class="link" href="Ventilacao_Forcada.html">Ventilação Forçada</a>
-                    <a class="link" href="Ar_Condicionado.html">Ar Condicionado</a>
-                    <a class="link" href="Nebulizacao.html">Nebulização</a>
+                    <a class="link" href="Ventilacao_Forcada.html">Forced Ventilation</a>
+                    <a class="link" href="Ar_Condicionado.html">Air Conditioning</a>
+                    <a class="link" href="Nebulizacao.html">Fogging</a>
                 </div>
             </div>
 
@@ -68,7 +70,7 @@
                     <img class="icon" src="Icones/dollar-currency-symbol.png">
                 </button>
                 <div class="lateral_dropdown-content">
-                    <a class="link" href="Analise_Economica.html">Análise Econômica</a>
+                    <a class="link" href="Analise_Economica.html">Economic analysis</a>
                 </div>
             </div>
 
@@ -77,8 +79,8 @@
             <div class="calculator">
 
                 <ul class="nav">
-                    <button class="nav_link active" id="vol_bt" onclick="openTab(event, 'vol')">Volume de Consumo diário</button>
-                    <button class="nav_link" id="temp_bt" onclick="openTab(event, 'temp')">Temperaturas</button>
+                    <button class="nav_link active" id="vol_bt" onclick="openTab(event, 'vol')">Daily Consumption Volume</button>
+                    <button class="nav_link" id="temp_bt" onclick="openTab(event, 'temp')">Temperatures</button>
                 </ul>
 
                 <div class="tab_content">
@@ -87,11 +89,11 @@
 
                         <div id="formulario" style="background-color: #65b8a6;">
                             <div class="form-group" id="campo1">
-                                <span>Aparelho </span><span id="label1">1</span>
-                                <br><input class="input" type="number" step="0.0001" id="vazao1" placeholder="Vazão do equipamento (l/s)">
-                                <br><input class="input" type="number" step="0.0001" id="tempo1" placeholder="Tempo de uso (min)">
-                                <br><input class="input" type="number" step="0.0001" id="frequencia1" placeholder="Frequência diária de uso">
-                                <br><button type="button" class="numb_control" onclick="Adicionar()">Adicionar Consumo</button>
+                                <span>Device </span><span id="label1">1</span>
+                                <br><input class="input" type="number" step="0.0001" id="vazao1" placeholder="Equipment Flow (l/s)">
+                                <br><input class="input" type="number" step="0.0001" id="tempo1" placeholder="Usage time (min)">
+                                <br><input class="input" type="number" step="0.0001" id="frequencia1" placeholder="Daily frequency of use">
+                                <br><button type="button" class="numb_control" onclick="Adicionar()">Add Consumption</button>
                             </div>
                         </div>
 
@@ -99,9 +101,9 @@
 
                     <div class="tab_pane" id="temp" style="display: none;">
 
-                        <input class="input" type="number" step="0.0001" id="Tcon" placeholder="Temperatura de uso (°C)">
-                        <br><input class="input" type="number" step="0.0001" id="Tamb" placeholder="Temperatura Média do Local (°C)">
-                        <br><input class="input" type="number" step="0.0001" id="Ecol" placeholder="Geração de Energia do coletor (kWh/mês)">
+                        <input class="input" type="number" step="0.0001" id="Tcon" placeholder="Usage Temperature (°C)">
+                        <br><input class="input" type="number" step="0.0001" id="Tamb" placeholder="Average Temperature of the Site (°C)">
+                        <br><input class="input" type="number" step="0.0001" id="Ecol" placeholder="Collector Energy Generation (kWh/month)">
 
                     </div>
 
@@ -110,15 +112,14 @@
             </div>
 
             <button class="result" onclick="DimensionarAquecimento('minhaDiv');">
-                Dimensionar!
+                Size!
             </button>
 
             <div class="boxresults" id="minhaDiv" style="display: none;">
-                    <center><div class="titresp">Resultados</div></center>
-                    <div class="respostas">Volume de armazenamento (m3): <span id="Varm"></span></div>
-                    <div class="respostas">Energia útil (kWh/dia): <span id="Eutil"></span></div>
-                    <div class="respostas">Número de coletores: <span id="Area"></span></div>
-                    <button class="generate_pdf"> Gerar PDF </button>
+                    <center><div class="titresp">Results</div></center>
+                    <div class="respostas">Storage Volume (m3): <span id="Varm"></span></div>
+                    <div class="respostas">Useful energy (kWh/day): <span id="Eutil"></span></div>
+                    <div class="respostas">Number of collectors: <span id="Area"></span></div>
             </div>
         </div>
         <div>
@@ -132,7 +133,7 @@
 
         function Adicionar(){
             controleCampo++;
-            document.getElementById('formulario').insertAdjacentHTML('beforeend', '<div class="form-group" id="campo'+ controleCampo +'"><span>Aparelho </span><span id="label'+ controleCampo +'"></span><br><input class="input" type="number" step="0.0001" id="vazao'+ controleCampo +'" placeholder = "Vazão do equipamento (l/s)"><br><input class="input" type="number" step="0.0001" id="tempo'+ controleCampo +'" placeholder = "Tempo de uso (min)" ><br><input class="input" type="number" step="0.0001" id="frequencia'+ controleCampo +'" placeholder ="Frequência diária de uso"><br><button type="button" class="numb_control" onclick="Adicionar()">Adicionar Consumo</button><button type="button" class="numb_control" onclick="Remover('+ controleCampo +')">Remover Consumo</button></div>');
+            document.getElementById('formulario').insertAdjacentHTML('beforeend', '<div class="form-group" id="campo'+ controleCampo +'"><span>Device </span><span id="label'+ controleCampo +'"></span><br><input class="input" type="number" step="0.0001" id="vazao'+ controleCampo +'" placeholder = "Equipment Flow (l/s)"><br><input class="input" type="number" step="0.0001" id="tempo'+ controleCampo +'" placeholder = "Usage time (min)" ><br><input class="input" type="number" step="0.0001" id="frequencia'+ controleCampo +'" placeholder ="Daily frequency of use"><br><button type="button" class="numb_control" onclick="Adicionar()">Add</button><button type="button" class="numb_control" onclick="Remover('+ controleCampo +')">Remove</button></div>');
             let label = 'label' + controleCampo;
             document.getElementById(label).innerHTML = controleCampo;
             return(controleCampo);

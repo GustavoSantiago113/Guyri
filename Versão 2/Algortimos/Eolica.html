@@ -1,21 +1,23 @@
 <html>
     <head>
-    <title>
-        Guyri - Eolico
-    </title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="functions.js"></script>
+        <title>
+            Guyri - Wind
+        </title>
+        <link rel="icon" href="Logotipo 2.png">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="functions.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
     <header class="header">
         <img class="logo_header" src="Icones/Logotipo 2.png">
         <div class="title_header">
             <h1 style="background-color: #b5e8c3; font-size: 30px;">ARA</h1>
-            <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSSISTEMAS</h3>
+            <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSYSTEMS</h3>
         </div>
         <a class="return_initial" href="initial_page.html">Home</a>
     </header>
     <body>
-    <div class="body_sizing">
+    <div class="body_sizing">   
         <div class="main_lateral_dropdown">
 
             <div class="lateral_dropdown">
@@ -23,10 +25,10 @@
                     <img class="icon" src="Icones/irrigation.png">
                 </button>
                 <div class="lateral_dropdown-content">
-                    <a class="link" href="Gotejamento.html">Gotejamento</a>
-                    <a class="link" href="Aspersao.html">Aspersão</a>
-                    <a class="link" href="Micro_Aspersao.html">Micro-Aspersão</a>
-                    <a class="link" href="Pivo_Central.html">Pivô Central</a>
+                    <a class="link" href="Gotejamento.html">Dripping</a>
+                    <a class="link" href="Aspersao.html">Sprinkling</a>
+                    <a class="link" href="Micro_Aspersao.html">Micro-Sprinkling</a>
+                    <a class="link" href="Pivo_Central.html">Center Pivot</a>
                 </div>
             </div>
 
@@ -35,10 +37,10 @@
                     <img class="icon" src="Icones/solar-energy.png">
                 </button>
                 <div class="lateral_dropdown-content">
-                    <a class="link" href="Aquecimento_Solar.html">Aquecimento Solar</a>
-                    <a class="link" href="Fotovoltaica.html">Fotovoltaica</a>
-                    <a class="link" href="Eolica.html">Eólica</a>
-                    <a class="link" href="Hidroeletrica.html">Hidroelétrica</a>
+                    <a class="link" href="Aquecimento_Solar.html">Solar Heating</a>
+                    <a class="link" href="Fotovoltaica.html">Photovoltaic</a>
+                    <a class="link" href="Eolica.html">Wind</a>
+                    <a class="link" href="Hidroeletrica.html">Hydroelectric</a>
                 </div>
             </div>
 
@@ -47,8 +49,8 @@
                     <img class="icon" src="Icones/bacteria.png">
                 </button>
                 <div class="lateral_dropdown-content">
-                    <a class="link" href="Biodigestor.html">Biodigestor</a>
-                    <a class="link" href="Compostagem.html">Compostagem</a>
+                    <a class="link" href="Biodigestor.html">Biodigester</a>
+                    <a class="link" href="Compostagem.html">Composting</a>
                 </div>
             </div>
 
@@ -57,9 +59,9 @@
                     <img class="icon" src="Icones/greenhouse.png">
                 </button>
                 <div class="lateral_dropdown-content">
-                    <a class="link" href="Ventilacao_Forcada.html">Ventilação Forçada</a>
-                    <a class="link" href="Ar_Condicionado.html">Ar Condicionado</a>
-                    <a class="link" href="Nebulizacao.html">Nebulização</a>
+                    <a class="link" href="Ventilacao_Forcada.html">Forced Ventilation</a>
+                    <a class="link" href="Ar_Condicionado.html">Air Conditioning</a>
+                    <a class="link" href="Nebulizacao.html">Fogging</a>
                 </div>
             </div>
 
@@ -68,7 +70,7 @@
                     <img class="icon" src="Icones/dollar-currency-symbol.png">
                 </button>
                 <div class="lateral_dropdown-content">
-                    <a class="link" href="Analise_Economica.html">Análise Econômica</a>
+                    <a class="link" href="Analise_Economica.html">Economic analysis</a>
                 </div>
             </div>
 
@@ -79,27 +81,27 @@
             <div class="calculator">
 
                 <ul class="nav">
-                    <button class="nav_link active" id="par_bt" onclick="openTab(event, 'par')">Parâmetros do Sistema</button>
-                    <button class="nav_link" id="tipo_bt" onclick="openTab(event, 'tipo')">Tipo do Sistema</button>
+                    <button class="nav_link active" id="par_bt" onclick="openTab(event, 'par')">System Parameters</button>
+                    <button class="nav_link" id="tipo_bt" onclick="openTab(event, 'tipo')">System Type</button>
                 </ul>
 
                 <div class="tab_content">
 
                     <div class="tab_pane" id="par">
-                        <input class="input" placeholder="Consumo médio mensal (kWh/mês)" type="number" step="0.0001" id="Cmm">
-                        <br><input class="input" placeholder="Velocidade média do vento (m/s)" type="number" step="0.0001" id="Vv">
-                        <br><input class="input" placeholder="Diâmetro das pás (m)" type="number" step="0.0001" id="Dp">
+                        <input class="input" placeholder="Average monthly consumption (kWh/month)" type="number" step="0.0001" id="Cmm">
+                        <br><input class="input" placeholder="Average wind speed (m/s)" type="number" step="0.0001" id="Vv">
+                        <br><input class="input" placeholder="Blade diameter (m)" type="number" step="0.0001" id="Dp">
                     </div>
 
                     <div class="tab_pane" id="tipo" style="display: none;">
-                        <h5 style="background-color: #65b8a6;">Tipo do sistema:</h5>
+                        <h5 style="background-color: #65b8a6;">System type:</h5>
                         <br>
                         <input type="radio" name="tipo" id="ongrid" onclick="Aparecer();"><span>On-Grid</span>
                         <input type="radio" name="tipo" id="offgrid" onclick="Aparecer();"><span>Off-Grid</span>
                         <div id="inputoffgrid" style="display:none; background-color: #65b8a6;">
-                            <br><input class="input" placeholder="Autonomia (dias)" type="number" step="0.0001" id="Autonomia">
-                            <br><input class="input" placeholder="Tensão do Módulo" type="number" step="0.0001" id="TM">
-                            <br><input class="input" placeholder="Tensão do banco de baterias" type="number" step="0.0001" id="Tbb">
+                            <br><input class="input" placeholder="Autonomy(days)" type="number" step="0.0001" id="Autonomia">
+                            <br><input class="input" placeholder="Module Voltage" type="number" step="0.0001" id="TM">
+                            <br><input class="input" placeholder="Battery bank voltage" type="number" step="0.0001" id="Tbb">
                         </div>
                         <br>
                     </div>
@@ -109,19 +111,18 @@
             </div>
 
             <button class="result" onclick="DimensionarEolica('minhaDiv');">
-                Dimensionar!
+                Size!
             </button>
 
             <div class="boxresults" id="minhaDiv" style="display: none;">
-                <center><div class="titresp">Resultados</div></center>
-                <div class="respostas">Número de aerogeradores: <span id="Nae"></span></div>
-                <div class="respostas">Potência do Inversor (W): <span id="PI"></span></div>
+                <center><div class="titresp">Results</div></center>
+                <div class="respostas">Number of wind turbines: <span id="Nae"></span></div>
+                <div class="respostas">Inverter Power (W): <span id="PI"></span></div>
                 <div id="resultoffgrid" style="display:none; background-color: #65b8a6;">
-                    <h5 style="background-color: #65b8a6;">Banco de Baterias</h5>
-                    <div class="respostas" style="background-color: #65b8a6;">Capacidade das baterias (Ah): <span id="Cb"></span></div>
-                    <div class="respostas" style="background-color: #65b8a6;">Controlador de carga (A): <span id="Cc"></span></div>
+                    <h5 style="background-color: #65b8a6;">Battery bank</h5>
+                    <div class="respostas" style="background-color: #65b8a6;">Battery capacity (Ah): <span id="Cb"></span></div>
+                    <div class="respostas" style="background-color: #65b8a6;">Charge controller (A): <span id="Cc"></span></div>
                 </div>
-                <button class="generate_pdf"> Gerar PDF </button>
             </div>
 
         </div>

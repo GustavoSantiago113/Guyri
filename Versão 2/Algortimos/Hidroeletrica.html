@@ -78,7 +78,7 @@
 
                 <ul class="nav">
                     <button class="nav_link active" id="esc_bt" onclick="openTab(event, 'esc')">Escolha da Turbina</button>
-                    <button class="nav_link" id="par_bt" style="display: none;">Parâmetros da Turbina</button>
+                    <button class="nav_link" id="par_turb" style="display: none;">Parâmetros da Turbina</button>
                 </ul>
 
                 <div class="tab_content">
@@ -90,13 +90,13 @@
                         <br><input class="input" type="number" step="0.0001" id="N" placeholder="Velocidade angular de rotação (rpm)"> 
                         <br><input class="input" type="number" step="0.0001" id="n" placeholder="Rendimento da turbina (%)"> 
                         <br>
-                        <button class="result" onclick="mudarParaParametro(event, 'par');">
+                        <button class="result" onclick="mudarParaParametro(event, 'parTurb');">
                             Escolher turbina!
                         </button>
 
                     </div>
 
-                    <div class="tab_pane" id="par" style="display: none;">
+                    <div class="tab_pane" id="parTurb" style="display: none;">
 
                         <div style="background-color: #65b8a6;display: none;" id="fran" class="labelturb">
                             <br><input type="radio" name="turbina" value="turbF" id="turbFrancis">
@@ -240,8 +240,8 @@
             }
 
             document.getElementById(tabName).style.display = "block";
-            document.getElementById('par_bt').style.display = "block";
-            document.getElementById('par_bt').className += " active";
+            document.getElementById('par_turb').style.display = "block";
+            document.getElementById('par_turb').className += " active";
 
             if(H >= 100 && 18 <= Ns && Ns <= 90 ){
                 turbName = 'pelt';
