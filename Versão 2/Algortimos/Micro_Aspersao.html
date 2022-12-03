@@ -1,93 +1,93 @@
 <html>
     <head>
         <title>
-            Guyri - Micro Aspersão
+            Guyri - Hydroelectric
         </title>
+        <link rel="icon" href="Logotipo 2.png">
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="functions.js"></script>
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
-            integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
-            crossorigin=""/>
-        <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
-        integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
-        crossorigin=""></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
     <header class="header">
         <img class="logo_header" src="Icones/Logotipo 2.png">
         <div class="title_header">
             <h1 style="background-color: #b5e8c3; font-size: 30px;">ARA</h1>
-            <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSSISTEMAS</h3>
+            <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSYSTEMS</h3>
         </div>
         <a class="return_initial" href="initial_page.html">Home</a>
     </header>
     <body>
-        <div class="body_sizing">
-            <div class="main_lateral_dropdown">
-                <div class="lateral_dropdown">
-                    <button class="lateral_dropbtn">
-                        <img class="icon" src="Icones/irrigation.png">
-                    </button>
-                    <div class="lateral_dropdown-content">
-                        <a class="link" href="Gotejamento.html">Gotejamento</a>
-                        <a class="link" href="Aspersao.html">Aspersão</a>
-                        <a class="link" href="Micro_Aspersao.html">Micro-Aspersão</a>
-                        <a class="link" href="Pivo_Central.html">Pivô Central</a>
-                    </div>
-                </div>
-    
-                <div class="lateral_dropdown">
-                    <button class="lateral_dropbtn">
-                        <img class="icon" src="Icones/solar-energy.png">
-                    </button>
-                    <div class="lateral_dropdown-content">
-                        <a class="link" href="Aquecimento_Solar.html">Aquecimento Solar</a>
-                        <a class="link" href="Fotovoltaica.html">Fotovoltaica</a>
-                        <a class="link" href="Eolica.html">Eólica</a>
-                        <a class="link" href="Hidroeletrica.html">Hidroelétrica</a>
-                    </div>
-                </div>
-    
-                <div class="lateral_dropdown">
-                    <button class="lateral_dropbtn">
-                        <img class="icon" src="Icones/bacteria.png">
-                    </button>
-                    <div class="lateral_dropdown-content">
-                        <a class="link" href="Biodigestor.html">Biodigestor</a>
-                        <a class="link" href="Compostagem.html">Compostagem</a>
-                    </div>
-                </div>
-    
-                <div class="lateral_dropdown">
-                    <button class="lateral_dropbtn">
-                        <img class="icon" src="Icones/greenhouse.png">
-                    </button>
-                    <div class="lateral_dropdown-content">
-                        <a class="link" href="Ventilacao_Forcada.html">Ventilação Forçada</a>
-                        <a class="link" href="Ar_Condicionado.html">Ar Condicionado</a>
-                        <a class="link" href="Nebulizacao.html">Nebulização</a>
-                    </div>
-                </div>
-    
-                <div class="lateral_dropdown">
-                    <button class="lateral_dropbtn">
-                        <img class="icon" src="Icones/dollar-currency-symbol.png">
-                    </button>
-                    <div class="lateral_dropdown-content">
-                        <a class="link" href="Analise_Economica.html">Análise Econômica</a>
-                    </div>
+    <div class="body_sizing">   
+        <div class="main_lateral_dropdown">
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/irrigation.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Gotejamento.html">Dripping</a>
+                    <a class="link" href="Aspersao.html">Sprinkling</a>
+                    <a class="link" href="Micro_Aspersao.html">Micro-Sprinkling</a>
+                    <a class="link" href="Pivo_Central.html">Center Pivot</a>
                 </div>
             </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/solar-energy.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Aquecimento_Solar.html">Solar Heating</a>
+                    <a class="link" href="Fotovoltaica.html">Photovoltaic</a>
+                    <a class="link" href="Eolica.html">Wind</a>
+                    <a class="link" href="Hidroeletrica.html">Hydroelectric</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/bacteria.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Biodigestor.html">Biodigester</a>
+                    <a class="link" href="Compostagem.html">Composting</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/greenhouse.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Ventilacao_Forcada.html">Forced Ventilation</a>
+                    <a class="link" href="Ar_Condicionado.html">Air Conditioning</a>
+                    <a class="link" href="Nebulizacao.html">Fogging</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/dollar-currency-symbol.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Analise_Economica.html">Economic analysis</a>
+                </div>
+            </div>
+
+        </div>
+
+        </div>
 
             <div class="main_section">
 
                 <div class="calculator">
 
                     <ul class="nav">
-                        <button class="nav_link active" id="csc_bt" onclick="openTab(event, 'csc')">Cultura, Solo e clima</button>
-                        <button class="nav_link" id="area_bt" onclick="openTab(event, 'area')">Área</button>
-                        <button class="nav_link" id="proj_bt" onclick="openTab(event, 'proj')">Critérios do Projeto</button>
-                        <button class="nav_link" id="asp_bt" onclick="openTab(event, 'asp')">Aspersor</button>
-                        <button class="nav_link" id="mdo_bt" onclick="openTab(event, 'mdo')">Mão de Obra</button>
+                        <button class="nav_link active" id="csc_bt" onclick="openTab(event, 'csc')">Crop, soil and climate</button>
+                        <button class="nav_link" id="area_bt" onclick="openTab(event, 'area')">Area</button>
+                        <button class="nav_link" id="proj_bt" onclick="openTab(event, 'proj')">Project Criteria</button>
+                        <button class="nav_link" id="asp_bt" onclick="openTab(event, 'asp')">Sprinkler</button>
+                        <button class="nav_link" id="mdo_bt" onclick="openTab(event, 'mdo')">Labor</button>
                     </ul>
 
                     <div class="tab_content">
@@ -96,48 +96,48 @@
                             <input class="input" placeholder="Kc" type="number" step="0.0001" id="Kc">
                             <br><input class="input" placeholder="Kp" type="number" step="0.0001" id="Kp">
                             <br><input class="input" placeholder="Kr" type="number" step="0.0001" id="Kr">
-                            <br><input class="input" placeholder="ECA (mm/dia)" type="number" step="0.0001" id="ECA">
-                            <br><input class="input" placeholder="ETc (mm/dia)" type="number" step="0.0001" id="ETC">
-                            <br><input class="input" placeholder="Profundidade do sistema radicular (cm)" type="number" step="0.0001" id="PSR">
+                            <br><input class="input" placeholder="ECA (mm/day)" type="number" step="0.0001" id="ECA">
+                            <br><input class="input" placeholder="ETc (mm/day)" type="number" step="0.0001" id="ETC">
+                            <br><input class="input" placeholder="Depth of the root system (cm)" type="number" step="0.0001" id="PSR">
                             <br><input class="input" placeholder="f (%)" type="number" step="0.0001" id="f">
-                            <br><input class="input" placeholder="Capacidade de campo (cm3/cm3)" type="number" step="0.0001" id="CC">
-                            <br><input class="input" placeholder="Ponto de murcha permanente (cm3/cm3)" type="number" step="0.0001" id="PMP">
-                            <br><input class="input" placeholder="Densidade do solo (g/cm3)" type="number" step="0.0001" id="ds">
+                            <br><input class="input" placeholder="Soil capacity (cm3/cm3)" type="number" step="0.0001" id="CC">
+                            <br><input class="input" placeholder="Permanent wilting point (cm3/cm3)" type="number" step="0.0001" id="PMP">
+                            <br><input class="input" placeholder="Soil density (g/cm3)" type="number" step="0.0001" id="ds">
                         </div>
 
                         <div class="tab_pane" id="area" style="display: none;">
-                            <input class="input" placeholder="Largura da área (m)" type="number" step="0.0001" id="LA">
-                            <br><input class="input" placeholder="Comprimento da área (m)" type="number" step="0.0001" id="CA">
-                            <br><input class="input" placeholder="Comprimento da linha de sucção à primeira linha lateral(m)" type="number" step="0.0001" id="CLS">
-                            <br><input class="input" placeholder="Altura de sucção (m)" type="number" step="0.0001" id="AS">
-                            <br><input class="input" placeholder="Altura de recalque positivo para aclive e negativo para declive (m)" type="number" step="0.0001" id="AR">
+                            <input class="input" placeholder="Area width (m)" type="number" step="0.0001" id="LA">
+                            <br><input class="input" placeholder="Area length (m)" type="number" step="0.0001" id="CA">
+                            <br><input class="input" placeholder="Length from suction line to first lateral line (m)" type="number" step="0.0001" id="CLS">
+                            <br><input class="input" placeholder="Suction height (m)" type="number" step="0.0001" id="AS">
+                            <br><input class="input" placeholder="Positive settlement height for uphill and negative for downhill (m)" type="number" step="0.0001" id="AR">
                         </div>
 
                         <div class="tab_pane" id="proj" style="display: none;">
-                            <input class="input" placeholder="Velocidade de escoamento nas tubulações (m/s)" type="number" step="0.0001" id="VE">
-                            <br><input class="input" placeholder="Coeficiente de Hazen-Williams da linha principal" type="number" step="0.0001" id="Cp">
-                            <br><input class="input" placeholder="Coeficiente de Hazen-Williams na linha de derivação" type="number" step="0.0001" id="Cd">
-                            <br><input class="input" placeholder="Coeficiente de Hazen-Williams na linha lateral" type="number" step="0.0001" id="Cl">
-                            <h5 style="background-color: #65b8a6;">Linha lateral em:</h5>
+                            <input class="input" placeholder="Flow velocity in pipes (m/s)" type="number" step="0.0001" id="VE">
+                            <br><input class="input" placeholder="Main line Hazen-Williams coefficient" type="number" step="0.0001" id="Cp">
+                            <br><input class="input" placeholder="Hazen-Williams coefficient in the shunt line" type="number" step="0.0001" id="Cd">
+                            <br><input class="input" placeholder="Hazen-Williams coefficient on the sideline" type="number" step="0.0001" id="Cl">
+                            <h5 style="background-color: #65b8a6;">Sideline in:</h5>
                             <br>
-                            <input type="radio" name="linhas" id="AcliveS"/><span>Aclive</span>
-                            <input type="radio" name="linhas" id="DecliveS"/><span>Declive</span>
-                            <input type="radio" name="linhas" id="NivelS"/><span>Nivel</span>
-                            <input class="input" style="width:fit-content;" placeholder="Diferença de altura (m)" type="number" step="0.0001" id="Dec1">
+                            <input type="radio" name="linhas" id="AcliveS"/><span>Uphill slope</span>
+                            <input type="radio" name="linhas" id="DecliveS"/><span>Downhill slope</span>
+                            <input type="radio" name="linhas" id="NivelS"/><span>Level</span>
+                            <input class="input" style="width:fit-content;" placeholder="Height difference (m)" type="number" step="0.0001" id="Dec1">
                         </div>
 
                         <div class="tab_pane" id="asp" style="display: none;">
-                            <input class="input" placeholder="Vazão (m3/h)" type="number" step="0.0001" id="VZ">
-                            <br><input class="input" placeholder="Pressão de Serviço (mca)" type="number" step="0.0001" id="PS">
-                            <br><input class="input" placeholder="Diâmetro molhado (m)" type="number" step="0.0001" id="DM">
-                            <br><input class="input" placeholder="Número de emissores por árvore" type="number" step="0.0001" id="n">
-                            <br><input class="input" placeholder="Espaçamento entre-plantas (m)" type="number" step="0.0001" id="Ep">
-                            <br><input class="input" placeholder="Espaçamento entre-linhas (m)" type="number" step="0.0001" id="El">
-                            <br><input class="input" placeholder="Espaçamento na mesma linha entre aspersores (m)" type="number" step="0.0001" id="Ee">
+                            <input class="input" placeholder="Flow rate (m3/h)" type="number" step="0.0001" id="VZ">
+                            <br><input class="input" placeholder="Service Pressure (mca)" type="number" step="0.0001" id="PS">
+                            <br><input class="input" placeholder="Wet diameter (m)" type="number" step="0.0001" id="DM">
+                            <br><input class="input" placeholder="Number of emitters per tree" type="number" step="0.0001" id="n">
+                            <br><input class="input" placeholder="Spacing between plants (m)" type="number" step="0.0001" id="Ep">
+                            <br><input class="input" placeholder="Line spacing (m)" type="number" step="0.0001" id="El">
+                            <br><input class="input" placeholder="Spacing on the same line between sprinklers (m)" type="number" step="0.0001" id="Ee">
                         </div>
 
                         <div class="tab_pane" id="mdo" style="display: none;">
-                            <input class="input" placeholder="Rendimento da Motobomba (%)" type="number" step="0.0001" id="RM">
+                            <input class="input" placeholder="Pump Efficiency (%)" type="number" step="0.0001" id="RM">
                         </div>
 
                     </div>
@@ -145,41 +145,39 @@
                 </div>
 
                 <button class="result" onclick="DimensionarMicroAsp('minhaDiv');">
-                    Dimensionar!
+                    Size!
                 </button>
 
                 <div class="boxresults" id="minhaDiv" style="display: none;">
-                    <center><div class="titresp">Resultados</div></center>
-                    <h5 style="background-color: #65b8a6;">Manejo</h5>
-                    <div class="respostas">Lâmina Máxima de Irrigação (mm): <span id="hmax"></span></div>
-                    <div class="respostas">Período Máximo de Irrigação (dias): <span id="Fmax"></span></div>
-                    <div class="respostas">Tempo de irrigação (h): <span id="T"></span></div>
+                    <center><div class="titresp">Results</div></center>
+                    <h5 style="background-color: #65b8a6;">Management</h5>
+                    <div class="respostas">Maximum Irrigation Depth (mm): <span id="hmax"></span></div>
+                    <div class="respostas">Maximum Irrigation Period (days): <span id="Fmax"></span></div>
+                    <div class="respostas">Irrigation time (h): <span id="T"></span></div>
                     <br>
-                    <h5 style="background-color: #65b8a6;">Linhas laterais</h5>
-                    <div class="respostas">Número total de linhas laterais: <span id="Nll"></span></div>
-                    <div class="respostas">Comprimento de cada linha lateral (m): <span id="Ll"></span></div>
-                    <div class="respostas">Comprimento total de linhas laterais (m): <span id="Ctll"></span></div>
-                    <div class="respostas">Número de aspersores por linha lateral : <span id="Nall"></span></div>
-                    <div class="respostas">Vazão de cada linha lateral (m3/h): <span id="Qll"></span></div>
-                    <div class="respostas">Diâmetro da linha lateral: <span id="Dl"></span></div>
-                    <div class="respostas">Número total de microaspersores: <span id="Ntma"></span></div>
+                    <h5 style="background-color: #65b8a6;">Side lines</h5>
+                    <div class="respostas">Total number of sidelines: <span id="Nll"></span></div>
+                    <div class="respostas">Length of each sideline (m): <span id="Ll"></span></div>
+                    <div class="respostas">Total length of side lines (m): <span id="Ctll"></span></div>
+                    <div class="respostas">Number of sprinklers per sideline : <span id="Nall"></span></div>
+                    <div class="respostas">Flow from each lateral line (m3/h): <span id="Qll"></span></div>
+                    <div class="respostas">Lateral line diameter: <span id="Dl"></span></div>
+                    <div class="respostas">Total number of micro sprinklers: <span id="Ntma"></span></div>
                     <br>
-                    <h5 style="background-color: #65b8a6;">Linhas de derivação</h5>
-                    <div class="respostas">Comprimento de uma linha de derivação (m): <span id="Cmpd"></span></div>
-                    <div class="respostas">Comprimento total das linhas de derivação (m): <span id="Ctd"></span></div>
-                    <div class="respostas">Vazão de cada linha de derivação (m3/h): <span id="Qd"></span></div>
-                    <div class="respostas">Diâmetro da linha de derivação (m): <span id="Dd"></span></div>
+                    <h5 style="background-color: #65b8a6;">Derivation lines</h5>
+                    <div class="respostas">Length of a lead line (m): <span id="Cmpd"></span></div>
+                    <div class="respostas">Total length of the derivation lines (m): <span id="Ctd"></span></div>
+                    <div class="respostas">Flow of each derivation line (m3/h): <span id="Qd"></span></div>
+                    <div class="respostas">Derivation line diameter (m): <span id="Dd"></span></div>
                     <br>
-                    <h5 style="background-color: #65b8a6;">Linha principal</h5>
-                    <div class="respostas">Comprimento da linha principal (m): <span id="Lp"></span></div>
-                    <div class="respostas">Diâmetro da linha principal (m): <span id="Dp"></span></div>
+                    <h5 style="background-color: #65b8a6;">Main line</h5>
+                    <div class="respostas">Main line length (m): <span id="Lp"></span></div>
+                    <div class="respostas">Main line diameter (m): <span id="Dp"></span></div>
                     <br>
-                    <h5 style="background-color: #65b8a6;">Motobomba</h5>
-                    <div class="respostas">Vazão (m3/h): <span id="Qp"></span></div>
-                    <div class="respostas">Altura manométrica total (mca): <span id="HMT"></span></div>
-                    <div class="respostas">Potência (cv): <span id="Pot"></span></div>
-                    <br>
-                    <button class="generate_pdf"> Gerar PDF </button>
+                    <h5 style="background-color: #65b8a6;">Motor pump</h5>
+                    <div class="respostas">Flow rate (m3/h): <span id="Qp"></span></div>
+                    <div class="respostas">Total head (mca): <span id="HMT"></span></div>
+                    <div class="respostas">Power (cv): <span id="Pot"></span></div>
                 </div>
                 
             </div>

@@ -1,96 +1,97 @@
 <html>
     <head>
         <title>
-            Guyri - Ventilação Forçada
+            Guyri - Hydroelectric
         </title>
+        <link rel="icon" href="Logotipo 2.png">
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="functions.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
     <header class="header">
         <img class="logo_header" src="Icones/Logotipo 2.png">
         <div class="title_header">
             <h1 style="background-color: #b5e8c3; font-size: 30px;">ARA</h1>
-            <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSSISTEMAS</h3>
+            <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSYSTEMS</h3>
         </div>
         <a class="return_initial" href="initial_page.html">Home</a>
     </header>
     <body>
-        <div class="body_sizing">
+    <div class="body_sizing">   
+        <div class="main_lateral_dropdown">
 
-            <div class="main_lateral_dropdown">
-
-                <div class="lateral_dropdown">
-                    <button class="lateral_dropbtn">
-                        <img class="icon" src="Icones/irrigation.png">
-                    </button>
-                    <div class="lateral_dropdown-content">
-                        <a class="link" href="Gotejamento.html">Gotejamento</a>
-                        <a class="link" href="Aspersao.html">Aspersão</a>
-                        <a class="link" href="Micro_Aspersao.html">Micro-Aspersão</a>
-                        <a class="link" href="Pivo_Central.html">Pivô Central</a>
-                    </div>
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/irrigation.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Gotejamento.html">Dripping</a>
+                    <a class="link" href="Aspersao.html">Sprinkling</a>
+                    <a class="link" href="Micro_Aspersao.html">Micro-Sprinkling</a>
+                    <a class="link" href="Pivo_Central.html">Center Pivot</a>
                 </div>
-    
-                <div class="lateral_dropdown">
-                    <button class="lateral_dropbtn">
-                        <img class="icon" src="Icones/solar-energy.png">
-                    </button>
-                    <div class="lateral_dropdown-content">
-                        <a class="link" href="Aquecimento_Solar.html">Aquecimento Solar</a>
-                        <a class="link" href="Fotovoltaica.html">Fotovoltaica</a>
-                        <a class="link" href="Eolica.html">Eólica</a>
-                        <a class="link" href="Hidroeletrica.html">Hidroelétrica</a>
-                    </div>
-                </div>
-    
-                <div class="lateral_dropdown">
-                    <button class="lateral_dropbtn">
-                        <img class="icon" src="Icones/bacteria.png">
-                    </button>
-                    <div class="lateral_dropdown-content">
-                        <a class="link" href="Biodigestor.html">Biodigestor</a>
-                        <a class="link" href="Compostagem.html">Compostagem</a>
-                    </div>
-                </div>
-    
-                <div class="lateral_dropdown">
-                    <button class="lateral_dropbtn">
-                        <img class="icon" src="Icones/greenhouse.png">
-                    </button>
-                    <div class="lateral_dropdown-content">
-                        <a class="link" href="Ventilacao_Forcada.html">Ventilação Forçada</a>
-                        <a class="link" href="Ar_Condicionado.html">Ar Condicionado</a>
-                        <a class="link" href="Nebulizacao.html">Nebulização</a>
-                    </div>
-                </div>
-    
-                <div class="lateral_dropdown">
-                    <button class="lateral_dropbtn">
-                        <img class="icon" src="Icones/dollar-currency-symbol.png">
-                    </button>
-                    <div class="lateral_dropdown-content">
-                        <a class="link" href="Analise_Economica.html">Análise Econômica</a>
-                    </div>
-                </div>
-    
             </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/solar-energy.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Aquecimento_Solar.html">Solar Heating</a>
+                    <a class="link" href="Fotovoltaica.html">Photovoltaic</a>
+                    <a class="link" href="Eolica.html">Wind</a>
+                    <a class="link" href="Hidroeletrica.html">Hydroelectric</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/bacteria.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Biodigestor.html">Biodigester</a>
+                    <a class="link" href="Compostagem.html">Composting</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/greenhouse.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Ventilacao_Forcada.html">Forced Ventilation</a>
+                    <a class="link" href="Ar_Condicionado.html">Air Conditioning</a>
+                    <a class="link" href="Nebulizacao.html">Fogging</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/dollar-currency-symbol.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Analise_Economica.html">Economic analysis</a>
+                </div>
+            </div>
+
+        </div>
 
             <div class="main_section">
 
                 <div class="calculator">
 
                     <ul class="nav">
-                        <button class="nav_link active" id="pds_bt" onclick="openTab(event, 'pds')">Parâmetros do Sistema</button>
+                        <button class="nav_link active" id="pds_bt" onclick="openTab(event, 'pds')">System Parameters</button>
                     </ul>
 
                     <div class="tab_content">
 
                         <div class="tab_pane" id="cult">
-                            <input class="input" type="number" step="0.0001" id="C" placeholder="Comprimento do local (m)">
-                            <br><input class="input" placeholder="Largura do local (m)" type="number" step="0.0001" id="L">
-                            <br><input class="input" placeholder="Altura do local com forro (m)" type="number" step="0.0001" id="H">
-                            <br><input class="input" placeholder="Capacidade do Ventilador (m3/min)" type="number" step="0.0001" id="Cv">
-                            <br><input class="input" placeholder="Velocidade do ar (m/s)" type="number" step="0.0001" id="Var">
+                            <input class="input" type="number" step="0.0001" id="C" placeholder="Site length (m)">
+                            <br><input class="input" placeholder="Site width (m)" type="number" step="0.0001" id="L">
+                            <br><input class="input" placeholder="Height of the place with lining (m)" type="number" step="0.0001" id="H">
+                            <br><input class="input" placeholder="Fan Capacity (m3/min)" type="number" step="0.0001" id="Cv">
+                            <br><input class="input" placeholder="Air speed (m/s)" type="number" step="0.0001" id="Var">
                         </div>
 
                     </div>
@@ -98,14 +99,13 @@
                 </div>
 
                 <button class="result" onclick="DimensionarVentilacao('minhaDiv');">
-                    Dimensionar!
+                    Size!
                 </button>
 
                 <div class="boxresults" id="minhaDiv" style="display: none;">
-                    <center><div class="titresp">Resultados</div></center>
-                    <div class="respostas">Número total de ventiladores: <span id="N"></span></div>
-                    <br><div class="respostas">Área necessária de entrada de ar (m2): <span id="An"></span></div>
-                    <button class="generate_pdf"> Gerar PDF </button>
+                    <center><div class="titresp">Results</div></center>
+                    <div class="respostas">Total number of fans: <span id="N"></span></div>
+                    <br><div class="respostas">Required air intake area (m2): <span id="An"></span></div>
                 </div>
 
             </div>
@@ -114,8 +114,9 @@
 
             </div>
         </div>
+
     </body>
-    <script>
+    <script>  
         function DimensionarVentilacao(el){
             document.getElementById(el).style.display = "block";
 

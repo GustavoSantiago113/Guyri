@@ -1,22 +1,18 @@
 <html>
     <head>
         <title>
-            Guyri - Aquecimento Solar
+            Guyri - Hydroelectric
         </title>
+        <link rel="icon" href="Logotipo 2.png">
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="functions.js"></script>
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
-            integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
-            crossorigin=""/>
-        <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
-        integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
-        crossorigin=""></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
     <header class="header">
         <img class="logo_header" src="Icones/Logotipo 2.png">
         <div class="title_header">
             <h1 style="background-color: #b5e8c3; font-size: 30px;">ARA</h1>
-            <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSSISTEMAS</h3>
+            <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSYSTEMS</h3>
         </div>
         <a class="return_initial" href="initial_page.html">Home</a>
     </header>
@@ -29,10 +25,10 @@
                     <img class="icon" src="Icones/irrigation.png">
                 </button>
                 <div class="lateral_dropdown-content">
-                    <a class="link" href="Gotejamento.html">Gotejamento</a>
-                    <a class="link" href="Aspersao.html">Aspersão</a>
-                    <a class="link" href="Micro_Aspersao.html">Micro-Aspersão</a>
-                    <a class="link" href="Pivo_Central.html">Pivô Central</a>
+                    <a class="link" href="Gotejamento.html">Dripping</a>
+                    <a class="link" href="Aspersao.html">Sprinkling</a>
+                    <a class="link" href="Micro_Aspersao.html">Micro-Sprinkling</a>
+                    <a class="link" href="Pivo_Central.html">Center Pivot</a>
                 </div>
             </div>
 
@@ -41,10 +37,10 @@
                     <img class="icon" src="Icones/solar-energy.png">
                 </button>
                 <div class="lateral_dropdown-content">
-                    <a class="link" href="Aquecimento_Solar.html">Aquecimento Solar</a>
-                    <a class="link" href="Fotovoltaica.html">Fotovoltaica</a>
-                    <a class="link" href="Eolica.html">Eólica</a>
-                    <a class="link" href="Hidroeletrica.html">Hidroelétrica</a>
+                    <a class="link" href="Aquecimento_Solar.html">Solar Heating</a>
+                    <a class="link" href="Fotovoltaica.html">Photovoltaic</a>
+                    <a class="link" href="Eolica.html">Wind</a>
+                    <a class="link" href="Hidroeletrica.html">Hydroelectric</a>
                 </div>
             </div>
 
@@ -53,8 +49,8 @@
                     <img class="icon" src="Icones/bacteria.png">
                 </button>
                 <div class="lateral_dropdown-content">
-                    <a class="link" href="Biodigestor.html">Biodigestor</a>
-                    <a class="link" href="Compostagem.html">Compostagem</a>
+                    <a class="link" href="Biodigestor.html">Biodigester</a>
+                    <a class="link" href="Compostagem.html">Composting</a>
                 </div>
             </div>
 
@@ -63,9 +59,9 @@
                     <img class="icon" src="Icones/greenhouse.png">
                 </button>
                 <div class="lateral_dropdown-content">
-                    <a class="link" href="Ventilacao_Forcada.html">Ventilação Forçada</a>
-                    <a class="link" href="Ar_Condicionado.html">Ar Condicionado</a>
-                    <a class="link" href="Nebulizacao.html">Nebulização</a>
+                    <a class="link" href="Ventilacao_Forcada.html">Forced Ventilation</a>
+                    <a class="link" href="Ar_Condicionado.html">Air Conditioning</a>
+                    <a class="link" href="Nebulizacao.html">Fogging</a>
                 </div>
             </div>
 
@@ -74,7 +70,7 @@
                     <img class="icon" src="Icones/dollar-currency-symbol.png">
                 </button>
                 <div class="lateral_dropdown-content">
-                    <a class="link" href="Analise_Economica.html">Análise Econômica</a>
+                    <a class="link" href="Analise_Economica.html">Economic analysis</a>
                 </div>
             </div>
 
@@ -83,9 +79,9 @@
             <div class="calculator">
 
                 <ul class="nav">
-                    <button class="nav_link active" id="cult_bt" onclick="openTab(event, 'cult')">Cultura e Área</button>
-                    <button class="nav_link" id="asp_bt" onclick="openTab(event, 'asp')">Aspersores</button>
-                    <button class="nav_link" id="mat_bt" onclick="openTab(event, 'mat')">Materiais e Mão-de-Obra</button>
+                    <button class="nav_link active" id="cult_bt" onclick="openTab(event, 'cult')">Crop and Area</button>
+                    <button class="nav_link" id="asp_bt" onclick="openTab(event, 'asp')">Sprinklers</button>
+                    <button class="nav_link" id="mat_bt" onclick="openTab(event, 'mat')">Materials and Labor</button>
                 </ul>
 
                 <div class="tab_content">
@@ -94,41 +90,41 @@
 
                         <input class="input" type="number" step="0.0001" id="Eto" placeholder="Eto">
                         <br><input class="input" type="number" step="0.0001" id="Kc" placeholder="Kc">
-                        <br><input class="input" type="number" step="0.0001" id="R" placeholder="Raio do pivô (m)">
-                        <br><h5 style="background-color: #65b8a6;">Pivô em:</h5>
-                        <br><input type="radio" name="linhap" id="Aclivep"><span>Aclive</span>
-                        <input type="radio" name="linhap" id="Declivep"><span>Declive</span>
-                        <input type="radio" name="linhap" id="Nivelp"><span>Nivel</span>
-                        <input class="input" style="width:fit-content;" placeholder="Diferença de altura (m)" type="number" step="0.0001" id="Dhp">
-                        <br><h5 style="background-color: #65b8a6;">Tubo da sucção ao Pivô em:</h5>
-                        <br><input type="radio" name="linhas" id="Aclives"><span>Aclive</span>
-                        <input type="radio" name="linhas" id="Declives"><span>Declive</span>
-                        <input type="radio" name="linhas" id="Nivels"><span>Nivel</span>
-                        <input class="input" style="width:fit-content;" placeholder="Diferença de altura (m)" type="number" step="0.0001" id="Dhs">
-                        <br><input class="input" type="number" step="0.0001" id="Ls" placeholder="Comprimento do tubo de sucção ao pivô central (m)">
+                        <br><input class="input" type="number" step="0.0001" id="R" placeholder="Pivot radius (m)">
+                        <br><h5 style="background-color: #65b8a6;">Pivot on:</h5>
+                        <br><input type="radio" name="linhap" id="Aclivep"><span>Uphill Slope</span>
+                        <input type="radio" name="linhap" id="Declivep"><span>Downhill Slope</span>
+                        <input type="radio" name="linhap" id="Nivelp"><span>Level</span>
+                        <input class="input" style="width:fit-content;" placeholder="Height difference (m)" type="number" step="0.0001" id="Dhp">
+                        <br><h5 style="background-color: #65b8a6;">Suction tube to Pivot in:</h5>
+                        <br><input type="radio" name="linhas" id="Aclives"><span>Uphill Slope</span>
+                        <input type="radio" name="linhas" id="Declives"><span>Downhill Slope</span>
+                        <input type="radio" name="linhas" id="Nivels"><span>Level</span>
+                        <input class="input" style="width:fit-content;" placeholder="Height difference (m)" type="number" step="0.0001" id="Dhs">
+                        <br><input class="input" type="number" step="0.0001" id="Ls" placeholder="Length from suction tube to center pivot (m)">
 
                     </div>
 
                     <div class="tab_pane" id="asp" style="display: none;">
 
-                        <input class="input" type="number" step="0.0001" id="Pasp" placeholder="Pressão de serviço dos aspersores (mca)">
-                        <br><input class="input" type="number" step="0.0001" id="Rasp" placeholder="Raio do aspersor (m)">
-                        <br><input class="input" type="number" step="0.0001" id="Easp" placeholder="Distância entre aspersores (m)">
-                        <br><input type="radio" name="tipo" id="canhao" onclick="AparecerCanhao();"><span>Canhão ao final?</span>
+                        <input class="input" type="number" step="0.0001" id="Pasp" placeholder="Sprinkler service pressure (mca)">
+                        <br><input class="input" type="number" step="0.0001" id="Rasp" placeholder="Sprinkler radius(m)">
+                        <br><input class="input" type="number" step="0.0001" id="Easp" placeholder="Distance between sprinklers (m)">
+                        <br><input type="radio" name="tipo" id="canhao" onclick="AparecerCanhao();"><span>Cannon at the end?</span>
                         <div id="inputcanhao" style="display:none; background-color: #65b8a6;">
-                            <br><input class="input" placeholder="Pressão de serviço (mca)" type="number" step="0.0001" id="Pcn">
-                            <br><input class="input" placeholder="Vazão (m3/h)" type="number" step="0.0001" id="Qcn">       
+                            <br><input class="input" placeholder="Service pressure (mca)" type="number" step="0.0001" id="Pcn">
+                            <br><input class="input" placeholder="Flow rate (m3/h)" type="number" step="0.0001" id="Qcn">       
                         </div>
 
                     </div>
 
                     <div class="tab_pane" id="mat" style="display: none;">
 
-                        <br><input class="input" type="number" step="0.0001" id="tv" placeholder="Tempo para dar uma volta (h)">
-                        <br><input class="input" type="number" step="0.0001" id="Cp" placeholder="Coeficiente de Hazen-Williams do tubo do pivô">
-                        <br><input class="input" type="number" step="0.0001" id="Cs" placeholder="Coeficiente de Hazen-Williams do tubo de sucção">
-                        <br><input class="input" type="number" step="0.0001" id="VE" placeholder="Velocidade de escoamento na linha de sucção">
-                        <br><input class="input" type="number" step="0.0001" id="n" placeholder="Rendimento da motobomba (decimal)">
+                        <br><input class="input" type="number" step="0.0001" id="tv" placeholder="Time to take a walk (h)">
+                        <br><input class="input" type="number" step="0.0001" id="Cp" placeholder="Pivot tube Hazen-Williams coefficient">
+                        <br><input class="input" type="number" step="0.0001" id="Cs" placeholder="Suction tube Hazen-Williams coefficient">
+                        <br><input class="input" type="number" step="0.0001" id="VE" placeholder="Flow velocity in the suction line">
+                        <br><input class="input" type="number" step="0.0001" id="n" placeholder="Pump performance (decimal)">
                     </div>
 
                 </div>
@@ -136,16 +132,16 @@
             </div>
 
             <button class="result" onclick="DimensionarPivo('minhaDiv');">
-                Dimensionar!
+                Size!
             </button>
 
             <span style="background-color: #f0f7da; display: none;" id="warn">
-                Não foi possível atingir a pressão de serviço do canhão, redimensionar
+                Unable to reach gun service pressure, resize
             </span>
 
             <div class="boxresults" id="minhaDiv" style="display: none;">
-                    <center><div class="titresp">Resultados</div></center>
-                    <div class="respostas">Vazão Necessária (m3/h): <span id="Qf"></span></div>
+                    <center><div class="titresp">Results</div></center>
+                    <div class="respostas">Required Flow (m3/h): <span id="Qf"></span></div>
                     <div class="respostas"><span id="Ia1R"></span></div>
                     <div class="respostas"><span id="Ia2R"></span></div>
                     <div class="respostas"><span id="Ia3R"></span></div>
@@ -158,10 +154,9 @@
                     <div class="respostas"><span id="D2"></span></div>
                     <div class="respostas"><span id="D3"></span></div>
                     <div class="respostas"><span id="D4"></span></div>
-                    <div class="respostas">Diâmetro da linha de sucção (m) <span id="Ds"></span></div>
-                    <div class="respostas">Altura manométrica (mca) <span id="HMT"></span></div>
-                    <div class="respostas">Potência da motobomba (cv) <span id="Pot"></span></div>
-                    <button class="generate_pdf"> Gerar PDF </button>
+                    <div class="respostas">Suction line diameter (m) <span id="Ds"></span></div>
+                    <div class="respostas">Manometer Height (mca) <span id="HMT"></span></div>
+                    <div class="respostas">Motor pump power (cv) <span id="Pot"></span></div>
             </div>
         </div>
         <div>
@@ -233,9 +228,9 @@
             Ia3 = Lam / tr3;
             Ia4 = Lam / tr4;
 
-            const Resp = "A intensidade de aplicação de cada aspersor (mm/h) dos ";
-            const Resp2 = " aos ";
-            const Resp3 = " metros é de ";
+            const Resp = "The application intensity of each sprinkler (mm/h) from ";
+            const Resp2 = " to the ";
+            const Resp3 = " meters is ";
 
             var Ia1R = Resp + "0" + Resp2 + R1.toFixed(3).toString() + Resp3 + Ia1.toFixed(3).toString();
             var Ia2R = Resp + R1.toFixed(3).toString() + Resp2 + R2.toFixed(3).toString() + Resp3 + Ia2.toFixed(3).toString();
@@ -260,7 +255,7 @@
             var Qasp3 = (Q / 4) / NaspL3;
             var Qasp4 = (Q / 4) / NaspL4;
 
-            const Resp4 = "A vazão dos aspersores (m3/h) dos ";
+            const Resp4 = "The sprinkler flow (m3/h) from ";
             var Qa1R = Resp4 + "0" + Resp2 + R1.toFixed(3).toString() + Resp3 +  Qasp1.toFixed(3).toString();
             var Qa2R = Resp4 + R1.toFixed(3).toString() + Resp2 + R2.toFixed(3).toString() + Resp3 + Qasp2.toFixed(3).toString();
             var Qa3R = Resp4 + R2.toFixed(3).toString() + Resp2 + R3.toFixed(3).toString() + Resp3 + Qasp3.toFixed(3).toString();
@@ -330,7 +325,7 @@
                         return Math.abs(b - Dt4) < Math.abs(a - Dt4) ? b : a;
                     });
 
-            const Resp5 = "O diametro dos tubos (m) dos ";
+            const Resp5 = "The diameter of the tubes (m) from ";
             var D1 = Resp5 + "0" + Resp2 + R1.toFixed(3).toString() + Resp3 + Dt1c.toString();
             var D2 = Resp5 + R1.toFixed(3).toString() + Resp2 + R2.toFixed(3).toString() + Resp3 + Dt2c.toString();
             var D3 = Resp5 + R2.toFixed(3).toString() + Resp2 + R3.toFixed(3).toString() + Resp3 + Dt3c.toString();
