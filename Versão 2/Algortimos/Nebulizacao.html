@@ -1,12 +1,13 @@
 <html>
     <head>
         <title>
-            Guyri - Hydroelectric
+            Guyri - Fogging
         </title>
-        <link rel="icon" href="Logotipo 2.png">
+        <link rel="icon" href="Icones/Logotipo 2.png">
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="functions.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </head>
     <header class="header">
         <img class="logo_header" src="Icones/Logotipo 2.png">
@@ -76,9 +77,7 @@
 
         </div>
 
-        </div>
-
-            <div class="main_section">
+        <div class="main_section">
 
                 <div class="calculator">
 
@@ -109,18 +108,84 @@
 
                 <div class="boxresults" id="minhaDiv" style="display: none;">
                     <center><div class="titresp">Results</div></center>
-                    <div class="respostas">Total number of nebulizers: <span id="N"></span></div>
+                    <div class="respostas">Amount of nebulizers: <span id="N"></span></div>
+                    <button class="generate_pdf" onclick="GenerateReport()">
+                        Generate Report
+                    </button>
                 </div>
+        </div>
+        <div>
 
-            </div>
+        </div>
+    </div>
 
-            <div>
-
-            </div>
-
-        </div>          
     </body>
+
+    <!-- <div style="display: block;" id="report">
+        <div class="header_report">
+                <h1 style="background-color: #b5e8c3; font-size: 30px;">ARA</h1>
+                <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSYSTEMS</h3>     
+        </div>
+        <div>
+            <div class="subtitle_report">
+                <h3>Protecteds</h3>
+                <h4>Fogging</h4>
+            </div>
+            <h5 style="padding-left: 15px;">Inputs</h5>
+            <div class="box_report">
+                <span>Fan capacity (m3/min): </span><span id="CvReport"></span>
+                <br><span>Amount of fans: </span><span id="NvReport"></span>
+                <br><span>Evaporative efficiency (%) : </span><span id="EeReport"></span>
+                <br><span>Nebulizer capacity (l/h) : </span><span id="CnReport"></span>
+                <br><span>Dry bulb temperature (°C) : </span><span id="TbsReport"></span>
+                <br><span>Relative humidity (%) : </span><span id="UrReport"></span>
+                <br><span>Desired temperature (°C) : </span><span id="TpoReport"></span>
+                <br><span>Altitude in relation to sea level (m) : </span><span id="HReport"></span>
+            </div>
+            <h5 style="padding-left: 15px;">Outputs</h5>
+            <div class="box_report">
+                <span>Amount of nebulizers: </span><span id="NReport"></span>
+            </div>
+        </div>
+    </div> -->
+
     <script>
+        /* function GenerateReport(){
+
+            document.getElementById('report').style.display = "block";
+
+            var Cv = parseFloat(document.getElementById("Cv").value);
+            document.getElementById('CvReport').innerHTML = Cv;
+            var Nv = parseFloat(document.getElementById("Nv").value);
+            document.getElementById('NvReport').innerHTML = Nv;
+            var Ee = parseFloat(document.getElementById("Ee").value);
+            document.getElementById('EeReport').innerHTML = Ee;
+            var Cn = parseFloat(document.getElementById("Cn").value);
+            document.getElementById('CnReport').innerHTML = Cn;
+            var Tbs = parseFloat(document.getElementById("Tbs").value);
+            document.getElementById('TbsReport').innerHTML = Tbs;
+            var Ur = parseFloat(document.getElementById("Ur").value);
+            document.getElementById('UrReport').innerHTML = Ur;
+            var Tpo = parseFloat(document.getElementById("Tpo").value);
+            document.getElementById('TpoReport').innerHTML = Tpo;
+            var H = parseFloat(document.getElementById("H").value);
+            document.getElementById('HReport').innerHTML = H;
+            document.getElementById('NReport').innerHTML = N.toFixed(3);
+
+            const element = document.getElementById('report');
+            var opt = {
+                filename:     'ARA_Biosystems_Fogging.pdf',
+                image:        { type: 'jpeg', quality: 1 },
+                margin:        [top = -28, left = -2, bottom = 0, right = 0],
+                html2canvas:    {height: 800}
+            };
+
+
+            html2pdf(element, opt)
+
+            document.getElementById('report').style.display = "none";
+        } */
+        var N;
         function DimensionarNebulizador(el){
             document.getElementById(el).style.display = "block";
 
@@ -148,7 +213,7 @@
 
             var dw = (wbm - wbs)*10;
 
-            var N = (Ee * (Nv*Cv) *  dbs * dw * 0.01) / (Cn/60);
+            N = (Ee * (Nv*Cv) *  dbs * dw * 0.01) / (Cn/60);
             document.getElementById('N').innerHTML = N.toFixed(3);
         }
     </script>

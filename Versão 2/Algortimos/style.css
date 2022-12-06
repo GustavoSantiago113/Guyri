@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #f0f7da;
+    background-color: #f0f7d9;
     max-height: max-content;
 }
 a{
@@ -335,3 +335,27 @@ span{
     font-weight: bold;
 }
 /* End of Sizing Pages */
+
+/* Begin of Report */
+.box_report{
+    background-color: #65b8a6;
+    color: #1f192f;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 7px;
+    text-align: left;
+    border: 2px solid #1f192f;
+    border-radius: 5px;
+    margin: 5px;
+    width: 205mm
+}
+.header_report{
+    background-color: #b5e8c3;
+    border-bottom: 3px solid #1f192f;
+    text-align: center;
+    width: 210mm
+}
+.subtitle_report{
+    text-align: center;
+    width: 210mm
+}
