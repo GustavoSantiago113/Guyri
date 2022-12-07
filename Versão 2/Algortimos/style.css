@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #f0f7d9;
     max-height: max-content;
 }
 a{
@@ -358,4 +357,19 @@ span{
 .subtitle_report{
     text-align: center;
     width: 210mm
+}
+.btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #65b8a6 !important;
+    --bs-btn-border-color: #65b8a6 !important;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #2d6073 !important;
+    --bs-btn-hover-border-color: #2d6073 !important;
+    --bs-btn-focus-shadow-rgb: 49,132,253;
+}
+.modal-content{
+    width: fit-content !important;
+}
+.modal{
+    --bs-modal-width: 800 !important;
 }
