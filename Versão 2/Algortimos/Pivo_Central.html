@@ -229,16 +229,16 @@
 
         function GenerateReport(){
 
-        const element = document.getElementById('report');
-        var opt = {
-            filename:     "ARA_Biosystems_CenterPivot.pdf" ,
-            pagebreak:      {before: '#outputs'},
-            image:        { type: 'jpeg', quality: 1 },
-            margin:        [top = 0, left = 0, bottom = 0, right = 0],
-            html2canvas:    {height: 2500}
-        };
+            const element = document.getElementById('report');
+            var opt = {
+                filename:     "ARA_Biosystems_CenterPivot.pdf" ,
+                pagebreak:      {before: '#outputs'},
+                image:        { type: 'jpeg', quality: 1 },
+                margin:        [top = 0, left = 0, bottom = 0, right = 0],
+                html2canvas:    {height: 2500}
+            };
 
-        html2pdf(element, opt)
+            html2pdf(element, opt)
 
         }
 
