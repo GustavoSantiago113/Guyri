@@ -6,7 +6,9 @@
         <link rel="icon" href="Icones/Logotipo 2.png">
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="functions.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     </head>
     <header class="header">
         <img class="logo_header" src="Icones/Logotipo 2.png">
@@ -107,7 +109,7 @@
 
                     <div class="tab_pane" id="pal" style="display: none;">
 
-                        <br><input class="input" type="number" step="0.0001" id="cnpal" placeholder="Ratio of C to 1 of N">
+                        <input class="input" type="number" step="0.0001" id="cnpal" placeholder="Ratio of C to 1 of N">
 
                     </div>
 
@@ -115,30 +117,95 @@
 
             </div>
 
-            <button class="result" onclick="DimensionarCompostagem('minhaDiv');">
+            <button class="result" onclick="DimensionarCompostagem('minhaDiv');" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Size!
             </button>
-            <span style="background-color: #f0f7da;" id="warn"></span>
 
-            <div class="boxresults" id="minhaDiv" style="display: none;">
-                    <center><div class="titresp">Results</div></center>
-                    <div class="respostas">The straw mass to be added is (kg): <span id="mpal"></span></div>
-            </div>
         </div>
+
         <div>
 
         </div>
+
     </div>
+
+    <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title">Results</h5>
+                </div>
+                <div class="modal-body">
+                    <div id="report">
+                        <div class="header_report">
+                                <h1 style="background-color: #b5e8c3; font-size: 30px;">ARA</h1>
+                                <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSYSTEMS</h3>     
+                        </div>
+                        <div>
+                            <div class="subtitle_report">
+                                <h3>Biological Systems</h3>
+                                <h4>Composting</h4>
+                            </div>
+                            <h5 style="padding-left: 15px;">Inputs</h5>
+                            <div class="box_report">
+                                <h6 style="background-color: #65b8a6;font-size: 15px;">Material to compost</h6>
+                                <div id="Reportformularioveg">
+                                    <div id="Reportcampoveg0">
+                                        <span>Material </span><span id="Reportlabel0"></span>
+                                        <br><span>Ratio of C to 1 of N: </span> <span id="Reportcnveg0"></span> 
+                                        <br>
+                                        <span style="background-color: #65b8a6; text-align: left">Addition Frequency:</span><span id="Reportfreq0"></span>
+                                        <br><span>Amount (kg): </span> <span id="Reportquantveg0"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box_report">
+                                <h6 style="background-color: #65b8a6;font-size: 15px;">Straw</h6>
+                                <span>Ratio of C to 1 of N: </span><span id="cnpalReport"></span>
+                            </div>
+                            <h5 style="padding-left: 15px;">Outputs</h5>
+                            <div class="box_report">
+                                <span style="background-color: #f0f7da;" id="warn"></span>
+                                <div id="minhaDiv" style="display: none;">
+                                    <span>The straw mass to be added is (kg):</span><span id="mpal"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="GenerateReport()">Generate Report</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     </body>
     <script>
-        
+        function GenerateReport(){
+
+            const element = document.getElementById('report');
+            var opt = {
+                filename:     "ARA_Biosystems_Composting.pdf" ,
+                image:        { type: 'jpeg', quality: 1 },
+                margin:        [top = 0, left = 0, bottom = 0, right = 0],
+                html2canvas:    {height: 800}
+            };
+
+            html2pdf(element, opt)
+
+        }
         var controleCampoVeg = 0;
 
         function AdicionarVeg(){
             controleCampoVeg++;
             document.getElementById('formularioveg').insertAdjacentHTML('beforeend', '<div class="form-group" id="campoveg'+ controleCampoVeg +'"><span>Material </span><span id="label'+ controleCampoVeg +'"></span><br><input class="input" type="number" step="0.0001" id="cnveg'+ controleCampoVeg +'" placeholder="Ratio of C to 1 of N"><br><span style="background-color: #65b8a6;">Addition Frequency:</span><div style="text-align: left; background-color: #65b8a6;"><input type="radio" name="freq'+ controleCampoVeg +'" id="dia'+ controleCampoVeg +'"><span>Daily</span><br><input type="radio" name="freq'+ controleCampoVeg +'" id="sem'+ controleCampoVeg +'"><span>Weekly</span><br><input type="radio" name="freq'+ controleCampoVeg +'" id="mes'+ controleCampoVeg +'"><span>Monthly</span> </div><br><input class="input" type="number" step="0.0001" id="quantveg'+ controleCampoVeg +'" placeholder="Amount (kg)"><br><button type="button" class="numb_control" onclick="AdicionarVeg()">Add Material</button><button type="button" class="numb_control" onclick="RemoverVeg('+ controleCampoVeg +')">Remove Material</button></div>');
+            document.getElementById('Reportformularioveg').insertAdjacentHTML('beforeend', '<br><div id="Reportcampoveg'+ controleCampoVeg +'"><span>Material </span><span id="Reportlabel'+ controleCampoVeg +'"></span><br><span>Ratio of C to 1 of N: </span> <span id="Reportcnveg'+ controleCampoVeg +'"></span><br><span style="background-color: #65b8a6; text-align: left">Addition Frequency:</span><span id="Reportfreq'+ controleCampoVeg +'"></span><br><span>Amount (kg): </span> <span id="Reportquantveg'+ controleCampoVeg +'"></span></div>');
             let label = 'label' + controleCampoVeg;
+            let Reportabel = 'Reportlabel' + controleCampoVeg;
             document.getElementById(label).innerHTML = controleCampoVeg + 1;
+            document.getElementById(Reportlabel).innerHTML = controleCampoVeg + 1;
             return(controleCampoVeg);
         }
 
@@ -158,31 +225,38 @@
             for(let i=0; i<limite; i++){
 
                 let cnveg = 'cnveg'+i;
+                let Reportcnveg = 'Reportcnveg'+i;
                 let quantveg = 'quantveg'+i;
+                let Reportquantveg = 'Reportquantveg'+i;
                 let massveg = parseFloat(document.getElementById(quantveg).value);
+                document.getElementById(Reportquantveg).innerHTML = massveg;
                 let cn = parseFloat(document.getElementById(cnveg).value);
+                document.getElementById(Reportcnveg).innerHTML = cn;
                 let dia = 'dia'+i;
                 let sem = 'sem'+i;
                 let mes = 'mes'+i;
+                let Reportfreq = "Reportfreq" + i;
                 if(document.getElementById(dia).checked){
                     massveg = massveg;
+                    document.getElementById(Reportfreq).innerHTML = "Daily addition";
                 }
                 else if(document.getElementById(sem).checked){
                     massveg = massveg/7;
+                    document.getElementById(Reportfreq).innerHTML = "Weekly addition";
                 }
                 else if(document.getElementById(mes).checked){
                     massveg = massveg/30;
+                    document.getElementById(Reportfreq).innerHTML = "Monthly addition";
                 }
                 let rela = massveg * cn;
                 relacn = relacn + rela;
                 sommass = sommass + massveg;
             }
             let propveg = relacn / sommass;
-            console.log(propveg);
             // Aviso caso a mistura ja seja ideal
             let texto;
             if (27 < propveg && propveg < 34) {
-                texto = "Não há necessidade de palhada";
+                texto = "There is no need of straw addition";
                 document.getElementById("warn").innerHTML = texto;
             }
             else{
@@ -191,6 +265,7 @@
 
             // Calculo da quantidade de palhada
             let cnpal = parseFloat(document.getElementById('cnpal').value);
+            document.getElementById('cnpalReport').innerHTML = cnpal;
 
             let mpal = ( (30*sommass - relacn) / (cnpal - 30 + 0.000000001))
             document.getElementById('mpal').innerHTML = mpal.toFixed(3);
