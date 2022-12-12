@@ -6,7 +6,9 @@
         <link rel="icon" href="Icones/Logotipo 2.png">
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="functions.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     </head>
     <header class="header">
         <img class="logo_header" src="Icones/Logotipo 2.png">
@@ -86,8 +88,8 @@
 
                 <div class="tab_content">
                     <div class="tab_pane" id="an">
-                        <h5 style="background-color: #65b8a6;">Select the number of animals:</h5>
-                        <br><input type="radio" name="animal" id="Bovino"><span>Cattle</span>
+                        <h5 style="background-color: #65b8a6;">Select the type of animals:</h5>
+                        <input type="radio" name="animal" id="Bovino"><span>Cattle</span>
                         <br><input type="radio" name="animal" id="Suino"><span>Swine</span>
                         <br><input class="input" placeholder="Number of animals" type="number" step="0.0001" id="Na">
                     </div>
@@ -95,23 +97,9 @@
 
             </div>
 
-            <button class="result" onclick="DimensionarBiodigestor('minhaDiv');">
+            <button class="result" onclick="DimensionarBiodigestor('minhaDiv');"  data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Size!
             </button>
-
-            <div class="boxresults" id="minhaDiv" style="display: none;">
-                <center><div class="titresp">Results</div></center>
-                <div class="respostas">Add liters of water per day: <span id="La"></span></div>
-                <div class="respostas">Bottom Base (m): <span id="Bi"></span></div>
-                <div class="respostas">Upper base (m): <span id="Bs"></span></div>
-                <div class="respostas">Height (m): <span id="H"></span></div>
-                <div class="respostas">Length (m): <span id="L"></span></div>
-                <div class="respostas">Production estimate (m3/day): <span id="Ep"></span></div>
-                <div class="respostas">Canvas Area (m2): <span id="Alona"></span></div>
-                <div class="respostas">Input box width and length (m): <span id="Ce"></span></div>
-                <div class="respostas">Input and output box height: 1 m</div>
-                <div class="respostas">Outlet box width and length (m): <span id="Cs"></span></div>
-            </div>
 
         </div>
 
@@ -120,15 +108,76 @@
         </div>
     </div>
     
+    <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title">Results</h5>
+                </div>
+                <div class="modal-body">
+                    <div id="report">
+                        <div class="header_report">
+                                <h1 style="background-color: #b5e8c3; font-size: 30px;">ARA</h1>
+                                <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSYSTEMS</h3>     
+                        </div>
+                        <div>
+                            <div class="subtitle_report">
+                                <h3>Biological Systems</h3>
+                                <h4>Biodigester</h4>
+                            </div>
+                            <h5 style="padding-left: 15px;">Inputs</h5>
+                            <div class="box_report">
+                                <span>Animal: </span><span id="AnimalReport"></span>
+                                <br><span>Number of animals: </span> <span id="NaReport"></span>
+                            </div>
+                            <h5 style="padding-left: 15px;">Outputs</h5>
+                            <div class="box_report">
+                                <span>Add liters of water per day: </span> <span id="La"></span>
+                                <br><span>Bottom Base (m): </span> <span id="Bi"></span>
+                                <br><span>Upper base (m): </span> <span id="Bs"></span>
+                                <br><span>Height (m): </span> <span id="H"></span>
+                                <br><span>Length (m): </span> <span id="L"></span>
+                                <br><span>Production estimate (m3/day): </span> <span id="Ep"></span>
+                                <br><span>Canvas Area (m2): </span> <span id="Alona"></span>
+                                <br><span>Input box width and length (m): </span> <span id="Ce"></span>
+                                <br><span>Input and output box height: </span>1 m
+                                <br><span>Outlet box width and length (m): </span><span id="Cs"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="GenerateReport()">Generate Report</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     </body>
     <script>
+        function GenerateReport(){
+
+            const element = document.getElementById('report');
+            var opt = {
+                filename:     "ARA_Biosystems_Biodigester.pdf" ,
+                image:        { type: 'jpeg', quality: 1 },
+                margin:        [top = 0, left = 0, bottom = 0, right = 0],
+                html2canvas:    {height: 800}
+            };
+
+            html2pdf(element, opt)
+
+        }
+
         function DimensionarBiodigestor(el){
-            document.getElementById(el).style.display = "block";
 
             var Na = parseFloat(document.getElementById('Na').value);
+            document.getElementById("NaReport").innerHTML = Na;
 
             if (document.getElementById("Bovino").checked)
             {
+                document.getElementById("AnimalReport").innerHTML = "Cattle";
                 var estercodia = 25; //Em kg
                 var agua = 1; //Em litros
                 var densidade = 960; //kg/m3
@@ -137,6 +186,7 @@
             }
             else if(document.getElementById("Suino").checked)
             {
+                document.getElementById("AnimalReport").innerHTML = "Swine";
                 var estercodia = 5.8; //Em kg
                 var agua = 2; //Em litros
                 var tempo = 35; //dias
