@@ -328,10 +328,13 @@ input[type=number]::-webkit-inner-spin-button {
     background-color: #2d6073;
 }
 span{
-    background-color: #65b8a6;
     color: #1f192f;
     font-size: 15px;
     font-weight: bold;
+}
+.warn{
+    margin-top: 9px;
+    background-color: #eeff02;
 }
 /* End of Sizing Pages */
 
