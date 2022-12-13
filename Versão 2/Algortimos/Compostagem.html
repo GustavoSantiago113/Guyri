@@ -203,7 +203,7 @@
             document.getElementById('formularioveg').insertAdjacentHTML('beforeend', '<div class="form-group" id="campoveg'+ controleCampoVeg +'"><span>Material </span><span id="label'+ controleCampoVeg +'"></span><br><input class="input" type="number" step="0.0001" id="cnveg'+ controleCampoVeg +'" placeholder="Ratio of C to 1 of N"><br><span style="background-color: #65b8a6;">Addition Frequency:</span><div style="text-align: left; background-color: #65b8a6;"><input type="radio" name="freq'+ controleCampoVeg +'" id="dia'+ controleCampoVeg +'"><span>Daily</span><br><input type="radio" name="freq'+ controleCampoVeg +'" id="sem'+ controleCampoVeg +'"><span>Weekly</span><br><input type="radio" name="freq'+ controleCampoVeg +'" id="mes'+ controleCampoVeg +'"><span>Monthly</span> </div><br><input class="input" type="number" step="0.0001" id="quantveg'+ controleCampoVeg +'" placeholder="Amount (kg)"><br><button type="button" class="numb_control" onclick="AdicionarVeg()">Add Material</button><button type="button" class="numb_control" onclick="RemoverVeg('+ controleCampoVeg +')">Remove Material</button></div>');
             document.getElementById('Reportformularioveg').insertAdjacentHTML('beforeend', '<br><div id="Reportcampoveg'+ controleCampoVeg +'"><span>Material </span><span id="Reportlabel'+ controleCampoVeg +'"></span><br><span>Ratio of C to 1 of N: </span> <span id="Reportcnveg'+ controleCampoVeg +'"></span><br><span style="background-color: #65b8a6; text-align: left">Addition Frequency:</span><span id="Reportfreq'+ controleCampoVeg +'"></span><br><span>Amount (kg): </span> <span id="Reportquantveg'+ controleCampoVeg +'"></span></div>');
             let label = 'label' + controleCampoVeg;
-            let Reportabel = 'Reportlabel' + controleCampoVeg;
+            let Reportlabel = 'Reportlabel' + controleCampoVeg;
             document.getElementById(label).innerHTML = controleCampoVeg + 1;
             document.getElementById(Reportlabel).innerHTML = controleCampoVeg + 1;
             return(controleCampoVeg);
@@ -212,6 +212,7 @@
         function RemoverVeg(idCampo){
             controleCampoVeg = controleCampoVeg - 1;
             document.getElementById('campoveg' + idCampo).remove();
+            document.getElementById('Reportcampoveg' + idCampo).remove();
             return(controleCampoVeg);
         }
 
