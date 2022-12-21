@@ -1,0 +1,260 @@
+<html>
+    <head>
+        <title>
+            Guyri - Biodigester
+        </title>
+        <link rel="icon" href="Icones/Logotipo 2.png">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="functions.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    </head>
+    <header class="header">
+        <img class="logo_header" src="Icones/Logotipo 2.png">
+        <div class="title_header">
+            <h1 style="background-color: #b5e8c3; font-size: 30px;">ARA</h1>
+            <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSYSTEMS</h3>
+        </div>
+        <a class="return_initial" href="initial_page.html">Home</a>
+    </header>
+    <body>
+    <div class="body_sizing">   
+        <div class="main_lateral_dropdown">
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/irrigation.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Gotejamento.html">Dripping</a>
+                    <a class="link" href="Aspersao.html">Sprinkling</a>
+                    <a class="link" href="Micro_Aspersao.html">Micro-Sprinkling</a>
+                    <a class="link" href="Pivo_Central.html">Center Pivot</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/solar-energy.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Aquecimento_Solar.html">Solar Heating</a>
+                    <a class="link" href="Fotovoltaica.html">Photovoltaic</a>
+                    <a class="link" href="Eolica.html">Wind</a>
+                    <a class="link" href="Hidroeletrica.html">Hydroelectric</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/bacteria.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Biodigestor.html">Biodigester</a>
+                    <a class="link" href="Compostagem.html">Composting</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/greenhouse.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Ventilacao_Forcada.html">Forced Ventilation</a>
+                    <a class="link" href="Ar_Condicionado.html">Air Conditioning</a>
+                    <a class="link" href="Nebulizacao.html">Fogging</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/dollar-currency-symbol.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Analise_Economica.html">Economic analysis</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="main_section">
+
+            <div class="calculator">
+
+                <ul class="nav">
+                    <button class="nav_link active" id="an_bt" onclick="openTab(event, 'an')">Animals</button>
+                    <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Attention: the biodigestor to be sized here must be of canadian style">
+                        <img class="warn" src="Icones\exclamation-diamond.svg">
+                    </span>
+                </ul>
+
+                <div class="tab_content">
+                    <div class="tab_pane" id="an">
+                        <h5 style="background-color: #65b8a6;">Select the type of animals:</h5>
+                        <input type="radio" name="animal" id="Bovino"><span>Cattle</span>
+                        <br><input type="radio" name="animal" id="Suino"><span>Swine</span>
+                        <br><input class="input" placeholder="Number of animals" type="number" step="0.0001" id="Na">
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="result" onclick="DimensionarBiodigestor('minhaDiv');"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Size!
+            </button>
+
+        </div>
+
+        <div>
+
+        </div>
+    </div>
+    
+    <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title">Results</h5>
+                </div>
+                <div class="modal-body">
+                    <div id="report">
+                        <div class="header_report">
+                                <h1 style="background-color: #b5e8c3; font-size: 30px;">ARA</h1>
+                                <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSYSTEMS</h3>     
+                        </div>
+                        <div>
+                            <div class="subtitle_report">
+                                <h3>Biological Systems</h3>
+                                <h4>Biodigester</h4>
+                            </div>
+                            <h5 style="padding-left: 15px;">Inputs</h5>
+                            <div class="box_report">
+                                <span>Animal: </span><span id="AnimalReport"></span>
+                                <br><span>Number of animals: </span> <span id="NaReport"></span>
+                            </div>
+                            <h5 style="padding-left: 15px;">Outputs</h5>
+                            <div class="box_report">
+                                <span>Add liters of water per day: </span> <span id="La"></span>
+                                <br><span>Bottom Base (m): </span> <span id="Bi"></span>
+                                <br><span>Upper base (m): </span> <span id="Bs"></span>
+                                <br><span>Height (m): </span> <span id="H"></span>
+                                <br><span>Length (m): </span> <span id="L"></span>
+                                <br><span>Production estimate (m3/day): </span> <span id="Ep"></span>
+                                <br><span>Canvas Area (m2): </span> <span id="Alona"></span>
+                                <br><span>Input box width and length (m): </span> <span id="Ce"></span>
+                                <br><span>Input and output box height: </span>1 m
+                                <br><span>Outlet box width and length (m): </span><span id="Cs"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="GenerateReport()">Generate Report</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+    <script>
+        function GenerateReport(){
+
+            const element = document.getElementById('report');
+            var opt = {
+                filename:     "ARA_Biosystems_Biodigester.pdf" ,
+                image:        { type: 'jpeg', quality: 1 },
+                margin:        [top = 0, left = 0, bottom = 0, right = 0],
+                html2canvas:    {height: 800}
+            };
+
+            html2pdf(element, opt)
+
+        }
+
+        function DimensionarBiodigestor(el){
+
+            var Na = parseFloat(document.getElementById('Na').value);
+            document.getElementById("NaReport").innerHTML = Na;
+
+            if (document.getElementById("Bovino").checked)
+            {
+                document.getElementById("AnimalReport").innerHTML = "Cattle";
+                var estercodia = 25; //Em kg
+                var agua = 1; //Em litros
+                var densidade = 960; //kg/m3
+                var tempo = 30; //dias
+                var conversao = 0.04; //kg/m3
+            }
+            else if(document.getElementById("Suino").checked)
+            {
+                document.getElementById("AnimalReport").innerHTML = "Swine";
+                var estercodia = 5.8; //Em kg
+                var agua = 2; //Em litros
+                var tempo = 35; //dias
+                var densidade = 1010; //kg/m3
+                var conversao = 0.35; //kg/m3
+            }
+
+            var massaesterco = Na * estercodia //total de kg de esterco por dia
+            var litrosagua = agua * massaesterco; //litros de água por dia
+            document.getElementById('La').innerHTML = litrosagua.toFixed(3);
+            var volumediario = (litrosagua / 1000) + ( massaesterco / densidade ); //volume diário de esterco em m3
+            var volumecaixa = volumediario * tempo; //volume total da caixa em m3
+            if(volumecaixa < 500)
+            {
+                var H = 2.5;
+            }
+            else if(volumecaixa >= 500)
+            {
+                var H = 3.5;
+            }
+
+            document.getElementById('H').innerHTML = H.toFixed(3);
+            var a = 5*H;
+            var b = 5.46 * Math.pow(H,2);
+            var c = 1.325*Math.pow(H,3) - volumecaixa;
+            var delta = b * b - 4 * a * c;
+            const x1 = (-b + Math.sqrt(delta)) / (2 * a);
+            const x2 = (-b - Math.sqrt(delta)) / (2 * a);
+            if(x1 > 0)
+            {
+                Bi = x1;
+            }
+            document.getElementById('Bi').innerHTML = Bi.toFixed(3);
+            var Bs = 0.7279 * H + Bi;
+            document.getElementById('Bs').innerHTML = Bs.toFixed(3);
+            var L = 3.6395 * H + 5*Bi;
+            document.getElementById('L').innerHTML = L.toFixed(3);
+
+            var Ep = massaesterco * conversao;
+            document.getElementById('Ep').innerHTML = Ep.toFixed(3);
+
+            var At = Ep / L;
+            var a1 = 120;
+            var b1 = -Bi;
+            var c1 = (Bi*2)-(2*At);
+            var delta1 = b1 * b1 - 4 * a1 * c1;
+            const x11 = (-b1 + Math.sqrt(delta1)) / (2 * a1);
+            const x21 = (-b1 - Math.sqrt(delta1)) / (2 * a1);
+            if(x11 > 0)
+            {
+                R = x11;
+            }
+            else if(x21 > 0)
+            {
+                R = x21;
+            }
+            var Alona = 2 * Math.PI * R * 0.333 * L;
+            document.getElementById('Alona').innerHTML = Alona.toFixed(3);
+
+            var Ce = Math.sqrt((volumediario*1.2),2);
+            document.getElementById('Ce').innerHTML = Ce.toFixed(3);
+
+            var Cs = Math.sqrt((volumediario*1.2*3),2);
+            document.getElementById('Cs').innerHTML = Cs.toFixed(3);
+
+        }
+    </script>
+</html>

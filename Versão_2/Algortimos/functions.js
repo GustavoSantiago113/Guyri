@@ -1,3 +1,16 @@
+const { app, BrowserWindow } = require('electron');
+let mainWindow;
+app.on('ready', () => {
+
+    mainWindow = new BrowserWindow({
+
+        icon:  'Icones/Logotipo 2.png',
+        autoHideMenuBar: true,
+    });
+    mainWindow.maximize();
+    mainWindow.loadURL(`file://${__dirname}/initial_page.html`)
+    
+});
 function openTab(evt, tabName){
 
     var i, tab_pane, tab_link;
