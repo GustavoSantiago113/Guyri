@@ -17,9 +17,30 @@
 
 ### 2.1 Economical Analysis
 
+<p>The economical analysis is calculated using the formulas of (1) simple payback, (2) discounted payback, return on investment (3) and annual profitability (4). All formulas were obtained on internet from different websites.</p>
+<li>Simple Payback = Initial Investment / Amount Saved per Month (1)</li>
+<li>Discounted Payback = Amount Saved per Month / (1 + Minimum attractive rate) (2) </li>
+<li>Return on Investment = (Gain Obtained - Initial Investment) / Initial Investment (3) </li>
+<li>Annual Profitability = ( Annual Net Income / Total Invested Amount) * 100 (4) </li>
+<br>
+
 ### 2.2 Irrigation
+<br>
+
 #### 2.2.1 Dripping
+
+<p>The dripping sizing was based on the example project as on the book "SISTEMAS DE IRRIGAÇÃO LOCALIZADA" from Biscaro et al. (2014), chapter 11, among all mathematical formulas used on Guyri. On it, the site is rectangular and aspects of the crop, soil, topography, water and climate were taken. Based on those characteristics, management's variables are calculated. The sectors were pre-defined in the example, but at Guyri, users' choose the number of sectors and the algorithm divides the site. Dividing the site, it takes the measures, lenght and flow of lateral lines.</p>
+<p>The drippers were chosen based on a commercial model. Using Guyri, users' can insert drip hoses diameter from commercial models or select to algorithm to determine the best diameter. Derivation and Main lines diameters, pressure lost and flow are calculated according to book's example. On Guyri, all diameters are re-selected based on the closest commercial diameter and pressure lost re-calculated.</p>
+<p>Motor pump and filtering system were calculated according to the book and the outputs are flow, total manometer height, power (for motor pump) and minimum filtering surface area and minimum filter diameter (for filtering system). With those informations, the engineers are able to buy the correct motor pump and filtering system (if needed).</p>
+<p>The difference between Guyri and the literature is that on the algorithm, sector are fixed. The consequence of that is sketch format and height can not be changed, limitating the usage for small and simple projects.</p>
+
+<br>
+
 #### 2.2.2 Sprinkling
+
+<p>Sprinkling size was based on section Aspersao Convencional, wrote by Geraldo Magela Pereira on the book Irrigacao (2001). On it, differently of dripping size, he displays only the formulas and the step by step to obtain the inputs and calculate the outputs of the whole process. Guyri gives to users' management, secondary line, main line, motor pump informations. Users' have the possibility to select if the sprinklers positions will be changed and the software will calculate different motor pump flow according to the information in order to save money buying a stronger motor pump.</p>
+<p>Just like on dripping, the sketch format can't be changed and differnt heights in the site can't be inputed. But, differently of the dripping size, this part of software can be used in bigger projects.
+
 #### 2.2.3 Micro-Sprinkling
 #### 2.2.4 Central Pivot
 
@@ -61,4 +82,7 @@
 
 <hr>
 
-## REFERENCES 
+## REFERENCES
+
+<p>Biscaro, Guilherme A. et al. SISTEMAS DE IRRIGAÇÃO LOCALIZADA. Ed. UFGD - Dourados, MS (2014). ISBN: 978-85-8147-085-6, 256p.</p>
+<p>PEREIRA, G. M. . IRRIGAÇÃO POR ASPERSÃO CONVENCIONAL. Lavras-MG: UFLA, 2001 (APOSTÍLA).</p>
