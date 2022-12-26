@@ -39,16 +39,50 @@
 #### 2.2.2 Sprinkling
 
 <p>Sprinkling size was based on section Aspersao Convencional, wrote by Geraldo Magela Pereira on the book Irrigacao (2001). On it, differently of dripping size, he displays only the formulas and the step by step to obtain the inputs and calculate the outputs of the whole process. Guyri gives to users' management, secondary line, main line, motor pump informations. Users' have the possibility to select if the sprinklers positions will be changed and the software will calculate different motor pump flow according to the information in order to save money buying a stronger motor pump.</p>
-<p>Just like on dripping, the sketch format can't be changed and differnt heights in the site can't be inputed. But, differently of the dripping size, this part of software can be used in bigger projects.
+<p>Just like on dripping, the sketch format can't be changed and differnt heights in the site can't be inputed. But, differently of the dripping size, this part of software can be used in bigger projects. And, in the same way, the diamethers are the commercial ones closest to calculated's, and the pressure lost, re-calculated using the commercial diameters of pipes. </p>
+
+<br>
 
 #### 2.2.3 Micro-Sprinkling
+<p>The reference used in this section was taken from class annotations and slides presentation of the author while attending Irrigation's class at the university. The course was ministered by Profa. Dra. Tamara Maria Gomes at Universidade de Sao Paulo - FZEA. In the occasion, she gave a practical example of how to size a micro-sprinkling, providing all formulas and steps. It is not available due to copyrights.</p>
+<p> On micro-sprinkling section in Guyri, the sketch used is showed below, where the main line is on horizontal top, the derivation lines are on vertical and the secondary lines are on horizontal. Besides, micro-sprinkling on the software was made mainly to be used on tree crops.</p>
+<img src="Icones\Sketch Micro-sprinkling.png">
+<p>Just like on examples above, the diamethers are the commercial ones closest to calculated's, and the pressure lost, re-calculated using the commercial diameters of pipes.</p>
+
+<br>
+
 #### 2.2.4 Central Pivot
 
+<p>For central pivot, references from de Silva & Azevedo (1998), Almeida (2019) and Junior (2022) were taken. There is a possibility to add a srinkling canon in the end of the central pivot. On Guyri, every pivot is divided on four sections, with everyone having the same flow. Again, he diamethers are the commercial ones closest to calculated's, and the pressure lost, re-calculated using the commercial diameters of pipes.</p>
+
+<br>
+
 ### 2.3 Energy
+<br>
+
 #### 2.3.1 Solar Heating
-#### 2.3.2 Fotovoltaic
+<p>All equations from Solar Heating were taken from internet on different websites. On Guyri, the total consumption volume is calculated by the sum of multiplication of the flow, using time and frequency of use of each equipment. The storage volume is calculated is obtained by the formula (5). Useful energy is obtained according to equation 6. Number of collectors is calculated using energies values from commercial collectors inputed from users and from equation 6 and considering losses.</p>
+<li>Storage Volume = (Consumption Volume * (Consumption Temperature - Ambient Temperature)) / (Storage Temperature - Ambient Temperature) (5)</li>
+<li>Useful Energy = (Storage Volume * Water Especific Mass * Specific Heat * (Storage Temperature - Ambient Temperature)) / 3600 (6)</li>
+
+<br>
+
+#### 2.3.2 Photovoltaic
+<p>Both panels and batteries sizing methods were taken and adapted from Freitas (2008) where, on section 3, she presented an example of sizing, giving all formulas. Using Guyri, users can select if they want to size isolated or connected to power line photovoltaic systems.</p>
+<p>Users insert informations about annual sun hours, panel power, electric tension of batteries, consumption and efficiency on the platform and it calculates number of panels, inverter power and battery capacity. Hours of sun are inserted by users, meaning that it can be chosen from the lowest, highest or average number of hours along the year.</p>
+
+<br>
+
 #### 2.3.3 Wind
+<p>Wind energy sizing were based on Sales, Belem and Alexandre's paper (2018), where they present sizing method for popular houses. Just like photovoltaic system, wind has option to add batteries, allowing to be off-grid. References for battery system sizing were taken from Freitas (2008). Calculations to generate power were based on wind power itself, not using a generator. Engineers using the program must pay attention on that detail.</p>
+
+<br>
+
 #### 2.3.4 Hydroelectric
+<p>The references for this section were taken from Bergamo (2018). In her work, she compiled formulas and methods of sizing to following turbines: Pelton, Francis, Kaplan and Michell-Blanki.</p>
+<p>On Guyri, first, users fill a form with basic information of the site and of the turbine. Using those information, the algorithm selects the turbine types that would fit on form filled, and then, users choose the one they prefer.</p>
+
+<br>
 
 ### 2.4 Biological Systems
 #### 2.4.1 Biodigester
@@ -86,3 +120,9 @@
 
 <p>Biscaro, Guilherme A. et al. SISTEMAS DE IRRIGAÇÃO LOCALIZADA. Ed. UFGD - Dourados, MS (2014). ISBN: 978-85-8147-085-6, 256p.</p>
 <p>PEREIRA, G. M. . IRRIGAÇÃO POR ASPERSÃO CONVENCIONAL. Lavras-MG: UFLA, 2001 (APOSTÍLA).</p>
+<p>SILVA, E.M. da; AZEVEDO, J.A. de. Dimensionamento da lateral de irrigação do pivô-central. Planaltina: Embrapa-CPAC, 1998. 54p.</p>
+<p>Almeida, Isabela Alvarenga. Dimensionamento econômico para sistemas de irrigação pivô central telescópico: estudos de cenários para diferentes regiões do Brasil. Dissertação (Mestrado) - - USP / Escola Superior de Agricultura “Luiz de Queiroz", Piracicaba, 2019. 92 p.</p>
+<p>Junior, Joao B. Tolentino. Irrigacao Pressurizada. Online Book. Available at: <a href="https://irrigacao.tolentino.pro.br/">https://irrigacao.tolentino.pro.br/</a></p>
+<p>Freitas, Susana S. A. Dimensionamento de sistemas fotovoltaicos. Relatorio de projecto para obtencao do grau de Mestre em Engenharia Industrial. Instituto Politecnico de Braganca, 2008, 105p.</p>
+<p>Sales, Maria E. de O.; Belem, Gabriel da S. & Alexandre, Geronimo B. Dimensionamento um sistema eolico isolado para casas populares. CONTECC, Maceio-AL, Brasil, August 21 to 24 of 2018.</p>
+<p>BERGAMO, Paula R. Specifications of hydraulic turbines. 2018. 72f.Course Completion work - Course in Electrical Engineering, Universidade Tecnológica Federal do Paraná. Pato Branco, 2018.</p>
