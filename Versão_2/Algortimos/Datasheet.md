@@ -86,7 +86,14 @@
 
 ### 2.4 Biological Systems
 #### 2.4.1 Biodigester
+<p>The biodigester that can be sized using Guyri is of tubular style, just like picture below. All formulas and instructions were used from Goncalves et al. (2018), with the difference that, on Guyri algorithm, it is possible to select swine and cattle, instead of just cattle like in the literature reference</p>
+<img src="Icones\Biodigester.png"></img>
+<br>
+
 #### 2.4.2 Composter
+<p>The formulas and methodology to be used on composter section were based on Embrapa's sheet, under responsability of Leal (2018). On the sheet, are available instructions, formulas and calculation methods to obtain ideal ratio of C:N for composting process.</p>
+
+<br>
 
 ### 2.5 Protecteds
 #### 2.5.1 Forced Ventilation
@@ -110,9 +117,8 @@
 <hr>
 
 ## 5. FUTURE STEPS
-<p> Back-End and database conexion</p>
-<p> More site formats on irrigation and biodigestor </p>
-<p> Economical Analysis fancier </p>
+<p>In the future, there will be the need of connecting all the sizes inputs and outputs to a database (DB). This way, the client can synchronize with the cloud when internet is available and transfer everything to the DB, generating historical. To make connection to cloud and client DB possible, is essential to have a backend algorithm working on a server assuring client-DB-Guyri relationships.</p>
+<p>Some sections must be more complete and/or have more details. Economical Analysis must be incremented and more complete, making more different analysis possible. Since on Irrigation section is only possible to size on rectangular or square sites, it is important to think on a way to break down this limitation. As an idea, users could draw on a map the main, derivation and secondary lines as well as the dripping or micro-sprinkling sectors. Another thing would be to add more than one source of straw on Composter, but, to do that, a complex mathematical accounts template must be added. Maybe the user wants another biodigestion system, opening the need for more biodigestors models' to be added on Guyri.</p>
 
 <hr>
 
@@ -126,3 +132,4 @@
 <p>Freitas, Susana S. A. Dimensionamento de sistemas fotovoltaicos. Relatorio de projecto para obtencao do grau de Mestre em Engenharia Industrial. Instituto Politecnico de Braganca, 2008, 105p.</p>
 <p>Sales, Maria E. de O.; Belem, Gabriel da S. & Alexandre, Geronimo B. Dimensionamento um sistema eolico isolado para casas populares. CONTECC, Maceio-AL, Brasil, August 21 to 24 of 2018.</p>
 <p>BERGAMO, Paula R. Specifications of hydraulic turbines. 2018. 72f.Course Completion work - Course in Electrical Engineering, Universidade Tecnológica Federal do Paraná. Pato Branco, 2018.</p>
+<p>Leal, Marco A. de A. Calculo de Compostagem. Embrapa, available at: <a href="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fciorganicos.com.br%2Fwp-content%2Fuploads%2F2017%2F10%2FPlanilha-de-calculo-de-compostagem-Embrapa-Agrobiologia-22.SNA_.OrganicsNet.CI-Organicos-22.xlsx&wdOrigin=BROWSELINK">https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fciorganicos.com.br%2Fwp-content%2Fuploads%2F2017%2F10%2FPlanilha-de-calculo-de-compostagem-Embrapa-Agrobiologia-22.SNA_.OrganicsNet.CI-Organicos-22.xlsx&wdOrigin=BROWSELINK</a></p>
