@@ -85,9 +85,13 @@
 <br>
 
 ### 2.4 Biological Systems
+
+<br>
+
 #### 2.4.1 Biodigester
 <p>The biodigester that can be sized using Guyri is of tubular style, just like picture below. All formulas and instructions were used from Goncalves et al. (2018), with the difference that, on Guyri algorithm, it is possible to select swine and cattle, instead of just cattle like in the literature reference</p>
 <img src="Icones\Biodigester.png"></img>
+
 <br>
 
 #### 2.4.2 Composter
@@ -96,10 +100,20 @@
 <br>
 
 ### 2.5 Protecteds
-#### 2.5.1 Forced Ventilation
-#### 2.5.2 Air Conditioner
-#### 2.5.3 Fogging
+<br>
 
+#### 2.5.1 Forced Ventilation
+<p>Forced ventilation section formulas' and process' were obtained and based on Abreu & Abreu (2000) book. On it, they demonstrate how to size ventilation systems for poultry farming. The objective is to use air pushed from fans to remove the heat from inside a building.</p>
+<br>
+
+#### 2.5.2 Air Conditioner
+<p>Air Conditioner sizing method was taken from internet from various websites. To calculate the number of BTUs required, Guyri uses reference fixed values for windowns display, number of people and equipment and site area.</p>
+<br>
+
+#### 2.5.3 Fogging
+<p>Fogging refrigeration system sizing were obtained from annotations of Prof. Dr. Iran Jose Oliveira da Silva class in 2013. He is a professor at Univesity of Sao Paulo - ESALQ. On the occasion, he gave an example of sizing to calculate the number of fogging nozzles for poultry farming. To use some variables in the formulas, it was necessary to have values obtained from curves. Using as reference Dantas (2012), curves equations were generated and, in that way, values could be obtained.</p>
+
+<br>
 <hr>
 
 ## 3. MATERIALS E METHODS
@@ -133,3 +147,6 @@
 <p>Sales, Maria E. de O.; Belem, Gabriel da S. & Alexandre, Geronimo B. Dimensionamento um sistema eolico isolado para casas populares. CONTECC, Maceio-AL, Brasil, August 21 to 24 of 2018.</p>
 <p>BERGAMO, Paula R. Specifications of hydraulic turbines. 2018. 72f.Course Completion work - Course in Electrical Engineering, Universidade Tecnológica Federal do Paraná. Pato Branco, 2018.</p>
 <p>Leal, Marco A. de A. Calculo de Compostagem. Embrapa, available at: <a href="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fciorganicos.com.br%2Fwp-content%2Fuploads%2F2017%2F10%2FPlanilha-de-calculo-de-compostagem-Embrapa-Agrobiologia-22.SNA_.OrganicsNet.CI-Organicos-22.xlsx&wdOrigin=BROWSELINK">https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fciorganicos.com.br%2Fwp-content%2Fuploads%2F2017%2F10%2FPlanilha-de-calculo-de-compostagem-Embrapa-Agrobiologia-22.SNA_.OrganicsNet.CI-Organicos-22.xlsx&wdOrigin=BROWSELINK</a></p>
+<p>ABREU, P.G. de; ABREU, V.M.N. Ventilação na avicultura de
+corte. Concórdia: Embrapa Suínos e Aves, 2000. 50p.</p>
+<p>Dantas, Luís Antônio. Soluções computacionais analítico-numéricas aplicadas à simulação de secagem de produtos biológicos. Tese (Doutorado em Engenharia de Processos) - Universidade Federal de Campina Grande, Centro de Ciências e Tecnologia, 2012, 124p.</p>
