@@ -117,11 +117,31 @@
 <hr>
 
 ## 3. MATERIALS E METHODS
-### 3.1 Programing Languages
-### 3.2 Frameworks
-### 3.3 Libraries
-### 3.4 Algorithm Organization
+<br>
 
+### 3.1 Programing Languages
+<p>Guyri was developed using JavaScript, CSS and HTML. JavaScript was used to make make the calculations and to appear more form sections and remove those ones on Solar Heating and Composting. Besides that, was also used to change display block to none on some divisions on HTML, and Electron configurations as well. Almost all styling was made using CSS, including the appearance of lateral and main menu. Colors, centralizations and appearance changes are also due to CSS. The "skeleton" of the DA was made using HTML, separating into divisions and allowing CSS to stylize Guyri.</p>
+<br>
+
+### 3.2 Frameworks
+<p>Bootstrap, a CSS and JavaScript based framework from Twitter, was responsible for the modals that appears when the user clicks on "Size!" button.</p>
+<p>The Electron framework is the responsible to make a HTML-CSS-JavaScript project into a DA. To use it, is necessary to create a npm project into a folder using the command on a terminal:
+<code>npm init</code> and, after the project is created, enter the following command on terminal:</p>
+<code>npm i electron (name of your project)</code>
+<p>After creating the node_modules folder, it is necessary to go to scripts in package.json and write:</p>
+<code>"start": "electron ."</code>
+<p>After that, is necessary to work on the main JavaScript file to configure the app. To make it start working and test it, is necessary to go on terminal and type:</p>
+<code>npm start</code>
+
+<br>
+
+### 3.3 Libraries
+<p>Two libraries were used on Guyri: html2pdf and chart.js. The first one is responsible to convert the results modal made using Bootstrap into a pdf file, leting users have the inputs and outputs of their sizing on a savable pdf file. The second one generates the chart that compares the "Simple vs Discounted payback" on Economical Analysis section.</p>
+<br>
+
+### 3.4 Algorithm Organization
+<p>Into the folder called Algorithm, where all the code files are, there is another folder called Icones, where all images are. On the Algorithm folder, there are one CSS file containing the CSS code for all the app, one JavaScript file containing functions to make show and disappear divisions where users insert the variables and Electron configurations', HTML files containing each section and the main page and, at last, npm dependencies.The calculation functions are inserted inside the HTML file, into script section, in order to make it easier to be found and separated from each other.</p>
+<br>
 <hr>
 
 ## 4. CASE STUDY
