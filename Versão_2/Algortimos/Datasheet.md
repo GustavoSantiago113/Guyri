@@ -1,7 +1,9 @@
-# Guyri: A desktop app to size several agricultural engineer projects
+# Guyri: A desktop app to size several agricultural engineering projects
 
 <p>Author: Eng. Gustavo Santiago</p>
 <p>Contact: gustavosantiago@usp.alumni.br</p>
+
+<center><img style='width:150px' src="Icones/QRcode.png"></center>
 
 <hr>
 
