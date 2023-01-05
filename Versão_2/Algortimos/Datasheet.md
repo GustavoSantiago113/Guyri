@@ -134,7 +134,7 @@
 <code>"start": "electron ."</code>
 <p>After that, is necessary to work on the main JavaScript file to configure the app. To make it start working and test it, is necessary to go on terminal and type:</p>
 <code>npm start</code>
-
+<p>After finish the app, in order to publish it, is needed to follow the instructions on this <a href = "https://www.christianengvall.se/electron-packager-tutorial/">website</a>.</p>
 <br>
 
 ### 3.3 Libraries
