@@ -148,7 +148,23 @@
 
 ## 4. CASE STUDY
 
-<p> Mrs. Ana, a biosystems engineer bought a farm and uses every branch to size what she needs </p>
+<p> Mrs. Maria Carolina has just graduated on Biosystems Engineering and, to start her life in the ag field, bought a farm. In her farm, she will raise dairy and beef cattle and plant soy and corn. She was an smart student who used to pay attention on all classes. Because of that, she knows how to size somethings she will need, but not all, might needing some help.</p>
+<p>Her far is located at Goias state, Brazil. The place is new and doesn't have internet connections and since is far away from cellphone companies, doesn't have telephone signal. She can't access the internet to help her, therefore, she is an ARA client and in consequence, has the right to use Guyri to help her on sizing issues.</p>
+<p>Following are the particularities of the farm:</p>
+<ul>* 100 dairy cattle confined in a shed</ul>
+<ul>* Square arable site of 330m each side with height difference of 5 meters</ul>
+<ul>* Average of 5.5 hours of sun daily, but not much wind</ul>
+<ul>* Silty Soil</ul>
+<ul>* Connection with the electrical net</ul>
+<ul>* Easy access to water, but without waterfalls</ul>
+<p> With those informations, she decided to: irrigate the arable land under a pivot and, in the same area, plant the soy, corn and raise the beef cattle; due to warmth of the place, she will install a forced ventilation system for her dairy and, to not waste the manure, will install a biodigestor to take the fertilizer and gas from it; she is not sure if worth to install a solar energy system, so she will check the economical viability of it. Since the place is far away from the city, and doesn't have internet she will use the Guyri DA to size everything and take the PDF reports to the city afterwards </p>
+
+<p>Maria Carolina used Guyri inside her property and could get the inputs and outputs from all sizing projects she made. With that, she could know:</p>
+<ul>-> Everything she need to build the hydraulic and motor pump of central pivot;</ul>
+<ul>-> The number of fans and open area to insert inside the shed for dairy cattle;</ul>
+<ul>-> Amount of water to add daily and dimensions of biodigestor to be build;</ul>
+<ul>-> That, by the current price of energy in her region and price of panels, solar energy will worth the investment and;</ul>
+<ul>-> Number of panels and inversor power she will need to buy.</ul>
 
 <hr>
 
