@@ -135,6 +135,15 @@
 <p>After that, is necessary to work on the main JavaScript file to configure the app. To make it start working and test it, is necessary to go on terminal and type:</p>
 <code>npm start</code>
 <p>After finish the app, in order to publish it, is needed to follow the instructions on this <a href = "https://www.christianengvall.se/electron-packager-tutorial/">website</a>.</p>
+<p>In Guyri, it was followed, generating in the need of running the following commands on terminal line:</p>
+<code>npm install electron-packager --save-dev</code>
+<p>And this one:</p>
+<code>npm install --save-dev electron</code>
+<p>After that, was needed to go to the package.json file and add, inside scripts, the following line (for windows): </p>
+<code>"package-win": "electron-packager . Guyri --overwrite --asar=true --platform=win32 --arch=x64 --icon=Icones/Logotipo-2.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Guyri\""</code>
+<p>Where: "--arch=x64" means the architecture of the system. To deploy the app, was wrote, on terminal, the command:</p>
+<code>npm run package-win</code>
+
 <br>
 
 ### 3.3 Libraries
