@@ -1,0 +1,484 @@
+<html>
+    <head>
+        <title>
+            Guyri - Center Pivot
+        </title>
+        <link rel="icon" href="Icones/Logotipo 2.png">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="functions.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    </head>
+    <header class="header">
+        <img class="logo_header" src="Icones/Logotipo 2.png">
+        <div class="title_header">
+            <h1 style="background-color: #b5e8c3; font-size: 30px;">ARA</h1>
+            <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSYSTEMS</h3>
+        </div>
+        <a class="return_initial" href="initial_page.html">Home</a>
+    </header>
+    <body>
+    <div class="body_sizing">   
+        <div class="main_lateral_dropdown">
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/irrigation.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Gotejamento.html">Dripping</a>
+                    <a class="link" href="Aspersao.html">Sprinkling</a>
+                    <a class="link" href="Micro_Aspersao.html">Micro-Sprinkling</a>
+                    <a class="link" href="Pivo_Central.html">Center Pivot</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/solar-energy.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Aquecimento_Solar.html">Solar Heating</a>
+                    <a class="link" href="Fotovoltaica.html">Photovoltaic</a>
+                    <a class="link" href="Eolica.html">Wind</a>
+                    <a class="link" href="Hidroeletrica.html">Hydroelectric</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/bacteria.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Biodigestor.html">Biodigester</a>
+                    <a class="link" href="Compostagem.html">Composting</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/greenhouse.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Ventilacao_Forcada.html">Forced Ventilation</a>
+                    <a class="link" href="Ar_Condicionado.html">Air Conditioning</a>
+                    <a class="link" href="Nebulizacao.html">Fogging</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/dollar-currency-symbol.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Analise_Economica.html">Economic analysis</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="main_section">
+            <div class="calculator">
+
+                <ul class="nav">
+                    <button class="nav_link active" id="cult_bt" onclick="openTab(event, 'cult')">Crop and Area</button>
+                    <button class="nav_link" id="asp_bt" onclick="openTab(event, 'asp')">Sprinklers</button>
+                    <button class="nav_link" id="mat_bt" onclick="openTab(event, 'mat')">Materials and Labor</button>
+                </ul>
+
+                <div class="tab_content">
+
+                    <div class="tab_pane" id="cult">
+
+                        <input class="input" type="number" step="0.0001" id="Eto" placeholder="Eto">
+                        <br><input class="input" type="number" step="0.0001" id="Kc" placeholder="Kc">
+                        <br><input class="input" type="number" step="0.0001" id="R" placeholder="Pivot radius (m)">
+                        <br><h5 style="background-color: #65b8a6;">Pivot on:</h5>
+                        <br><input type="radio" name="linhap" id="Aclivep"><span>Uphill Slope</span>
+                        <input type="radio" name="linhap" id="Declivep"><span>Downhill Slope</span>
+                        <input type="radio" name="linhap" id="Nivelp"><span>Level</span>
+                        <input class="input" style="width:fit-content;" placeholder="Height difference (m)" type="number" step="0.0001" id="Dhp">
+                        <br><h5 style="background-color: #65b8a6;">Suction tube to Pivot in:</h5>
+                        <br><input type="radio" name="linhas" id="Aclives"><span>Uphill Slope</span>
+                        <input type="radio" name="linhas" id="Declives"><span>Downhill Slope</span>
+                        <input type="radio" name="linhas" id="Nivels"><span>Level</span>
+                        <input class="input" style="width:fit-content;" placeholder="Height difference (m)" type="number" step="0.0001" id="Dhs">
+                        <br><input class="input" type="number" step="0.0001" id="Ls" placeholder="Length from suction tube to center pivot (m)">
+
+                    </div>
+
+                    <div class="tab_pane" id="asp" style="display: none;">
+
+                        <input class="input" type="number" step="0.0001" id="Pasp" placeholder="Sprinkler service pressure (mca)">
+                        <br><input class="input" type="number" step="0.0001" id="Rasp" placeholder="Sprinkler radius(m)">
+                        <br><input class="input" type="number" step="0.0001" id="Easp" placeholder="Distance between sprinklers (m)">
+                        <br><input type="radio" name="tipo" id="canhao" onclick="AparecerCanhao();"><span>Cannon at the end?</span>
+                        <div id="inputcanhao" style="display:none; background-color: #65b8a6;">
+                            <input class="input" placeholder="Service pressure (mca)" type="number" step="0.0001" id="Pcn">
+                            <br><input class="input" placeholder="Flow rate (m3/h)" type="number" step="0.0001" id="Qcn">       
+                        </div>
+
+                    </div>
+
+                    <div class="tab_pane" id="mat" style="display: none;">
+
+                        <input class="input" type="number" step="0.0001" id="tv" placeholder="Time to take a walk (h)">
+                        <br><input class="input" type="number" step="0.0001" id="Cp" placeholder="Pivot tube Hazen-Williams coefficient">
+                        <br><input class="input" type="number" step="0.0001" id="Cs" placeholder="Suction tube Hazen-Williams coefficient">
+                        <br><input class="input" type="number" step="0.0001" id="VE" placeholder="Flow velocity in the suction line (m/s)">
+                        <br><input class="input" type="number" step="0.0001" id="n" placeholder="Pump performance (decimal)">
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button class="result" onclick="DimensionarPivo('minhaDiv');" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Size!
+            </button>
+
+            <span style="background-color: #f0f7da; display: none;" id="warn">
+                Unable to reach gun service pressure, resize
+            </span>
+        </div>
+        <div>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title">Results</h5>
+                </div>
+                <div class="modal-body">
+                    <div id="report">
+                        <div class="header_report">
+                                <h1 style="background-color: #b5e8c3; font-size: 30px;">ARA</h1>
+                                <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSYSTEMS</h3>     
+                        </div>
+                        <div>
+                            <div class="subtitle_report">
+                                <h3>Irrigation</h3>
+                                <h4>Center Pivot</h4>
+                            </div>
+                            <h5 style="padding-left: 15px;">Inputs</h5>
+                            <div class="box_report">
+                                <h6 style="background-color: #65b8a6;font-size: 15px;">Crop and Area</h6>
+                                <span>Eto: </span><span id="EtoReport"></span>
+                                <br><span>Kc: </span><span id="KcReport"></span>
+                                <br><span>Pivot radius (m): </span><span id="RReport"></span>
+                                <br><span id="PivoIncReport"></span>
+                                <br><span>Height difference (m): </span><span id="DhpReport"></span>
+                                <br><span id="SuctionIncReport"></span>
+                                <br><span>Height difference (m): </span><span id="DhsReport"></span>
+                                <br><span>Length from suction tube to center pivot (m): </span><span id="LsReport"></span>
+                            </div>
+                            <div class="box_report">
+                                <h6 style="background-color: #65b8a6;font-size: 15px;">Sprinklers</h6>
+                                <span>Sprinkler service pressure (mca): </span><span id="PaspReport"></span>
+                                <br><span>Sprinkler radius(m): </span><span id="RaspReport"></span>
+                                <br><span>Distance between sprinklers (m): </span><span id="EaspReport"></span>
+                                <br><span id="canhaoReport"></span>
+                                <br><span id="PcnReport"></span>
+                                <br><span id="QcnReport"></span>
+                            </div>
+                            <div class="box_report">
+                                <h6 style="background-color: #65b8a6;font-size: 15px;">Materials and Labor</h6>
+                                <span>Time to take a walk (h): </span><span id="tvReport"></span>
+                                <br><span>Pivot tube Hazen-Williams coefficient: </span><span id="CpReport"></span>
+                                <br><span>Suction tube Hazen-Williams coefficient: </span><span id="CsReport"></span>
+                                <br><span>Flow velocity in the suction line (m/s): </span><span id="VEReport"></span>
+                                <br><span>Pump performance (decimal): </span><span id="nReport"></span>
+                            </div>
+                            <div id="outputs">
+                                <h5 style="padding-left: 15px;">Outputs</h5>
+                                <div class="box_report">
+                                    <span>Required Flow (m3/h): </span><span id="Qf"></span>
+                                    <br><span id="Ia1R"></span>
+                                    <br><span id="Ia2R"></span>
+                                    <br><span id="Ia3R"></span>
+                                    <br><span id="Ia4R"></span>
+                                    <br><span id="Qa1R"></span>
+                                    <br><span id="Qa2R"></span>
+                                    <br><span id="Qa3R"></span>
+                                    <br><span id="Qa4R"></span>
+                                    <br><span id="D1"></span>
+                                    <br><span id="D2"></span>
+                                    <br><span id="D3"></span>
+                                    <br><span id="D4"></span>
+                                    <br><span>Suction line diameter (m): </span><span id="Ds"></span>
+                                    <br><span>Manometer Height (mca): </span><span id="HMT"></span>
+                                    <br><span>Motor pump power (cv): </span><span id="Pot"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="GenerateReport()">Generate Report</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+    <script>
+
+        function GenerateReport(){
+
+            const element = document.getElementById('report');
+            var opt = {
+                filename:     "ARA_Biosystems_CenterPivot.pdf" ,
+                pagebreak:      {before: '#outputs'},
+                image:        { type: 'jpeg', quality: 1 },
+                margin:        [top = 0, left = 0, bottom = 0, right = 0],
+                html2canvas:    {height: 2500}
+            };
+
+            html2pdf(element, opt)
+
+        }
+
+        function AparecerCanhao(){
+
+            if (document.getElementById("canhao").checked){
+                document.getElementById("inputcanhao").style.display = "block";
+            }
+
+            else {
+                document.getElementById("inputcanhao").style.display = "none";
+            }
+        }
+
+        function DimensionarPivo(el){
+            
+            const dComerciais = [0.025, 0.032, 0.035, 0.04, 0.05, 0.063, 0.075, 0.09, 0.1, 0.11, 0.125, 0.14, 0.15, 0.16, 0.2, 0.25, 0.3, 0.35, 0.4, 0.5];
+
+            // Lâmina de aplicação
+            var Eto = parseFloat(document.getElementById('Eto').value);
+            document.getElementById('EtoReport').innerHTML = Eto;
+            var Kc = parseFloat(document.getElementById('Kc').value);
+            document.getElementById('KcReport').innerHTML = Kc;
+            
+            var Lam = Eto * Kc;
+
+            // Vazão total
+            var tv = parseFloat(document.getElementById('tv').value);
+            document.getElementById('tvReport').innerHTML = tv;
+            var R = parseFloat(document.getElementById('R').value);
+            document.getElementById('RReport').innerHTML = R;
+            var Rasp = parseFloat(document.getElementById('Rasp').value);
+            document.getElementById('RaspReport').innerHTML = Rasp;
+            var Qcn = parseFloat(document.getElementById('Qcn').value);
+
+            var Area = Math.PI * Math.pow((R + (Rasp/2)), 2);
+            var Q = (Lam * Area ) / ( tv * 1000);
+
+            var Qf = Q;
+            if(document.getElementById("canhao").checked){
+                Qf = Q + Qcn;
+                document.getElementById('canhaoReport').innerHTML = "With Canon";
+                document.getElementById('QcnReport').innerHTML = "Canon Flow rate (m3/h): " + Qcn.toString();
+            }
+            else{
+                document.getElementById('canhaoReport').innerHTML = "Without Canon";
+            }
+            document.getElementById('Qf').innerHTML = Qf.toFixed(3);
+
+            // Divisão do pivô em 4 partes
+            var R1 = Math.sqrt(Area / ( 4 * Math.PI ));
+            var R2 = Math.sqrt(Area / ( 2 * Math.PI ));
+            var R3 = Math.sqrt((3*Area) / ( 4 * Math.PI ));
+            var R4 = R;
+
+            var L1 = R1;
+            var L2 = R2 - R1;
+            var L3 = R3 - R2;
+            var L4 = R4 - R3;
+
+            // Intensidade de Aplicação
+            var Dasp = 2 * Rasp;
+            
+            var tr1 = (tv * Dasp) / ( 2 * Math.PI * (R1 / 2) );
+            var tr2 = (tv * Dasp) / ( 2 * Math.PI * (R1 + (L2/2)) );
+            var tr3 = (tv * Dasp) / ( 2 * Math.PI * (R2 + (L3/2)) );
+            var tr4 = (tv * Dasp) / ( 2 * Math.PI * (R3 + (L4/2)) );
+
+            Ia1 = Lam / tr1;
+            Ia2 = Lam / tr2;
+            Ia3 = Lam / tr3;
+            Ia4 = Lam / tr4;
+
+            const Resp = "The application intensity of each sprinkler (mm/h) from ";
+            const Resp2 = " to the ";
+            const Resp3 = " meters is ";
+
+            var Ia1R = Resp + "0" + Resp2 + R1.toFixed(3).toString() + Resp3 + Ia1.toFixed(3).toString();
+            var Ia2R = Resp + R1.toFixed(3).toString() + Resp2 + R2.toFixed(3).toString() + Resp3 + Ia2.toFixed(3).toString();
+            var Ia3R = Resp + R2.toFixed(3).toString() + Resp2 + R3.toFixed(3).toString() + Resp3 + Ia3.toFixed(3).toString();
+            var Ia4R = Resp + R3.toFixed(3).toString() + Resp2 + R4.toFixed(3).toString() + Resp3 + Ia4.toFixed(3).toString();
+
+            document.getElementById('Ia1R').innerHTML = Ia1R;
+            document.getElementById('Ia2R').innerHTML = Ia2R;
+            document.getElementById('Ia3R').innerHTML = Ia3R;
+            document.getElementById('Ia4R').innerHTML = Ia4R;
+
+            // Vazão dos aspersores
+            var Easp = parseFloat(document.getElementById('Easp').value);
+            document.getElementById('EaspReport').innerHTML = Easp;
+
+            var NaspL1 = L1 / Easp;
+            var NaspL2 = L2 / Easp;
+            var NaspL3 = L3 / Easp;
+            var NaspL4 = L4 / Easp;
+
+            var Qasp1 = (Q / 4) / NaspL1;
+            var Qasp2 = (Q / 4) / NaspL2;
+            var Qasp3 = (Q / 4) / NaspL3;
+            var Qasp4 = (Q / 4) / NaspL4;
+
+            const Resp4 = "The sprinkler flow (m3/h) from ";
+            var Qa1R = Resp4 + "0" + Resp2 + R1.toFixed(3).toString() + Resp3 +  Qasp1.toFixed(3).toString();
+            var Qa2R = Resp4 + R1.toFixed(3).toString() + Resp2 + R2.toFixed(3).toString() + Resp3 + Qasp2.toFixed(3).toString();
+            var Qa3R = Resp4 + R2.toFixed(3).toString() + Resp2 + R3.toFixed(3).toString() + Resp3 + Qasp3.toFixed(3).toString();
+            var Qa4R = Resp4 + R3.toFixed(3).toString() + Resp2 + R4.toFixed(3).toString() + Resp3 + Qasp4.toFixed(3).toString();
+
+            document.getElementById('Qa1R').innerHTML = Qa1R;
+            document.getElementById('Qa2R').innerHTML = Qa2R;
+            document.getElementById('Qa3R').innerHTML = Qa3R;
+            document.getElementById('Qa4R').innerHTML = Qa4R;
+
+            // Pressões e perdas de carga
+            var PS = parseFloat(document.getElementById('Pasp').value);
+            document.getElementById('PaspReport').innerHTML = PS;
+            let DZl = 0;
+
+            var hfl;
+            var Pinl;
+            var Pfl;
+
+            if (document.getElementById("Nivelp").checked)
+            {
+                hfl = 0.3*PS;
+                Pinl = PS + ((3*hfl)/4);
+                Pfl = PS - (hfl / 4);
+                document.getElementById('PivoIncReport').innerHTML = "Pivot in level";
+                document.getElementById('DhpReport').innerHTML = 0;
+            }
+            else if (document.getElementById("Aclivep").checked)
+            {
+                Dzl = parseFloat(document.getElementById('Dhp').value);
+                document.getElementById('DhpReport').innerHTML = Dzl;
+                hfl = 0.3*PS - DZl;
+                if (Math.sign(hfl) == -1 || Math.sign(hfl) == 0)
+                {
+                    hfl = DZl;
+                }   
+                Pinl = PS + ((3*hfl)/4)+ 0.5*DZl;
+                Pfl = PS - (hfl / 4) - Dzl / 2;
+                document.getElementById('PivoIncReport').innerHTML = "Pivot in uphill slope";
+            }
+            else if (document.getElementById("Declivep").checked)
+            {
+                Dzl = parseFloat(document.getElementById('Dhp').value);
+                document.getElementById('DhpReport').innerHTML = Dzl;
+                hfl = 0.3*PS + DZl;
+                Pinl = PS + ((3*hfl)/4) - 0.5*DZl;
+                Pfl = PS - (hfl / 4) + Dzl / 2;
+                document.getElementById('PivoIncReport').innerHTML = "Pivot in downhill slope";
+            }
+            
+            //F de cada parte
+            var F1 = (1/(2.852))+(1/(2*parseInt(NaspL1)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(NaspL1),2)));
+            var F2 = (1/(2.852))+(1/(2*parseInt(NaspL2)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(NaspL2),2)));
+            var F3 = (1/(2.852))+(1/(2*parseInt(NaspL3)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(NaspL3),2)));
+            var F4 = (1/(2.852))+(1/(2*parseInt(NaspL4)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(NaspL4),2)));
+            
+            // Diâmetro dos tubos de cada setor
+            var Cp = parseFloat(document.getElementById('Cp').value);
+            document.getElementById('CpReport').innerHTML = Cp;
+
+            var Dt1 = Math.pow((10.643 * Math.pow((((Qf/4)/3600) / Cp),1.852) * (L1 / hfl) * F1), 0.205);
+            const Dt1c = dComerciais.reduce((a, b) => {
+                        return Math.abs(b - Dt1) < Math.abs(a - Dt1) ? b : a;
+                    });
+            var Dt2 = Math.pow((10.643 * Math.pow((((Qf/4)/3600) / Cp),1.852) * (L2 / hfl) * F2), 0.205);
+            const Dt2c = dComerciais.reduce((a, b) => {
+                        return Math.abs(b - Dt2) < Math.abs(a - Dt2) ? b : a;
+                    });
+            var Dt3 = Math.pow((10.643 * Math.pow((((Qf/4)/3600) / Cp),1.852) * (L3 / hfl) * F3), 0.205);
+            const Dt3c = dComerciais.reduce((a, b) => {
+                        return Math.abs(b - Dt3) < Math.abs(a - Dt3) ? b : a;
+                    });
+            var Dt4 = Math.pow((10.643 * Math.pow((((Qf/4)/3600) / Cp),1.852) * (L4 / hfl) * F4), 0.205);
+            const Dt4c = dComerciais.reduce((a, b) => {
+                        return Math.abs(b - Dt4) < Math.abs(a - Dt4) ? b : a;
+                    });
+
+            const Resp5 = "The diameter of the tubes (m) from ";
+            var D1 = Resp5 + "0" + Resp2 + R1.toFixed(3).toString() + Resp3 + Dt1c.toString();
+            var D2 = Resp5 + R1.toFixed(3).toString() + Resp2 + R2.toFixed(3).toString() + Resp3 + Dt2c.toString();
+            var D3 = Resp5 + R2.toFixed(3).toString() + Resp2 + R3.toFixed(3).toString() + Resp3 + Dt3c.toString();
+            var D4 = Resp5 + R3.toFixed(3).toString() + Resp2 + R.toFixed(3).toString() + Resp3 + Dt4c.toString();
+
+            document.getElementById('D1').innerHTML = D1;
+            document.getElementById('D2').innerHTML = D2;
+            document.getElementById('D3').innerHTML = D3;
+            document.getElementById('D4').innerHTML = D4;
+
+            // Diâmetro da linha de sucção
+            var Ls = parseFloat(document.getElementById('Ls').value);
+            document.getElementById('LsReport').innerHTML = Ls;
+            var VE = parseFloat(document.getElementById('VE').value);
+            document.getElementById('VEReport').innerHTML = VE;
+
+            var Ds = Math.sqrt(((4*(Qf/3600))/(Math.PI*VE)));
+            const Dsc = dComerciais.reduce((a, b) => {
+                        return Math.abs(b - Ds) < Math.abs(a - Ds) ? b : a;
+            });
+            document.getElementById('Ds').innerHTML = Dsc;
+            var Cs = parseFloat(document.getElementById('Cs').value);
+            document.getElementById('CsReport').innerHTML = Cs;
+            var hs = 10.643 * Math.pow((((Qf/3600))/Cs),1.852)*Math.pow(Dsc,-4.87)*Ls;
+
+            let Dhs = 0;
+            document.getElementById('DhsReport').innerHTML = Dhs;
+            if (document.getElementById("Declives").checked)
+            {
+                Dhs = parseFloat(document.getElementById('Dhs').value) * -1;
+                document.getElementById('DhsReport').innerHTML = Dhs * -1;
+                document.getElementById('SuctionIncReport').innerHTML = "Suction in downhill slope";
+            }
+            else if (document.getElementById("Aclives").checked)
+            {
+                Dhs = parseFloat(document.getElementById('Dhs').value);
+                document.getElementById('DhsReport').innerHTML = Dhs;
+                document.getElementById('SuctionIncReport').innerHTML = "Suction in uphill slope";
+            }
+            else{
+                document.getElementById('SuctionIncReport').innerHTML = "Suction in level";
+            }
+            // Bomba manométrica
+            if(document.getElementById("canhao").checked){
+                var Pcn = parseFloat(document.getElementById('Pcn').value);
+                document.getElementById('PcnReport').innerHTML = "Canon Service pressure (mca): " + Pcn.toString();
+                if(Pfl < Pcn){
+                    document.getElementById("warn").style.display = "block";
+                }
+                else if(Pfl => Pcn){
+                    document.getElementById("warn").style.display = "none";
+                }
+                var HMT = (Dhs + hs + hfl + Pinl + DZl + Pcn) * 1.05;
+            }
+            var HMT = (Dhs + hs + hfl + Pinl + DZl) * 1.05;
+            var n = parseFloat(document.getElementById('n').value);
+            document.getElementById('nReport').innerHTML = n;
+            var Pot = ( ( (Qf*0.277778) * HMT) / ( 75 * n) ) * 1.1;
+            document.getElementById('HMT').innerHTML = HMT.toFixed(3);
+            document.getElementById('Pot').innerHTML = Pot.toFixed(3);
+        }
+    </script>
+</html>

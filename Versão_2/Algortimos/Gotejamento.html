@@ -1,0 +1,466 @@
+<html>
+    <head>
+        <title>
+            Guyri - Dripping
+        </title>
+        <link rel="icon" href="Icones/Logotipo 2.png">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="functions.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    </head>
+    <header class="header">
+        <img class="logo_header" src="Icones/Logotipo 2.png">
+        <div class="title_header">
+            <h1 style="background-color: #b5e8c3; font-size: 30px;">ARA</h1>
+            <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSYSTEMS</h3>
+        </div>
+        <a class="return_initial" href="initial_page.html">Home</a>
+    </header>
+    <body>
+    <div class="body_sizing">   
+        <div class="main_lateral_dropdown">
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/irrigation.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Gotejamento.html">Dripping</a>
+                    <a class="link" href="Aspersao.html">Sprinkling</a>
+                    <a class="link" href="Micro_Aspersao.html">Micro-Sprinkling</a>
+                    <a class="link" href="Pivo_Central.html">Center Pivot</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/solar-energy.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Aquecimento_Solar.html">Solar Heating</a>
+                    <a class="link" href="Fotovoltaica.html">Photovoltaic</a>
+                    <a class="link" href="Eolica.html">Wind</a>
+                    <a class="link" href="Hidroeletrica.html">Hydroelectric</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/bacteria.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Biodigestor.html">Biodigester</a>
+                    <a class="link" href="Compostagem.html">Composting</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/greenhouse.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Ventilacao_Forcada.html">Forced Ventilation</a>
+                    <a class="link" href="Ar_Condicionado.html">Air Conditioning</a>
+                    <a class="link" href="Nebulizacao.html">Fogging</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/dollar-currency-symbol.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Analise_Economica.html">Economic analysis</a>
+                </div>
+            </div>
+
+        </div>
+
+            <div class="main_section">
+
+                <div class="calculator">
+
+                    <ul class="nav">
+                        <button class="nav_link active" id="cult_bt" onclick="openTab(event, 'cult')">Crop</button>
+                        <button class="nav_link" id="sol_bt" onclick="openTab(event, 'sol')">Soil</button>
+                        <button class="nav_link" id="area_bt" onclick="openTab(event, 'area')">Area</button>
+                        <button class="nav_link" id="proj_bt" onclick="openTab(event, 'proj')">Project Criteria</button>
+                        <button class="nav_link" id="asp_bt" onclick="openTab(event, 'asp')">Dripper</button>
+                        <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Attention: site format must be square or retangular">
+                            <img class="warn" src="Icones\warning.png">
+                        </span>
+                    </ul>
+
+                    <div class="tab_content">
+
+                        <div class="tab_pane" id="cult">
+                            <input class="input" type="number" step="0.0001" id="ETO" placeholder="ETo (mm/day)">
+                            <br><input class="input" placeholder="Kc" type="number" step="0.0001" id="KC">
+                            <br><input class="input" placeholder="Depth of the root system (cm)" type="number" step="0.0001" id="Z">
+                            <br><input class="input" placeholder="f (%)" type="number" step="0.0001" id="f">
+                            <br><input class="input" placeholder="Line spacing (m)" type="number" step="0.0001" id="Eel">
+                        </div>
+
+                        <div class="tab_pane" id="sol" style="display: none;">
+                            <input class="input" placeholder="Field capacity (cm3/cm3)" type="number" step="0.0001" id="CC">
+                            <br><input class="input" placeholder="Permanent wilting point (cm3/cm3)" type="number" step="0.0001" id="PMP">
+                        </div>
+
+                        <div class="tab_pane" id="area" style="display: none;">
+                            <input class="input" placeholder="Area width (m)" type="number" step="0.0001" id="LA">
+                            <br><input class="input" placeholder="Area length (m)" type="number" step="0.0001" id="CA">
+                            <br><input class="input" placeholder="Length from suction line to first lateral line (m)" type="number" step="0.0001" id="CLS">
+                            <br><input class="input" placeholder="Suction height (m)" type="number" step="0.0001" id="AS">
+                            <br><input class="input" placeholder="Positive settlement height for uphill and negative for downhill (m)" type="number" step="0.0001" id="AR">
+                        </div>
+
+                        <div class="tab_pane" id="proj" style="display: none;">
+                            <input class="input" placeholder="How many sectors?" type="number" step="0.0001" id="Ns">
+                            <br><input class="input" placeholder="Irrigation Efficiency (%)" type="number" step="0.0001" id="IR">
+                            <br><input class="input" placeholder="Main line Hazen-Williams coefficient" type="number" step="0.0001" id="Cp">
+                            <br><input class="input" placeholder="Derivation line Hazen-Williams coefficient" type="number" step="0.0001" id="Cd">
+                            <br><h5 style="background-color: #65b8a6;">Are the emitters built into the hoses?</h5>
+                            <br><span>Yes</span><input type="radio" name="Mangueiras" id="Simm">
+                            <input class="input" style="width: 200px;" placeholder="Diameter of hoses (m)" type="number" step="0.0001" id="Dm">
+                            <br><span>No</span><input type="radio" name="Mangueiras" id="Naom">
+                            <br><input class="input" placeholder="Spacing between emitters (m)" type="number" step="0.0001" id="EE">
+                            <br><input class="input" placeholder="Hazen-Williams coefficient of drip hoses" type="number" step="0.0001" id="Cl">
+                            <br><h5 style="background-color: #65b8a6;">Drip hoses in:</h5>
+                            <br><input type="radio" name="linhal" id="Aclivel"><span>Uphill slope</span>
+                            <input type="radio" name="linhal" id="Declivel"><span>Downhill slope</span>
+                            <input type="radio" name="linhal" id="Nivell"><span>Level</span>
+                            <input class="input" style="width:fit-content;" placeholder="Height difference (m)" type="number" step="0.0001" id="Decl">
+                            <br><input class="input" placeholder="Flow speed (m/s)" type="number" step="0.0001" id="VE">
+                            <br><input class="input" placeholder="Pump Efficiency (%)" type="number" step="0.0001" id="RM">
+                        </div>
+
+                        <div class="tab_pane" id="asp" style="display: none;">
+                            <input class="input" placeholder="Emitter flow (m3/h)" type="number" step="0.0001" id="VZ">
+                            <br><input class="input" placeholder="Service pressure (mca)" type="number" step="0.0001" id="PS">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button class="result" onclick="DimensionarGotejamento('minhaDiv');" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Size!
+                </button>
+
+            </div>
+
+            <div>
+
+            </div>
+
+        </div>
+
+        <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title">Results</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div id="report">
+                            <div class="header_report">
+                                    <h1 style="background-color: #b5e8c3; font-size: 30px;">ARA</h1>
+                                    <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSYSTEMS</h3>     
+                            </div>
+                            <div>
+                                <div class="subtitle_report">
+                                    <h3>Irrigation</h3>
+                                    <h4>Dripping</h4>
+                                </div>
+                                <h5 style="padding-left: 15px;">Inputs</h5>
+                                <div class="box_report">
+                                    <h6 style="background-color: #65b8a6;font-size: 15px;">Crop</h6>
+                                    <span>ETo (mm/day): </span><span id="ETOReport"></span>
+                                    <br><span>Kc: </span><span id="KCReport"></span>
+                                    <br><span>Depth of the root system (cm): </span><span id="ZReport"></span>
+                                    <br><span>f (%): </span><span id="fReport"></span>
+                                    <br><span>Line spacing (m): </span><span id="EelReport"></span>
+                                </div>
+                                <div class="box_report">
+                                    <h6 style="background-color: #65b8a6;font-size: 15px;">Soil</h6>
+                                    <span>Field capacity (cm3/cm3): </span><span id="CCReport"></span>
+                                    <br><span>Permanent wilting point (cm3/cm3): </span><span id="PMPReport"></span>
+                                </div>
+                                <div class="box_report">
+                                    <h6 style="background-color: #65b8a6;font-size: 15px;">Area</h6>
+                                    <span>Area width (m): </span><span id="LAReport"></span>
+                                    <br><span>Area length (m): </span><span id="CAReport"></span>
+                                    <br><span>Length from suction line to first lateral line (m): </span><span id="CLSReport"></span>
+                                    <br><span>Suction height (m): </span><span id="ASReport"></span>
+                                    <br><span>Positive settlement height for uphill and negative for downhill (m): </span><span id="ARReport"></span>
+                                </div>
+                                <div class="box_report">
+                                    <h6 style="background-color: #65b8a6;font-size: 15px;">Project Criteria</h6>
+                                    <span>How many sectors? </span><span id="NsReport"></span>
+                                    <br><span>Irrigation Efficiency (%): </span><span id="IRReport"></span>
+                                    <br><span>Main line Hazen-Williams coefficient: </span><span id="CpReport"></span>
+                                    <br><span>Derivation line Hazen-Williams coefficient: </span><span id="CdReport"></span>
+                                    <br><span id="SimmReport"></span>
+                                    <div id="simConditional" style="display: none;">
+                                        <span>Diameter of hoses (m): </span><span id="DmReport"></span>
+                                    </div>
+                                    <span>Spacing between emitters (m): </span><span id="EEReport"></span>
+                                    <br><span>Hazen-Williams coefficient of drip hoses: </span><span id="ClReport"></span>
+                                    <br><span id="NivellReport"></span>
+                                    <br><span>Height difference (m): </span><span id="DeclReport"></span>
+                                    <br><span>Flow speed (m/s): </span><span id="VEReport"></span>
+                                    <br><span>Pump Efficiency (%): </span><span id="RMReport"></span>
+                                </div>
+                                <div class="box_report">
+                                    <h6 style="background-color: #65b8a6;font-size: 15px;">Dripper</h6>
+                                    <span>Emitter flow (m3/h): </span><span id="VZReport"></span>
+                                    <br><span>Service pressure (mca): </span><span id="PSReport"></span>
+                                </div>
+                                <div id="outputs">
+                                    <h5 style="padding-left: 15px;">Outputs</h5>
+                                    <div class="box_report">
+                                        <h6 style="background-color: #65b8a6;font-size: 15px;">Management</h6>
+                                        <span>Irrigation period (h/day): </span><span id="TRD"></span>
+                                        <br><span>Daily Irrigation Blade (mm): </span><span id="ITN"></span>
+                                    </div>
+                                    <div class="box_report">
+                                        <h6 style="background-color: #65b8a6;font-size: 15px;">Lateral lines</h6>
+                                        <span>Total length of drip hoses:</span> <span id="Tmg"></span>
+                                        <div id="gotnaoembutido" style="display:none;">
+                                            <br><span>Total number of emitters:</span> <span id="Nte"></span>
+                                            <br><span>Lateral line inner diameter (m):</span> <span id="Dl"></span>
+                                        </div>
+                                    </div>
+                                    <div class="box_report">
+                                        <h6 style="background-color: #65b8a6;font-size: 15px;">Derivation lines</h6>
+                                        <span>Length of each lead line (m): </span><span id="Cmpd"></span>
+                                        <br><span>Total length of the derivation lines (m): </span><span id="Ctd"></span>
+                                        <br><span>Flow from a bypass line (m3/h): </span><span id="Qd"></span>
+                                        <br><span>Derivation line diameter (m): </span><span id="Dd"></span>
+                                    </div>
+                                    <div class="box_report">
+                                        <h6 style="background-color: #65b8a6;font-size: 15px;">Main line</h6>
+                                        <span>Main line length (m): </span><span id="Lp"></span>
+                                        <br><span>Main line diameter (m): </span><span id="Dp"></span>
+                                    </div>
+                                    <div class="box_report">
+                                        <h6 style="background-color: #65b8a6;font-size: 15px;">Motor pump</h6>
+                                        <span>Flow (m3/h): </span><span id="Qp"></span>
+                                        <br><span>Total Manometer Height (mca): </span><span id="HMT"></span>
+                                        <br><span>Power (cv): </span><span id="Pot"></span>
+                                    </div>
+                                    <div class="box_report">
+                                        <h6 style="background-color: #65b8a6;font-size: 15px;">Filter</h6>
+                                        <span>Minimum filtering surface area (m2): </span><span id="SAF"></span>
+                                        <br><span>Minimum filter diameter (m): </span><span id="DF"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="GenerateReport()">Generate Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+    <script>
+
+        function GenerateReport(){
+
+            const element = document.getElementById('report');
+            var opt = {
+                filename:     "ARA_Biosystems_Dripping.pdf" ,
+                pagebreak:      {before: '#outputs'},
+                image:        { type: 'jpeg', quality: 1 },
+                margin:        [top = 0, left = 0, bottom = 0, right = 0],
+                html2canvas:    {height: 2000}
+            };
+
+            html2pdf(element, opt)
+
+        }
+
+        function DimensionarGotejamento(el){
+            const dComerciais = [0.025, 0.032, 0.035, 0.04, 0.05, 0.063, 0.075, 0.09, 0.1, 0.11, 0.125, 0.14, 0.15, 0.16, 0.2, 0.25, 0.3, 0.35, 0.4, 0.5];
+            
+            //Manejo
+            var occ = parseFloat(document.getElementById('CC').value);
+            document.getElementById('CCReport').innerHTML = occ;
+            var opmp = parseFloat(document.getElementById('PMP').value);
+            document.getElementById('PMPReport').innerHTML = opmp;
+            var Z = parseFloat(document.getElementById('Z').value);
+            document.getElementById('ZReport').innerHTML = Z;
+            var f = parseFloat(document.getElementById('f').value);
+            document.getElementById('fReport').innerHTML = f;
+            var ADR = (occ-opmp)*Z*(f/100)*10;
+            var Kc = parseFloat(document.getElementById('KC').value);
+            document.getElementById('KCReport').innerHTML = Kc;
+            var Eto = parseFloat(document.getElementById('ETO').value);
+            document.getElementById('ETOReport').innerHTML = Eto;
+            var ETpc = Kc*Eto;
+            var TR = ADR / ETpc;
+            var Ea = parseFloat(document.getElementById('IR').value);
+            document.getElementById('IRReport').innerHTML = Ea;
+            Ea = Ea/100
+            var ITN = ADR / Ea;
+            var ID = ITN / TR;
+            document.getElementById('ITN').innerHTML = ID.toFixed(3);
+            var q = parseFloat(document.getElementById('VZ').value); //Vazão de um emissor
+            document.getElementById('VZReport').innerHTML = q;
+            var EE = parseFloat(document.getElementById('EE').value); //Espaçamento entre emissores
+            document.getElementById('EEReport').innerHTML = EE;
+            var Eel = parseFloat(document.getElementById('Eel').value); //Espaçamento entre linhas
+            document.getElementById('EelReport').innerHTML = Eel;
+            var TRD = ( ID * EE * Eel) / (q*1000);
+            document.getElementById('TRD').innerHTML = TRD.toFixed(3);
+
+            //Dimensionamento de Setores
+            var CA = parseFloat(document.getElementById('CA').value); //Comprimento do local
+            document.getElementById('CAReport').innerHTML = CA;
+            var LA = parseFloat(document.getElementById('LA').value); //Largura do local
+            document.getElementById('LAReport').innerHTML = LA;
+            var Area = CA * LA; //Cálculo da área
+            var Ns = parseFloat(document.getElementById('Ns').value); //Número de setores
+            document.getElementById('NsReport').innerHTML = Ns;
+            var Areasetores = Area / Ns; // Cálculo da área de cada setor
+            var Comprimentosetor = CA / (Ns/2); //Comprimento de cada setor
+            var Largurasetor = LA / 2; //Largura de cada setor
+
+            //Dimensionamento das linhas laterais                
+            var Tmg = ( ( Largurasetor / Eel) * Comprimentosetor ) * Ns; //Tamanho mangueiras de gotejamento
+            document.getElementById('Tmg').innerHTML = Tmg.toFixed(3);
+            var PS = parseFloat(document.getElementById('PS').value); //Pressão de serviço
+            document.getElementById('PSReport').innerHTML = PS;
+            var DZl = parseFloat(document.getElementById('Decl').value); //Declividade da linha lateral
+
+            if (document.getElementById("Nivell").checked)
+            {
+                document.getElementById('NivellReport').innerHTML = "Drip hoses in level";
+                document.getElementById('DeclReport').innerHTML = 0;
+                var hfl = 0.3*PS;
+                var Pinl = PS + ((3*hfl)/4);
+            }
+            else if (document.getElementById("Aclivel").checked)
+            {
+                document.getElementById('NivellReport').innerHTML = "Drip hoses in uphill slope";
+                document.getElementById('DeclReport').innerHTML = DZl;
+                var hfl = 0.3*PS - DZl;
+                if (Math.sign(hfl) == -1 || Math.sign(hfl) == 0)
+                {
+                    hfl = DZl;
+                }   
+                var Pinl = PS + ((3*hfl)/4)+ 0.5*DZl;
+            }
+            else if (document.getElementById("Declivel").checked)
+            {
+                document.getElementById('NivellReport').innerHTML = "Drip hoses in downhill slope";
+                document.getElementById('DeclReport').innerHTML = DZl;
+                var hfl = 0.3*PS + DZl;
+                var Pinl = PS + ((3*hfl)/4) - 0.5*DZl;
+            }
+
+            if (document.getElementById("Simm").checked)
+            {
+                document.getElementById('SimmReport').innerHTML = "Drips on hoses";
+                document.getElementById('simConditional').style.display = "block";
+                var Dm = parseFloat(document.getElementById('Dm').value); //Diâmetro interno da mangueira
+                document.getElementById('DmReport').innerHTML = Dm;
+                var Nspm = (Comprimentosetor / EE); //Número de saídas
+                var Fl = (1/(2.852))+(1/(2*parseInt(Nspm)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(Nspm),2))); //Calculo do F da linha lateral
+                var Qll = q * Math.round(Nspm); //Vazão de uma linha lateral
+                var Cl = parseFloat(document.getElementById('Cl').value);  //C da linha lateral
+                document.getElementById('ClReport').innerHTML = Cl;
+                var hflme = 10.643 * Math.pow( (Qll / Cl), 1.85) * ( Comprimentosetor / Math.pow( Dm, 4.87) ); //Perda de carga da mangueira
+                var Numlinhalateral = Largurasetor / Eel;
+                var Qp = Numlinhalateral * q * Nspm;
+            }
+            if (document.getElementById("Naom").checked)
+            {
+                document.getElementById('gotnaoembutido').style.display = "block";
+                document.getElementById('SimmReport').innerHTML = "Drips not included on hoses";
+                var Nte = ( (Comprimentosetor / EE) * ( Largurasetor / Eel) ) * Ns; //Número total de emissores
+                document.getElementById('Nte').innerHTML = Nte.toFixed(3);
+                var Nspm = (Comprimentosetor / EE); //Número de saídas
+                var Fl = (1/(2.852)) + (1/(2*parseInt(Nspm))) + (Math.sqrt(0.852)/(6*Math.pow(parseInt(Nspm),2))); //Calculo do F da linha lateral
+                var Qll = q * Math.round(Nspm); //Vazão de uma linha lateral
+                var Cl = parseFloat(document.getElementById('Cl').value);  //C da linha lateral
+                document.getElementById('ClReport').innerHTML = Cl;
+                var r = (Qll/3600) / Cl;
+                var r1 = 10.643 * Math.pow(r,1.852) * (Comprimentosetor / hfl) * Fl;
+                var Dl =  Math.pow(r1, 0.205);
+                const Dlc = dComerciais.reduce((a, b) => {
+                        return Math.abs(b - Dl) < Math.abs(a - Dl) ? b : a;
+                });
+                document.getElementById('Dl').innerHTML = Dlc;
+                var Numlinhalateral = Largurasetor / Eel;
+                var Qp = Numlinhalateral * q * Nspm;
+                var hflme = 10.643 * Math.pow(r, 1.852) * ( 1 / Math.pow(Dlc, 1.852) ) * Comprimentosetor * Fl;
+            }
+
+            //Dimensionamento da linha de derivação
+            var Cd = Largurasetor; //Comprimento de uma linha de derivação
+            var Ctd = Cd * Ns; //Comprimento total das linhas de derivação
+            document.getElementById('Cmpd').innerHTML = Cd.toFixed(3);
+            document.getElementById('Ctd').innerHTML = Ctd.toFixed(3);
+            var Nsd = Largurasetor / Eel ; //Número de saídas de uma linha de derivação
+            var Qd =  Nsd * Qll;
+            document.getElementById('Qd').innerHTML = Qd.toFixed(3);
+            var VE = parseFloat(document.getElementById('VE').value);
+            document.getElementById('VEReport').innerHTML = VE;
+            var Dd = Math.sqrt(((4*(Qd/3600))/(Math.PI*VE)));
+            const Ddc = dComerciais.reduce((a, b) => {
+                        return Math.abs(b - Dd) < Math.abs(a - Dd) ? b : a;
+            });
+            document.getElementById('Dd').innerHTML = Ddc;
+            var Cld = parseFloat(document.getElementById('Cd').value);
+            document.getElementById('CdReport').innerHTML = Cld;
+            var Fd = (1/(2.852))+(1/(2*parseInt(Nsd)))+(Math.sqrt(0.852)/(6*Math.pow(parseInt(Nsd),2))); //Calculo do F da linha de derivação
+            var hd = 10.643 * Math.pow(((3*(Qd/3600))/Cld),1.852)*(Cd/Math.pow(Ddc,4.87))*Fd; //Perda de carga da linha de derivação
+
+            //Dimensionamento da linha principal
+            var Lp = CA - Comprimentosetor; //Largura da linha principal
+            document.getElementById('Lp').innerHTML = Lp.toFixed(3);
+            var Dp = Math.sqrt(((4*(Qp/3600))/(Math.PI*VE)));
+            const Dpc = dComerciais.reduce((a, b) => {
+                        return Math.abs(b - Dp) < Math.abs(a - Dp) ? b : a;
+            });
+            document.getElementById('Dp').innerHTML = Dpc;
+            var Cp = parseFloat(document.getElementById('Cp').value);
+            document.getElementById('CpReport').innerHTML = Cp;
+            var CLS = parseFloat(document.getElementById('CLS').value);
+            document.getElementById('CLSReport').innerHTML = CLS;
+            var Fp = (1/(2.852))+(1/(2*Ns))+(Math.sqrt(0.852)/(6*Math.pow(Ns,2)));
+            var hp = 10.643 * Math.pow(((3*(Qp/3600))/Cp),1.852)*((Lp+CLS)/Math.pow(Dpc,4.87))*Fp;
+
+
+            //Dimensionamento da motobomba
+            var hs = parseFloat(document.getElementById('AS').value);
+            document.getElementById('ASReport').innerHTML = hs;
+            var hr = parseFloat(document.getElementById('AR').value);
+            document.getElementById('ARReport').innerHTML = hr;
+            var HMT = (hd + hp + hflme + Pinl + hr + hs)*1.1; //Altura manométrica total
+            
+            document.getElementById('Qp').innerHTML = Qp.toFixed(3);
+            document.getElementById('HMT').innerHTML = HMT.toFixed(3);
+            var RM = parseFloat(document.getElementById('RM').value);
+            document.getElementById('RMReport').innerHTML = RM;
+            var Pot = ( ( Qp / 3.6 ) * HMT ) / ( 75 * ( RM / 100 ) ); //Potência da motobomba
+            document.getElementById('Pot').innerHTML = Pot.toFixed(3);
+
+            //Dimensionamento do sistema de filtragem
+            var SAF = (Qp * 1.1 ) / 60;
+            document.getElementById('SAF').innerHTML = SAF.toFixed(3);
+            var DF = Math.sqrt((4-SAF)/Math.PI);
+            const DFc = dComerciais.reduce((a, b) => {
+                        return Math.abs(b - DF) < Math.abs(a - DF) ? b : a;
+            });
+            document.getElementById('DF').innerHTML = DFc;
+        }
+    </script>
+</html>

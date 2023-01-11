@@ -1,0 +1,217 @@
+<html>
+    <head>
+        <title>
+            Guyri - Fogging
+        </title>
+        <link rel="icon" href="Icones/Logotipo 2.png">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="functions.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    </head>
+    <header class="header">
+        <img class="logo_header" src="Icones/Logotipo 2.png">
+        <div class="title_header">
+            <h1 style="background-color: #b5e8c3; font-size: 30px;">ARA</h1>
+            <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSYSTEMS</h3>
+        </div>
+        <a class="return_initial" href="initial_page.html">Home</a>
+    </header>
+    <body>
+    <div class="body_sizing">   
+        <div class="main_lateral_dropdown">
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/irrigation.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Gotejamento.html">Dripping</a>
+                    <a class="link" href="Aspersao.html">Sprinkling</a>
+                    <a class="link" href="Micro_Aspersao.html">Micro-Sprinkling</a>
+                    <a class="link" href="Pivo_Central.html">Center Pivot</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/solar-energy.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Aquecimento_Solar.html">Solar Heating</a>
+                    <a class="link" href="Fotovoltaica.html">Photovoltaic</a>
+                    <a class="link" href="Eolica.html">Wind</a>
+                    <a class="link" href="Hidroeletrica.html">Hydroelectric</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/bacteria.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Biodigestor.html">Biodigester</a>
+                    <a class="link" href="Compostagem.html">Composting</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/greenhouse.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Ventilacao_Forcada.html">Forced Ventilation</a>
+                    <a class="link" href="Ar_Condicionado.html">Air Conditioning</a>
+                    <a class="link" href="Nebulizacao.html">Fogging</a>
+                </div>
+            </div>
+
+            <div class="lateral_dropdown">
+                <button class="lateral_dropbtn">
+                    <img class="icon" src="Icones/dollar-currency-symbol.png">
+                </button>
+                <div class="lateral_dropdown-content">
+                    <a class="link" href="Analise_Economica.html">Economic analysis</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="main_section">
+
+                <div class="calculator">
+
+                    <ul class="nav">
+                        <button class="nav_link active" id="pds_bt" onclick="openTab(event, 'pds')">System Parameters</button>
+                    </ul>
+
+                    <div class="tab_content">
+
+                        <div class="tab_pane" id="pds">
+                            <input class="input" type="number" step="0.0001" id="Cv" placeholder="Fan capacity (m3/min)">
+                            <br><input class="input" placeholder="Amount of fans" type="number" step="0.0001" id="Nv">
+                            <br><input class="input" placeholder="Evaporative efficiency (%)" type="number" step="0.0001" id="Ee">
+                            <br><input class="input" placeholder="Nebulizer capacity (l/h)" type="number" step="0.0001" id="Cn">
+                            <br><input class="input" placeholder="Dry bulb temperature (°C)" type="number" step="0.0001" id="Tbs">
+                            <br><input class="input" placeholder="Relative humidity (%)" type="number" step="0.0001" id="Ur">
+                            <br><input class="input" placeholder="Desired temperature (°C)" type="number" step="0.0001" id="Tpo">
+                            <br><input class="input" placeholder="Altitude in relation to sea level (m)" type="number" step="0.0001" id="H">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button class="result" onclick="DimensionarNebulizador('minhaDiv');" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Size!
+                </button>
+        </div>
+
+        <div>
+
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title">Results</h5>
+                </div>
+                <div class="modal-body">
+                    <div id="report">
+                        <div class="header_report">
+                                <h1 style="background-color: #b5e8c3; font-size: 30px;">ARA</h1>
+                                <h3 style="background-color: #b5e8c3; font-size: larger;">BIOSYSTEMS</h3>     
+                        </div>
+                        <div>
+                            <div class="subtitle_report">
+                                <h3>Protecteds</h3>
+                                <h4>Fogging</h4>
+                            </div>
+                            <h5 style="padding-left: 15px;">Inputs</h5>
+                            <div class="box_report">
+                                <span>Fan capacity (m3/min): </span><span id="CvReport"></span>
+                                <br><span>Amount of fans: </span><span id="NvReport"></span>
+                                <br><span>Evaporative efficiency (%) : </span><span id="EeReport"></span>
+                                <br><span>Nebulizer capacity (l/h) : </span><span id="CnReport"></span>
+                                <br><span>Dry bulb temperature (°C) : </span><span id="TbsReport"></span>
+                                <br><span>Relative humidity (%) : </span><span id="UrReport"></span>
+                                <br><span>Desired temperature (°C) : </span><span id="TpoReport"></span>
+                                <br><span>Altitude in relation to sea level (m) : </span><span id="HReport"></span>
+                            </div>
+                            <h5 style="padding-left: 15px;">Outputs</h5>
+                            <div class="box_report">
+                                <span>Amount of nebulizers: </span><span id="N"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="GenerateReport()">Generate Report</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+    <script>
+        function GenerateReport(){
+
+            const element = document.getElementById('report');
+            var opt = {
+                filename:     "ARA_Biosystems_Fogging.pdf" ,
+                image:        { type: 'jpeg', quality: 1 },
+                margin:        [top = 0, left = 0, bottom = 0, right = 0],
+                html2canvas:    {height: 800}
+            };
+
+            html2pdf(element, opt)
+
+        }
+        var N;
+        function DimensionarNebulizador(el){
+            /* document.getElementById(el).style.display = "block"; */
+
+            var Cv = parseFloat(document.getElementById("Cv").value);
+            var Nv = parseFloat(document.getElementById("Nv").value);
+            var Ee = parseFloat(document.getElementById("Ee").value);
+            var Cn = parseFloat(document.getElementById("Cn").value);
+            var Tbs = parseFloat(document.getElementById("Tbs").value);
+            var Ur = parseFloat(document.getElementById("Ur").value);
+            var Tpo = parseFloat(document.getElementById("Tpo").value);
+            var H = parseFloat(document.getElementById("H").value);
+
+            document.getElementById('CvReport').innerHTML = Cv;
+            document.getElementById('NvReport').innerHTML = Nv;
+            document.getElementById('EeReport').innerHTML = Ee;
+            document.getElementById('CnReport').innerHTML = Cn;
+            document.getElementById('TbsReport').innerHTML = Tbs;
+            document.getElementById('UrReport').innerHTML = Ur;
+            document.getElementById('TpoReport').innerHTML = Tpo;
+            document.getElementById('HReport').innerHTML = H;
+
+            var dbs = 1.2791 * Math.pow(Math.E, (-0.003*Tbs));
+            var Pbs = (-1.0979 * H + 10091) / 10;
+            var dbm = 1.2791 * Math.pow(Math.E, (-0.003*Tpo));
+            var Pbm = (-1.0979 * H + 10091)/10;
+
+            var Pvsbs = 0.6108*Math.pow(10, ((7.5*Tbs)/(237.3+Tbs)));
+            var Pvbs = (Ur*Pvsbs) / 100;
+            var wbs = (0.622 * Pvbs) / (Pbs-Pvbs);
+
+            var Pvsbm = 0.6108*Math.pow(10, ((7.5*Tpo)/(237.3+Tpo)));
+            var Pvbm = (100*Pvsbm) / 100;
+            var wbm = (0.622 * Pvbm) / (Pbm - Pvbm);
+
+            var dw = (wbm - wbs)*10;
+
+            N = (Ee * (Nv*Cv) *  dbs * dw * 0.01) / (Cn/60);
+            document.getElementById('N').innerHTML = N.toFixed(3);
+        }
+    </script>
+</html>
