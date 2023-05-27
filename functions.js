@@ -4,11 +4,11 @@ app.on('ready', () => {
 
     mainWindow = new BrowserWindow({
 
-        icon:  'Icones/Logotipo 2.png',
+        icon:  'Icons/Logotipo 2.png',
         autoHideMenuBar: true,
     });
     mainWindow.maximize();
-    mainWindow.loadURL(`file://${__dirname}/initial_page.html`)
+    mainWindow.loadURL(`file://${__dirname}/index.html`)
     
 });
 function openTab(evt, tabName){

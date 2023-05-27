@@ -3,7 +3,8 @@
 <p>Author: Eng. Gustavo Santiago</p>
 <p>Contact: gustavosantiago@usp.alumni.br</p>
 
-<center><img style='width:150px' src="Icones/QRcode.png"></center>
+<center><img style='width:150px' src="Icons/QRcode.png"></center>
+
 
 <hr>
 
@@ -48,7 +49,7 @@
 #### 2.2.3 Micro-Sprinkling
 <p>The reference used in this section was taken from class annotations and slides presentation of the author while attending Irrigation's class at the university. The course was ministered by Profa. Dra. Tamara Maria Gomes at Universidade de Sao Paulo - FZEA. In the occasion, she gave a practical example of how to size a micro-sprinkling, providing all formulas and steps. It is not available due to copyrights.</p>
 <p> On micro-sprinkling section in Guyri, the sketch used is showed below, where the main line is on horizontal top, the derivation lines are on vertical and the secondary lines are on horizontal. Besides, micro-sprinkling on the software was made mainly to be used on tree crops.</p>
-<img src="Icones\Sketch Micro-sprinkling.png">
+<img src="Icons/Sketch Micro-sprinkling.png">
 <p>Just like on examples above, the diamethers are the commercial ones closest to calculated's, and the pressure lost, re-calculated using the commercial diameters of pipes.</p>
 
 <br>
