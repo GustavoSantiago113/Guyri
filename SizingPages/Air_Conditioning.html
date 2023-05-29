@@ -158,60 +158,11 @@
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="GenerateReport()">Generate Report</button>
+                    <button type="button" class="btn btn-primary" onclick="GenerateReport('AirConditioning', 800)">Generate Report</button>
                     </div>
                 </div>
             </div>
         </div>
 
         </body>
-        <script>
-            function GenerateReport(){
-
-                const element = document.getElementById('report');
-                var opt = {
-                    filename:     "ARA_Biosystems_AirConditioning.pdf" ,
-                    image:        { type: 'jpeg', quality: 1 },
-                    margin:        [top = 0, left = 0, bottom = 0, right = 0],
-                    html2canvas:    {height: 800}
-                };
-
-                html2pdf(element, opt)
-
-            }
-            function DimensionarArCondicionado(el){
-
-                var La = parseFloat(document.getElementById('La').value);
-                document.getElementById('LaReport').innerHTML = La;
-                var Ca = parseFloat(document.getElementById('Ca').value);
-                document.getElementById('CaReport').innerHTML = Ca;
-                var Area = La*Ca;
-
-                var Qp = parseFloat(document.getElementById('Qp').value);
-                document.getElementById('QpReport').innerHTML = Qp;
-                var Ne = parseFloat(document.getElementById('Ne').value);
-                document.getElementById('NeReport').innerHTML = Ne;
-                var Nj = parseFloat(document.getElementById('Nj').value);
-                document.getElementById('NjReport').innerHTML = Nj;
-
-                if (document.getElementById("M/T").checked)
-                {
-                    var Inc = 400;
-                    document.getElementById('localReport').innerHTML = "Morning / Afternoon";
-                }
-                else if(document.getElementById("Diatodo").checked)
-                {
-                    var Inc = 800;
-                    document.getElementById('localReport').innerHTML = "All day";
-                }
-                else if(document.getElementById("Nenhuma").checked)
-                {
-                    var Inc = 0;
-                    document.getElementById('localReport').innerHTML = "None";
-                }
-
-                var BTU = Inc + Area*600 + Qp*600 + Ne*600 + Nj*300;
-                document.getElementById('BTU').innerHTML = BTU;
-            }
-        </script>
 </html>

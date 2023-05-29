@@ -177,7 +177,7 @@
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="GenerateReport()">Generate Report</button>
+                <button type="button" class="btn btn-primary" onclick="GenerateReport('Composting', 800)">Generate Report</button>
                 </div>
             </div>
         </div>
@@ -185,29 +185,17 @@
 
     </body>
     <script>
-        function GenerateReport(){
-
-            const element = document.getElementById('report');
-            var opt = {
-                filename:     "ARA_Biosystems_Composting.pdf" ,
-                image:        { type: 'jpeg', quality: 1 },
-                margin:        [top = 0, left = 0, bottom = 0, right = 0],
-                html2canvas:    {height: 800}
-            };
-
-            html2pdf(element, opt)
-
-        }
         var controleCampoVeg = 0;
 
         function AdicionarVeg(){
-            controleCampoVeg++;
-            document.getElementById('formularioveg').insertAdjacentHTML('beforeend', '<div class="form-group" id="campoveg'+ controleCampoVeg +'"><span>Material </span><span id="label'+ controleCampoVeg +'"></span><br><input class="input" type="number" step="0.0001" id="cnveg'+ controleCampoVeg +'" placeholder="Ratio of C to 1 of N"><br><span style="background-color: #65b8a6;">Addition Frequency:</span><div style="text-align: left; background-color: #65b8a6;"><input type="radio" name="freq'+ controleCampoVeg +'" id="dia'+ controleCampoVeg +'"><span>Daily</span><br><input type="radio" name="freq'+ controleCampoVeg +'" id="sem'+ controleCampoVeg +'"><span>Weekly</span><br><input type="radio" name="freq'+ controleCampoVeg +'" id="mes'+ controleCampoVeg +'"><span>Monthly</span> </div><br><input class="input" type="number" step="0.0001" id="quantveg'+ controleCampoVeg +'" placeholder="Amount (kg)"><br><button type="button" class="numb_control" onclick="AdicionarVeg()">Add Material</button><button type="button" class="numb_control" onclick="RemoverVeg('+ controleCampoVeg +')">Remove Material</button></div>');
-            document.getElementById('Reportformularioveg').insertAdjacentHTML('beforeend', '<br><div id="Reportcampoveg'+ controleCampoVeg +'"><span>Material </span><span id="Reportlabel'+ controleCampoVeg +'"></span><br><span>Ratio of C to 1 of N: </span> <span id="Reportcnveg'+ controleCampoVeg +'"></span><br><span style="background-color: #65b8a6; text-align: left">Addition Frequency:</span><span id="Reportfreq'+ controleCampoVeg +'"></span><br><span>Amount (kg): </span> <span id="Reportquantveg'+ controleCampoVeg +'"></span></div>');
+            controleCampoVeg = controleCampoVeg + 1;
             let label = 'label' + controleCampoVeg;
             let Reportlabel = 'Reportlabel' + controleCampoVeg;
-            document.getElementById(label).innerHTML = controleCampoVeg + 1;
-            document.getElementById(Reportlabel).innerHTML = controleCampoVeg + 1;
+            document.getElementById('formularioveg').insertAdjacentHTML('beforeend', '<div class="form-group" id="campoveg'+ controleCampoVeg +'"><span>Material </span><span id="label'+ controleCampoVeg +'"></span><br><input class="input" type="number" step="0.0001" id="cnveg'+ controleCampoVeg +'" placeholder="Ratio of C to 1 of N"><br><span style="background-color: #65b8a6;">Addition Frequency:</span><div style="text-align: left; background-color: #65b8a6;"><input type="radio" name="freq'+ controleCampoVeg +'" id="dia'+ controleCampoVeg +'"><span>Daily</span><br><input type="radio" name="freq'+ controleCampoVeg +'" id="sem'+ controleCampoVeg +'"><span>Weekly</span><br><input type="radio" name="freq'+ controleCampoVeg +'" id="mes'+ controleCampoVeg +'"><span>Monthly</span> </div><br><input class="input" type="number" step="0.0001" id="quantveg'+ controleCampoVeg +'" placeholder="Amount (kg)"><br><button type="button" class="numb_control" onclick="AdicionarVeg()">Add Material</button><button type="button" class="numb_control" onclick="RemoverVeg('+ controleCampoVeg +')">Remove Material</button></div>');
+            document.getElementById('Reportformularioveg').insertAdjacentHTML('beforeend', '<br><div id="Reportcampoveg'+ controleCampoVeg +'"><span>Material </span><span id="Reportlabel'+ controleCampoVeg +'"></span><br><span>Ratio of C to 1 of N: </span> <span id="Reportcnveg'+ controleCampoVeg +'"></span><br><span style="background-color: #65b8a6; text-align: left">Addition Frequency:</span><span id="Reportfreq'+ controleCampoVeg +'"></span><br><span>Amount (kg): </span> <span id="Reportquantveg'+ controleCampoVeg +'"></span></div>');
+            console.log(label);
+            document.getElementById(label).innerHTML = controleCampoVeg;
+            document.getElementById(Reportlabel).innerHTML = controleCampoVeg;
             return(controleCampoVeg);
         }
 
@@ -217,61 +205,6 @@
             document.getElementById('Reportcampoveg' + idCampo).remove();
             return(controleCampoVeg);
         }
-
-        function DimensionarComposting(el){
-            
-            //Cálculo das proporções C:N das adições
-            let contador = controleCampoVeg;
-            let limite = contador + 1;
-            let sommass = 0;
-            let relacn = 0;
-            for(let i=0; i<limite; i++){
-
-                let cnveg = 'cnveg'+i;
-                let Reportcnveg = 'Reportcnveg'+i;
-                let quantveg = 'quantveg'+i;
-                let Reportquantveg = 'Reportquantveg'+i;
-                let massveg = parseFloat(document.getElementById(quantveg).value);
-                document.getElementById(Reportquantveg).innerHTML = massveg;
-                let cn = parseFloat(document.getElementById(cnveg).value);
-                document.getElementById(Reportcnveg).innerHTML = cn;
-                let dia = 'dia'+i;
-                let sem = 'sem'+i;
-                let mes = 'mes'+i;
-                let Reportfreq = "Reportfreq" + i;
-                if(document.getElementById(dia).checked){
-                    massveg = massveg;
-                    document.getElementById(Reportfreq).innerHTML = "Daily addition";
-                }
-                else if(document.getElementById(sem).checked){
-                    massveg = massveg/7;
-                    document.getElementById(Reportfreq).innerHTML = "Weekly addition";
-                }
-                else if(document.getElementById(mes).checked){
-                    massveg = massveg/30;
-                    document.getElementById(Reportfreq).innerHTML = "Monthly addition";
-                }
-                let rela = massveg * cn;
-                relacn = relacn + rela;
-                sommass = sommass + massveg;
-            }
-            let propveg = relacn / sommass;
-            // Aviso caso a mistura ja seja ideal
-            let texto;
-            if (27 < propveg && propveg < 34) {
-                texto = "There is no need of straw addition";
-                document.getElementById("warn").innerHTML = texto;
-            }
-            else{
-                document.getElementById(el).style.display = "block";
-            }
-
-            // Calculo da quantidade de palhada
-            let cnpal = parseFloat(document.getElementById('cnpal').value);
-            document.getElementById('cnpalReport').innerHTML = cnpal;
-
-            let mpal = ( (30*sommass - relacn) / (cnpal - 30 + 0.000000001))
-            document.getElementById('mpal').innerHTML = mpal.toFixed(3);
-        }
+        
     </script>
 </html>

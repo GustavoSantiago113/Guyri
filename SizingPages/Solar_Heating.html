@@ -173,7 +173,7 @@
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="GenerateReport()">Generate Report</button>
+                <button type="button" class="btn btn-primary" onclick="GenerateReport('SolarHeating', 800)">Generate Report</button>
                 </div>
             </div>
         </div>
@@ -181,20 +181,6 @@
 
     </body>
     <script>
-        function GenerateReport(){
-
-            const element = document.getElementById('report');
-            var opt = {
-                filename:     "ARA_Biosystems_SolarHeating.pdf" ,
-                image:        { type: 'jpeg', quality: 1 },
-                margin:        [top = 0, left = 0, bottom = 0, right = 0],
-                html2canvas:    {height: 800}
-            };
-
-            html2pdf(element, opt)
-
-        }
-        
         var controleCampo = 0;
 
         function Adicionar(){
@@ -215,46 +201,6 @@
             return(controleCampo);
         }
 
-        function DimensionarAquecimento(el){
-
-            var contador = controleCampo;
-            var limite = contador + 1;
-            var Vcon = 0;
-            //Cálculo do volume de consumo
-            for(let i=0; i<limite; i++)
-            {
-                var vaz = 'vazao'+i;
-                var Reportvaz = 'Reportvazao'+i;
-                var temp = 'tempo'+i;
-                var Reporttemp = 'Reporttempo'+i;
-                var freq = 'frequencia'+i;
-                var Reportfreq = 'Reportfrequencia'+i;
-                var q = parseFloat(document.getElementById(vaz).value);
-                document.getElementById(Reportvaz).innerHTML = q;
-                var t = parseFloat(document.getElementById(temp).value);
-                document.getElementById(Reporttemp).innerHTML = t;
-                var f = parseFloat(document.getElementById(freq).value);
-                document.getElementById(Reportfreq).innerHTML = f;
-                var Vcon = ( (q / 1000) * ( t * 60 ) * f) + Vcon;
-            }
-            //Cálculo do volume do sistema de armazenamento
-            var Tcon = parseFloat(document.getElementById('Tcon').value);
-            document.getElementById('TconReport').innerHTML = Tcon;
-            var Tamb = parseFloat(document.getElementById('Tamb').value);
-            document.getElementById('TambReport').innerHTML = Tamb;
-            var Varm = ( Vcon * (Tcon - Tamb) ) / ((1.1*Tcon) - Tamb);
-            document.getElementById('Varm').innerHTML = Varm.toFixed(3);
-
-            //Calculo da demanda de energia útil
-            var Eutil = ( Varm * 1000 * 4.18 * ((1.1*Tcon) - Tamb)) / 3600;
-            document.getElementById('Eutil').innerHTML = Eutil.toFixed(3) / 1000;
-
-            //Cálculo da área coletora
-            var Ecol = parseFloat(document.getElementById('Ecol').value);
-            document.getElementById('EcolReport').innerHTML = Ecol;
-            var Eperdas = Eutil * 0.15;
-            var Area = ((Eutil + Eperdas)/1000) / ( Ecol / 30);
-            document.getElementById('Area').innerHTML = Area.toFixed(3);
-        }
+        
     </script>
 </html>

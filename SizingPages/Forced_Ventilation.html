@@ -147,47 +147,11 @@
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="GenerateReport()">Generate Report</button>
+                    <button type="button" class="btn btn-primary" onclick="GenerateReport('ForcedVentilation', 800)">Generate Report</button>
                     </div>
                 </div>
             </div>
         </div>
 
     </body>
-    <script>
-        function GenerateReport(){
-
-        const element = document.getElementById('report');
-        var opt = {
-            filename:     "ARA_Biosystems_ForcedVentilation.pdf" ,
-            image:        { type: 'jpeg', quality: 1 },
-            margin:        [top = 0, left = 0, bottom = 0, right = 0],
-            html2canvas:    {height: 800}
-        };
-
-        html2pdf(element, opt)
-
-        }
-
-        function DimensionarVentilacao(el){
-
-            var C = document.getElementById("C").value;
-            var L = document.getElementById("L").value;
-            var H = document.getElementById("H").value;
-            var Cv = document.getElementById("Cv").value;
-            var Var = document.getElementById("Var").value;
-
-            document.getElementById('CReport').innerHTML = C;
-            document.getElementById('LReport').innerHTML = L;
-            document.getElementById('HReport').innerHTML = H;
-            document.getElementById('CvReport').innerHTML = Cv;
-            document.getElementById('VarReport').innerHTML = Var;
-
-            var N = ( L * H * Var * 60) / (Cv*0.9);
-            document.getElementById('N').innerHTML = N.toFixed(3);
-
-            var An = L * H;
-            document.getElementById('An').innerHTML = An.toFixed(3);
-        }
-    </script>
 </html>

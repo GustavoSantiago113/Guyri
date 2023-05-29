@@ -173,83 +173,11 @@
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="GenerateReport()">Generate Report</button>
+                <button type="button" class="btn btn-primary" onclick="GenerateReport('Photovoltaic', 800)">Generate Report</button>
                 </div>
             </div>
         </div>
     </div>
 
     </body>
-    <script>
-        function GenerateReport(){
-
-            const element = document.getElementById('report');
-            var opt = {
-                filename:     "ARA_Biosystems_Photovoltaic.pdf" ,
-                image:        { type: 'jpeg', quality: 1 },
-                margin:        [top = 0, left = 0, bottom = 0, right = 0],
-                html2canvas:    {height: 800}
-            };
-
-            html2pdf(element, opt)
-
-        }
-        function AparecerSolar(){
-
-            if (document.getElementById("offgrid").checked){
-                document.getElementById("inputoffgrid").style.display = "block";
-            }
-
-            else {
-                document.getElementById("inputoffgrid").style.display = "none";
-            }
-        }
-
-        function DimensionarSolar(el){
-
-            var Pp = parseFloat(document.getElementById('Pp').value);
-            document.getElementById('PpReport').innerHTML = Pp;
-            var Ctd = parseFloat(document.getElementById('Ctm').value);
-            document.getElementById('CtmReport').innerHTML = Ctd;
-            Ctd = Ctd / 30 *1000 
-            var Hspd = parseFloat(document.getElementById('Hspd').value);
-            document.getElementById('HspdReport').innerHTML = Hspd;
-            var Em = parseFloat(document.getElementById('Em').value);
-            document.getElementById('EmReport').innerHTML = Em;
-
-            if (document.getElementById("ongrid").checked)
-            {
-                var Pg = Ctd / Hspd;
-                var PI = Pg + (Pg * (Em/100));
-                document.getElementById('PI').innerHTML = PI.toFixed(3);
-                var TRD = PI / Pp;
-                document.getElementById('TRD').innerHTML = TRD.toFixed(3);
-                document.getElementById('OnorOffReport').innerHTML = "On grid";
-            }
-
-            else if (document.getElementById("offgrid").checked)
-            {
-                document.getElementById("resultoffgrid").style.display = "block";
-                document.getElementById("inputoffgridReport").style.display = "block";
-                document.getElementById('OnorOffReport').innerHTML = "Off grid";
-                var TM = parseFloat(document.getElementById('TM').value);
-                document.getElementById('TMReport').innerHTML = TM;
-                var Tbb = parseFloat(document.getElementById('Tbb').value);
-                document.getElementById('TbbReport').innerHTML = Tbb;
-                var Autonomia = parseFloat(document.getElementById('Autonomia').value);
-                document.getElementById('AutonomiaReport').innerHTML = Autonomia
-                var Cb = ( Ctd * Autonomia) / ( Tbb * 0.6);
-                document.getElementById('Cb').innerHTML = Cb;
-                var Fpp = Tbb / TM;
-                var Pg = Ctd / (Hspd * 0.8 * Fpp);
-                var PI = Pg + (Pg * (Em/100));
-                var TRD = Pg / Pp;
-                document.getElementById('TRD').innerHTML = TRD.toFixed(3);
-                document.getElementById('PI').innerHTML = PI.toFixed(3);
-                var Cc = (Pg * 1.1) / Tbb ;
-                document.getElementById('Cc').innerHTML = Cc.toFixed(3);
-            }
-
-        }
-    </script>
 </html>

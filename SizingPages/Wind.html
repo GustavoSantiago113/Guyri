@@ -173,76 +173,11 @@
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="GenerateReport()">Generate Report</button>
+                <button type="button" class="btn btn-primary" onclick="GenerateReport('Wind', 800)">Generate Report</button>
                 </div>
             </div>
         </div>
     </div>
 
     </body>
-    <script>
-        function GenerateReport(){
-
-            const element = document.getElementById('report');
-            var opt = {
-                filename:     "ARA_Biosystems_Wind.pdf" ,
-                image:        { type: 'jpeg', quality: 1 },
-                margin:        [top = 0, left = 0, bottom = 0, right = 0],
-                html2canvas:    {height: 800}
-            };
-
-            html2pdf(element, opt)
-
-        }
-        function Aparecer(){
-            
-            if (document.getElementById("offgrid").checked){
-                document.getElementById("inputoffgrid").style.display = "block";
-            }
-
-            else {
-                document.getElementById("inputoffgrid").style.display = "none";
-            }
-
-        }
-
-        function DimensionarWind(el){
-
-            var Cmm = parseFloat(document.getElementById('Cmm').value);
-            document.getElementById('CmmReport').innerHTML = Cmm;
-            var Vv = parseFloat(document.getElementById('Vv').value);
-            document.getElementById('VvReport').innerHTML = Vv;
-            var Dp = parseFloat(document.getElementById('Dp').value);
-            document.getElementById('DpReport').innerHTML = Dp;
-
-            var Pd = (Cmm/30)*1000;
-            var Area = Math.PI * Math.pow( (Dp/2), 2); 
-            var Pae = ( 1.2754 * Area * Math.pow(Vv,3) ) / 2;
-            var Paedia = Pae * 24;
-            var Nae = Pd / Paedia;
-            document.getElementById('Nae').innerHTML = Nae.toFixed(3);
-            document.getElementById('PI').innerHTML = Pae * 1.3 * Nae.toFixed(3);
-
-            if (document.getElementById("offgrid").checked)
-            {
-                document.getElementById("resultoffgrid").style.display = "block";
-                document.getElementById('offoronReport').innerHTML = "Off Grid";
-                document.getElementById("inputoffgridReport").style.display = "block";
-                var TM = parseFloat(document.getElementById('TM').value);
-                document.getElementById('TMReport').innerHTML = TM;
-                var Tbb = parseFloat(document.getElementById('Tbb').value);
-                document.getElementById('TbbReport').innerHTML = Tbb;
-                var Autonomia = parseFloat(document.getElementById('Autonomia').value);
-                document.getElementById('AutonomiaReport').innerHTML = Autonomia;
-                var Cb = ( Pd * Autonomia) / ( Tbb * 0.6);
-                document.getElementById('Cb').innerHTML = Cb.toFixed(3);
-                var Cc = (Pd * 1.1) / Tbb ;
-                document.getElementById('Cc').innerHTML = Cc.toFixed(3);
-            }
-            else{
-                document.getElementById('offoronReport').innerHTML = "On Grid";
-            }
-
-        }
-    </script>
 </html>

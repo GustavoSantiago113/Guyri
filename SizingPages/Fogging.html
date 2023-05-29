@@ -152,7 +152,7 @@
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="GenerateReport()">Generate Report</button>
+                <button type="button" class="btn btn-primary" onclick="GenerateReport('Fogging', 800)">Generate Report</button>
                 </div>
             </div>
         </div>
@@ -161,58 +161,7 @@
     </body>
 
     <script>
-        function GenerateReport(){
-
-            const element = document.getElementById('report');
-            var opt = {
-                filename:     "ARA_Biosystems_Fogging.pdf" ,
-                image:        { type: 'jpeg', quality: 1 },
-                margin:        [top = 0, left = 0, bottom = 0, right = 0],
-                html2canvas:    {height: 800}
-            };
-
-            html2pdf(element, opt)
-
-        }
-        var N;
-        function DimensionarNebulizador(el){
-            /* document.getElementById(el).style.display = "block"; */
-
-            var Cv = parseFloat(document.getElementById("Cv").value);
-            var Nv = parseFloat(document.getElementById("Nv").value);
-            var Ee = parseFloat(document.getElementById("Ee").value);
-            var Cn = parseFloat(document.getElementById("Cn").value);
-            var Tbs = parseFloat(document.getElementById("Tbs").value);
-            var Ur = parseFloat(document.getElementById("Ur").value);
-            var Tpo = parseFloat(document.getElementById("Tpo").value);
-            var H = parseFloat(document.getElementById("H").value);
-
-            document.getElementById('CvReport').innerHTML = Cv;
-            document.getElementById('NvReport').innerHTML = Nv;
-            document.getElementById('EeReport').innerHTML = Ee;
-            document.getElementById('CnReport').innerHTML = Cn;
-            document.getElementById('TbsReport').innerHTML = Tbs;
-            document.getElementById('UrReport').innerHTML = Ur;
-            document.getElementById('TpoReport').innerHTML = Tpo;
-            document.getElementById('HReport').innerHTML = H;
-
-            var dbs = 1.2791 * Math.pow(Math.E, (-0.003*Tbs));
-            var Pbs = (-1.0979 * H + 10091) / 10;
-            var dbm = 1.2791 * Math.pow(Math.E, (-0.003*Tpo));
-            var Pbm = (-1.0979 * H + 10091)/10;
-
-            var Pvsbs = 0.6108*Math.pow(10, ((7.5*Tbs)/(237.3+Tbs)));
-            var Pvbs = (Ur*Pvsbs) / 100;
-            var wbs = (0.622 * Pvbs) / (Pbs-Pvbs);
-
-            var Pvsbm = 0.6108*Math.pow(10, ((7.5*Tpo)/(237.3+Tpo)));
-            var Pvbm = (100*Pvsbm) / 100;
-            var wbm = (0.622 * Pvbm) / (Pbm - Pvbm);
-
-            var dw = (wbm - wbs)*10;
-
-            N = (Ee * (Nv*Cv) *  dbs * dw * 0.01) / (Cn/60);
-            document.getElementById('N').innerHTML = N.toFixed(3);
-        }
+        
+        
     </script>
 </html>

@@ -149,111 +149,11 @@
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="GenerateReport()">Generate Report</button>
+                <button type="button" class="btn btn-primary" onclick="GenerateReport('EconomicalAnalysis', 1100)">Generate Report</button>
                 </div>
             </div>
         </div>
     </div>
 
     </body>
-    <script>
-        function GenerateReport(){
-
-            const element = document.getElementById('report');
-            var opt = {
-                filename:     "ARA_Biosystems_EconomicAnalysis.pdf" ,
-                image:        { type: 'jpeg', quality: 1 },
-                margin:        [top = 0, left = 0, bottom = 0, right = 0],
-                html2canvas:    {height: 1100}
-            };
-
-            html2pdf(element, opt)
-
-        }
-        function Analisar(el){
-
-        var Vi = parseFloat(document.getElementById('Vi').value);
-        document.getElementById('ViReport').innerHTML = Vi;
-        var Vo = parseFloat(document.getElementById('Ve').value);
-        document.getElementById('VeReport').innerHTML = Vo;
-        var Td = parseFloat(document.getElementById('Td').value);
-        document.getElementById('TdReport').innerHTML = Td;
-        var Go = parseFloat(document.getElementById('Go').value);
-        document.getElementById('GoReport').innerHTML = Go;
-        var Rla = parseFloat(document.getElementById('Rla').value);
-        document.getElementById('RlaReport').innerHTML = Rla;
-
-        var paySimples = Vi / Vo;
-        document.getElementById('paySimples').innerHTML = paySimples.toFixed(1);
-        
-        let vectorPaySimples = [];
-        let controlPaySimples = Vi;
-        vectorPaySimples.push(Vi);
-        for(i = 0; i<Math.ceil(paySimples); i++){
-            controlPaySimples = controlPaySimples - Vo;
-            vectorPaySimples.push(controlPaySimples);
-        }
-
-        var Von = Vo / (1 + (Td/100));
-        var payDesco = Vi / Von;
-        document.getElementById('payDesco').innerHTML = payDesco.toFixed(1);
-        
-        let vectorPayDesco = [];
-        let vector = []
-        let controlPayDesco = Vi;
-        vectorPayDesco.push(Vi);
-        for(i = 0; i<Math.ceil(payDesco); i++){
-            controlPayDesco = controlPayDesco - Von;
-            vectorPayDesco.push(controlPayDesco);
-            vector.push(i)
-        }
-        vector.push(i)
-
-        var Roi = (( Go - Vi ) / Vi) * 100;
-        document.getElementById('Roi').innerHTML = Roi.toFixed(2);
-
-        var Ren = (Rla / Vi) * 100;
-        document.getElementById('Ren').innerHTML = Ren.toFixed(2);
-
-        const labels = vector;
-        const data = {
-        labels: labels,
-        datasets: [
-            {
-            label: 'Simple',
-            data: vectorPaySimples,
-            borderColor: 'rgb(255, 99, 132)'
-            },
-            {
-            label: 'Discounted',
-            data: vectorPayDesco,
-            borderColor: 'rgb(58, 52, 235)'
-            }
-        ]
-        };
-
-        const config = {
-        type: 'line',
-        data: data,
-        options: {
-            responsive: true,
-            plugins: {
-            legend: {
-                position: 'top',
-            },
-            title: {
-                display: true,
-                text: 'Simple payback vs Discounted'
-            }
-            }
-        },
-        };
-
-        const myChart = new Chart(
-            document.getElementById('myChart'),
-            config
-        );
-
-        }
-    </script>
 </html>
