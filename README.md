@@ -114,7 +114,7 @@
 <br>
 
 #### 2.5.3 Fogging
-<p>Fogging refrigeration system sizing were obtained from annotations of Prof. Dr. Iran Jose Oliveira da Silva class in 2013. He is a professor at Univesity of Sao Paulo - ESALQ. On the occasion, he gave an example of sizing to calculate the number of fogging nozzles for poultry farming. To use some variables in the formulas, it was necessary to have values obtained from curves. Using as reference Dantas (2012), curves equations were generated and, in that way, values could be obtained.</p>
+<p>Fogging refrigeration system sizing were obtained from annotations of Prof. Dr. Iran Jose Oliveira da Silva class in 2013. He is a professor at University of Sao Paulo - ESALQ. On the occasion, he gave an example of sizing to calculate the number of fogging nozzles for poultry farming. To use some variables in the formulas, it was necessary to have values obtained from curves. Using as reference Dantas (2012), curves equations were generated and, in that way, values could be obtained.</p>
 
 <br>
 <hr>
@@ -152,7 +152,7 @@
 <br>
 
 ### 3.4 Algorithm Organization
-<p>Into the folder called Algorithm, where all the code files are, there is another folder called Icons, where all images are. On the Algorithm folder, there are one CSS file containing the CSS code for all the app, one JavaScript file containing functions to make show and disappear divisions where users insert the variables and Electron configurations', HTML files containing each section and the main page and, at last, npm dependencies.The calculation functions are inserted inside the HTML file, into script section, in order to make it easier to be found and separated from each other.</p>
+In the main folder, there is the functions, index and style algorithms, being these the main ones. In the folder called Sizing Pages is each sizing html algorithm. The icons used were downloaded from the internet and are in the folder Icons. Lastly, the SizingTutorials folder has the pdf of some of the tutorials mentioned in the Literature Review.
 <br>
 <hr>
 
