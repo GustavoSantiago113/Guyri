@@ -14,6 +14,7 @@ app.on('ready', () => {
 });
 
 // Open Tab
+
 function openTab(evt, tabName){
 
     var i, tab_pane, tab_link;
